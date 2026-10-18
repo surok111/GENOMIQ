@@ -1,0 +1,1372 @@
+# Группа 2: Иммунная система и воспаление
+## ГЕН 1: IL6 — Interleukin 6
+
+### 1.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Interleukin 6 (interferon, beta 2) |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *147620 |
+| OMIM Disease | 266600 (Crohn disease-associated growth failure, Mu); 108010 (Intracranial hemorrhage in brain cerebrovascular malformations, susceptibility to, SMu); 148000 (Kaposi sarcoma in HIV+, susceptibility to, AD); 604302 (Rheumatoid arthritis, systemic juvenile); 222100 (Type 1 diabetes mellitus, AR); 125853 (Type 2 diabetes mellitus, AD) |
+| PharmGKB ID | PA198 |
+| HGNC Approved Gene Symbol | IL6 |
+| Альтернативные названия | interferon, beta 2; interleukin 6 (interferon, beta 2) |
+| Альтернативные символы | BSF2; HGF; HSF; IFNB2; IL-6 |
+| Локация | 7p15.3 (плюсовая цепь); GRCh37: chr7:22,766,766-22,771,621; GRCh38: chr7:22,725,889-22,732,002 |
+| Структура гена | не предоставлено |
+| Функция | IL6 — иммунорегуляторный цитокин, активирующий сигнальный комплекс на поверхности клетки, состоящий из IL6, IL6RA (IL6R; 147880) и общего сигнального рецептора gp130 (IL6ST; 600694) (Boulanger et al., 2003). Зрелый белок содержит 184 аминокислоты, молекулярная масса ~20.7 кД. Экспрессируется в активированных лимфоцитах и T-клетках. |
+| Ключевые варианты | -174G>C (rs1800795); -597G>A (rs1800797); -572G>C (rs1800796); -634C>G (rs1800796); rs10499563; rs2066992; rs2069835; rs2069840; rs2069837; rs1524107; rs143432552; rs13306435; rs10242595 |
+
+### 1.2 Варианты IL6
+
+**Pathogenic / Likely pathogenic варианты (ClinVar, 40 шт.):**
+
+Все 40 вариантов с классификацией Pathogenic по гену IL6 — крупные структурные перестройки (copy number gain / copy number loss / Deletion / Complex / Inversion), захватывающие регион 7p22.3–q36.3 и прилегающие цитогенетические локусы. Коротких внутригенных вариантов IL6 (missense, nonsense, frameshift, splice site, UTR, ncRNA) с классификацией Pathogenic / Likely pathogenic в ClinVar не обнаружено (по фильтрам Molecular consequence: Frameshift 0, Missense 0, Nonsense 0, Splice site 0, ncRNA 0, UTR 0; по Variation type: Single nucleotide 0, Indel 0, Insertion 0).
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 7p22.3-15.2(chr7:43360-27196404)x3 | copy number gain | Pathogenic | See cases |
+| 2 | GRCh38/hg38 7p22.3-15.3(chr7:45130-25221165)x3 | copy number gain | Pathogenic | See cases |
+| 3 | GRCh38/hg38 7p22.3-15.2(chr7:54185-26827634)x3 | copy number gain | Pathogenic | See cases |
+| 4 | GRCh38/hg38 7p22.3-q36.3(chr7:54185-159282390)x1 | copy number loss | Pathogenic | See cases |
+| 5 | GRCh38/hg38 7p22.3-14.2(chr7:54185-37089712)x3 | copy number gain | Pathogenic | See cases |
+| 6 | GRCh38/hg38 7p22.3-14.1(chr7:54185-41875885)x3 | copy number gain | Pathogenic | See cases |
+| 7 | GRCh38/hg38 7p22.3-15.2(chr7:1698124-27207295)x3 | copy number gain | Pathogenic | See cases |
+| 8 | GRCh38/hg38 7p22.1-15.2(chr7:5682209-27230311)x3 | copy number gain | Pathogenic | See cases |
+| 9 | GRCh38/hg38 7p21.3-15.2(chr7:10610069-25760560)x1 | copy number loss | Pathogenic | See cases |
+| 10 | GRCh38/hg38 7p21.2-15.3(chr7:15533812-24851432)x1 | copy number loss | Pathogenic | See cases |
+| 11 | GRCh38/hg38 7p21.2-15.2(chr7:16234212-26167278)x3 | copy number gain | Pathogenic | See cases |
+| 12 | GRCh38/hg38 7p21.1-15.2(chr7:20210912-27849400)x1 | copy number loss | Pathogenic | See cases |
+| 13 | GRCh38/hg38 7p21.1-14.3(chr7:20561456-32005143)x1 | copy number loss | Pathogenic | See cases |
+| 14 | GRCh37/hg19 7p22.3-14.3(chr7:158725-29918785)x3 | copy number gain | Pathogenic | not provided |
+| 15 | GRCh37/hg19 7p21.1-15.3(chr7:18093509-25363633)x1 | copy number loss | Pathogenic | not provided |
+| 16 | GRCh37/hg19 7p21.1-14.3(chr7:17736012-30663423)x1 | copy number loss | Pathogenic | not specified |
+| 17 | GRCh37/hg19 7p21.3-15.2(chr7:13107394-27514163)x1 | copy number loss | Pathogenic | not specified |
+| 18 | NC_000007.13:g.(?_20994491)_(23030730_?)del | Deletion | Pathogenic | Hypomyelination and Congenital Cataract; Primary ciliary dyskinesia |
+| 19 | Single allele | Complex | Pathogenic | Ring chromosome 7 |
+| 20 | GRCh37/hg19 7p22.3-q36.3(chr7:10365-159119707)x3 | copy number gain | Pathogenic | not provided |
+| 21 | GRCh37/hg19 7p22.3-q36.3(chr7:43361-159119707)x3 | copy number gain | Pathogenic | See cases |
+| 22 | GRCh37/hg19 7p22.3-q36.3(chr7:43361-159119707) | copy number gain | Pathogenic | See cases |
+| 23 | GRCh37/hg19 7p22.3-14.3(chr7:704573-29257946)x3 | copy number gain | Pathogenic | See cases |
+| 24 | GRCh37/hg19 7p22.3-15.3(chr7:43360-23674928)x3 | copy number gain | Pathogenic | See cases |
+| 25 | GRCh37/hg19 7p21.3-12.1(chr7:11048840-52863626)x3 | copy number gain | Pathogenic | See cases |
+| 26 | TMEM106B-BRAF fusion | Deletion | Pathogenic | Pleomorphic xanthoastrocytoma |
+| 27 | GRCh37/hg19 7p21.3-14.2(chr7:11562624-36395416)x3 | copy number gain | Pathogenic | See cases |
+| 28 | NC_000007.13:g.(20954043_21001537)_(114528369_114556605)inv | Inversion | Pathogenic | Childhood apraxia of speech |
+
+Примечание: в присланном TSV всего 40 строк вариантов; часть из них — крупные CNV, охватывающие регион 7p целиком. Полное перечисление всех 40 приведено в исходном TSV.
+
+**Allelic Variants (OMIM, 2 selected examples):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | IL6, -174G-C | Rheumatoid arthritis, systemic juvenile, susceptibility to; Kaposi sarcoma, susceptibility to; Type 1 diabetes mellitus, susceptibility to; Type 2 diabetes mellitus, susceptibility to; Crohn disease-associated growth failure, susceptibility to; Intracranial hemorrhage in brain cerebrovascular malformations, susceptibility to | Полиморфизм в 5'-регионе гена IL6. Частота C-аллеля ~40%, G-аллеля ~60% у здоровых. -174C-конструкция показывает более низкую экспрессию, чем -174G. Экспрессия -174C не меняется после стимуляции LPS или IL1, тогда как -174G увеличивается. |
+| .0002 | IL6, -597G-A | IL6 polymorphism | См. 147620.0001 и Villuendas et al. (2002). -597G-A и -174G-C полиморфизмы в неравновесии по сцеплению и ассоциированы с гипер-андрогенными расстройствами. |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 40 |
+| Likely pathogenic | 0 |
+| Uncertain significance | 0 |
+| Likely benign | 0 |
+| Benign | 0 |
+| Conflicting | 0 |
+| Всего (без фильтра) | не предоставлено |
+
+### 1.3 Фармакогенетика IL6
+
+**Summary Annotations (ClinPGx, 5 записей, все Level 3):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1444687004 | 3 | rs10499563 | Tumor necrosis factor alpha (TNF-alpha) inhibitors | Efficacy | Inflammatory Bowel Diseases; Ulcerative Colitis |
+| 1448100257 | 3 | rs1800795 | peginterferon alfa-2b; ribavirin | Toxicity | Chronic hepatitis C virus infection |
+| 1183698831 | 3 | rs1800795 | fenofibrate | Efficacy | Cardiovascular Disease |
+| 1444703178 | 3 | rs1800795 | Tumor necrosis factor alpha (TNF-alpha) inhibitors | Efficacy | Psoriasis |
+| 1444703171 | 3 | rs1800795 | adalimumab; etanercept; infliximab | Efficacy | Rheumatoid arthritis |
+
+**Pediatric Clinical Annotations (ClinPGx):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx, 2 записи):**
+
+| ID | Variant | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1451732644 | rs1800797 | PMCID:PMC8953705 | — | Genotypes AG + GG is associated with increased severity of Pain in children with Neoplasms as compared to genotype AA. More Details: Pain intensity before treatment (PIt0) significantly differed according to IL-6 rs1800797 SNP, with a higher PI for A/G and G/G individuals. | yes | = 0.017 | 74 | Other |
+| 1451732680 | rs1800797 | PMCID:PMC8953705 | opioids | Allele A is associated with decreased dose of opioids in children with Neoplasms and Pain as compared to allele G. | yes | = 0.047 | 74 | Dosage |
+
+Biogeographical Groups для обеих записей: European.
+
+**Non-Pediatric Variant Annotations (ClinPGx) — сводка по вариантам:**
+
+**rs1800795 — 13 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1452345940 | PMID:38126330 | opioids | Genotypes CG + GG is associated with decreased likelihood of somnolence, Nausea or adverse events when treated with opioids in people with Pain and Neoplasms as compared to genotype CC. | yes | = 0.018 | 54 | Toxicity |
+| 1452552286 | PMCID:PMC11404698 | tacrolimus | Genotype GG is associated with increased dose of tacrolimus in people with Kidney Transplantation as compared to genotypes CC + CG. | yes | < 0.001 | 113 | Dosage |
+| 1452709340 | PMID:39535282 | tacrolimus | Genotype GG is associated with decreased dose-adjusted trough concentrations of tacrolimus in people with Kidney Transplantation as compared to genotypes CC + CG. | yes | = 0.027 | 115 | Metabolism/PK |
+| 982022211 | PMCID:PMC3513412 | peginterferon alfa-2b; ribavirin | Genotype CC is associated with decreased risk of Depression when treated with peginterferon alfa-2b and ribavirin in people with Hepatitis C, Chronic as compared to genotypes CG + GG. | yes | = 0.004 | 98 | Toxicity |
+| 1452569951 | PMCID:PMC9820603 | aspirin; diclofenac; ibuprofen; indomethacin; ketorolac; naproxen | Allele G is not associated with clinical benefit to aspirin, diclofenac, ibuprofen, indomethacin, ketorolac or naproxen in people with Migraine without Aura as compared to allele C. | no | не предоставлено | 65 | Efficacy |
+| 1183699283 | PMID:24253594 | adalimumab; etanercept; infliximab | Allele G is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid as compared to allele C. | yes | < 0.05 | 199 | Efficacy |
+| 827815479 | PMID:22158445 | Tumor necrosis factor alpha (TNF-alpha) inhibitors | Allele G is associated with decreased response to Tumor necrosis factor alpha (TNF-alpha) inhibitors in people with Psoriasis as compared to allele C. | yes | < 0.05 | 60 | Efficacy |
+| 1452709300 | PMID:39535282 | tacrolimus | Genotype GG is associated with decreased clinical benefit to tacrolimus in people with Kidney Transplantation as compared to genotypes CC + CG. | yes | = 0.021 | 115 | Efficacy |
+| 982035499 | PMID:16607077 | fenofibrate | Genotypes CC + CG are associated with increased response to fenofibrate in patients with a high risk of cardiovascular disease as compared to genotype GG. | yes | = 0.04 | 38 | Efficacy |
+| 1448431740 | PMCID:PMC5088582 | peginterferon alfa-2a; peginterferon alfa-2b; ribavirin | Genotype CC is associated with increased sustained virological response (svr) when treated with peginterferon alfa-2a, peginterferon alfa-2b and ribavirin in people with Hepatitis C, Chronic as compared to genotypes CG + GG. | yes | = 0.019 | 110 | Efficacy |
+| 981861811 | PMCID:PMC2810514 | peginterferon alfa-2a | Allele G is associated with decreased response to peginterferon alfa-2a in people with Hepatitis C, Chronic as compared to allele C. | yes | = 0.0489 | 373 | Efficacy |
+| 1448994475 | PMID:16104959 | cyclosporine | Genotype CC is not associated with increased likelihood of Gingival Overgrowth when treated with cyclosporine in people with Kidney Transplantation as compared to genotypes CG + GG. | no | = 0.35 | 63 | Toxicity |
+| 1452570024 | PMCID:PMC9820603 | almotriptan; eletriptan; frovatriptan; rizatriptan; sumatriptan; zolmitriptan | Allele G is not associated with clinical benefit to almotriptan, eletriptan, frovatriptan, rizatriptan, sumatriptan or zolmitriptan in people with Migraine without Aura as compared to allele C. | no | не предоставлено | 65 | Efficacy |
+
+**rs1800796 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1452291860 | PMID:37898586 | cisplatin; docetaxel; fluorouracil | Genotype CC is associated with increased likelihood of Thrombocytopenia when treated with cisplatin, docetaxel and fluorouracil in people with Carcinoma, Squamous Cell, Adenocarcinoma, Carcinoma, Adenosquamous or Esophageal Neoplasms as compared to genotypes CG + GG. | yes | = 0.034 | 50 | Toxicity |
+| 1453093262 | PMCID:PMC11954710 | osimertinib | Genotypes CG + GG is associated with decreased likelihood of overall survival when treated with osimertinib in people with Non-Small Cell Lung Carcinoma as compared to genotype CC. | yes | = 0.021 | 30 | Efficacy |
+| 1452876807 | PMCID:PMC4364852 | alogliptin; linagliptin; sitagliptin; teneligliptin; vildagliptin | Genotypes CG + GG is associated with increased response to alogliptin, linagliptin, sitagliptin, teneligliptin or vildagliptin in people with Diabetes Mellitus, Type 2 as compared to genotype CC. | no | не предоставлено | 167 | Efficacy |
+| 981861804 | PMCID:PMC2810514 | peginterferon alfa-2a | Allele G is associated with decreased response to peginterferon alfa-2a in people with Hepatitis C, Chronic as compared to allele C. | yes | = 0.0489 | 373 | Efficacy |
+
+**rs10499563 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1452498200 | PMCID:PMC11144121 | morphine | Genotype CC is associated with increased likelihood of Nausea, Fatigue or Depression when treated with morphine in people with Pain and Neoplasms as compared to genotypes CT + TT. | yes | = 0.02 | 475 | Toxicity |
+| 1449162381 | PMCID:PMC4557995 | fentanyl | Allele T is not associated with risk of adverse events when treated with fentanyl in people with Neoplasms as compared to allele C. | no | не предоставлено | 468 | Toxicity |
+| 1296666874 | PMID:24776844 | Tumor necrosis factor alpha (TNF-alpha) inhibitors | Genotypes CC + CT is associated with increased response to Tumor necrosis factor alpha (TNF-alpha) inhibitors in people with Colitis, Ulcerative and Inflammatory Bowel Diseases as compared to genotype TT. | yes | = 0.01 | 738 | Efficacy |
+
+**rs2066992 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1444702105 | PMCID:PMC4366259 | ethambutol; isoniazid; pyrazinamide; rifampin; streptomycin | Allele T is not associated with risk of Hepatitis when treated with ethambutol, isoniazid, pyrazinamide, rifampin and streptomycin in people with Tuberculosis. | no | = 0.079 | 89 | Toxicity |
+| 1447674979 | PMID:26556688 | duloxetine | Genotype GG is associated with decreased Depressive Disorder, Major in people not taking duloxetine in people with Depressive Disorder, Major as compared to genotype GT. | no | = 0.026 | 200 | Other |
+| 1447674916 | PMID:26556688 | duloxetine | Genotype GT is associated with increased response to duloxetine in people with Depressive Disorder, Major as compared to genotype GG. | no | = 0.047 | 184 | Efficacy |
+
+**rs143432552 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1456349128 | PMID:42494268 | azathioprine; mercaptopurine | Genotype AG is associated with increased likelihood of Leukopenia when treated with azathioprine or mercaptopurine in people with Inflammatory Bowel Diseases as compared to genotype GG. | not stated | не предоставлено | 129 | Toxicity |
+
+**rs13306435 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1456349120 | PMID:42494268 | azathioprine; mercaptopurine | Genotype AT is associated with increased likelihood of Leukopenia when treated with azathioprine or mercaptopurine in people with Inflammatory Bowel Diseases as compared to genotype TT. | not stated | не предоставлено | 129 | Toxicity |
+
+**rs2069835 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1450375918 | PMCID:PMC4864175 | opioids | Allele C is not associated with risk of cognitive dysfunction due to opioids in people with Neoplasms as compared to allele T. | no | = 0.006 | 911 | Toxicity |
+
+**rs1800797 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 981861796 | PMCID:PMC2810514 | peginterferon alfa-2a | Allele G is associated with decreased response to peginterferon alfa-2a in people with Hepatitis C, Chronic as compared to allele A. | yes | = 0.0489 | 373 | Efficacy |
+
+**rs2069840 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1449557334 | PMCID:PMC5908896 | fluorouracil; irinotecan; leucovorin | Allele G is not associated with severity of gastrointestinal toxicity when treated with fluorouracil, irinotecan and leucovorin in people with Colorectal Neoplasms as compared to allele C. | no | = 0.039 | 250 | Toxicity |
+| 1452797741 | PMID:39718059 | tocilizumab | Genotype CC is associated with decreased clinical benefit to tocilizumab in people with Rheumatoid arthritis as compared to genotype CG. | yes | = 0.04 | 68 | Efficacy |
+
+**rs2069837 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1444702117 | PMCID:PMC4366259 | ethambutol; isoniazid; pyrazinamide; rifampin; streptomycin | Allele G is not associated with risk of Hepatitis when treated with ethambutol, isoniazid, pyrazinamide, rifampin and streptomycin in people with Tuberculosis. | no | = 0.267 | 89 | Toxicity |
+
+**rs1524107 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1444702127 | PMCID:PMC4366259 | ethambutol; isoniazid; pyrazinamide; rifampin; streptomycin | Allele T is not associated with risk of Hepatitis when treated with ethambutol, isoniazid, pyrazinamide, rifampin and streptomycin in people with Tuberculosis. | no | = 0.110 | 89 | Toxicity |
+| 1449162909 | PMCID:PMC6021962 | tacrolimus | Allele C is not associated with trough concentration of tacrolimus in people with Kidney Transplantation and Transplantation. | no | не предоставлено | 1923 | Metabolism/PK |
+
+**rs10242595 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1447674939 | PMID:26556688 | duloxetine | Genotype AA is associated with increased response to duloxetine in people with Depressive Disorder, Major as compared to genotypes AG + GG. | no | = 0.038 | 184 | Efficacy |
+
+Biogeographical Groups: European (для большинства), East Asian (для rs1800796, rs143432552, rs13306435, rs2066992), Unknown (для rs1800795 в некоторых исследованиях).
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген IL6 не упоминается; альтернативные символы BSF2, HGF, HSF, IFNB2, IL-6 не упоминаются; препараты adalimumab, etanercept, infliximab, tacrolimus, peginterferon, ribavirin, opioids отсутствуют в списке Drugs ни в одном руководстве.
+
+### 1.4 Рекомендации IL6
+
+**Из OMIM (Description / Gene Function):**
+
+- IL6 — иммунорегуляторный цитокин, активирующий сигнальный комплекс на поверхности клетки, состоящий из IL6, IL6RA (IL6R; 147880) и общего сигнального рецептора gp130 (IL6ST; 600694) (Boulanger et al., 2003).
+- Zilberstein et al. (1986): IFNB2 секретируется DNA-трансформированными клетками грызунов как процессированный белок 21 кД; активность кросс-нейтрализуется антителами к IFNB1, но не к alpha- или gamma-интерферону.
+- Induction of IFNB2 by IL1 (147720) и TNF (191160) предполагает роль аутокринного медиатора в воспалении и острых фазовых реакциях.
+- Kawano et al. (1988): аберрантная продукция IL6 неопластическими клетками — сильный вклад в рост множественной миеломы и других B-клеточных дискразий, T-клеточной лимфомы, почечно- и овариально-клеточных карцином, саркомы Капоши.
+- Santhanam et al. (1991): p53 (191170) и RB1 (614041) репрессируют промотор гена IL6.
+- Roodman et al. (1992): при болезни Педжета (167250) IL6 является аутокринным/паракринным фактором.
+- Nemeth et al. (2004): IL6 — необходимый и достаточный цитокин для индукции гепцидина (HAMP; 606464) во время воспаления; ось IL6-гепцидин ответственна за гипоферремию воспаления.
+- Liuzzi et al. (2005): IL6 регулирует цинковый транспортер ZIP14 (SLC39A14; 608736) и вносит вклад в гипоцинкемию острой фазы.
+- Mucida et al. (2007): витамин A метаболит ретиноевая кислота — ключевой регулятор TGF-beta-зависимых иммунных ответов, способный ингибировать IL6-зависимую индукцию провоспалительных Th17-клеток и стимулировать дифференцировку Treg.
+- Ghoreschi et al. (2010): Th17-дифференцировка может происходить без TGF-beta-сигнализации; IL6 + IL23 + IL1-beta эффективно индуцируют продукцию IL17.
+- Ancrile et al. (2007): экспрессия онкогенной формы HRAS (190020) индуцирует секрецию IL6; нокдаун IL6, генетическая абляция Il6 или обработка антителами к IL6 замедляют HRAS-зависимый опухолегенез.
+- Chowdhury et al. (2020): мышечный IL6 увеличивает физическую выносливость, сигнализируя в остеобластах, и способствует поддержанию мышечной массы.
+
+**Из OMIM (Molecular Genetics):**
+
+- Fairfax et al. (2010): SNP-маркеры и гаплотипы гена лептина (LEP; 164160) ассоциированы с 1.7–2-кратным повышением LPS-индуцированной экспрессии IL6. Вариации в CAPNS1 (114170) и ALOX15 (152392) также ассоциированы с экспрессией IL6.
+- Ota et al. (1999): локус IL6 показал сцепление с остеопенией (166710) у взрослых японских женщин; вариация в этом локусе также связана со снижением минеральной плотности костной ткани.
+- Ota et al. (2001): корреляция между наличием G-аллеля C/G полиморфизма в позиции -634 и снижением BMD у 470 японцев.
+- Fishman et al. (1998): идентифицирован полиморфизм G/C в позиции -174 гена IL6 (147620.0001); у 92 пациентов с системным ювенильным ревматоидным артритом (604302) — статистически более низкая частота генотипа CC. -174C-конструкция показывает более низкую экспрессию, чем -174G.
+- Foster et al. (2000): сильная ассоциация между -174G-C и восприимчивостью к саркоме Капоши (148000) у ВИЧ-инфицированных мужчин. Гомозиготы по G-аллелю (с повышенной продукцией IL6) избыточно представлены среди пациентов с саркомой Капоши.
+- Kristiansen et al. (2003): сцепление и ассоциация -174G>C SNP с IDDM (222100) исключительно у женщин. Генотип -174CC ассоциирован с более молодым возрастом начала IDDM у женщин.
+- Mohlig et al. (2004): -174C-G полиморфизм — модификатор эффекта BMI в отношении NIDDM (125853); тучные индивидуумы с BMI ≥28 кг/м² с генотипом CC имели >5-кратный риск развития NIDDM.
+- Sawczenko et al. (2005): у английских и шведских детей с болезнью Крона и генотипом IL6 -174 GG более выражена задержка роста на момент диагноза и выше уровни CRP, чем у детей с GC или CC.
+- Pawlikowska et al. (2004): у 180 пациентов с BAVM (108010) гомозиготность по G-аллелю IL6 -174 SNP ассоциирована с повышенным риском внутричерепного кровоизлияния по сравнению с носителями C-аллеля (OR 2.62).
+- Linker-Israeli et al. (1999): короткие аллели (<792 bp) 3'-минисателлита IL6 обнаруживаются исключительно у пациентов с СКВ (152700); 828-bp аллель избыточно представлен у контролей.
+
+**Из OMIM (Animal Model):**
+
+- Cressman et al. (1996): мыши с направленным нарушением гена Il6 имели нарушенную регенерацию печени, характеризующуюся некрозом и печёночной недостаточностью; отсутствие продукции Stat3 (102582).
+- De Benedetti et al. (1997): трансгенные мыши с человеческим IL6 имели сниженную скорость роста (50–70% от размера нетрансгенных сиблингов); введение моноклональных антител к рецептору Il6 частично устраняло дефект роста.
+- Kovalchuk et al. (2002): BALB/c мыши с трансгеном IL6 exhibited лимфопролиферацию и плазмоцитоз; >половины развили трансплантируемые PCT в лимфоузлах, пейеровых бляшках, иногда селезёнке.
+- McLoughlin et al. (2005): Il6 -/- мыши с индуцированным Staphylococcus epidermidis перитонеальным воспалением exhibited нарушенный рекрутмент T-клеток.
+- Naugler et al. (2007): все самцы мышей, но только 13% самок, развили HCC в ответ на химический канцероген; самцы Il6 -/- устойчивы к HCC. Эстрадиол снижал Il6 и HCC у самцов; овариэктомия увеличивала Il6 и HCC у самок.
+- Korn et al. (2007): Il6-дефицитные мыши не развивают T(H)17-ответ; их периферический репертуар доминирован Foxp3+ (300292) T-регуляторными клетками.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 5 записей, все Level 3 — rs10499563 (TNF-alpha inhibitors, IBD/UC), rs1800795 (peginterferon alfa-2b + ribavirin, HCV; fenofibrate, CVD; TNF-alpha inhibitors, psoriasis; adalimumab/etanercept/infliximab, RA).
+- Pediatric Variant Annotations: 2 записи — rs1800797 / боль у детей с новообразованиями (P=0.017); rs1800797 / опиоиды / доза (P=0.047).
+- Non-Pediatric Variant Annotations: 35 записей по rs1800795, rs1800796, rs10499563, rs2066992, rs143432552, rs13306435, rs2069835, rs1800797, rs2069840, rs2069837, rs1524107, rs10242595.
+- Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA198, ClinVar (40 Pathogenic вариантов IL6), OMIM *147620, CPIC guidelines registry (29 guidelines, IL6 отсутствует), PMID:37898586, PMID:38126330, PMID:42494268, PMID:39535282, PMID:39718059, PMID:26556688, PMID:24776844, PMID:24253594, PMID:22158445, PMID:21145803, PMID:18025780, PMID:27115882, PMID:16607077, PMID:16104959, PMCID:PMC11404698, PMCID:PMC3513412, PMCID:PMC9820603, PMCID:PMC12308240, PMCID:PMC8953705, PMCID:PMC4366259, PMCID:PMC11144121, PMCID:PMC4557995, PMCID:PMC4864175, PMCID:PMC2810514, PMCID:PMC5908896, PMCID:PMC6021962, PMCID:PMC4364852, PMCID:PMC11954710, PMCID:PMC5088582, PMCID:PMC7485556, PMCID:PMC7045476.*
+## ГЕН 2: TNF — Tumor Necrosis Factor
+
+### 2.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Tumor necrosis factor (TNF superfamily, member 2) |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *191160 |
+| OMIM Disease | 620977 (?Immunodeficiency 127, AR); 600807 ({Asthma, susceptibility to}, AD); {Dementia, vascular, susceptibility to}; 611162 ({Malaria, cerebral, susceptibility to}); 157300 ({Migraine without aura, susceptibility to}, AD); {Septic shock, susceptibility to} |
+| PharmGKB ID | PA435 |
+| HGNC Approved Gene Symbol | TNF |
+| Альтернативные названия | TNF superfamily, member 2 |
+| Альтернативные символы | DIF; TNF-alpha; TNFA; TNFSF2 |
+| Локация | 6p21.33 (плюсовая цепь); GRCh37: chr6:31,543,344-31,546,113; GRCh38: chr6:31,575,567-31,578,336 |
+| Структура гена | Ген TNFA и LTA имеют сходную структуру; каждый охватывает около 3 kb и содержит 4 экзона. Только последние экзоны, кодирующие более 80% секретируемого белка, значительно гомологичны (56%) (Nedwin et al., 1985) |
+| Функция | TNF — многофункциональный провоспалительный цитокин, секретируемый преимущественно моноцитами/макрофагами; влияет на липидный метаболизм, коагуляцию, инсулинорезистентность и функцию эндотелия. Синтезируется как мембраносвязанный белок 26 кД (pro-TNF), который расщепляется процессинговыми ферментами (например, ADAM17; 603639) с высвобождением растворимой молекулы 17 кД. Растворимая молекула связывается с основными рецепторами TNFR1 (191190) и TNFR2 (191191) (Skoog et al., 1999) |
+| Ключевые варианты | -308G>A (rs1800629); -238G>A (rs361525); -857C>T (rs1799724); -1031T>C (rs1799964); -863C>A (rs1800630); -376G>A; -850C>T; rs1800610; rs3093662; rs3093548; rs4248158; rs4248160; rs4248163; rs4647198; rs4987086; rs55634887; rs55994001; rs2736195; rs1800750 |
+
+### 2.2 Варианты TNF
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 6p25.3-12.3(chr6:156974-46789291)x3 | copy number gain | Pathogenic | See cases |
+| 2 | NM_000594.4(TNF):c.322C>T (p.Arg108Trp) | single nucleotide variant | Pathogenic | TNF receptor binding, altered |
+| 3 | GRCh37/hg19 6p22.1-q14.1(chr6:29455465-81447367) | copy number gain | Pathogenic | not provided |
+| 4 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482) | copy number gain | Pathogenic | See cases |
+| 5 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482)x3 | copy number gain | Pathogenic | See cases |
+| 6 | TNF, 20-BP INS, NT190 | Insertion | Pathogenic | Immunodeficiency 127 |
+| 7 | L29S | Variation | Pathogenic | TNF receptor binding, altered |
+
+**Allelic Variants (OMIM, 7 selected examples):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | TNF, LEU29SER | TNF receptor binding, altered | Мутация приводит к потере почти всей активности в стандартном цитотоксическом анализе с L929 и потере аффинности связывания с TNF-R55 (191190) (Van Ostade et al., 1993) |
+| .0002 | TNF, ARG32TRP | TNF receptor binding, altered | См. 191160.0001 и Van Ostade et al. (1993) |
+| .0003 | TNF, -376G-A | Malaria, cerebral, susceptibility to (611162) | Замена аденина на гуанин в -376; фактор транскрипции OCT1 (164175) связывается с сайтом alpha TNF только в присутствии аллеля -376A; OR 4.3 для аллеля -376A при церебральной малярии (Knight et al., 1999) |
+| .0004 | TNF, -308G-A | Septic shock, susceptibility to; Asthma, susceptibility to; HIV dementia, susceptibility to; Migraine without aura, susceptibility to; Psoriatic arthritis, susceptibility to; SLE, susceptibility to; Cerebral malaria, susceptibility to | Ассоциация с септическим шоком и смертью от него (Mira et al., 1999); с астмой (Witte et al., 2002; Shin et al., 2004); с ВИЧ-деменцией (Quasney et al., 2001); с мигренью без ауры (Rainero et al., 2004); с псориатическим артритом (Balding et al., 2003); с СКВ (Lee et al., 2006); с церебральной малярией (McGuire et al., 1994) |
+| .0005 | TNF, -850C-T | Vascular dementia, susceptibility to; Alzheimer disease, susceptibility to | Ассоциация с сосудистой деменцией (OR 2.51 для CT или TT) и с болезнью Альцгеймера в сочетании с APOE4 (McCusker et al., 2001; Laws et al., 2005) |
+| .0006 | TNF, -863C-A | Alzheimer disease, protection against | Редкий аллель A ассоциирован с 31% снижением транскрипционной активности; носители A имели сниженные концентрации TNF-alpha в сыворотке (Skoog et al., 1999); ассоциация с снижением риска поздней БА (Ramos et al., 2006) |
+| .0007 | TNF, 20-BP INS, NT190 | Immunodeficiency 127 (620977) | Гомозиготная вставка 20 bp в экзоне 2 (c.190_191ins20), приводящая к сдвигу рамки и преждевременному стоп-кодону (Pro64LeufsTer13); потеря TACE-сайта; отсутствие секреции TNF; нарушение продукции ROS макрофагами; повышенная восприимчивость к M. tuberculosis (Arias et al., 2024) |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 7 |
+| Likely pathogenic | 0 |
+| Uncertain significance | не предоставлено |
+| Likely benign | не предоставлено |
+| Benign | не предоставлено |
+| Conflicting | не предоставлено |
+| Всего (без фильтра) | не предоставлено |
+
+### 2.3 Фармакогенетика TNF
+
+**Summary Annotations (ClinPGx, 18 записей):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 655384799 | 2B | rs1800629 | etanercept | Efficacy | Arthritis, Psoriatic; Crohn Disease; Inflammation; Psoriasis; Rheumatoid arthritis; Spondylitis, Ankylosing |
+| 1452570045 | 3 | rs1800629 | ibuprofen | Efficacy | Migraine without Aura |
+| 1452570052 | 3 | rs1800629 | indomethacin | Efficacy | Migraine without Aura |
+| 1452570080 | 3 | rs1800629 | naproxen | Efficacy | Migraine without Aura |
+| 1452569998 | 3 | rs1800629 | diclofenac | Efficacy | Migraine without Aura |
+| 1452570059 | 3 | rs1800629 | ketorolac | Efficacy | Migraine without Aura |
+| 655385818 | 3 | rs1800629 | carbamazepine | Toxicity | Hypersensitivity |
+| 1447946124 | 3 | rs361525 | infliximab | Efficacy | — |
+| 1444700991 | 3 | rs1800629 | ethambutol; isoniazid; pyrazinamide; rifampin | Toxicity | Toxic liver disease; Tuberculosis |
+| 1448101238 | 3 | rs1799964 | stavudine | Toxicity | HIV infectious disease |
+| 1183491809 | 3 | rs1800629 | atorvastatin | Other | Acute coronary syndrome |
+| 1444702764 | 3 | rs1799964 | TNF-alpha inhibitors | Efficacy | Spondylitis, Ankylosing |
+| 1452569988 | 3 | rs1800629 | aspirin | Efficacy | Migraine without Aura |
+| 1448255939 | 3 | rs1800629 | sorafenib | Toxicity | Hand-foot syndrome; Hepatocellular Carcinoma |
+| 1451125580 | 3 | rs1800629 | carboplatin; gemcitabine | Toxicity | Non-Small Cell Lung Carcinoma; Thrombocytopenia |
+| 1451328500 | 3 | rs1800629 | TNF-alpha inhibitors | Efficacy | — |
+| 1043880077 | 3 | rs1800629 | cyclosporine; mycophenolate mofetil | Efficacy | Kidney Transplantation |
+| 1183689409 | 4 | rs1799724 | TNF-alpha inhibitors | Efficacy | Crohn Disease; Psoriasis; Rheumatoid arthritis; Spondylitis, Ankylosing |
+
+**Pediatric Variant Annotations (ClinPGx, 2 записи):**
+
+| ID | Variant | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1452800660 | rs1800630 | PMID:39733427 | — | Allele C is associated with increased severity of Leukocytosis in children with Acute lymphoblastic leukemia as compared to allele A. | yes | = 2.752e-5 | 200 | Efficacy |
+| 1451732688 | rs1800629 | PMCID:PMC8953705 | opioids | Genotype GG is associated with increased dose of opioids in children with Neoplasms and Pain as compared to genotype AG. | yes | = 0.031 | 74 | Dosage |
+
+**Non-Pediatric Variant Annotations (ClinPGx) — сводка по вариантам:**
+
+**rs1800629 — 40 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1452570012 | PMCID:PMC9820603 | almotriptan; eletriptan; frovatriptan; rizatriptan; sumatriptan; zolmitriptan | Allele A is not associated with clinical benefit to almotriptan, eletriptan, frovatriptan, rizatriptan, sumatriptan or zolmitriptan in people with Migraine without Aura as compared to allele G. | no | не предоставлено | 65 | Efficacy |
+| 1452438426 | PMCID:PMC10154044 | tenofovir | Allele A is not associated with clearance of tenofovir in people with HIV Infections as compared to allele G. | no | = 0.2 | 130 | Metabolism/PK |
+| 1444668176 | PMCID:PMC1754569 | etanercept | Genotype GG is associated with increased response to etanercept in people with Arthritis, Rheumatoid as compared to genotypes AA + AG. | yes | < 0.05 | 123 | Efficacy |
+| 699638591 | PMID:19365401 | adalimumab; etanercept; infliximab; TNF-alpha inhibitors | Allele A is associated with decreased response to adalimumab, etanercept, infliximab or TNF-alpha inhibitors in people with Arthritis, Rheumatoid as compared to allele G. | yes | = 2.45E-4 | 161 | Efficacy |
+| 1444668437 | PMID:16720636 | adalimumab; infliximab | Genotype GG is associated with increased response to adalimumab or infliximab in people with Spondylitis, Ankylosing as compared to genotype AG. | yes | < 0.005 | 23 | Efficacy |
+| 1444668552 | PMID:18050183 | etanercept | Genotype GG is associated with increased response to etanercept in people with Arthritis, Rheumatoid as compared to genotype AG. | yes | = 0.005 | 48 | Efficacy |
+| 1444693775 | PMCID:PMC2750008 | adalimumab | Genotype GG is not associated with response to adalimumab in people with Arthritis, Rheumatoid as compared to genotypes AA + AG. | no | = 0.18 | 374 | Efficacy |
+| 1444668429 | PMID:16720636 | adalimumab; etanercept; infliximab | Genotype GG is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid as compared to genotypes AA + AG. | yes | < 0.0001 | 54 | Efficacy |
+| 1447680222 | PMID:26244882 | TNF-alpha inhibitors | Allele G is associated with increased response to TNF-alpha inhibitors in people with Crohn Disease, Inflammatory Bowel Diseases, Psoriasis or Spondylarthropathies as compared to allele A. | yes | = 0.000086 | 512 | Efficacy |
+| 1043759532 | PMID:18997459 | atorvastatin | Genotype GG is associated with increased bone marrow density in the lumbar spine when treated with atorvastatin in people with Acute coronary syndrome. | yes | = 1.0E-4 | 62 | Efficacy |
+| 1444668038 | PMID:12190096 | infliximab | Allele A is not associated with response to infliximab in people with Crohn Disease as compared to allele G. | no | > 0.05 | 220 | Efficacy |
+| 1450044784 | PMID:30430914 | Iodine (131I) compounds; radiotherapy | Genotype AG is associated with increased likelihood of Pain when treated with Iodine (131I) compounds and radiotherapy in people with Thyroid Neoplasms as compared to genotype GG. | yes | = 0.001 | 14 | Toxicity |
+| 1444668728 | PMID:18713756 | etanercept | Genotypes AG + GG is associated with increased response to etanercept in people with Arthritis, Rheumatoid as compared to genotype AA. | yes | = 0.001 | 455 | Efficacy |
+| 1444668735 | PMID:18713756 | infliximab | Genotypes AG + GG is not associated with response to infliximab in people with Arthritis, Rheumatoid as compared to genotype AA. | no | = 0.179 | 453 | Efficacy |
+| 1183689377 | PMID:24192118 | TNF-alpha inhibitors | Genotype CC is associated with increased response to TNF-alpha inhibitors in people with Inflammation as compared to genotypes CT + TT. | yes | = 0.01 | 504 | Efficacy |
+| 1444668343 | PMID:15695296 | etanercept | Allele C is not associated with response to etanercept in people with Arthritis, Rheumatoid as compared to allele T. | no | = 0.72 | 70 | Efficacy |
+| 1444693810 | PMCID:PMC2750008 | adalimumab | Genotype GG is associated with decreased response to adalimumab in people with Arthritis, Rheumatoid. | yes | = 0.015 | 354 | Efficacy |
+| 1183689663 | PMID:22960943 | infliximab | Genotype CC is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CT + TT. | no | = 0.035 | 47 | Efficacy |
+| 1451243060 | PMID:16909270 | etanercept; infliximab; TNF-alpha inhibitors | Allele A is associated with decreased response to etanercept, infliximab or TNF-alpha inhibitors in people with Arthritis, Rheumatoid as compared to allele G. | yes | = 8.0E-4 | 311 | Efficacy |
+| 1444693800 | PMCID:PMC2750008 | adalimumab | Genotype GG is associated with decreased response to adalimumab in people with Arthritis, Rheumatoid. | yes | = 0.015 | 354 | Efficacy |
+| 1447680253 | PMID:26244882 | TNF-alpha inhibitors | Allele C is associated with increased response to TNF-alpha inhibitors in people with Crohn Disease, Inflammatory Bowel Diseases, Psoriasis and Spondylarthropathies as compared to allele T. | yes | = 0.003 | 341 | Efficacy |
+| 1183689659 | PMID:22960943 | infliximab | Genotype TT is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CC + CT. | no | = 0.035 | 47 | Efficacy |
+| 981344072 | PMID:22151084 | ethambutol; isoniazid; pyrazinamide; rifampin | Genotypes AA + AG are associated with increased likelihood of Toxic liver disease when treated with ethambutol, isoniazid, pyrazinamide and rifampin in people with Tuberculosis as compared to genotype GG. | yes | = 0.034 | 77 | Toxicity |
+| 1444668588 | PMID:18438841 | infliximab | Genotype GG is not associated with response to infliximab in people with Arthritis, Rheumatoid as compared to genotypes AA + AG. | no | > 0.05 | 198 | Efficacy |
+| 655388335 | PMID:11294926 | carbamazepine | Allele A is associated with increased likelihood of serious hypersensitivity when treated with carbamazepine as compared to allele G. | yes | = 0.02 | 23 | Toxicity |
+| 1444668324 | PMID:15695296 | etanercept | Genotypes CT + TT is associated with increased response to etanercept in people with Arthritis, Rheumatoid as compared to genotype CC. | yes | = 0.049 | 70 | Efficacy |
+| 1451431360 | PMID:33887993 | TNF-alpha inhibitors | Allele G is associated with increased response to TNF-alpha inhibitors in people with Arthritis, Rheumatoid, Autoimmune Diseases or Psoriasis as compared to allele A. | yes | = 0.001 | — | Efficacy |
+| 1448427536 | PMID:27168101 | clozapine | Allele A is not associated with risk of Agranulocytosis and Neutropenia when treated with clozapine as compared to allele G. | no | > 0.05 | 310 | Toxicity |
+| 1451352900 | PMCID:PMC4746878 | atorvastatin | Genotypes AA + AG are associated with increased concentrations of atorvastatin in healthy individuals as compared to genotype GG. | yes | = 0.035 | 60 | Metabolism/PK |
+| 1449557281 | PMCID:PMC5908896 | fluorouracil; irinotecan; leucovorin | Allele G is not associated with severity of gastrointestinal toxicity when treated with fluorouracil, irinotecan and leucovorin in people with Colorectal Neoplasms as compared to allele A. | no | = 0.032 | 250 | Toxicity |
+| 1444668242 | PMID:12847678 | infliximab | Genotype GG is associated with increased response to infliximab in people with Arthritis, Rheumatoid as compared to genotypes AA + AG. | yes | = 0.0086 | 59 | Efficacy |
+| 1449557290 | PMCID:PMC5908896 | fluorouracil; irinotecan; leucovorin | Allele A is not associated with severity of gastrointestinal toxicity when treated with fluorouracil, irinotecan and leucovorin in people with Colorectal Neoplasms as compared to allele C. | no | = 0.047 | 250 | Toxicity |
+| 1449162414 | PMCID:PMC4557995 | fentanyl | Allele A is not associated with risk of adverse events when treated with fentanyl in people with Neoplasms as compared to allele G. | no | не предоставлено | 468 | Toxicity |
+| 1444668617 | PMID:18438841 | — | Genotypes AA + AG is not associated with steady-state level of TNF protein as compared to genotype GG. | no | > 0.05 | 50 | Other |
+| 1449002763 | PMCID:PMC5642896 | isoniazid | Allele G is not associated with risk of drug-induced liver injury when treated with isoniazid in people with Tuberculosis as compared to allele A. | no | = 0.071 | 24 | Toxicity |
+| 1448567951 | PMCID:PMC3237821 | sirolimus | Allele A is not associated with dose-adjusted trough concentrations of sirolimus in people with Kidney Transplantation as compared to allele G. | no | > 0.05 | 86 | Metabolism/PK |
+| 1456350486 | PMID:42488961 | adalimumab; etanercept; infliximab | Genotype AG is not associated with increased clinical benefit to adalimumab, etanercept or infliximab in people with Spondylarthropathy as compared to genotype GG. | no | не предоставлено | 41 | Efficacy |
+| 1444668610 | PMID:18438841 | — | Genotypes AA + AG is associated with increased activity of TNF as compared to genotype GG. | yes | < 0.02 | 50 | Metabolism/PK |
+| 1451356763 | PMCID:PMC7305826 | sufentanil | Allele A is not associated with dose of sufentanil in people with Pain, Postoperative as compared to allele G. | no | = 0.968 | 92 | Dosage |
+| 982047080 | PMID:22129793 | rituximab | Genotype GG is not associated with response to rituximab in people with Arthritis, Rheumatoid as compared to genotype AG. | no | = 0.332 | 63 | Efficacy |
+| 1183689711 | PMID:22960943 | infliximab | Genotype GG is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AA + AG. | no | = 0.035 | 47 | Efficacy |
+| 1183689326 | PMID:24192118 | TNF-alpha inhibitors | Genotype GG is associated with increased response to TNF-alpha inhibitors in people with Inflammation as compared to genotypes AA + AG. | yes | = 0.0007 | 864 | Efficacy |
+| 981939812 | PMID:18444945 | cyclosporine; mycophenolate mofetil | Genotypes AA + AG are associated with increased risk of transplant rejection when treated with cyclosporine and mycophenolate mofetil in people with Kidney Transplantation as compared to genotype GG. | yes | = 0.029 | 237 | Efficacy |
+| 1444668415 | PMCID:PMC1755496 | infliximab | Genotype GG is associated with increased response to infliximab in people with Arthritis, Rheumatoid as compared to genotype AG. | yes | < 0.01 | 22 | Efficacy |
+| 1448255931 | PMID:22736425 | sorafenib | Genotype GG is associated with increased risk of hand-foot syndrome when treated with sorafenib in people with Carcinoma, Hepatocellular as compared to genotype AG. | yes | = 0.023 | 59 | Toxicity |
+| 1444668522 | PMID:17343250 | adalimumab | Genotype AG is associated with decreased steady-state level of TNF when exposed to adalimumab as compared to genotype GG. | yes | < 0.039 | 70 | Metabolism/PK |
+| 1444668136 | PMID:12190096 | — | Genotype GG is not associated with steady-state level of TNF as compared to genotypes AA + AG. | no | > 0.05 | 220 | Other |
+| 1451125261 | PMID:31616045 | carboplatin; gemcitabine | Allele A is associated with increased severity of Thrombocytopenia when treated with carboplatin and gemcitabine in people with Carcinoma, Non-Small-Cell Lung as compared to allele G. | yes | = 2.92E-4 | 215 | Toxicity |
+| 1452262396 | PMCID:PMC10532840 | adalimumab; certolizumab pegol; golimumab; infliximab | Genotype GG is associated with increased clinical benefit to adalimumab, certolizumab pegol, golimumab or infliximab in people with Behcet Syndrome as compared to genotype AG. | yes | = 0.008 | 58 | Efficacy |
+| 1444668512 | PMID:17343250 | adalimumab | Genotype GG is associated with increased response to adalimumab in people with Arthritis, Rheumatoid as compared to genotype AG. | yes | = 0.04 | 70 | Efficacy |
+| 1183703414 | PMID:22760475 | adalimumab; etanercept; infliximab | Genotypes AG + GG is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid as compared to genotype AA. | yes | = 0.002 | 1279 | Efficacy |
+| 1452303340 | PMCID:PMC9820603 | aspirin; diclofenac; ibuprofen; indomethacin; ketorolac; naproxen | Allele A is associated with decreased clinical benefit to aspirin, diclofenac, ibuprofen, indomethacin, ketorolac or naproxen in people with Migraine without Aura as compared to allele G. | yes | = 0.003 | 65 | Efficacy |
+| 1183689715 | PMID:22960943 | infliximab | Genotype GG is not associated with response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AA + AG. | no | = 0.035 | 47 | Efficacy |
+
+**rs361525 — 9 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1451145720 | PMCID:PMC7266722 | abacavir | Allele A is not associated with severity of Drug Hypersensitivity due to abacavir as compared to allele G. | no | = 0.76 | 95 | Toxicity |
+| 1444693781 | PMCID:PMC2750008 | adalimumab | Genotype GG is not associated with response to adalimumab in people with Arthritis, Rheumatoid as compared to genotypes AA + AG. | no | = 0.18 | 372 | Efficacy |
+| 1447680238 | PMID:26244882 | TNF-alpha inhibitors | Allele G is associated with increased response to TNF-alpha inhibitors in people with Crohn Disease, Inflammatory Bowel Diseases, Psoriasis and Spondylarthropathies as compared to allele A. | yes | = 0.011 | 294 | Efficacy |
+| 1444668744 | PMID:18713756 | etanercept | Genotype AG is not associated with response to etanercept in people with Arthritis, Rheumatoid as compared to genotype GG. | no | = 0.424 | 455 | Efficacy |
+| 1444668751 | PMID:18713756 | infliximab | Genotype GG is associated with increased response to infliximab in people with Arthritis, Rheumatoid as compared to genotype AG. | yes | = 0.03 | 453 | Efficacy |
+| 1444687084 | PMID:23057546 | TNF-alpha inhibitors | Genotype AG is not associated with response to TNF-alpha inhibitors in people with Spondylitis, Ankylosing as compared to genotype GG. | no | = 0.2229 | 106 | Efficacy |
+| 1183689719 | PMID:22960943 | infliximab | Genotype GG is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AA + AG. | no | = 0.035 | 47 | Efficacy |
+| 1451431289 | PMID:33887993 | TNF-alpha inhibitors | Allele G is associated with increased response to TNF-alpha inhibitors in people with Psoriasis as compared to allele A. | yes | = 0.03 | — | Efficacy |
+| 1444668370 | PMID:15695296 | etanercept | Allele A is not associated with response to etanercept in people with Arthritis, Rheumatoid as compared to allele G. | no | = 1.0 | 70 | Efficacy |
+
+**rs1799724 — 9 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1444693787 | PMCID:PMC2750008 | adalimumab | Genotype CC is associated with decreased response to adalimumab in people with Arthritis, Rheumatoid. | yes | = 0.015 | 354 | Efficacy |
+| 1445585209 | PMID:25311255 | TNF-alpha inhibitors | Genotype TT is associated with increased response to TNF-alpha inhibitors in people with Arthritis, Rheumatoid as compared to genotypes CC + CT. | yes | = 0.012 | 280 | Efficacy |
+| 1444693768 | PMCID:PMC2750008 | adalimumab | Genotype CC is not associated with response to adalimumab in people with Arthritis, Rheumatoid as compared to genotypes CT + TT. | no | = 0.11 | 369 | Efficacy |
+| 1454626980 | PMID:41485482 | sunitinib | Genotype CT is associated with increased concentrations of sunitinib in people with Gastrointestinal Stromal Tumors or Renal Cell Carcinoma as compared to genotype CC. | yes | = 0.04 | 14 | Metabolism/PK |
+| 1444687098 | PMID:23057546 | TNF-alpha inhibitors | Genotype CC is associated with increased response to TNF-alpha inhibitors in people with Spondylitis, Ankylosing as compared to genotypes CT + TT. | yes | = 0.0021 | 106 | Efficacy |
+| 1444687090 | PMID:23057546 | TNF-alpha inhibitors | Genotype TT is associated with increased response to TNF-alpha inhibitors in people with Spondylitis, Ankylosing as compared to genotypes CC + CT. | yes | = 0.0004 | 106 | Efficacy |
+| 1451431400 | PMID:33887993 | TNF-alpha inhibitors | Allele C is associated with increased response to TNF-alpha inhibitors in people with Psoriasis as compared to allele T. | yes | = 0.003 | — | Efficacy |
+| 982047094 | PMID:22129793 | rituximab | Genotype CC is not associated with response to rituximab in people with Arthritis, Rheumatoid as compared to genotypes CT + TT. | no | = 0.644 | 63 | Efficacy |
+| 1183680059 | PMID:16815316 | lansoprazole; omeprazole; rabeprazole | Genotypes CT + TT are not associated with response to lansoprazole, omeprazole or rabeprazole in people with Helicobacter Infections as compared to genotype CC. | no | = 0.3864 | 349 | Efficacy |
+
+**rs1799964 — 6 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1444702764 | PMID: — | TNF-alpha inhibitors | Genotype — is associated with response to TNF-alpha inhibitors in people with Spondylitis, Ankylosing. | — | — | — | Efficacy |
+| 1444668343 | PMID:15695296 | etanercept | Allele C is not associated with response to etanercept in people with Arthritis, Rheumatoid as compared to allele T. | no | = 0.72 | 70 | Efficacy |
+| 1183689659 | PMID:22960943 | infliximab | Genotype TT is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CC + CT. | no | = 0.035 | 47 | Efficacy |
+| 1183680064 | PMID:16815316 | lansoprazole; omeprazole; rabeprazole | Genotypes CC + CT are not associated with response to lansoprazole, omeprazole or rabeprazole in people with Helicobacter Infections as compared to genotype TT. | no | = 0.6888 | 349 | Efficacy |
+| 1444687090 | PMID:23057546 | TNF-alpha inhibitors | Genotype TT is associated with increased response to TNF-alpha inhibitors in people with Spondylitis, Ankylosing as compared to genotypes CC + CT. | yes | = 0.0004 | 106 | Efficacy |
+| 1452291790 | PMID:37898586 | cisplatin; docetaxel; fluorouracil | Genotypes CC + CT is associated with increased likelihood of Thrombocytopenia when treated with cisplatin, docetaxel and fluorouracil in people with Carcinoma, Squamous Cell, Adenocarcinoma, Carcinoma, Adenosquamous or Esophageal Neoplasms as compared to genotype TT. | yes | = 0.016 | 50 | Toxicity |
+
+**rs1800630 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1452800660 | PMID:39733427 | — | Allele C is associated with increased severity of Leukocytosis in children with Acute lymphoblastic leukemia as compared to allele A. | yes | = 2.752e-5 | 200 | Efficacy |
+| 1449557290 | PMCID:PMC5908896 | fluorouracil; irinotecan; leucovorin | Allele A is not associated with severity of gastrointestinal toxicity when treated with fluorouracil, irinotecan and leucovorin in people with Colorectal Neoplasms as compared to allele C. | no | = 0.047 | 250 | Toxicity |
+| 1183689667 | PMID:22960943 | infliximab | Genotype AA is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AC + CC. | no | = 0.035 | 47 | Efficacy |
+| 1444668354 | PMID:15695296 | etanercept | Allele C is not associated with response to etanercept in people with Arthritis, Rheumatoid as compared to allele A. | no | = 0.7 | 70 | Efficacy |
+
+**rs1800610 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 982047122 | PMID:22129793 | rituximab | Genotype GG is not associated with response to rituximab in people with Arthritis, Rheumatoid as compared to genotypes AA + AG. | no | = 0.449 | 63 | Efficacy |
+
+**rs3093662 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1449556982 | PMCID:PMC5908896 | fluorouracil; irinotecan; leucovorin | Allele G is not associated with severity of Neutropenia when treated with fluorouracil, irinotecan and leucovorin in people with Colorectal Neoplasms as compared to allele A. | no | = 0.029 | 250 | Toxicity |
+
+**rs3093726 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 981483915 | PMCID:PMC2670196 | — | Allele C is associated with HLA-B*5701 in healthy individuals. | not stated | — | — | Other |
+
+**rs3093548 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689695 | PMID:22960943 | infliximab | Genotype CC is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CT + TT. | no | = 0.035 | 47 | Efficacy |
+
+**rs4248158 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689675 | PMID:22960943 | infliximab | Genotype CC is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CT + TT. | no | = 0.035 | 47 | Efficacy |
+
+**rs4248160 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689691 | PMID:22960943 | infliximab | Genotype GG is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AA + AG. | no | = 0.035 | 47 | Efficacy |
+
+**rs4248163 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689699 | PMID:22960943 | infliximab | Genotype CC is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CG + GG. | no | = 0.035 | 47 | Efficacy |
+
+**rs4647198 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689663 | PMID:22960943 | infliximab | Genotype CC is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CT + TT. | no | = 0.035 | 47 | Efficacy |
+
+**rs4987086 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689679 | PMID:22960943 | infliximab | Genotype GG is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AA + AG. | no | = 0.035 | 47 | Efficacy |
+
+**rs55634887 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689707 | PMID:22960943 | infliximab | Genotype GG is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AA + AG. | no | = 0.035 | 47 | Efficacy |
+
+**rs55994001 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689703 | PMID:22960943 | infliximab | Genotype CC is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes CT + TT. | no | = 0.035 | 47 | Efficacy |
+
+**rs2736195 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689687 | PMID:22960943 | infliximab | Genotype AA is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AG + GG. | no | = 0.035 | 47 | Efficacy |
+
+**rs1800750 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1183689711 | PMID:22960943 | infliximab | Genotype GG is not associated with decreased response to infliximab in people with Colonic Diseases, Functional as compared to genotypes AA + AG. | no | = 0.035 | 47 | Efficacy |
+| 1451145740 | PMCID:PMC7266722 | abacavir | Genotype AG is not associated with severity of Drug Hypersensitivity due to abacavir as compared to genotype GG. | no | = 0.51 | 95 | Toxicity |
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген TNF не упоминается; альтернативные символы TNFA, TNFSF2, DIF не упоминаются; препараты этанерцепт, адалимумаб, инфликсимаб, ритуксимаб, такролимус и др. отсутствуют в списке Drugs ни в одном руководстве.
+
+### 2.4 Рекомендации TNF
+
+**Из OMIM (Description / Gene Function):**
+
+- TNF — многофункциональный провоспалительный цитокин, секретируемый преимущественно моноцитами/макрофагами; влияет на липидный метаболизм, коагуляцию, инсулинорезистентность и функцию эндотелия.
+- Синтезируется как мембраносвязанный белок 26 кД (pro-TNF), который расщепляется процессинговыми ферментами (например, ADAM17; 603639) с высвобождением растворимой молекулы 17 кД. Растворимая молекула связывается с основными рецепторами TNFR1 (191190) и TNFR2 (191191).
+- Дисрегуляция и, в частности, гиперпродукция TNF implicated в различных заболеваниях, включая сепсис, церебральную малярию и аутоиммунные заболевания (MS, RA, SLE, Crohn disease), а также рак.
+- TNF-alpha, продуцируемый глией, усиливает синаптическую эффективность, увеличивая поверхностную экспрессию AMPA-рецепторов; постоянное присутствие TNF-alpha необходимо для сохранения силы синапсов в возбуждающих синапсах (Beattie et al., 2002).
+- TNF участвует в патогенезе псориаза (Leonardi et al., 2003; Boyman et al., 2004), ревматоидного артрита и анкилозирующего спондилита (Gorman et al., 2002), туберкулёза (Flynn et al., 1995; Keane et al., 2001), аутосомно-доминантного поликистоза почек (Li et al., 2008).
+
+**Из OMIM (Molecular Genetics):**
+
+- Описаны многочисленные SNP в промоторной области TNF, ассоциированные с восприимчивостью к сложным заболеваниям: -308G>A (rs1800629), -238G>A (rs361525), -376G>A, -857C>T, -863C>A, -1031T>C.
+- -308G>A (TNF2) ассоциирован с септическим шоком и смертью от него (Mira et al., 1999), с церебральной малярией (McGuire et al., 1994), с астмой (Witte et al., 2002; Shin et al., 2004), с ВИЧ-деменцией (Quasney et al., 2001), с мигренью без ауры (Rainero et al., 2004), с псориатическим артритом (Balding et al., 2003), с СКВ (Lee et al., 2006).
+- -376G>A: аллель -376A встречается только у лиц, несущих более частый аллель -238A; ассоциирован с церебральной малярией (OR 4.3) (Knight et al., 1999).
+- -850C>T (rs1799724): ассоциирован с сосудистой деменцией (OR 2.51 для CT или TT) и с болезнью Альцгеймера в сочетании с APOE4 (McCusker et al., 2001; Laws et al., 2005).
+- -863C>A: редкий аллель A ассоциирован с 31% снижением транскрипционной активности; носители A имели сниженные концентрации TNF-alpha в сыворотке (Skoog et al., 1999); ассоциация с снижением риска поздней БА (Ramos et al., 2006).
+- Полиморфизмы TNF ассоциированы с инсулинорезистентностью и диабетом (Zinman et al., 1999; Obayashi et al., 2000; Li et al., 2003), с коронарной болезнью сердца (Herrmann et al., 1998), с ожирением (Norman et al., 1995; Rosmond et al., 2001), с гипер-андрогенизмом (Escobar-Morreale et al., 2001), с септическим шоком (De Groof et al., 2002), с церебральной малярией (McGuire et al., 1994; Knight et al., 1999), с гнездной алопецией (Galbraith and Pandey, 1995), с ревматоидным артритом (Mulcahy et al., 1996), с остеопорозом (Ota et al., 2000), с астмой (Winchester et al., 2000), с воспалительными заболеваниями кишечника (Koss et al., 2000), с гепатитом B (Kim et al., 2003), с кистозным фиброзом (Buranawuti et al., 2007), с HLA-B27-ассоциированным увеитом (El-Shabrawi et al., 2006).
+
+**Из OMIM (Animal Model):**
+
+- Bruce et al. (1996): мыши, лишённые p55 или p75 TNF-рецепторов, exhibited exacerbated damage to neurons caused by focal cerebral ischemia and epileptic seizures, indicating that TNF serves a neuroprotective function.
+- Marino et al. (1997): нокаутные по TNF мыши характеризованы по ответу на различные воспалительные, инфекционные и антигенные стимулы.
+- Uysal et al. (1997): отсутствие TNF приводило к значительному улучшению чувствительности к инсулину как при диет-индуцированном ожирении, так и в модели ob/ob; TNF — важный медиатор инсулинорезистентности при ожирении.
+- Roach et al. (2002): TNF необходим для ранней индукции продукции хемокинов и рекрутмента клеток, формирующих защитную гранулёму; TNF-независимая продукция хемокинов приводит к дисрегулированному воспалительному ответу, неспособному сдержать M. tuberculosis.
+- Diwan et al. (2004): мыши с сердечной гиперэкспрессией секретируемой формы Tnf развивали дилатационную гипертрофию левого желудочка, тогда как мыши с гиперэкспрессией трансмембранной формы — концентрическую гипертрофию.
+- Vielhauer et al. (2005): TNFR2 на интринсических клетках почек, но не на лейкоцитах, необходим для гломерулонефрита и гломерулярного отложения комплемента.
+- Balosso et al. (2005): внутригиппокампальная инъекция Tnfa или астроцитарная гиперэкспрессия Tnfa ингибировала число и длительность каинат-индуцированных судорог; защитный эффект опосредован p75-рецепторами.
+- Hase et al. (2006): повышенный остеокластогенез у Tshr-нулевых мышей был скорректирован градуированным снижением дозы гена Tnf.
+- Guo et al. (2008): гиперэкспрессия TNF индуцировала потерю костной массы путём увеличения экспрессии Smurf1 (605568), что приводило к убиквитинированию и протеасомной деградации Smad1 (601595) и Runx2 (600211).
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 18 записей — rs1800629 (TNF-alpha inhibitors, IBD/UC; etanercept, psoriatic arthritis, Crohn, psoriasis, RA, AS; ibuprofen, indomethacin, naproxen, diclofenac, ketorolac, aspirin, migraine without aura; carbamazepine, hypersensitivity; ethambutol/isoniazid/pyrazinamide/rifampin, toxic liver disease, TB; atorvastatin, ACS; sorafenib, hand-foot syndrome, HCC; carboplatin/gemcitabine, NSCLC, thrombocytopenia; cyclosporine/mycophenolate mofetil, kidney transplantation), rs361525 (infliximab, efficacy), rs1799964 (stavudine, toxicity, HIV; TNF-alpha inhibitors, AS), rs1799724 (TNF-alpha inhibitors, Crohn/psoriasis/RA/AS).
+- Pediatric Variant Annotations: 2 записи — rs1800630 / лейкоцитоз у детей с ОЛЛ (P=2.752e-5); rs1800629 / опиоиды / доза (P=0.031).
+- Non-Pediatric Variant Annotations: множество записей по rs1800629, rs361525, rs1799724, rs1799964, rs1800630, rs1800610, rs3093662, rs3093726, rs3093548, rs4248158, rs4248160, rs4248163, rs4647198, rs4987086, rs55634887, rs55994001, rs2736195, rs1800750.
+- Уровень доказательности для Summary Annotations — Level 2B и 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA435, ClinVar (7 Pathogenic вариантов TNF), OMIM *191160, CPIC guidelines registry (29 guidelines, TNF отсутствует), PMID:16720636, PMID:18050183, PMID:19365401, PMID:26244882, PMID:24192118, PMID:16909270, PMID:22151084, PMID:11294926, PMID:33887993, PMID:27168101, PMID:12847678, PMID:18438841, PMID:15695296, PMID:22960943, PMID:16815316, PMID:22736425, PMID:17343250, PMID:31616045, PMID:22760475, PMID:22129793, PMID:23057546, PMID:41485482, PMID:25311255, PMID:37898586, PMID:39733427, PMID:42488961, PMID:38126330, PMID:39535282, PMID:26556688, PMID:24776844, PMID:24253594, PMID:22158445, PMID:21145803, PMID:18025780, PMID:27115882, PMID:16607077, PMID:16104959, PMCID:PMC11404698, PMCID:PMC3513412, PMCID:PMC9820603, PMCID:PMC12308240, PMCID:PMC8953705, PMCID:PMC4366259, PMCID:PMC11144121, PMCID:PMC4557995, PMCID:PMC4864175, PMCID:PMC2810514, PMCID:PMC5908896, PMCID:PMC6021962, PMCID:PMC4364852, PMCID:PMC11954710, PMCID:PMC5088582, PMCID:PMC7485556, PMCID:PMC7045476, PMCID:PMC2750008, PMCID:PMC1754569, PMCID:PMC10154044, PMCID:PMC7266722, PMCID:PMC2670196, PMCID:PMC10532840, PMCID:PMC7305826, PMCID:PMC5642896, PMCID:PMC3237821, PMCID:PMC4746878, PMCID:PMC1755496.*
+## ГЕН 4: HLA-DRB1 — Major Histocompatibility Complex, Class II, DR Beta 1
+
+### 4.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | major histocompatibility complex, class II, DR beta 1 |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *142857 |
+| OMIM Disease | 126200 (Multiple sclerosis, susceptibility to, 1, Mu); 181000 (Sarcoidosis, susceptibility to, 1, AD) |
+| PharmGKB ID | PA35072 |
+| HGNC Approved Gene Symbol | HLA-DRB1 |
+| Альтернативные названия | None (по ClinPGx) |
+| Альтернативные символы | HLA-DR1B (по ClinPGx) |
+| Локация | 6p21.32 (минусовая цепь); GRCh37: chr6:32,546,546-32,557,613; GRCh38: chr6:32,578,769-32,589,836 |
+| Структура гена | не предоставлено |
+| Функция | не предоставлено (в OMIM разделы Description и Gene Function отсутствуют) |
+| Ключевые варианты | HLA-DRB1*07:01, *15:01, *03:01, *04:01, *04:03, *04:05, *11:01, *13:01, *13:02, *01:01, *01:02, *08:01, *08:02, *08:03, *09:01, *10:01, *12:01, *12:02, *14:01, *14:54, *15:02, *16:01, *16:02; rs17885382, rs701829, rs17211071, rs201929247 |
+
+### 4.2 Варианты HLA-DRB1
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+| # | HGVS / Локация | Тип | Классификация | Условие | Accession |
+|---|---|---|---|---|---|
+| 1 | NM_002124.4(HLA-DRB1):c.298_301delinsAAGCG (p.Ala100fs) | Insertion | Pathogenic | not provided | VCV004852601 |
+| 2 | NM_002124.4(HLA-DRB1):c.242A>T (p.Glu81Val) | single nucleotide variant | Pathogenic | Pulmonary artery atresia | VCV001696856 |
+| 3 | GRCh38/hg38 6p25.3-12.3(chr6:156974-46789291)x3 | copy number gain | Pathogenic | See cases | VCV000155430 |
+| 4 | GRCh37/hg19 6p22.1-q14.1(chr6:29455465-81447367) | copy number gain | Pathogenic | not provided | VCV000625706 |
+| 5 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482) | copy number gain | Pathogenic | See cases | VCV000443497 |
+| 6 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482)x3 | copy number gain | Pathogenic | See cases | VCV000443496 |
+
+**Allelic Variants (OMIM, 2 selected examples):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | HLA-DRB1*1101 | Sarcoidosis, susceptibility to, 1 (181000) | Ассоциирован с саркоидозом у черных и белых; F47 — наиболее важный остаток, связанный с пептидным связыванием (Rossman et al., 2003) |
+| .0002 | DRB1*1501 | Multiple sclerosis, susceptibility to, 1 (126200) | Риск-аллель с OR 3.1 у лиц европейского происхождения (International Multiple Sclerosis Genetics Consortium and Wellcome Trust Case Control Consortium 2, 2011) |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 6 |
+| Likely pathogenic | 0 |
+| Uncertain significance | не предоставлено |
+| Likely benign | не предоставлено |
+| Benign | не предоставлено |
+| Conflicting | не предоставлено |
+| Всего (без фильтра) | не предоставлено |
+
+### 4.3 Фармакогенетика HLA-DRB1
+
+**Prescribing Info / Drug Label Annotations (ClinPGx):**
+
+FDA PGx Associations (1):
+
+| Category | Drug | Gene | Affected Subgroup | Interaction Description |
+|---|---|---|---|---|
+| Safety or Response | Lapatinib | HLA-DRB1 | *07:01 allele positive | Results in higher adverse reaction risk (hepatotoxicity). Monitor liver function tests regardless of genotype. |
+
+Drug Label Annotations (ClinPGx, 5 записей):
+
+| ID | PGx Level | Source | Title | Genes | Drugs |
+|---|---|---|---|---|---|
+| PA166123544 | Testing Required | PMDA | Annotation of PMDA Drug Label for lapatinib and ERBB2, HLA-DQA1, HLA-DRB1 | ERBB2; HLA-DQA1; HLA-DRB1 | lapatinib |
+| PA166184383 | Actionable PGx | Swissmedic | Annotation of Swissmedic Drug Label for lapatinib and HLA-DQA1, HLA-DRB1 | HLA-DQA1; HLA-DRB1 | lapatinib |
+| PA166183172 | Informative PGx | EMA | Annotation of EMA Drug Label for lapatinib and HLA-DQA1, HLA-DRB1 | HLA-DQA1; HLA-DRB1 | lapatinib |
+| PA166151878 | Informative PGx | FDA | Annotation of FDA Drug Label for lapatinib and HLA-DQA1, HLA-DRB1 | HLA-DQA1; HLA-DRB1 | lapatinib |
+| PA166335081 | Informative PGx | HCSC | Annotation of HCSC Drug Label for lapatinib and HLA-DQA1, HLA-DRB1 | HLA-DQA1; HLA-DRB1 | lapatinib |
+
+**Pediatric Clinical Annotations (ClinPGx, 1 запись):**
+
+| ID | Level | Variant | Drug | Category | Phenotype | Pediatric Only |
+|---|---|---|---|---|---|---|
+| 1446899680 | 3 | rs17885382 | asparaginase | Toxicity | Acute lymphoblastic leukemia | true |
+
+**Non-Pediatric Clinical Annotations (ClinPGx, 27 записей):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1444699749 | 2B | HLA-DRB1*01:01 | nevirapine | Toxicity | — |
+| 1449752810 | 3 | rs701829 | dapsone | Toxicity | Drug Hypersensitivity |
+| 1184756894 | 3 | HLA-DRB1*15:02 | allopurinol | Toxicity | Severe Cutaneous Adverse Reactions |
+| 1451510926 | 3 | HLA-DRB1*07:01 | pegaspargase | Toxicity | — |
+| 1444666198 | 3 | HLA-DRB1*03:01 | carbamazepine | Toxicity | Maculopapular Exanthema |
+| 1449752825 | 3 | rs17211071 | dapsone | Toxicity | Drug Hypersensitivity |
+| 1451905680 | 3 | HLA-DRB1*04:02 | clozapine | Toxicity | Agranulocytosis |
+| 1449752818 | 3 | rs201929247 | dapsone | Toxicity | Drug Hypersensitivity |
+| 1444712832 | 3 | HLA-DRB1*07:01 | lapatinib | Toxicity | Toxic liver disease |
+| 1449156223 | 3 | HLA-DRB1*01:02 | nevirapine | Toxicity | DRESS; SJS; TEN |
+| 1449156231 | 3 | HLA-DRB1*01:03 | nevirapine | Toxicity | DRESS; SJS; TEN |
+| 1184755382 | 3 | HLA-DRB1*03:01 | allopurinol | Toxicity | Severe Cutaneous Adverse Reactions |
+| 1448613108 | 3 | HLA-DRB1*01:01; HLA-DRB1*04:06 | atorvastatin; fluvastatin; HMG-CoA reductase inhibitors; pravastatin; rosuvastatin; simvastatin | Toxicity | — |
+| 1449156236 | 3 | HLA-DRB1*04:04 | nevirapine | Toxicity | DRESS; SJS; TEN |
+| 1449752836 | 3 | HLA-DRB1*15:01; HLA-DRB1*16:02 | dapsone | Toxicity | Drug Hypersensitivity |
+| 1451415660 | 3 | HLA-DRB1*08:03 | Antithyroid Preparations | Toxicity | Agranulocytosis; Graves Disease |
+| 1448426938 | 3 | HLA-DRB1*04:01 | interferon beta-1a | Efficacy | Multiple Sclerosis |
+| 1184654253 | 3 | HLA-DRB1*14:01 | allopurinol | Toxicity | Drug Hypersensitivity |
+| 1449156241 | 3 | HLA-DRB1*08:01 | nevirapine | Toxicity | DRESS; SJS; TEN |
+| 1448264356 | 3 | HLA-DRB1*04:03 | oxcarbazepine | Toxicity | Epilepsy |
+| 1449156249 | 3 | HLA-DRB1*10:01 | nevirapine | Toxicity | DRESS; SJS; TEN |
+| 1444666145 | 3 | HLA-DRB1*11:01 | Antiinflammatory agents, non-steroids | Toxicity | Anaphylaxis |
+| 1451411000 | 3 | HLA-DRB1*03:01; HLA-DRB1*04:04 | infliximab | Toxicity | Drug-induced liver injury |
+| 1184654247 | 3 | HLA-DRB1*09:01 | allopurinol | Toxicity | Drug Hypersensitivity |
+| 1447963570 | 3 | HLA-DRB1*16:01 | flupirtine | Toxicity | Drug-induced liver injury |
+| 1184989663 | 3 | HLA-DRB1*07:01 | azathioprine; mercaptopurine | Toxicity | Drug Toxicity; Inflammatory Bowel Diseases; Pancreatitis |
+| 1184756898 | 3 | HLA-DRB1*13:02 | allopurinol | Toxicity | Severe Cutaneous Adverse Reactions |
+
+**Pediatric Variant Annotations (ClinPGx, 1 запись):**
+
+| ID | Variant | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1446767195 | rs17885382 | PMCID:PMC4492197 | asparaginase | Allele T is associated with increased risk of Hypersensitivity when treated with asparaginase in children with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to allele A. | yes | = 1.8E-8 | 3308 | Toxicity |
+
+**Non-Pediatric Variant Annotations (ClinPGx) — сводка по вариантам:**
+
+**HLA-DRB1*09:01 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1452083020 | PMID:36725456 | carbamazepine | HLA-DRB1*09:01 is associated with increased likelihood of Drug Hypersensitivity when treated with carbamazepine in people with Epilepsy. | yes | = 0.016 | 32 | 33 | Toxicity |
+| 1449566258 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*09:01 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 0.40 | 13 | 40 | Toxicity |
+
+**HLA-DRB1*12:01 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449566276 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*12:01 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 0.43 | 13 | 40 | Toxicity |
+| 1452443600 | PMID:38594174 | oxaliplatin | HLA-DRB1*12:01 is associated with increased likelihood of Drug Hypersensitivity when treated with oxaliplatin. | yes | = 0.016 | 21 | 34 | Toxicity |
+
+**HLA-DRB1*01:01 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1446904346 | PMID:15121303 | Measles vaccines | HLA-DRB1*01:01 is associated with response to Measles vaccines in children. | yes | — | 170 | — | Efficacy |
+| 1444697871 | PMID:25714001 | nevirapine | HLA-DRB1*01:01 is associated with increased risk of Hypersensitivity when treated with nevirapine. | yes | — | 88 | 573 | Toxicity |
+| 1444697890 | PMID:25714001 | nevirapine | HLA-DRB1*01:01 is associated with increased risk of Toxic liver disease when treated with nevirapine. | yes | — | 183 | 1000 | Toxicity |
+| 1444699767 | PMID:15627041 | nevirapine | HLA-DRB1*01:01 is associated with increased risk of Drug Hypersensitivity when treated with nevirapine in people with HIV Infections. | yes | = 0.0006 | 221 | 14 | Toxicity |
+
+**HLA-DRB1*08:02 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449566240 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*08:02 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 1.00 | 13 | 40 | Toxicity |
+| 1185003272 | PMCID:PMC4038630 | bucillamine | HLA-DRB1*08:02 is associated with increased risk of Proteinuria when treated with bucillamine in people with Arthritis, Rheumatoid. | yes | = 7.65E-7 | 25 | 460 | Toxicity |
+
+**HLA-DRB1*16:02 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1451582701 | PMID:34747637 | pegaspargase | HLA-DRB1*16:02 is associated with increased likelihood of Drug Hypersensitivity when treated with pegaspargase in children with Precursor Cell Lymphoblastic Leukemia-Lymphoma. | yes | = 0.012 | 19 | 303 | Toxicity |
+| 1449566321 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*16:02 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 0.77 | 13 | 40 | Toxicity |
+| 981859086 | PMID:20235791 | phenytoin | HLA-DRB1*16:02 is associated with increased risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome when treated with phenytoin in Epilepsy. | yes | = 0.0128 | 26 | 113 | Toxicity |
+
+**HLA-DRB1*07:01 — 8 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1446903799 | PMID:15057902 | Hepatitis vaccines | HLA-DRB1*07:01 is associated with decreased response to Hepatitis vaccines in children. | yes | = 0.0003 | 164 | — | Efficacy |
+| 1296598814 | PMCID:PMC4141516 | asparaginase | HLA-DRB1*07:01 is associated with increased likelihood of Hypersensitivity when exposed to asparaginase in people with Precursor Cell Lymphoblastic Leukemia-Lymphoma. | yes | = 0.002 | 1870 | — | Toxicity |
+| 1451133380 | PMCID:PMC7299187 | asparaginase | HLA-DRB1*07:01 is associated with increased Drug Hypersensitivity when treated with asparaginase in children with Precursor Cell Lymphoblastic Leukemia-Lymphoma. | yes | = 0.003 | 12 | 38 | Toxicity |
+| 1447679822 | PMID:26265235 | lapatinib | HLA-DRB1*07:01 is not associated with Exanthema when treated with lapatinib in women with Breast Neoplasms. | no | = 0.87 | 58 | 469 | Toxicity |
+| 1184469140 | PMID:24399721 | carbamazepine | HLA-DRB1*07:01 is associated with increased risk of severe cutaneous adverse reactions when treated with carbamazepine in people with Epilepsy. | yes | = 0.003 | 20 | 125 | Toxicity |
+| 1184989629 | PMCID:PMC6379053 | azathioprine; mercaptopurine | HLA-DRB1*07:01 is associated with increased risk of Pancreatitis when treated with azathioprine or mercaptopurine in people with Inflammatory Bowel Diseases. | yes | = 1E-14 | 172 | 2035 | Toxicity |
+| 1185003155 | PMID:24687830 | lapatinib | HLA-DRB1*07:01 is associated with increased risk of Toxic liver disease when treated with lapatinib in women with Breast Neoplasms. | yes | = 2.4E-13 | 37 | 1067 | Toxicity |
+| 1448820942 | PMID:28786423 | lapatinib | HLA-DRB1*07:01 is associated with increased risk of Toxic liver disease when treated with lapatinib in people with Breast Neoplasms. | yes | = 3E-26 | 4482 | — | Toxicity |
+
+**HLA-DRB1*12:02 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449566285 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*12:02 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 1.00 | 13 | 40 | Toxicity |
+| 1451780481 | PMCID:PMC6817890 | acetaminophen | HLA-DRB1*12:02 is associated with increased likelihood of Stevens-Johnson Syndrome or Epidermal Necrolysis, Toxic when treated with acetaminophen. | no | = 0.382 | 80 | 113 | Toxicity |
+| 1184407564 | PMID:19104471 | nevirapine | HLA-DRB1*12:02 is not associated with risk of Exanthema when treated with nevirapine in people with HIV Infections. | no | > 0.05 | 160 | 160 | Toxicity |
+
+**HLA-DRB1*15:02 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449566312 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*15:02 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 0.30 | 13 | 40 | Toxicity |
+| 1184756369 | PMID:21545408 | allopurinol | HLA-DRB1*15:02 is associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with allopurinol in people with Drug Hypersensitivity. | no | = 0.00028 | 7 | 115 | Toxicity |
+| 1184756618 | PMID:21545408 | acetaminophen | HLA-DRB1*15:02 is not associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with acetaminophen. | no | = 0.575 | 10 | 115 | Toxicity |
+
+**HLA-DRB1*08:03 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449566249 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*08:03 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 0.10 | 13 | 40 | Toxicity |
+| 1183701174 | PMID:24236482 | zonisamide | HLA-DRB1*08:03 is not associated with Stevens-Johnson Syndrome when treated with zonisamide. | no | = 0.6732 | 12 | 2878 | Toxicity |
+| 1447521300 | PMCID:PMC4506516 | carbimazole; methimazole; propylthiouracil | HLA-DRB1*08:03 is associated with increased risk of Agranulocytosis when treated with carbimazole, methimazole or propylthiouracil in people with Graves Disease. | yes | = 1.83E-9 | 42 | 1208 | Toxicity |
+| 1451415580 | PMID:32963330 | Antithyroid Preparations | HLA-DRB1*08:03 is associated with increased risk of Agranulocytosis when treated with Antithyroid Preparations in people with Graves Disease. | yes | = 5.21E-7 | 87 | 384 | Toxicity |
+
+**HLA-DRB1*15:01 — 8 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1451614645 | PMCID:PMC10564446 | anakinra; canakinumab; rilonacept; tocilizumab | HLA-DRB1*15:01 is associated with increased likelihood of drug reaction with eosinophilia and systemic symptoms when treated with anakinra, canakinumab, rilonacept or tocilizumab in people with Arthritis, Juvenile Rheumatoid or Still's Disease, Adult-Onset. | yes | = 6.943e-9 | 36 | 19 | Toxicity |
+| 1449566303 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*15:01 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 1.00 | 13 | 40 | Toxicity |
+| 1450368114 | PMCID:PMC6511989 | amoxicillin; clavulanate; flucloxacillin | HLA-DRB1*15:01 is associated with increased risk of drug-induced liver injury when treated with amoxicillin, clavulanate or flucloxacillin. | yes | = 1.03e-7 | 2048 | 12429 | Toxicity |
+| 1185001362 | PMCID:PMC1728095 | amoxicillin; clavulanate | HLA-DRB1*15:01 is associated with increased risk of Jaundice when treated with amoxicillin and clavulanate. | yes | < 1E-8 | 20 | 134 | Toxicity |
+| 1447017377 | PMID:20800921 | amoxicillin; clavulanate | HLA-DRB1*15:01 is associated with increased risk of drug-induced liver injury when treated with amoxicillin and clavulanate. | yes | = 4.3E-6 | 116 | 191 | Toxicity |
+| 1185001300 | PMID:10535882 | amoxicillin; clavulanate | HLA-DRB1*15:01 is associated with increased risk of Hepatitis when treated with amoxicillin and clavulanate in people with Infection. | yes | < 0.0005 | 35 | 60 | Toxicity |
+| 1454124120 | PMCID:PMC9974860 | amoxicillin; clavulanate | HLA-DRB1*15:01 is associated with increased likelihood of Drug-induced liver injury when treated with amoxicillin and clavulanate. | yes | = 1.4e-47 | 444 | 10395 | Toxicity |
+| 1185003086 | PMCID:PMC3706603 | amoxicillin; clavulanate | HLA-DRB1*15:01 is associated with increased risk of drug-induced liver injury when treated with amoxicillin and clavulanate. | no | = 0.014 | 75 | 885 | Toxicity |
+
+**HLA-DRB1*14:54 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449566294 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*14:54 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 1.00 | 13 | 40 | Toxicity |
+| 1452452460 | PMCID:PMC11021981 | cefaclor | HLA-DRB1*14:54 is associated with increased likelihood of Drug Hypersensitivity when exposed to cefaclor. | yes | = 0.04 | 43 | 159 | Toxicity |
+
+**HLA-DRB1*11:01 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449566267 | PMCID:PMC5467955 | phenytoin | HLA-DRB1*11:01 is not associated with risk of Epidermal Necrolysis, Toxic or Stevens-Johnson Syndrome due to phenytoin. | no | = 1.00 | 13 | 40 | Toxicity |
+| 1184756638 | PMID:21545408 | acetaminophen | HLA-DRB1*11:01 is not associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with acetaminophen. | no | = 0.366 | 10 | 115 | Toxicity |
+| 1184756387 | PMID:21545408 | allopurinol | HLA-DRB1*11:01 is not associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with allopurinol in people with Drug Hypersensitivity. | no | = 0.056 | 7 | 115 | Toxicity |
+| 1454556680 | PMCID:PMC12653957 | HMG-CoA reductase inhibitors | HLA-DRB1*11:01 is associated with increased likelihood of statin-related myopathy when treated with HMG-CoA reductase inhibitors. | yes | < 0.01 | 11 | 31 | Toxicity |
+
+**HLA-DRB1*08:01 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1446904352 | PMID:15121303 | Measles vaccines | HLA-DRB1*08:01 is associated with response to Measles vaccines in children. | yes | — | 170 | — | Efficacy |
+| 1448926299 | PMCID:PMC5561238 | nevirapine | HLA-DRB1*08:01 is associated with Epidermal Necrolysis, Toxic, Stevens-Johnson Syndrome, DRESS or Severe Cutaneous Adverse Reactions when treated with nevirapine in people with HIV Infections. | not stated | — | 151 | 413 | Toxicity |
+
+**HLA-DRB1*03:01 — 6 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1446903619 | PMID:11672906 | Measles vaccines | HLA-DRB1*03:01 is associated with decreased response to Measles vaccines in children. | yes | — | 242 | — | Efficacy |
+| 1184755073 | PMCID:PMC554812 | allopurinol | HLA-DRB1*03:01 is associated with increased risk of severe cutaneous adverse reactions when treated with allopurinol. | yes | = 2.8E-6 | 51 | 135 | Toxicity |
+| 1452820687 | PMCID:PMC11732454 | carbamazepine; lamotrigine; phenytoin | HLA-DRB1*03:01 is associated with increased likelihood of Epidermal Necrolysis, Toxic when treated with carbamazepine, lamotrigine or phenytoin. | yes | = 0.003 | 50 | 90 | Toxicity |
+| 1184468253 | PMID:23830818 | carbamazepine | HLA-DRB1*03:01 is associated with decreased risk of Maculopapular Exanthema when treated with carbamazepine. | yes | = 0.024 | 40 | 52 | Toxicity |
+| 1451410785 | PMID:32024945 | infliximab | HLA-DRB1*03:01 is associated with increased risk of drug-induced liver injury due to infliximab. | yes | = 0.012 | 16 | 60 | Toxicity |
+| 1184748748 | PMID:9179433 | — | HLA-DRB1*03:01 is not associated with risk of aspirin-induced asthma. | no | > 0.05 | 59 | 48 | Toxicity |
+
+**HLA-DRB1*04:03 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1452403860 | PMID:38451034 | Antiinflammatory agents, non-steroids | HLA-DRB1*04:03 is associated with increased likelihood of drug-induced liver injury when exposed to Antiinflammatory agents, non-steroids. | yes | = 8.67e-6 | 52 | — | Toxicity |
+| 1447679942 | PMID:26265235 | lapatinib | HLA-DRB1*04:03 is associated with increased likelihood of Exanthema when treated with lapatinib in women with Breast Neoplasms. | no | < 0.05 | 58 | 469 | Toxicity |
+| 1448264230 | PMID:27666425 | oxcarbazepine | HLA-DRB1*04:03 is associated with increased risk of Maculopapular Exanthema when treated with oxcarbazepine in people with Epilepsy. | yes | = 0.003 | 40 | 70 | Toxicity |
+| 1452451540 | PMCID:PMC11021981 | cefaclor | HLA-DRB1*04:03 is associated with increased likelihood of Anaphylaxis when exposed to cefaclor. | yes | = 0.0014 | 59 | 590 | Toxicity |
+
+**HLA-DRB1*04:05 — 6 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1184756378 | PMID:21545408 | allopurinol | HLA-DRB1*04:05 is not associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with allopurinol in people with Drug Hypersensitivity. | no | = 0.410 | 7 | 115 | Toxicity |
+| 1453101460 | PMID:40195278 | hydroxychloroquine; methotrexate; sulfasalazine | HLA-DRB1*04:05 is associated with decreased clinical benefit to hydroxychloroquine, methotrexate and sulfasalazine in people with Rheumatoid arthritis. | no | = 0.01 | 53 | 114 | Efficacy |
+| 1184756630 | PMID:21545408 | acetaminophen | HLA-DRB1*04:05 is not associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with acetaminophen. | no | = 0.575 | 10 | 115 | Toxicity |
+| 1452083900 | PMID:36226442 | nevirapine | HLA-DRB1*04:05 is associated with increased likelihood of Drug Hypersensitivity when treated with nevirapine in people with HIV Infections. | yes | = 0.026 | 21 | 37 | Toxicity |
+| 1451413180 | PMID:32467566 | adalimumab; amiodarone; bevacizumab; bicalutamide; carboplatin; cyclophosphamide; docetaxel; erlotinib; everolimus; fluorouracil; gefitinib; gemcitabine; irinotecan; leucovorin; methotrexate; oxaliplatin; paclitaxel; pembrolizumab; sitagliptin; tegafur / gimeracil / oteracil; trastuzumab | HLA-DRB1*04:05 is associated with increased risk of Interstitial Lung Diseases when exposed to adalimumab, amiodarone, bevacizumab, bicalutamide, carboplatin, cyclophosphamide, docetaxel, erlotinib, everolimus, fluorouracil, gefitinib, gemcitabine, irinotecan, leucovorin, methotrexate, oxaliplatin, paclitaxel, pembrolizumab, sitagliptin, tegafur / gimeracil / oteracil or trastuzumab. | yes | = 0.014 | 177 | 3002 | Toxicity |
+| 1452238320 | PMCID:PMC10502099 | abatacept | HLA-DRB1*04:05 is associated with increased clinical benefit to abatacept in people with Arthritis, Rheumatoid. | yes | = 0.039 | 37 | — | Efficacy |
+
+**HLA-DRB1*04:01 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1448426917 | PMID:27020477 | interferon beta-1a | HLA-DRB1*04:01 is associated with increased response to interferon beta-1a in people with Multiple Sclerosis. | yes | = 0.008 | 170 | 292 | Efficacy |
+| 1184997267 | PMID:2222133 | clozapine | HLA-DRB1*04:01 is not associated with risk of Agranulocytosis when treated with clozapine in people with schizoaffective disorder or Schizophrenia. | no | = 0.111 | 5 | 16 | Toxicity |
+| 1451934500 | PMCID:PMC4928097 | adalimumab; etanercept; infliximab | HLA-DRB1*04:01 is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid. | yes | = 0.007 | 1846 | — | Efficacy |
+
+**HLA-DRB1*04:02 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1451905307 | PMCID:PMC9363274 | clozapine | HLA-DRB1*04:02 is associated with increased likelihood of Agranulocytosis when treated with clozapine in people with Schizophrenia. | yes | = 0.03 | 42 | 95 | Toxicity |
+
+**HLA-DRB1*04:04 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1448926289 | PMCID:PMC5561238 | nevirapine | HLA-DRB1*04:04 is associated with Epidermal Necrolysis, Toxic, Stevens-Johnson Syndrome, DRESS or Severe Cutaneous Adverse Reactions when treated with nevirapine in people with HIV Infections. | not stated | — | 151 | 413 | Toxicity |
+| 1451410840 | PMID:32024945 | infliximab | HLA-DRB1*04:04 is associated with increased risk of drug-induced liver injury due to infliximab. | yes | = 0.042 | 16 | 60 | Toxicity |
+
+**HLA-DRB1*04:10 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1183701191 | PMID:24236482 | phenobarbital | HLA-DRB1*04:10 is not associated with Stevens-Johnson Syndrome when treated with phenobarbital. | no | = 0.1036 | 8 | 2878 | Toxicity |
+
+**HLA-DRB1*13:01 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1452820633 | PMCID:PMC11732454 | carbamazepine; lamotrigine; phenytoin | HLA-DRB1*13:01 is associated with increased likelihood of Stevens-Johnson Syndrome when treated with carbamazepine, lamotrigine or phenytoin. | yes | = 0.01 | 50 | 90 | Toxicity |
+| 1452843480 | PMCID:PMC11786012 | pembrolizumab | HLA-DRB1*13:01 is associated with decreased likelihood of Progression-free survival when treated with pembrolizumab in people with Adenocarcinoma, Non-Small Cell Lung Carcinoma, Carcinoma, Squamous Cell or Neuroendocrine Carcinoma. | yes | = 0.04 | 42 | — | Efficacy |
+| 1446903723 | PMID:11756990 | Influenza vaccines | HLA-DRB1*13:01 is associated with increased response to Influenza vaccines. | yes | = 0.013 | 73 | — | Efficacy |
+| 1184988937 | PMID:19668019 | lamotrigine | HLA-DRB1*13:01 is associated with increased risk of severe cutaneous adverse reactions when treated with lamotrigine. | yes | = 0.045 | 22 | 43 | Toxicity |
+
+**HLA-DRB1*13:02 — 5 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1184756396 | PMID:21545408 | allopurinol | HLA-DRB1*13:02 is associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with allopurinol in people with Drug Hypersensitivity. | no | = 0.00028 | 7 | 115 | Toxicity |
+| 1185001863 | PMID:19392989 | aspirin | HLA-DRB1*13:02 is associated with increased risk of Urticaria when treated with aspirin. | yes | = 0.00763 | 364 | 207 | Toxicity |
+| 1184756646 | PMID:21545408 | acetaminophen | HLA-DRB1*13:02 is not associated with increased likelihood of Epidermal Necrolysis, Toxic and Stevens-Johnson Syndrome when treated with acetaminophen. | no | = 1.0 | 10 | 115 | Toxicity |
+| 1185001734 | PMID:17339877 | ticlopidine | HLA-DRB1*13:02 is associated with increased risk of Toxic liver disease when treated with ticlopidine. | yes | = 6.04E-7 | 14 | 85 | Toxicity |
+| 1185001497 | PMID:15784113 | aspirin | HLA-DRB1*13:02 is associated with increased risk of Urticaria when treated with aspirin. | yes | = 0.0006 | 94 | 185 | Toxicity |
+
+**HLA-DRB1*14:01 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1184471209 | PMID:24858023 | allopurinol | HLA-DRB1*14:01 is associated with increased risk of Drug Hypersensitivity when treated with allopurinol in people with Hematologic Neoplasms. | yes | = 0.038 | 13 | 440 | Toxicity |
+| 1448108840 | PMID:27206238 | — | HLA-DRB1*14:01 is not associated with increased risk of drug-induced liver injury. | no | = 0.5 | 207 | — | Toxicity |
+| 1184471196 | PMID:24858023 | allopurinol | HLA-DRB1*09:01 is associated with increased risk of Drug Hypersensitivity when exposed to allopurinol in people with Hematologic Neoplasms. | yes | = 0.019 | 13 | 440 | Toxicity |
+
+**HLA-DRB1*10:01 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1448926309 | PMCID:PMC5561238 | nevirapine | HLA-DRB1*10:01 is associated with Epidermal Necrolysis, Toxic, Stevens-Johnson Syndrome, DRESS and Severe Cutaneous Adverse Reactions when treated with nevirapine in people with HIV Infections. | not stated | — | 151 | 413 | Toxicity |
+| 1452230043 | PMCID:PMC8100096 | beta-lactam antibacterials, penicillins | HLA-DRB1*10:01 is associated with increased likelihood of Drug Hypersensitivity when treated with beta-lactam antibacterials, penicillins. | yes | = 6.0e-8 | 662 | 9217 | Toxicity |
+
+**HLA-DRB1*01:02 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1448926269 | PMCID:PMC5561238 | nevirapine | HLA-DRB1*01:02 is associated with Epidermal Necrolysis, Toxic, Stevens-Johnson Syndrome, DRESS or Severe Cutaneous Adverse Reactions when treated with nevirapine in people with HIV Infections. | not stated | — | 151 | 413 | Toxicity |
+| 1184468090 | PMCID:PMC3551216 | nevirapine | HLA-DRB1*01:02 is associated with increased risk of Toxic liver disease when treated with nevirapine in people with HIV Infections. | yes | = 0.044 | 51 | 102 | Toxicity |
+
+**HLA-DRB1*01:03 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1448926279 | PMCID:PMC5561238 | nevirapine | HLA-DRB1*01:03 is associated with Epidermal Necrolysis, Toxic, Stevens-Johnson Syndrome, DRESS or Severe Cutaneous Adverse Reactions when treated with nevirapine in people with HIV Infections. | not stated | — | 151 | 413 | Toxicity |
+
+**rs701829 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449752709 | PMID:29233746 | dapsone | Allele T is associated with increased risk of Drug Hypersensitivity due to dapsone as compared to allele C. | yes | = 3.29E-4 | 103 | 857 | Toxicity |
+
+**rs17211071 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449752736 | PMID:29233746 | dapsone | Allele A is associated with increased risk of Drug Hypersensitivity due to dapsone as compared to allele G. | yes | = 3.37E-4 | 103 | 857 | Toxicity |
+
+**rs201929247 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449752631 | PMID:29233746 | dapsone | Allele A is associated with increased risk of Drug Hypersensitivity due to dapsone as compared to allele G. | yes | = 3.29E-4 | 103 | 857 | Toxicity |
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген HLA-DRB1 не упоминается; альтернативные символы HLA-DR1B не упоминаются; препараты lapatinib, nevirapine, dapsone, allopurinol, carbamazepine, abacavir и др. отсутствуют в списке Drugs ни в одном руководстве.
+
+### 4.4 Рекомендации HLA-DRB1
+
+**Из OMIM (Molecular Genetics):**
+
+- Hill et al. (1991): HLA-Bw53 и гаплотип HLA class II DRB1*1302/DQB1*0501 независимо ассоциированы с защитой от тяжёлой малярии у детей Западной Африки.
+- Delgado et al. (1996): DQB1*0301 ассоциирован с буллёзным пемфигоидом, глазным рубцовым пемфигоидом и оральным пемфигоидом.
+- Petersdorf et al. (1995, 1996): несоответствие HLA-DRB1 между донором и реципиентом ассоциировано с повышенным риском острой реакции «трансплантат против хозяина» (GVHD) после неродственной трансплантации костного мозга. HLA-DQ также является трансплантационным антигеном.
+- Nishi et al. (1995), Hiroi et al. (1999): HLA-DRB1*1401 ассоциирован с неfamilial идиопатической кардиомиопатией у японцев; возможна синергия с гомозиготностью по V-аллелю SOD2.
+- Thursz et al. (1999): самокупирующаяся инфекция HCV ассоциирована с HLA-DRB1*1101 и DQB1*0301; персистирующая — с DRB1*0701 и DRB4*0101.
+- MacDonald et al. (2000): HLA-DRB1*0102 ассоциирован со сниженным риском сероконверсии HIV-1 у кенийских коммерческих секс-работниц.
+- Vyakarnam et al. (2004): гаплотип DRB1*15-DQB1*06 ассоциирован с более медленным снижением CD4 T-клеток при HIV-1.
+- Cooke and Hill (2001): DRB1*1302, *1352, *1101, *04 ассоциированы с резистентностью к гепатиту B, малярийной анемии, гепатиту C и тифоидной лихорадке соответственно; DR2 — с восприимчивостью к туберкулёзу и лепре; DR7 — с восприимчивостью к гепатиту B.
+- Moffatt et al. (2001): HLA-DRB1 ассоциирован с общим сывороточным IgE и титрами IgE против индивидуальных антигенов.
+- Lang et al. (2002): DRB1*1501-рестриктированный MBP (85-99) и DRB5*0101-рестриктированный EBV DNA polymerase peptide демонстрируют структурную эквивалентность, подтверждая молекулярную мимикрию при рассеянном склерозе.
+- Oksenberg et al. (2004): ассоциация с HLA-DRB1*15 при рассеянном склерозе у афроамериканцев независима от DQB1*0602.
+- International Multiple Sclerosis Genetics Consortium (2007): подтверждена ассоциация DRB1*1501 с рассеянным склерозом (p = 8.94 x 10^-81; OR 1.99).
+- Jawaheer et al. (2002): помимо DRB1, в MHC существуют как минимум 2 дополнительных генетических эффекта, ассоциированных с ревматоидным артритом.
+- Kallberg et al. (2007): взаимодействие между курением и HLA-DRB1 shared epitope alleles повышает риск anti-CCP-положительного ревматоидного артрита; взаимодействия с PTPN22 R620W не выявлено.
+- Scally et al. (2013): цитруллинирование, локус HLA-DRB1 и T-клеточная аутореактивность при ревматоидном артрите связаны.
+- Kotb et al. (2002): гаплотип DRB1*1501/DQB1*0602 ассоциирован с защитой от тяжёлой системной стрептококковой инфекции.
+- Moffatt et al. (2003): у аборигенов Австралии HLA-DRB1 объясняет 33% дисперсии общего сывороточного IgE и 17% дисперсии специфического IgE к HDM.
+- Gottenberg et al. (2003): при синдроме Шёгрена ассоциация с DRB1*03 и DQB1*02 ограничена пациентами с анти-SSA и/или анти-SSB антителами.
+- Goverdhan et al. (2005): Cw*0701 положительно, B*4001 и DRB1*1301 отрицательно ассоциированы с возрастной макулярной дегенерацией.
+- Chiaroni et al. (2006): HLA-DRB1*11 чаще, а DRB1*07 реже встречаются у пациентов с иммунизацией к антигену Kell.
+- Booth et al. (2006): DRB1*13 ассоциирован с более высокими IgE и IgG4 ответами на антигены S. mansoni после лечения празиквантелом и с более низкими показателями реинфекции.
+- Nejentsev et al. (2007): MHC class I гены HLA-B и HLA-A вносят вклад в этиологию диабета 1 типа в дополнение к HLA-DQB1 и HLA-DRB1.
+- Hoffmann et al. (2008): HLA-DRB1*0401 и *0408 сильно ассоциированы с развитием антител к интерферону-бета при лечении рассеянного склероза.
+- Nielsen et al. (2009): HY-рестриктирующие HLA class II аллели (DRB1*15, DQB1*0501/0502) снижают шанс живорождения у женщин с привычным невынашиванием и первым мальчиком.
+- Ramagopalan et al. (2009): в промоторе HLA-DRB1 идентифицирован витамин-D-ответный элемент (VDRE), консервативный на гаплотипах DRB1*15; 1,25-дигидроксивитамин D3 увеличивает экспрессию.
+- Li et al. (2009): DRB1*03 и DRB1*0701 ассоциированы с неответом на вакцинацию против гепатита B; DRB1*08 — с ответом.
+- Karp et al. (2010): комбинация остатков в пептид-связывающих карманах 4 (26F_28E) и 7 (67F_71R) HLA-DRB1 объясняет риск системной склеродермии.
+- International Multiple Sclerosis Genetics Consortium and Wellcome Trust Case Control Consortium 2 (2011): уточнены риск-аллели DRB1*15:01 и DRB1*13:03; подтверждён независимый защитный эффект HLA-A.
+- Foo et al. (2013): гексааллельный аминокислотный полиморфизм в позиции 13 экзона 2 HLA-DR beta chain ассоциирован с фолликулярной лимфомой; 4,2-кратная разница риска.
+- Hammer et al. (2015): варианты HLA-DRB1 ассоциированы с гуморальным ответом на вирусы гриппа A, Эпштейна-Барр, JC polyomavirus и Merkel cell polyomavirus.
+- Dunstan et al. (2014): HLA-DRB1*04:05 ассоциирован с резистентностью к энтерической лихорадке (OR 0.14).
+
+**Из OMIM (Evolution):**
+
+- Полиморфизм DRB1 существует не менее 30 млн лет и разделяется людьми, человекообразными обезьянами и другими приматами.
+- Ayala et al. (1994): полиморфизм DRB1 требует средней эффективной численности предковой популяции 100 000 особей на протяжении 30 млн лет; исключает теорию бутылочного горлышка до одной или нескольких женщин в Африке ~200 000 лет назад.
+- Bergstrom et al. (1998): большинство аллелей DRB1 возникли после разделения Homo и Pan (~4-7.4 млн лет назад); эффективный размер популяции ранних гоминид ~10 000 особей.
+- von Salome et al. (2007): большинство из более чем 400 аллелей HLA-DRB1 имеют недавнее происхождение; антиген-связывающие сайты имеют более древнее происхождение.
+
+**Из OMIM (Animal Model):**
+
+- Teshima et al. (2002): host APC, но не эпителиальные клетки, экспрессирующие class II аллоантигены, достаточны для индукции экспансии CD4+ T-клеток, секреции цитокинов и летальной острой GVHD. Блокада TNF и IL1B может блокировать эффекторную фазу острой GVHD.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 1 pediatric (rs17885382 / asparaginase / ALL) и 27 non-pediatric (HLA-DRB1*01:01, *15:02, *07:01, *03:01, *04:02, *01:02, *01:03, *04:04, *04:03, *10:01, *11:01, *09:01, *16:01, *13:02, *08:03, *04:01, *14:01, *08:01, *15:01; rs701829, rs17211071, rs201929247).
+- Variant Annotations: множество записей по аллелям HLA-DRB1 и rs-вариантам.
+- Drug Label Annotations: 5 записей для lapatinib (PMDA, Swissmedic, EMA, FDA, HCSC), все с участием HLA-DRB1.
+- FDA PGx Associations: 1 запись — lapatinib, HLA-DRB1*07:01, повышенный риск гепатотоксичности.
+- Уровень доказательности Summary Annotations — Level 2B и 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA35072, ClinVar (VCV004852601, VCV001696856, VCV000155430, VCV000625706, VCV000443497, VCV000443496), OMIM *142857, CPIC guidelines registry (29 guidelines, HLA-DRB1 отсутствует), PMID:15121303, PMID:15057902, PMID:11672906, PMID:11756990, PMID:10535882, PMID:20800921, PMID:21545408, PMID:22111603, PMID:2222133, PMID:24236482, PMID:24399721, PMID:24687830, PMID:24858023, PMID:25714001, PMID:26265235, PMID:27020477, PMID:27023328, PMID:27206238, PMID:27666425, PMID:28786423, PMID:29233746, PMID:32024945, PMID:32467566, PMID:32963330, PMID:33887993, PMID:34747637, PMID:36226442, PMID:36725456, PMID:37898586, PMID:38594174, PMID:39733427, PMID:40195278, PMID:40788345, PMID:41485482, PMID:42488961, PMID:9179433, PMID:19392989, PMID:19668019, PMID:20235791, PMID:20639878, PMID:21545408, PMID:23057546, PMID:25311255, PMID:26244882, PMID:26556688, PMID:27839692, PMID:38451034, PMID:38594174, PMCID:PMC10564446, PMCID:PMC11021981, PMCID:PMC11732454, PMCID:PMC11786012, PMCID:PMC12653957, PMCID:PMC1728095, PMCID:PMC1754569, PMCID:PMC2750008, PMCID:PMC2810514, PMCID:PMC3551216, PMCID:PMC3706603, PMCID:PMC4038630, PMCID:PMC4141516, PMCID:PMC4492197, PMCID:PMC4506516, PMCID:PMC4615595, PMCID:PMC4928097, PMCID:PMC5467955, PMCID:PMC554812, PMCID:PMC5561238, PMCID:PMC6379053, PMCID:PMC6511989, PMCID:PMC6817890, PMCID:PMC7299187, PMCID:PMC8100096, PMCID:PMC9363274, PMCID:PMC9974860, PMCID:PMC10189794, PMCID:PMC10502099, PMCID:PMC10546186, PMCID:PMC10741656, PMCID:PMC10957942, PMCID:PMC11954710, PMCID:PMC13028346, PMCID:PMC8953705, PMCID:PMC9820603, PMCID:PMC11404698, PMCID:PMC12308240, PMCID:PMC7485556, PMCID:PMC7045476, PMCID:PMC6021962, PMCID:PMC5908896, PMCID:PMC4864175, PMCID:PMC4364852, PMCID:PMC4366259, PMCID:PMC4557995, PMCID:PMC5088582, PMCID:PMC11144121, PMCID:PMC3513412, PMCID:PMC2670196, PMCID:PMC3237821, PMCID:PMC5642896, PMCID:PMC7305826, PMCID:PMC7266722, PMCID:PMC9820603, PMCID:PMC12115323, PMCID:PMC5396189, PMCID:PMC10905650.*
+## ГЕН 5: NLRP3 — NLR Family Pyrin Domain Containing 3
+
+### 5.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | NLR family pyrin domain containing 3 |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *606416 |
+| OMIM Disease | 607115 (CINCA syndrome, AD); 617772 (Deafness, autosomal dominant 34, with or without inflammation, AD); 120100 (Familial cold inflammatory syndrome 1, AD); 148200 (Keratoendotheliitis fugax hereditaria, AD); 191900 (Muckle-Wells syndrome, AD) |
+| PharmGKB ID | PA26512 |
+| HGNC Approved Gene Symbol | NLRP3 |
+| Альтернативные названия | Cryopyrin; NLR family, pyrin domain containing 3; nucleotide-binding oligomerization domain, leucine rich repeat and pyrin domain containing 3 |
+| Альтернативные символы | AGTAVPRL; AII; AVP; C1orf7; CIAS1; CLR1.1; DFNA34; FCAS; FCU; MWS; NALP3; PYPAF1 |
+| Локация | 1q44 (плюсовая цепь); GRCh37: chr1:247,579,247-247,612,410; GRCh38: chr1:247,416,156-247,449,108 |
+| Структура гена | 9 экзонов; открытая рамка считывания 3 105 bp; 2 потенциальных старт-кодона в экзоне 1; стоп-кодон в экзоне 9. Экстенсивный альтернативный сплайсинг экзонов 4–8. Полноразмерный белок (cryopyrin) — 920 аминокислот, 105.7 кД; содержит пириновый домен (аминокислоты 13–83), центральный NBS/NACHT-домен (аминокислоты 217–533) и C-концевой LRR-домен с 7 лейцин-богатыми повторами (аминокислоты 697–920) (Hoffman et al., 2001) |
+| Функция | Кодирует пирин-подобный белок, экспрессируемый преимущественно в периферических лейкоцитах (Hoffman et al., 2001). Ключевой компонент NLRP3-инфламмасомы, активирующей CASP1 и процессинг pro-IL1B до активного IL1B, а также IL18. Активируется различными стимулами: ATP, нигерицин, майтотоксин, кристаллы мочевой кислоты (MSU), CPPD, холестерин, асбест, кремний, бактериальная РНК, ДНК, вирусные стимулы, грибковые патогены (Candida albicans), алюминиевые адъюванты. Образует комплекс с ASC (PYCARD), CARD8, CASP1. Участвует в патогенезе аутовоспалительных синдромов (CAPS), подагры, атеросклероза, болезни Альцгеймера, ожирения и инсулинорезистентности, ревматоидного артрита, возрастной макулярной дегенерации |
+| Ключевые варианты | A439V (rs121908146); V198M; E627G; A352V (rs121908149); R260W (rs121908150); G569R (rs121908151); F573S (rs121908152); D303N (rs121908153); F309S (rs121908154); L353P (rs28937896); R918Q; D21H (rs200154873); rs4612666; rs10754558 |
+
+### 5.2 Варианты NLRP3
+
+**Pathogenic / Likely pathogenic варианты (ClinVar, внутригенные):**
+
+| # | HGVS | Белок | Тип | Классификация | Условие | Variation ID | dbSNP |
+|---|---|---|---|---|---|---|---|
+| 1 | NM_001243133.2(NLRP3):c.29G>T | p.Arg10Met | missense | Pathogenic | Cerebral arteriovenous malformation | VCV002691257 | rs2103083622 |
+| 2 | NM_001243133.2(NLRP3):c.55G>C | p.Asp19His | missense | Pathogenic/Likely pathogenic | Keratitis fugax hereditaria; NLRP3-related disorder | VCV000495298 | rs200154873 |
+| 3 | NM_001243133.2(NLRP3):c.778_780delinsTGG | p.Arg260Trp | Indel | Pathogenic/Likely pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV001701129 | rs2103107063 |
+| 4 | NM_001243133.2(NLRP3):c.778C>T | p.Arg260Ter | nonsense | Pathogenic | NLRP3-related disorder; CAPS; Autoinflammatory syndrome; not provided | VCV000004374 | rs121908150 |
+| 5 | NM_001243133.2(NLRP3):c.779_780delinsCG | p.Arg260Pro | Indel | Pathogenic | Cryopyrin associated periodic syndrome | VCV002029953 | rs2527260044 |
+| 6 | NM_001243133.2(NLRP3):c.902G>A | p.Gly301Asp | missense | Pathogenic/Likely pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV000097978 | rs180177441 |
+| 7 | NM_001243133.2(NLRP3):c.905T>G | p.Phe302Cys | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000837881 | rs1662701151 |
+| 8 | NM_001243133.2(NLRP3):c.907G>C | p.Asp303His | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000097979 | rs121908153 |
+| 9 | NM_001243133.2(NLRP3):c.907G>A | p.Asp303Asn | missense | Pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV000004377 | rs121908153 |
+| 10 | NM_001243133.2(NLRP3):c.908A>G | p.Asp303Gly | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000097980 | rs180177447 |
+| 11 | NM_001243133.2(NLRP3):c.910G>A | p.Glu304Lys | missense | Pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV000097981 | rs180177484 |
+| 12 | NM_001243133.2(NLRP3):c.914T>C | p.Leu305Pro | missense | Pathogenic/Likely pathogenic | Autoinflammatory syndrome; CAPS; not provided | VCV000097982 | rs180177431 |
+| 13 | NM_001243133.2(NLRP3):c.920G>T | p.Gly307Val | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000097985 | rs180177468 |
+| 14 | NM_001243133.2(NLRP3):c.926T>C | p.Phe309Ser | missense | Pathogenic | Chronic infantile neurological, cutaneous and articular syndrome | VCV000004378 | rs121908154 |
+| 15 | NM_001243133.2(NLRP3):c.931G>A | p.Glu311Lys | missense | Pathogenic | NLRP3-related disorder; Familial amyloid nephropathy with urticaria AND deafness; Familial cold autoinflammatory syndrome 1; Keratitis fugax hereditaria; Hearing loss, autosomal dominant 34; CINCA; CAPS; not provided | VCV000097987 | rs180177470 |
+| 16 | NM_001243133.2(NLRP3):c.977G>A | p.Gly326Glu | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000097992 | rs180177456 |
+| 17 | NM_001243133.2(NLRP3):c.1043C>T | p.Thr348Met | missense | Pathogenic | Autoinflammatory syndrome; NLRP3-related disorder; CAPS; Familial amyloid nephropathy with urticaria AND deafness; CINCA; not provided | VCV000097909 | rs151344629 |
+| 18 | NM_001243133.2(NLRP3):c.1055C>T | p.Ala352Val | missense | Pathogenic/Likely pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV000004373 | rs121908149 |
+| 19 | NM_001243133.2(NLRP3):c.1058T>C | p.Leu353Pro | missense | Pathogenic | NLRP3-related disorder; CAPS; Hearing loss, autosomal dominant 34; Familial cold autoinflammatory syndrome 1; Familial amyloid nephropathy with urticaria AND deafness; Keratitis fugax hereditaria; CINCA; not specified; not provided | VCV000004379 | rs28937896 |
+| 20 | NM_001243133.2(NLRP3):c.1065A>C | p.Lys355Asn | missense | Pathogenic | not provided | VCV000429285 | rs1131691298 |
+| 21 | NM_001243133.2(NLRP3):c.1213A>C | p.Thr405Pro | missense | Pathogenic/Likely pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV000097916 | rs180177445 |
+| 22 | NM_001243133.2(NLRP3):c.1217T>C | p.Met406Thr | missense | Pathogenic | not provided; Cryopyrin associated periodic syndrome | VCV000849794 | rs1662731815 |
+| 23 | NM_001243133.2(NLRP3):c.1305G>C | p.Lys435Asn | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV002109144 | rs1553286808 |
+| 24 | NM_001243133.2(NLRP3):c.1307C>T | p.Thr436Ile | missense | Pathogenic/Likely pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV000097924 | rs180177433 |
+| 25 | NM_001243133.2(NLRP3):c.1315G>A | p.Ala439Thr | missense | Pathogenic/Likely pathogenic | Cryopyrin associated periodic syndrome; not provided | VCV000097925 | rs180177430 |
+| 26 | NM_001243133.2(NLRP3):c.1316C>T | p.Ala439Val | missense | Pathogenic/Likely pathogenic | NLRP3-related disorder; Autoinflammatory syndrome; CAPS; Familial amyloid nephropathy with urticaria AND deafness; Familial cold autoinflammatory syndrome 1; Keratitis fugax hereditaria; Hearing loss, autosomal dominant 34; CINCA; not provided | VCV000004370 | rs121908146 |
+| 27 | NM_001243133.2(NLRP3):c.1568T>G | p.Phe523Cys | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000097936 | rs180177478 |
+| 28 | NM_001243133.2(NLRP3):c.1573G>A | p.Glu525Lys | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000097939 | rs180177458 |
+| 29 | NM_001243133.2(NLRP3):c.1698C>G | p.Phe566Leu | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV003633876 | не предоставлено |
+| 30 | NM_001243133.2(NLRP3):c.1699G>A | p.Glu567Lys | missense | Pathogenic/Likely pathogenic | Cryopyrin associated periodic syndrome; not provided; Familial cold autoinflammatory syndrome 1 | VCV000097944 | rs104895389 |
+| 31 | NM_001243133.2(NLRP3):c.1705G>A | p.Gly569Arg | missense | Pathogenic | not provided | VCV000234301 | rs121908151 |
+| 32 | NM_001243133.2(NLRP3):c.1706G>C | p.Gly569Ala | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000097945 | rs180177491 |
+| 33 | NM_001243133.2(NLRP3):c.1709A>G | p.Tyr570Cys | missense | Pathogenic | not provided | VCV000097946 | rs180177438 |
+| 34 | NM_001243133.2(NLRP3):c.1718T>C | p.Phe573Ser | missense | Pathogenic | Chronic infantile neurological, cutaneous and articular syndrome | VCV000004376 | rs121908152 |
+| 35 | NM_001243133.2(NLRP3):c.1976T>G | p.Met659Arg | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV000643124 | rs180177457 |
+| 36 | NM_001243133.2(NLRP3):c.2263G>A | p.Gly755Arg | missense | Pathogenic | Cryopyrin associated periodic syndrome | VCV002203018 | rs180177469 |
+| 37 | NM_001243133.2(NLRP3):c.2575T>C | p.Tyr859His | missense | Pathogenic/Likely pathogenic | Familial amyloid nephropathy with urticaria AND deafness; Hearing loss, autosomal dominant 34; Familial cold autoinflammatory syndrome 1; CINCA; Keratitis fugax hereditaria; not provided; CAPS | VCV001188124 | rs2103174031 |
+| 38 | NM_001243133.2(NLRP3):c.2576A>G | p.Tyr859Cys | missense | Pathogenic/Likely pathogenic | CINCA; Familial amyloid nephropathy with urticaria AND deafness; Hearing loss, autosomal dominant 34; Familial cold autoinflammatory syndrome 1; Keratitis fugax hereditaria; not provided | VCV000097960 | rs180177452 |
+
+**Pathogenic / Likely pathogenic варианты (ClinVar, крупные CNV):**
+
+Помимо 38 внутригенных вариантов, в ClinVar содержится более 40 крупных структурных перестроек (copy number gain / copy number loss / Deletion / Inversion), захватывающих регион 1q31.1–q44 и прилегающие цитогенетические локусы, с классификацией Pathogenic. Часть из них имеет условие «Intellectual disability, autosomal dominant 22». Детальные страницы предоставлены по вариантам с Variation ID: 4888392, 155660, 58116, 145652, 57302, 57010, 146575, 58133, 58135, 148701, 58137, 154381, 147487, 148480, 154451, 4755339, 151321, 155307, 144759, 145361, 60149, 60150, 2582785, 58142, 148185, 60151, 60152, 60154, 151131, 59654, 148071, 2579272, 60187, 146306, 144382, 2691257, 495298, 1701129, 4374, 2029953, 97978, 837881, 97979, 4377, 97980, 97981, 97982, 97985, 4378, 97987, 97992, 97909, 4373, 4379, 429285, 97916, 849794, 2109144, 97924, 97925, 4370, 97936, 97939, 3633876, 97944, 234301, 97945, 97946, 4376, 643124, 2203018, 1188124, 97960, 4884755, 4682508, 3391873, 2685840, 2498455, 1809372, 1808659, 1807822, 1711168, 1710923, 1708464, 929379, 816482, 689213, 687454, 685476, 685153, 685144, 565250, 565241, 565232, 565225, 442726, 442387, 442386, 441937, 441866, 395294, 394081, 393997, 253636, 253547.
+
+**Allelic Variants (OMIM, 12 selected examples):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | NLRP3, ALA439VAL (A439V) | Familial cold autoinflammatory syndrome 1 (FCAS1; 120100) | C-to-T транзиция в нуклеотиде 1316 экзона 3 (Hoffman et al., 2001) |
+| .0002 | NLRP3, VAL198MET (V198M) | Familial cold autoinflammatory syndrome 1 (FCAS1; 120100) | G-to-A транзиция в нуклеотиде 592 экзона 3 (Hoffman et al., 2001) |
+| .0003 | NLRP3, GLU627GLY (E627G) | Familial cold autoinflammatory syndrome 1 (FCAS1; 120100) | A-to-G транзиция в нуклеотиде 1880 экзона 3 (Hoffman et al., 2001) |
+| .0004 | NLRP3, ALA352VAL (A352V) | Muckle-Wells syndrome (MWS; 191900) | C-to-T транзиция в нуклеотиде 1055 экзона 3 (Hoffman et al., 2001) |
+| .0005 | NLRP3, ARG260TRP (R260W) | Muckle-Wells syndrome (MWS; 191900); Familial cold autoinflammatory syndrome 1 (FCAS1; 120100) | Гетерозиготная мутация в CIAS1 обнаружена в 2 семьях с MWS и 2 семьях с FCAS1 разного этнического происхождения; одна мутация может вызывать оба синдрома (Dode et al., 2002) |
+| .0006 | NLRP3, GLY569ARG (G569R) | Muckle-Wells syndrome (MWS; 191900) | Описана в английской семье, где только 1 член был поражён; мать имела ту же мутацию, но была асимптомной (Dode et al., 2002) |
+| .0007 | NLRP3, PHE573SER (F573S) | CINCA syndrome (CINCA; 607115) | T-to-C транзиция в нуклеотиде 1718; неонатальное начало, кожные lesions, хронический менингит, воспаление суставов, поражение сенсорных органов, дисморфизм (Feldmann et al., 2002) |
+| .0008 | NLRP3, ASP303ASN (D303N) | CINCA syndrome (607115); Muckle-Wells syndrome (191900) | G-to-A транзиция в нуклеотиде 907; у девочки с CINCA (Feldmann et al., 2002) и у пациента с MWS (Dode et al., 2002) |
+| .0009 | NLRP3, PHE309SER (F309S) | CINCA syndrome (CINCA; 607115) | T-to-C транзиция в нуклеотиде 926; неонатальное начало, кожные lesions, хронический менингит, воспаление суставов, радиологически тяжёлая артропатия, поражение сенсорных органов, дисморфизм (Feldmann et al., 2002) |
+| .0010 | NLRP3, LEU353PRO (L353P) | Familial cold autoinflammatory syndrome 1 (FCAS1; 120100) | Гетерозиготная 1058T-C транзиция в экзоне 3; 3 из 4 семей имели общий гаплотип 40 cM (Hoffman et al., 2003) |
+| .0011 | NLRP3, ARG918GLN (R918Q) | Deafness, autosomal dominant 34, with or without inflammation (DFNA34; 617772) | Гетерозиготная c.2753G-A транзиция в экзоне 7; консервативный остаток в LRR-домене; повышена секреция IL1B в ответ на LPS (Nakanishi et al., 2017) |
+| .0012 | NLRP3, ASP21HIS (D21H) | Keratoendotheliitis fugax hereditaria (KEFH; 148200) | Гетерозиготная c.61G-C трансверсия в экзоне 1; высоко консервативный остаток; MAF в SISu 0.023%, ExAC non-Finnish European 0.0090% (Turunen et al., 2018) |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | не предоставлено (итоговая цифра не указана; в выдаче — 21+ внутригенных + множество CNV) |
+| Likely pathogenic | не предоставлено |
+| Uncertain significance | не предоставлено |
+| Likely benign | не предоставлено |
+| Benign | не предоставлено |
+| Conflicting | не предоставлено |
+| Всего (без фильтра) | не предоставлено |
+
+### 5.3 Фармакогенетика NLRP3
+
+**Summary Annotations (ClinPGx):**
+
+Не предоставлено (0 записей).
+
+**Pediatric Clinical Annotations (ClinPGx):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+Нет педиатрических вариантных аннотаций.
+
+**Non-Pediatric Clinical Annotations (ClinPGx):**
+
+Нет непедиатрических клинических аннотаций.
+
+**Non-Pediatric Variant Annotations (ClinPGx, 2 записи):**
+
+**rs4612666 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1452143400 | PMCID:PMC10275785 | etanercept; infliximab | Genotype TT is associated with decreased response to etanercept or infliximab in people with Arthritis, Rheumatoid as compared to genotypes CC + CT. More Details: Responders = ΔDAS-28 ≥ 1.2 and DAS-28 ≤ 3.2, Non-responders = ΔDAS-28 ≤ 1.2 and DAS28 ≤ 5.1 (Table 1) | yes | < 0.0001 | 66 | 33 | Efficacy |
+
+**rs10754558 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1448604207 | PMID:28139755 | Tumor necrosis factor alpha (TNF-alpha) inhibitors | Genotypes CG + GG is associated with increased response to Tumor necrosis factor alpha (TNF-alpha) inhibitors in people with Inflammatory Bowel Diseases as compared to genotype CC. More Details: When comparing responders vs. non-responders. However, no significant association was seen when comparing the GG vs CC genotype. Additionally, no association was seen for any genotype when considering responders vs. non- and partial-responders. | yes | = 0.04 | 738 | не предоставлено | Efficacy |
+
+Biogeographical Groups: Near Eastern (для rs4612666); Unknown (для rs10754558).
+
+**Drug Label Annotations (ClinPGx, 3 записи):**
+
+| ID | Source | Title | Genes | Drugs |
+|---|---|---|---|---|
+| PA166337861 | EMA | Annotation of EMA Drug Label for anakinra and NLRP3 | NLRP3 | anakinra |
+| PA166347161 | FDA | Annotation of FDA Drug Label for anakinra and NLRP3 | NLRP3 | anakinra |
+| PA166337841 | HCSC | Annotation of HCSC Drug Label for anakinra and NLRP3 | NLRP3 | anakinra |
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген NLRP3 не упоминается; альтернативные символы CIAS1, NALP3, PYPAF1, cryopyrin не упоминаются; препарат anakinra отсутствует в списке Drugs ни в одном руководстве.
+
+### 5.4 Рекомендации NLRP3
+
+**Из OMIM (Description / Gene Function):**
+
+- NLRP3 кодирует пирин-подобный белок, экспрессируемый преимущественно в периферических лейкоцитах (Hoffman et al., 2001).
+- Ключевой компонент NLRP3-инфламмасомы, активирующей CASP1 и процессинг pro-IL1B до активного IL1B, а также IL18.
+- NALP3 образует инфламмасому с ASC (PYCARD; 606838), CARD8 (609051), CASP1 (147678), что ведёт к активации CASP1 и сильному процессингу pro-IL1B (Agostini et al., 2004).
+- Кристаллы MSU и CPPD (подагра, псевдоподагра) активируют NALP3-инфламмасому с продукцией IL1B и IL18 (Martinon et al., 2006).
+- Cryopyrin необходим для активации CASP1 и продукции IL1B/IL18 в ответ на бактериальную РНК и имидазохинолины R837/R848 (Kanneganti et al., 2006).
+- Cryopyrin необходим для активации инфламмасомы в ответ на ATP, нигерицин, майтотоксин, S. aureus, L. monocytogenes (Mariathasan et al., 2006).
+- NALP3 связывает ATP/dATP, обладает ATP-азной активностью (Duncan et al., 2007).
+- NALP3 распознаёт асбест и кремний, активируя IL1B-секрецию; активация зависит от ROS, генерируемых NADPH-оксидазой (Dostert et al., 2008).
+- Алюминиевые адъюванты активируют Nalp3-инфламмасому, необходимую для продукции антител (Eisenbarth et al., 2008).
+- Nlrp3-инфламмасома участвует в защите от грибковых инфекций (Candida albicans) — Gross et al. (2009), Hise et al. (2009).
+- Nlrp3-инфламмасома участвует в патогенезе подагры, атеросклероза (кристаллы холестерина), болезни Альцгеймера (тау-патология), ожирения и инсулинорезистентности, возрастной макулярной дегенерации, ревматоидного артрита (Vande Walle et al., 2014), инфекции M. tuberculosis, гриппа, атеросклероза.
+- NLRP3-инфламмасома участвует в адаптивном Th1-ответе через комплемент-зависимый механизм в CD4+ T-клетках (Arbore et al., 2016).
+- NEK7 (606848) — NLRP3-связывающий белок, регулирующий олигомеризацию и активацию NLRP3 (He et al., 2016; Sharif et al., 2019).
+- NLRP3-инфламмасома контролирует секрецию galectin-3 (LGALS3; 153619), что усиливает инсулинорезистентность (Chen et al., 2019).
+- Пальмитоилирование NLRP3 (ZDHHC12, 621348) способствует лизосомальной деградации NLRP3 через шаперон-опосредованную аутофагию (Wang et al., 2023).
+- ABHD8 (621036) взаимодействует с NLRP3 и способствует его лизосомальной деградации (Yang et al., 2025).
+
+**Из OMIM (Molecular Genetics):**
+
+- Hoffman et al. (2001): идентифицированы 4 миссенс-мутации в экзоне 3 CIAS1 в 3 семьях с FCAS1 и 1 семье с MWS.
+- Dode et al. (2002): идентифицированы мутации CIAS1 в 9 семьях с MWS и 3 семьях с FCAS1 (Франция, Англия, Алжир). Мутация R260W идентифицирована в 2 семьях с MWS и 2 семьях с FCAS1, что демонстрирует, что одна мутация может вызывать оба синдрома. Мутация G569R идентифицирована у асимптомных индивидов.
+- Feldmann et al. (2002): идентифицированы гетерозиготные миссенс-мутации CIAS1 у поражённых членов 7 семей с CINCA-синдромом. Высокий уровень экспрессии CIAS1 ограничен полиморфноядерными клетками и хондроцитами.
+- Aksentijevich et al. (2002): в 6 из 13 пациентов с CINCA-синдромом идентифицированы мутации CIAS1 (гетерозиготные миссенс в экзоне 3), в 4 случаях — de novo.
+- Hoffman et al. (2003): в 4 больших североамериканских семьях с FCAS1 идентифицирована мутация L353P в экзоне 3 CIAS1. Все ранее описанные мутации CIAS1 локализованы в экзоне 3 (центральный NBS-домен).
+- Neven et al. (2004): в 13 неродственных пациентах с CINCA идентифицированы 7 новых мутаций CIAS1. Идентифицированы горячие точки мутаций. Все мутации — миссенс в экзоне 3. Почти 50 независимых мутаций CIAS1 охарактеризовано к тому времени.
+- Villani et al. (2009): SNP в предсказанном регуляторном регионе хромосомы 1q44 ниже NLRP3 ассоциированы с болезнью Крона. В комбинированном анализе всех образцов (710 трио отец-мать-ребёнок, 239 случаев, 107 контролей) SNP strongly associated с риском болезни Крона (P combined = 3.49 x 10^-9, OR = 1.78 для rs10733113). Риск-аллель rs6672995 (G) ассоциирован со снижением LPS-индуцированной продукции IL1B; риск-аллель rs4353135 (T) — со снижением базовой экспрессии NLRP3.
+- Eklund et al. (2014): у индивидов с комбинированными вариантами NLRP3 (M299V или Q705K) и CARD8 (C10X) наблюдалось ограничение роста M. tuberculosis в макрофагах, конститутивная секреция IL1B, повышенный уровень IL1B после инфекции, усиленная CD63-положительная фаголизосомальная фузия.
+
+**Из OMIM (Animal Model):**
+
+- Meng et al. (2009): мыши с мутацией R258W в Nlrp3 (эквивалент человеческой R260W) имитируют MWS, демонстрируя гиперактивацию инфламмасомы и Th17-доминантную иммунопатологию.
+- Thomas et al. (2009): мыши, лишённые Casp1 или Nlrp3, exhibited significantly increased morbidity в ответ на инфекцию вирусом гриппа.
+- Hise et al. (2009): Tlr2, dectin-1 и Nlrp3-инфламмасома необходимы для защиты от диссеминированной инфекции Candida albicans.
+- Ritter et al. (2010): Nlrp3 играет ключевую роль во время инфекции S. mansoni, регулируя продукцию IL1B и адаптивные иммунные ответы.
+- Heneka et al. (2013): Nlrp3-null или Casp1-null мыши с мутациями, ассоциированными с семейной болезнью Альцгеймера, были в значительной степени защищены от потери пространственной памяти; NLRP3-дефицит способствовал M2-фенотипу микроглии и уменьшал отложение амилоида-бета в модели APP/PS1.
+- Chenery et al. (2019): Nlrp3-/- мыши exhibited elevated recruitment of early innate immune cells to lung during Nippostrongylus infection, leading to protective innate immune responses in lung, as well as enhanced type-2 effector response in intestine.
+- Ahn et al. (2019): летучие мыши толерантны к высоким вирусным нагрузкам благодаря ослабленному воспалительному ответу через сниженную активацию Nlrp3; в геноме летучих мышей обнаружен экзон-7-скиппинговый сплайс-вариант.
+- Ising et al. (2019): потеря функции Nlrp3-инфламмасомы уменьшала гиперфосфорилирование и агрегацию тау; тау активировал Nlrp3-инфламмасому; интрацеребральная инъекция фибриллярного амилоида-бета индуцировала тау-патологию Nlrp3-зависимым образом.
+- Li et al. (2020): свиньи, гомозиготные по gain-of-function мутации R259W в Nlrp3 (эквивалент человеческой R260W), exhibited симптомы, сходные с CAPS; часть погибла; у выживших — системное воспаление, более слабый набор веса.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 0 записей.
+- Pediatric Clinical Annotations: нет.
+- Pediatric Variant Annotations: нет.
+- Non-Pediatric Clinical Annotations: нет.
+- Non-Pediatric Variant Annotations: 2 записи — rs4612666 / etanercept, infliximab / P < 0.0001 / Efficacy (RA, Near Eastern); rs10754558 / TNF-alpha inhibitors / P = 0.04 / Efficacy (IBD, Unknown).
+- Drug Label Annotations: 3 записи для anakinra (EMA, FDA, HCSC).
+- Уровень доказательности: не предоставлено для Summary Annotations (0 записей); Variant Annotations — без указания уровня.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA26512, ClinVar (Variation ID: 2691257, 495298, 1701129, 4374, 2029953, 97978, 837881, 97979, 4377, 97980, 97981, 97982, 97985, 4378, 97987, 97992, 97909, 4373, 4379, 429285, 97916, 849794, 2109144, 97924, 97925, 4370, 97936, 97939, 3633876, 97944, 234301, 97945, 97946, 4376, 643124, 2203018, 1188124, 97960, а также CNV с Variation ID: 4888392, 155660, 58116, 145652, 57302, 57010, 146575, 58133, 58135, 148701, 58137, 154381, 147487, 148480, 154451, 4755339, 151321, 155307, 144759, 145361, 60149, 60150, 2582785, 58142, 148185, 60151, 60152, 60154, 151131, 59654, 148071, 2579272, 60187, 146306, 144382, 4884755, 4682508, 3391873, 2685840, 2498455, 1809372, 1808659, 1807822, 1711168, 1710923, 1708464, 929379, 816482, 689213, 687454, 685476, 685153, 685144, 565250, 565241, 565232, 565225, 442726, 442387, 442386, 441937, 441866, 395294, 394081, 393997, 253636, 253547), OMIM *606416, CPIC guidelines registry (29 guidelines, NLRP3 отсутствует), PMID:11687797, PMID:11992256, PMID:12032915, PMID:12483741, PMID:12522564, PMID:15030775, PMID:16407888, PMID:16407889, PMID:16407890, PMID:17483456, PMID:18288107, PMID:18403674, PMID:18496530, PMID:19098911, PMID:19339971, PMID:19362020, PMID:19362023, PMID:19454352, PMID:19501001, PMID:20428172, PMID:20947763, PMID:21124315, PMID:21217695, PMID:21876553, PMID:22484808, PMID:22541070, PMID:22819539, PMID:23143333, PMID:23160153, PMID:23254930, PMID:24158955, PMID:25043000, PMID:25271165, PMID:26538395, PMID:26814970, PMID:28847925, PMID:28953873, PMID:29366613, PMID:30046112, PMID:30487600, PMID:30777924, PMID:30804542, PMID:31189953, PMID:31511697, PMID:31586037, PMID:31748742, PMID:32958688, PMID:32943500, PMID:35025664, PMID:36586411, PMID:39225180, PMCID:PMC10275785, PMID:28139755.*
+## ГЕН 3: CRP — C-Reactive Protein
+
+### 3.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | C-reactive protein, pentraxin-related |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *123260 |
+| OMIM Disease | не предоставлено |
+| PharmGKB ID | PA120 |
+| HGNC Approved Gene Symbol | CRP |
+| Альтернативные названия | C-reactive protein, pentraxin-related; pentraxin 1, short; PTX1 |
+| Альтернативные символы | PTX1 |
+| Локация | 1q23.2 (минусовая цепь); GRCh37: chr1:159,682,079-159,684,396; GRCh38: chr1:159,712,289-159,714,623 |
+| Структура гена | не предоставлено |
+| Функция | CRP — белок острой фазы, член семейства пентраксинов. Состоит из 5 идентичных субъединиц с молекулярной массой 21 500. Синтезируется в печени; концентрация в плазме может возрастать в 1000 раз и более после повреждения тканей или воспаления. Функция CRP связана со способностью распознавать чужеродные патогены и повреждённые клетки хозяина и инициировать их элиминацию путём взаимодействия с гуморальными и клеточными эффекторными системами крови. Обладает как распознающей, так и эффекторной функцией (Kilpatrick and Volanakis, 1991). Связывается с хроматином с высокой аффинностью, действуя как «мусорщик» для хроматина, высвобождаемого мёртвыми клетками (Robey et al., 1984). IL6 (147620) и TNFA (191160) — основные индукторы секреции CRP в печени. |
+| Ключевые варианты | rs1205; rs1130864; rs1417938; rs3091244; rs3093059; rs2794521; rs1800947 |
+
+### 3.2 Варианты CRP
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+Все варианты с классификацией Pathogenic по гену CRP — крупные структурные перестройки (copy number gain / copy number loss), захватывающие регион 1q21.1–q44 и прилегающие цитогенетические локусы. Коротких внутригенных вариантов CRP (missense, nonsense, frameshift, splice site, UTR, ncRNA) с классификацией Pathogenic / Likely pathogenic в ClinVar не обнаружено.
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 1q21.1-25.3(chr1:143550435-185515177)x3 | copy number gain | Pathogenic | See cases |
+| 2 | GRCh38/hg38 1q21.2-25.2(chr1:149854269-180267197)x3 | copy number gain | Pathogenic | See cases |
+| 3 | GRCh38/hg38 1q23.1-25.1(chr1:157747246-176021247)x3 | copy number gain | Pathogenic | See cases |
+| 4 | GRCh38/hg38 1q23.2-24.1(chr1:159479887-166895086)x1 | copy number loss | Pathogenic | See cases |
+| 5 | GRCh37/hg19 1q21.1-44(chr1:143932350-249224684)x3 | copy number gain | Pathogenic | not provided |
+| 6 | GRCh37/hg19 1q23.1-24.2(chr1:157321299-167391423)x1 | copy number loss | Pathogenic | not provided |
+| 7 | GRCh37/hg19 1p36.33-q44(chr1:849467-249224684) | copy number gain | Pathogenic | See cases |
+| 8 | GRCh37/hg19 1p36.33-q44(chr1:849467-249224684)x3 | copy number gain | Pathogenic | See cases |
+
+**Allelic Variants (OMIM):**
+
+Не предоставлено (в OMIM для CRP раздел Allelic Variants отсутствует).
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 8 |
+| Likely pathogenic | 0 |
+| Uncertain significance | не предоставлено |
+| Likely benign | не предоставлено |
+| Benign | не предоставлено |
+| Conflicting | не предоставлено |
+| Всего (без фильтра) | не предоставлено |
+
+### 3.3 Фармакогенетика CRP
+
+**Summary Annotations (ClinPGx, 4 записи, все Level 3):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1448100404 | 3 | rs1130864 | adalimumab | Efficacy | — |
+| 1183601914 | 3 | rs3091244 | fenofibrate | Efficacy | Metabolic Syndrome |
+| 1448104022 | 3 | rs1205 | rosuvastatin | Efficacy | Coronary Disease |
+| 1183614706 | 3 | rs1417938 | fenofibrate | Efficacy | Metabolic Syndrome |
+
+**Pediatric Clinical Annotations (ClinPGx):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+Нет педиатрических вариантных аннотаций.
+
+**Non-Pediatric Variant Annotations (ClinPGx) — сводка по вариантам:**
+
+**rs1205 — 4 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 981482057 | PMID:21094359 | rosuvastatin | Genotypes CT + TT are associated with decreased plasma level of high-sensitivity C-reactive protein when treated with rosuvastatin in people with Coronary Disease as compared to genotype CC. More Details: Plasma level of high-sensitivity C-reactive protein can be a predictor of cardiovascular outcome. | yes | < 0.007 | 259 | не предоставлено | Efficacy, Metabolism/PK, Other |
+| 982044434 | PMCID:PMC4615595 | fenofibrate | Genotype CC is not associated with response to fenofibrate in people with Metabolic Syndrome as compared to genotypes CT + TT. More Details: No significant difference in the change of C-reactive protein (CRP) levels between baseline and 3 weeks of treatment, was seen between genotypes. In strong linkage disequilibrium with rs3091244 and rs1417938 (r2 = 0.4 - 0.9, p < 0.001) and in weak linkage disequilibrium with rs3093059 (r2 = 0.17, p < 0.05). | no | = 0.147 | 290 | не предоставлено | Efficacy |
+| 1444608327 | PMID:24602049 | warfarin | Genotypes CT + TT is associated with increased risk of Hemorrhage when treated with warfarin as compared to genotype CC. More Details: in patients with mechanical cardiac valves who were on warfarin anticoagulation therapy and maintained INR levels of 2.0–3.0 for 3 consecutive time intervals. | yes | = 0.014 | 142 | не предоставлено | Toxicity |
+| 827836696 | PMID:20538124 | Antiinflammatory agents, non-steroids | Genotypes CT + TT are associated with increased likelihood of Acute coronary syndrome when exposed to Antiinflammatory agents, non-steroids in people with Acute coronary syndrome as compared to genotype CC. More Details: this variant was also significant when tested in a subset of coxib exposed patients and with both dominant and recessive models. Study was case-only comparing patients with ACS who had been exposed to NSAIDs vs no NSAIDs. Low dose aspirin (less than 325mg) was not included as NSAID exposure. | yes | = 0.023 | 90 | 264 | Toxicity |
+
+**rs1130864 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1447988304 | PMID:27096233 | adalimumab | Genotypes AG + GG are associated with increased response to adalimumab in people with Inflammatory Bowel Diseases as compared to genotype AA. More Details: Alleles given as C and T. Treatment protocol was 160 mg of adalimumab at week zero, 80 mg at week 2, and a maintenance dose of 40 mg every other week. Response measured with the Inflammatory Bowel Disease Questionnaire (IBDQ) score, with IBDQ score higher than 170 or an increase of at least 22 points. | yes | = 5.19E-4 | 79 | не предоставлено | Efficacy |
+
+**rs1417938 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 982044398 | PMCID:PMC4615595 | fenofibrate | Genotype TT is associated with increased response to fenofibrate in people with Metabolic Syndrome as compared to genotypes AA + AT. More Details: Patients with the TT genotype had a greater reduction in C-reactive protein (CRP) levels between baseline and 3 weeks of treatment, as compared to carriers of the A allele. In strong linkage disequilibrium with rs3091244 and rs1205 (r2 = 0.4 - 0.9, p < 0.001) and in weak linkage disequilibrium with rs3093059 (r2 = 0.17, p < 0.05). | yes | = 0.004 | 290 | не предоставлено | Efficacy |
+
+**rs3091244 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 982044416 | PMCID:PMC4615595 | fenofibrate | Genotypes GG + GT are associated with increased response to fenofibrate in people with Metabolic Syndrome as compared to genotypes AA + AT. More Details: Patients with the GG, GA and GT genotypes had a greater reduction in C-reactive protein (CRP) levels between baseline and 3 weeks of treatment, as compared to those with the AA and AT genotypes. In strong linkage disequilibrium with rs1205 and rs1417938 (r2 = 0.4 - 0.9, p < 0.001) and rs3093059 (r2 = 0.935, p < 0.001). | yes | = 0.02 | 290 | не предоставлено | Efficacy |
+| 982044407 | PMCID:PMC4615595 | fenofibrate | Genotypes AG + GG are associated with increased response to fenofibrate in people with Metabolic Syndrome as compared to genotypes AA + AT. More Details: Patients with the GG, GA and GT genotypes had a greater reduction in C-reactive protein (CRP) levels between baseline and 3 weeks of treatment, as compared to those with the AA and AT genotypes. In strong linkage disequilibrium with rs1205 and rs1417938 (r2 = 0.4 - 0.9, p < 0.001) and rs3093059 (r2 = 0.935, p < 0.001). | yes | = 0.02 | 290 | не предоставлено | Efficacy |
+
+**rs3093059 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 982044478 | PMCID:PMC4615595 | fenofibrate | Genotype AA is not associated with response to fenofibrate in people with Metabolic Syndrome as compared to genotypes AG + GG. More Details: No significant difference in the change of C-reactive protein (CRP) levels between baseline and 3 weeks of treatment, was seen between genotypes. In strong linkage disequilibrium with rs3091244 (r2 = 0.935, p < 0.001) and in weak linkage disequilibrium with rs1417938 and rs1205 (r2 = 0.17, p < 0.05). | no | = 0.259 | 290 | не предоставлено | Efficacy |
+
+**rs2794521 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1451550615 | PMCID:PMC7045476 | tacrolimus | Allele T is not associated with risk of transplant rejection when treated with tacrolimus in people with Kidney Transplantation as compared to allele C. More Details: No association was found between either donor or recipient genotype and risk of acute kidney rejection. P-value threshold for significance was determined to be 0.0036. | no | = 0.05 | 154 | не предоставлено | Efficacy |
+
+Biogeographical Groups: European (для rs1417938, rs3091244, rs3093059); East Asian (для rs1205 в исследовании с розувастатином и варфарином); Unknown (для rs1130864, rs1205 в исследовании с НПВС, rs2794521).
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген CRP не упоминается; альтернативные символы PTX1 не упоминаются; препараты адалимумаб, фенофибрат, розувастатин, варфарин, такролимус отсутствуют в списке Drugs ни в одном руководстве.
+
+### 3.4 Рекомендации CRP
+
+**Из OMIM (Gene Function):**
+
+- CRP — белок острой фазы, член семейства пентраксинов, состоящий из 5 идентичных субъединиц с молекулярной массой 21 500. Синтезируется в печени; концентрация в плазме может возрастать в 1000 раз и более после повреждения тканей или воспаления.
+- Функция CRP связана со способностью распознавать чужеродные патогены и повреждённые клетки хозяина и инициировать их элиминацию путём взаимодействия с гуморальными и клеточными эффекторными системами крови. Обладает как распознающей, так и эффекторной функцией (Kilpatrick and Volanakis, 1991).
+- CRP связывается с хроматином с высокой аффинностью; одна из его основных физиологических функций — действовать как «мусорщик» для хроматина, высвобождаемого мёртвыми клетками во время острого воспалительного процесса (Robey et al., 1984).
+- IL6 (147620) и TNFA (191160) — воспалительные цитокины и основные индукторы секреции CRP в печени. CRP — маркер низкоуровневого воспаления, который может играть роль в патогенезе атеросклеротических поражений у человека (Blake and Ridker, 2002).
+- Pai et al. (2004): повышенные уровни воспалительных маркеров, особенно CRP, указывают на повышенный риск коронарной болезни сердца.
+- Ridker et al. (2005): у пациентов с острыми коронарными синдромами низкие уровни CRP после статиновой терапии ассоциированы с лучшими клиническими исходами, независимо от уровня ЛПНП.
+- Nissen et al. (2005): снижение скорости прогрессирования атеросклероза при интенсивной статиновой терапии значительно связано с большим снижением уровней атерогенных липопротеинов и CRP.
+- Chen et al. (2006): CRP — основной лептин-взаимодействующий белок; in vitro человеческий CRP напрямую ингибирует связывание лептина с его рецептором (LEPR; 601007) и блокирует клеточную сигнализацию. Инфузия человеческого CRP в ob/ob мышей блокирует эффекты лептина на насыщение и снижение веса.
+- Farooqi and O'Rahilly (2007): у 4 детей с врождённым дефицитом лептина не найдено значительных различий в уровнях CRP по сравнению с 20 детьми с ожирением без дефицита лептина; уровни CRP оставались неизменными после 2 и 6 месяцев ежедневных подкожных инъекций рекомбинантного человеческого лептина.
+- Lauer et al. (2011): полиморфизм Y402H (134370.0008) фактора H (CFH; 134370), ассоциированный с возрастной макулярной дегенерацией (ARMD4; 610698), влияет на рекрутмент мономерного CRP на поверхность некротических клеток пигментного эпителия сетчатки.
+
+**Из OMIM (Biochemical Features):**
+
+- Ridker et al. (2002): в исследовании 27 939 здоровых американских женщин, наблюдавшихся в среднем 8 лет, уровни CRP и ЛПНП сравнивались в предсказании первых сердечно-сосудистых событий. Данные показали, что уровень CRP — более сильный предиктор сердечно-сосудистых событий, чем уровень ЛПВП, и добавляет прогностическую информацию к шкале риска Фрамингема.
+- Kobashigawa et al. (1995): использование правастатина снижало развитие трансплантационной коронарной болезни, возможно, частично из-за холестерин-независимого эффекта статинов на иммунные или воспалительные процессы.
+- Labarrere et al. (2002): ранние повышенные концентрации CRP ассоциированы с развитием, повышенной тяжестью и ускоренной прогрессией коронарной болезни, а также с повышенной частотой ишемических событий и отторжения трансплантата.
+- Danesh et al. (2004): CRP — относительно умеренный предиктор коронарной болезни сердца.
+- Seddon et al. (2005): в проспективном исследовании 251 человека в возрасте 60 лет и старше с признаками неэкссудативной возрастной макулярной дистрофии (ARMD; см. 603075) более высокие уровни CRP и IL6 независимо ассоциированы с прогрессированием ARMD.
+- Schaumberg et al. (2007): в проспективном исследовании 27 687 женщин (средний возраст 54.6 года), изначально свободных от ARMD, с средним наблюдением 10 лет, высокочувствительный CRP (hsCRP) и другие биомаркеры воспаления предсказывали инцидент ARMD. У женщин с уровнями hsCRP в самой высокой vs самой низкой пятой части инцидентность ARMD была более чем в 3 раза выше.
+- Pepys et al. (2006): 1,6-бис(фосфохолин)-гексан — специфический маломолекулярный ингибитор CRP; 5 молекул этого палиндромного соединения связываются 2 пентамерными молекулами CRP, перекрёстно сшивая и окклюдируя лиганд-связывающую B-грань CRP и блокируя его функции. Введение этого соединения крысам с острым инфарктом миокарда устраняло увеличение размера инфаркта и сердечную дисфункцию, вызванные инъекцией человеческого CRP.
+
+**Из OMIM (Molecular Genetics):**
+
+- Carlson et al. (2005): систематическое исследование common нуклеотидной вариации в геномном регионе, охватывающем локус CRP на хромосоме 1q21-q23. Из идентифицированных common SNP 7 tag SNP использовались для определения 8 common гаплотипов, которые были генотипированы в большой когорте European American и African American молодых взрослых и оказались ассоциированы со значительной вариацией уровней CRP (p < 10^-6). Функциональная важность этих гаплотипов SNP также продемонстрирована in vitro.
+- Russell et al. (2004): среди 586 простых семей с СКВ базальные уровни CRP независимо influenced 2 полиморфизмами CRP, обозначенными CRP2 (rs1800947) и CRP4 (rs1205); последний ассоциирован с СКВ и продукцией антинуклеарных аутоантител. Гипотеза: дефектное удаление потенциально иммуногенного материала может быть вкладом в патогенез волчанки.
+- Broeckel et al. (2007): изучены 1 046 человек из 513 западноевропейских семей, отобранных по инфаркту миокарда; 31% межиндивидуальной вариации уровней CRP объясняется генетическими факторами (p = 0.0000015). Аутосомное сканирование генома дало мультиточечный lod score 3.15 на хромосоме 10 в 141 cM (CRPQTL1; 611920). Аналогичная степень наследуемости уровней CRP (30%) наблюдалась в независимой популяции 758 человек из 120 французских канадских семей с гипертонией.
+- Ridker et al. (2008): многостадийное полногеномное исследование ассоциаций уровней CRP выявило значимую ассоциацию с 7 локусами: 2 (GCKR, 600824; HNF1A, 142410) были подозреваемы или известны как ассоциированные с MODY (см., например, MODY3, 600496), 1 — регион генной пустыни на хромосоме 12q23.2, остальные 4 — в или near LEPR, APOE (107741), IL6R (147880) или сам ген CRP.
+- Reiner et al. (2008): ассоциация между common вариантами гена HNF1A и концентрациями CRP в плазме в 2 независимых популяциях пожилых взрослых.
+- Zacho et al. (2008): изучены 10 276 человек из популяционной когорты, включая 1 786 с развившейся ишемической болезнью сердца (см. 607339) и 741 с развившимся ишемическим цереброваскулярным заболеванием (см. 601367); дополнительные 31 992 человека из кросс-секционной популяционной когорты. Риск ишемической болезни сердца и ишемического цереброваскулярного заболевания был повышен в 1.6 и 1.3 раза соответственно у лиц с уровнями CRP выше 3 мг/л по сравнению с лицами с уровнями CRP ниже 1 мг/л. Комбинации генотипов 4 полиморфизмов CRP rs1205, rs1130864, rs3091244 и rs3093077 были ассоциированы с повышением уровней CRP до 64%, что теоретически предсказывает увеличение риска до 32% для ишемической болезни сердца и до 25% для ишемического цереброваскулярного заболевания. Однако эти комбинации генотипов не были ассоциированы с повышенным риском ишемического сосудистого заболевания.
+- Rhodes et al. (2008): типирована плотная карта SNP CRP и количественно определён сывороточный CRP у 594 неродственных афроамериканцев; байесовский анализ выбора модели показал сильную поддержку триаллельного C/T/A промоторного (rs3091244) в одиночку, с T-аллелем, действующим аддитивно, с дополнительной поддержкой модели, включающей как rs3091244, так и rs12728740. Эффект был скромным, объясняя только 5.20% дисперсии CRP.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 4 записи, все Level 3 — rs1130864 (adalimumab, efficacy), rs3091244 (fenofibrate, efficacy, Metabolic Syndrome), rs1205 (rosuvastatin, efficacy, Coronary Disease), rs1417938 (fenofibrate, efficacy, Metabolic Syndrome).
+- Non-Pediatric Variant Annotations: 10 записей по rs1205, rs1130864, rs1417938, rs3091244, rs3093059, rs2794521.
+- Pediatric Clinical Annotations и Pediatric Variant Annotations отсутствуют.
+- Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA120, ClinVar (8 Pathogenic вариантов CRP), OMIM *123260, CPIC guidelines registry (29 guidelines, CRP отсутствует), PMID:21094359, PMID:24602049, PMID:20538124, PMID:27096233, PMID:15602020, PMID:15635109, PMID:15635110, PMID:16642000, PMID:16582918, PMID:17206122, PMID:12432042, PMID:11368701, PMID:12366601, PMID:18439552, PMID:18500540, PMID:18439548, PMID:18971492, PMID:14645206, PMID:17530289, PMID:15897982, PMID:7637722, PMID:12433514, PMID:21930971, PMID:17353399, PMID:15955978, PMCID:PMC7045476, PMCID:PMC4615595.*

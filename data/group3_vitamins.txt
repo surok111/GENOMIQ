@@ -1,0 +1,847 @@
+# Группа 3: Метаболизм витаминов и микроэлементов
+## ГЕН 1: MTHFD1 — Methylenetetrahydrofolate Dehydrogenase 1
+
+### 1.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Methylenetetrahydrofolate dehydrogenase, cyclohydrolase and formyltetrahydrofolate synthetase 1 |
+| Ensembl ID | ENSG00000100714 |
+| OMIM Gene | 172460 |
+| PharmGKB ID | PA31236 |
+| Локация | 14q23.3 (chr14:64,388,041-64,460,007 GRCh38, плюсовая цепь) |
+| Функция | Ключевой фермент фолатного цикла. Катализирует превращение тетрагидрофолата в 10-формилтетрагидрофолат, участвует в синтезе пуринов и метионина. |
+| Ключевые варианты | R653Q (rs2236225, G>A) |
+
+### 1.2 Генотипы MTHFD1 R653Q (rs2236225)
+
+| Генотип | Аллели | Функциональный эффект | Клинический риск | ACMG |
+|---|---|---|---|---|
+| GG (R/R) | G/G | Нормальная активность фермента | Базовый | Benign |
+| AG (R/Q) | G/A | Промежуточная активность | Умеренный риск токсичности метотрексата | Risk factor |
+| AA (Q/Q) | A/A | Сниженная активность фермента (~20% европейцев) | Повышенный риск токсичности метотрексата, ДНТ у плода (материнский фактор) | Risk factor |
+
+### 1.3 Фармакогенетика MTHFD1
+
+| Вариант | Лекарство | Эффект | Уровень |
+|---|---|---|---|
+| rs2236225 | метотрексат | **Защита от токсичности** (снижение риска токсического поражения печени у AA+AG при ОЛЛ у детей) | 3 |
+| rs2236225 | метотрексат | **Повышенный риск анемии** при остеосаркоме у AA+AG | 3 |
+| rs2236225 | метотрексат | **Повышенная гастроинтестинальная токсичность** (grade III–IV) у AA при ОЛЛ, остеосаркоме, лимфоме | 3 |
+| rs2236225 | метотрексат | **Снижение event-free survival** у носителей A-аллеля при ОЛЛ | 3 |
+| rs2236225 | метотрексат | **Отсутствие связи** с ответом на метотрексат при ревматоидном артрите (у взрослых) | 3 |
+| rs2236225 | цисплатин + пеметрексед | **Снижение общей и безрецидивной выживаемости** у AA+AG при мезотелиоме | 3 |
+| rs2236225 | цисплатин + доксорубицин + метотрексат | **Повышенный ответ** у AA+AG при остеосаркоме | 3 |
+| rs2236225 | фолиевая кислота | **Снижение риска гестационного диабета** у AA при беременности | 3 |
+| rs2236225 | капецитабин + фторурацил | **Нет связи** с токсичностью при колоректальном раке | 3 |
+
+### 1.4 Рекомендации MTHFD1
+
+**Для пациента:**
+
+- **GG (R/R) — норма:** Стандартные рекомендации.
+- **AG / AA (R653Q):** Промежуточная или сниженная активность фолатного цикла. Рекомендуется достаточное потребление фолатов (зелень, бобовые, яйца). При планировании беременности — контроль гомоцистеина и фолатов, обсудить с врачом активные формы фолатов (L-метилфолат).
+- **При лечении метотрексатом:** носители A-аллеля — обсудить с онкологом возможный риск гастроинтестинальной токсичности и анемии, особенно при ОЛЛ и остеосаркоме у детей.
+
+**Для врача:**
+
+- **Метотрексат (ОЛЛ у детей):** носители AA+AG — **снижение риска токсического поражения печени** (P=0.009), но **повышение риска гастроинтестинальной токсичности grade III–IV** (P=0.03, OR=6.38). Требуется мониторинг.
+- **Метотрексат (остеосаркома):** носители AA+AG — **повышенный риск анемии** (P=0.044) и **повышенный ответ** на химиотерапию (P=0.03).
+- **Метотрексат (ревматоидный артрит, взрослые):** носители A-аллеля — **нет связи** с ответом на терапию, стандартные рекомендации.
+- **Цисплатин + пеметрексед (мезотелиома):** носители AA+AG — **снижение общей и безрецидивной выживаемости**, требуется более тщательный мониторинг.
+- **Фолиевая кислота (беременность):** носители AA — **снижение риска гестационного диабета** (P=0.031) при приёме 1 мг/сут.
+- **Уровень доказательности 3** (ClinPGx) — не заменяет клинического решения.
+
+*Источники: ClinPGx (PharmGKB) PA31236, PMID:22074251, PMID:29589488, PMID:14647408, PMID:21887680, PMCID:PMC12115323, PMCID:PMC5396189, PMCID:PMC10905650*
+## ГЕН 2: VDR — Vitamin D Receptor
+
+### 2.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Vitamin D receptor (1,25-dihydroxyvitamin D3 receptor) |
+| Ensembl ID | ENSG00000111424 |
+| OMIM Gene | 601769 |
+| OMIM Disease | 277440 (Rickets, vitamin D-resistant, type IIA, AR) |
+| PharmGKB ID | PA37301 |
+| HGNC Approved Gene Symbol | VDR |
+| Альтернативные названия | 1,25-DIHYDROXYVITAMIN D3 RECEPTOR; VITAMIN D HORMONE RECEPTOR |
+| Локация | 12q13.11 (chr12:47,841,537-47,904,994 GRCh38, минусовая цепь) |
+| Структура гена | 11 экзонов, охватывает ~75 kb |
+| Функция | Внутриклеточный гормональный рецептор, специфически связывает 1,25(OH)2D3 и опосредует его эффекты. Содержит цинк-пальцевый ДНК-связывающий и транскрипционно-активирующий домен, а также лиганд-связывающий домен. Относится к суперсемейству транс-активирующих факторов транскрипционной регуляции (Baker et al., 1988) |
+| Ключевые RFLP | BsmI (rs1544410), TaqI (rs731236), ApaI (rs7975232), FokI (rs2228570), Cdx2 (rs11568820) |
+
+### 2.2 Варианты VDR
+
+**Pathogenic-варианты (ClinVar, 37 шт., выборка missense/nonsense/frameshift):**
+
+| HGVS | Белок | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| NM_000376.3(VDR):c.1190A>C | p.His397Pro | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.1172G>A | p.Arg391His | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.1171C>A | p.Arg391Ser | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.1171C>T | p.Arg391Cys | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.1036G>A | p.Val346Met | missense | Pathogenic/Likely pathogenic | VDR-related disorder |
+| NM_000376.3(VDR):c.985G>A | p.Glu329Lys | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.915C>G | p.His305Gln | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.856T>C | p.Trp286Arg | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.821G>A | p.Arg274His | missense | Pathogenic/Likely pathogenic | not provided |
+| NM_000376.3(VDR):c.821G>T | p.Arg274Leu | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.218G>A | p.Arg73Gln | missense | Pathogenic/Likely pathogenic | not provided |
+| NM_000376.3(VDR):c.149G>A | p.Arg50Gln | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.137G>A | p.Gly46Asp | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.98G>A | p.Gly33Asp | missense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.1039C>T | p.Gln347Ter | nonsense | Pathogenic | not provided |
+| NM_000376.3(VDR):c.885C>A | p.Tyr295Ter | nonsense | Pathogenic | VDR-related disorder |
+| NM_000376.3(VDR):c.560C>G | p.Ser187Ter | nonsense | Pathogenic | not provided |
+| NM_000376.3(VDR):c.454C>T | p.Gln152Ter | nonsense | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.334G>T | p.Glu112Ter | nonsense | Pathogenic | not provided |
+| NM_000376.3(VDR):c.217C>T | p.Arg73Ter | nonsense | Pathogenic | not provided |
+| NM_000376.3(VDR):c.148C>T | p.Arg50Ter | nonsense | Pathogenic | not provided |
+| NM_000376.3(VDR):c.88C>T | p.Arg30Ter | nonsense | Pathogenic | VDR-related disorder |
+| NM_000376.3(VDR):c.1181_*670del | p.Asn394_Ter428delinsXaa | deletion | Pathogenic | not provided |
+| NM_000376.3(VDR):c.832_833insA | p.Ser278fs | insertion | Pathogenic/Likely pathogenic | not provided |
+| NM_000376.3(VDR):c.755+1G>C | splice site | — | Pathogenic | not provided |
+| NM_000376.3(VDR):c.366del | p.Lys123fs | deletion | Pathogenic | Vitamin D-dependent rickets type II with alopecia |
+| NM_000376.3(VDR):c.249del | p.Cys84fs | deletion | Pathogenic | not provided |
+
+**Allelic Variants (OMIM, 15 примеров):**
+
+| OMIM # | Мутация | Фенотип | Этническая группа |
+|---|---|---|---|
+| .0001 | GLY33ASP | VDDR2A | Гаити |
+| .0002 | ARG73GLN | VDDR2A | Арабская |
+| .0003 | TYR292TER | VDDR2A | Арабская (ближневосточная) |
+| .0004 | ARG77GLN | VDDR2A | Североафриканская |
+| .0005 | ARG47GLN | VDDR2A | Японская |
+| .0006 | GLN149TER | VDDR2A | Ближневосточная |
+| .0007 | ARG271LEU | VDDR2A | Ближневосточная |
+| .0008 | GLY46ASP | VDDR2A | Саудовская Аравия |
+| .0009 | HIS305GLN | VDDR2A | Турция |
+| .0010 | ILE314SER | VDDR2A | — |
+| .0011 | ARG391CYS | VDDR2A | — |
+| .0012 | ARG30TER | VDDR2A | Бразилия |
+| .0013 | 1-BP DEL, 366C | VDDR2A | — |
+| .0014 | GLU329LYS | VDDR2A | — |
+| .0015 | VAL346MET | VDDR2A | Бедуинская |
+
+**Частоты вариантов (ClinVar, общая статистика):**
+- Всего вариантов: 592
+- Pathogenic: 37
+- Likely pathogenic: 20
+- Uncertain significance: 226
+- Likely benign: 236
+- Benign: 37
+- Conflicting: 34
+
+### 2.3 Фармакогенетика VDR
+
+**Summary Annotations (ClinPGx, 18 записей, все Level 3):**
+
+| ID | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|
+| 1450933017 | rs731236 | deferasirox | Efficacy | Beta-thalassemia and related diseases |
+| 1448100786 | rs4516035 | midazolam | Metabolism/PK | — |
+| 1450933023 | rs1544410 | deferasirox | Efficacy | Beta-thalassemia and related diseases |
+| 655386869 | rs1544410 | alendronate | Efficacy | Osteoporosis |
+| 1449164133 | rs11168292 | warfarin | Dosage | — |
+| 1448102550 | rs2228570 | peginterferon alfa-2b; ribavirin | Efficacy | Chronic hepatitis C virus infection |
+| 1451285000 | rs1544410 | clodronate | Efficacy | — |
+| 655386873 | rs731236 | clodronate | Efficacy | Osteitis Deformans |
+| 1449557359 | rs11574077 | irinotecan | Metabolism/PK | Colorectal Neoplasms |
+| 1447949639 | rs2239179 | selective beta-2-adrenoreceptor agonists | Efficacy | Asthma |
+| 1447949632 | rs1540339 | selective beta-2-adrenoreceptor agonists | Efficacy | Asthma |
+| 1447962620 | rs1544410 | conjugated estrogens; medroxyprogesterone | Efficacy | — |
+| 1448100804 | rs11568820 | midazolam | Metabolism/PK | — |
+| 1449164149 | rs11168293 | warfarin | Dosage | — |
+| 1448100777 | rs1544410 | midazolam | Metabolism/PK | — |
+| 1043858882 | rs731236 | calcium | Efficacy | — |
+| 1449164155 | rs4760658 | warfarin | Dosage | — |
+| 1444700867 | rs1544410 | peginterferon alfa-2a; ribavirin | Toxicity | Hepatitis C virus infection |
+
+**Pediatric Variant Annotations (ClinPGx, 5 записей):**
+
+| ID | Variant | Drug | Association | Sig | P-value | Phenotype |
+|---|---|---|---|---|---|---|
+| 1449004990 | rs7975232 | deferasirox | AA → метаболизм деферазирокса при β-талассемии (vs AC+CC) | yes | 0.007 | Metabolism/PK |
+| 1449183060 | rs2228570 | tacrolimus | AA+AG не связан с риском СД при трансплантации почки (vs GG) | no | 0.443 | Toxicity |
+| 1449004998 | rs2228570 | deferasirox | G → метаболизм деферазирокса при β-талассемии (vs A) | yes | 0.003 | Metabolism/PK |
+| 982017937 | rs2228570 | dexamethasone | AA+AG не связан с остеонекрозом при ОЛЛ (vs GG) | yes | 1.1 | Toxicity |
+| 1449183067 | rs731236 | tacrolimus | AA+AG не связан с риском СД при трансплантации почки (vs GG) | no | 0.282 | Toxicity |
+
+**Non-Pediatric Variant Annotations (ClinPGx, 55 записей) — сводка по ключевым вариантам:**
+
+**rs1544410 (BsmI) — 16 записей:**
+
+| Drug | Association | Sig | P-value | Phenotype |
+|---|---|---|---|---|
+| conjugated estrogens; medroxyprogesterone | TT → ↑ spine BMD (vs CC) | yes | 0.001 | Efficacy |
+| alendronate | CC → ↓ serum osteocalcin (vs TT) | yes | 0.001 | Efficacy |
+| — (без препарата) | CC → ↓ BMD (vs TT) | yes | 0.03 | — |
+| — (без препарата) | CC → ↓ Pre-Eclampsia (vs CT+TT) | yes | 0.0112 | Other |
+| calcium; etidronic acid | TT → ↑ spinal BMD changes (vs CC) | yes | 0.044 | Efficacy |
+| deferasirox | TT → ↑ response (vs CC+CT) | yes | 0.015 | Efficacy |
+| — (без препарата) | C → ↑ risk Asthma | yes | <0.05 | — |
+| rifampin | TT → ↑ concentration rifampin (vs CC+CT) | yes | 0.006 | Metabolism/PK |
+| zoledronate | T → not associated with response | no | — | Efficacy |
+| clodronate | C → ↑ resistance (vs T) | yes | 0.003 | Efficacy |
+| peginterferon alfa-2a; ribavirin | TT → ↑ risk Anemia (vs CC+CT) | yes | 0.003 | Toxicity |
+| midazolam | C → ↑ clearance (vs T) | yes | 0.03 | Metabolism/PK |
+| alendronate; raloxifene | CC → ↑ improvement BMD (vs TT) | yes | 0.046 | Efficacy |
+| alendronate | CC → ↑ BMD (vs TT) | yes | 0.04 | Efficacy |
+| alendronate | CC → ↓ urinary DPD/Cr (vs TT) | yes | <0.002 | Efficacy |
+
+**rs2228570 (FokI) — 10 записей:**
+
+| Drug | Association | Sig | P-value | Phenotype |
+|---|---|---|---|---|
+| interferons; ribavirin | AG+GG → ↓ risk cryoglobulinemia (vs AA) | yes | 0.044 | Toxicity |
+| — (без препарата) | AA → not associated with Pre-Eclampsia | no | 0.813 | Other |
+| — (без препарата) | AA+AG → ↓ BMD (vs GG) | yes | <0.05 | — |
+| peginterferon alfa-2b; ribavirin | AA+AG → ↑ SVR (vs GG) | yes | <0.001 | Efficacy |
+| calcitriol | A → ↑ risk Fractures (vs G) | yes | 0.008 | Efficacy |
+| peginterferon alfa-2b; ribavirin | A → ↑ response (vs G) | yes | 0.021 | Efficacy |
+| amoxicillin; clarithromycin; omeprazole | A → ↑ response (vs G) | yes | <0.0001 | Efficacy |
+| warfarin | AA → not associated with dose (vs AG+GG) | no | 0.342 | Dosage |
+
+**rs7975232 (ApaI) — 7 записей:**
+
+| Drug | Association | Sig | P-value | Phenotype |
+|---|---|---|---|---|
+| deferasirox (pediatric) | AA → metabolism | yes | 0.007 | Metabolism/PK |
+| zoledronate | C → not associated with response | no | — | Efficacy |
+| adalimumab; certolizumab; etanercept; golimumab; infliximab | AA+AC → ↑ clinical benefit RA (vs CC) | yes | 0.004 | Efficacy |
+| peginterferon alfa-2a | AA → ↓ SVR (vs AC+CC) | yes | 0.044 | Efficacy |
+| amoxicillin; clarithromycin; omeprazole | A → ↑ response H. pylori (vs C) | yes | <0.0004 | Efficacy |
+| cholecalciferol | AA → ↓ clinical benefit (vs AC+CC) | yes | — | Efficacy |
+| warfarin | CC → not associated with dose (vs AA+AC) | no | 0.153 | Dosage |
+
+**rs731236 (TaqI) — 6 записей:**
+
+| Drug | Association | Sig | P-value | Phenotype |
+|---|---|---|---|---|
+| deferasirox | GG → ↑ response (vs AA+AG) | yes | 0.016 | Efficacy |
+| clodronate | A → ↑ resistance (vs G) | yes | 0.003 | Efficacy |
+| calcium | G → ↑ risk Fractures | yes | 0.026 | Efficacy |
+| — (без препарата) | A → ↑ risk Asthma | yes | <0.05 | — |
+
+**rs11574077 — 2 записи:**
+
+| Drug | Association | Sig | P-value | Phenotype |
+|---|---|---|---|---|
+| irinotecan | TT → ↑ metabolism irinotecan (vs CT) | yes | 0.012 | Metabolism/PK |
+| fluorouracil; irinotecan; leucovorin | C → not associated with GI toxicity | no | 0.010 | Toxicity |
+
+**rs11568820 (Cdx2) — 4 записи:**
+
+| Drug | Association | Sig | P-value | Phenotype |
+|---|---|---|---|---|
+| midazolam | CT+TT → ↑ clearance (vs CC) | yes | 0.04 | Metabolism/PK |
+| tenofovir disoproxil fumarate | C → not associated with nephrotoxicity | no | — | Toxicity |
+| — (без препарата) | T → ↑ steady-state CYP3A4 protein | yes | 0.05 | Other |
+| daclatasvir | TT → ↓ concentration (vs CC+CT) | yes | 0.01 | Metabolism/PK |
+
+**rs4760658 — 1 запись:**
+- warfarin: GG → ↑ dose (vs AA+AG), P=0.0012, Dosage
+
+**rs11168292 — 1 запись:**
+- warfarin: GG → ↑ dose (vs CC+CG), P=0.0026, Dosage
+
+**rs11168293 — 1 запись:**
+- warfarin: TT → ↑ dose (vs GG+GT), P=0.0025, Dosage
+
+**rs2239179 — 1 запись:**
+- selective beta-2 agonists: C → ↓ response Asthma (vs T), P=0.009, Efficacy
+
+**rs1540339 — 2 записи:**
+- selective beta-2 agonists: C → ↓ response Asthma (vs T), P=0.02, Efficacy
+- (без препарата): T → ↑ risk Asthma, P<0.05
+
+**rs4516035 — 1 запись:**
+- midazolam: T → ↑ clearance (vs C), P=0.04, Metabolism/PK
+
+**rs2239185 — 1 запись:**
+- (без препарата): G → ↑ risk Asthma, P<0.05
+
+**rs3782905 — 1 запись:**
+- (без препарата): G → ↑ risk Asthma, P<0.05, Other
+
+**rs12717991 — 2 записи:**
+- fluorouracil; irinotecan; leucovorin: T → not associated with neutropenia, P=0.015, Toxicity
+- irinotecan: T → not associated with metabolism, P=0.073, Metabolism/PK
+
+**rs11168287 — 1 запись:**
+- fluorouracil; irinotecan; leucovorin: G → not associated with neutropenia, P=0.046, Toxicity
+
+**rs4760648 — 1 запись:**
+- fluorouracil; irinotecan; leucovorin: T → not associated with GI toxicity, P=0.018, Toxicity
+
+**rs2853564 — 1 запись:**
+- fluorouracil; irinotecan; leucovorin: G → not associated with GI toxicity, P=0.008, Toxicity
+
+**rs11574026 — 1 запись:**
+- fluorouracil; irinotecan; leucovorin: A → not associated with neutropenia, P=0.035, Toxicity
+
+### 2.4 Рекомендации VDR
+
+**Из OMIM (Description / Gene Function):**
+- VDR — внутриклеточный рецептор, опосредующий эффекты 1,25(OH)2D3 (кальцитриола).
+- Содержит цинк-пальцевый ДНК-связывающий домен и лиганд-связывающий домен.
+- Экзоны 2 и 3 участвуют в связывании ДНК; экзоны 7, 8, 9 — в связывании витамина D (Hughes et al., 1988).
+- Makishima et al. (2002): VDR также функционирует как рецептор вторичной желчной кислоты — литохолевой кислоты, которая гепатотоксична и является потенциальным кишечным канцерогеном.
+- Liu et al. (2006): активация TLR2/TLR1 повышает экспрессию VDR и CYP27B1 в моноцитах и макрофагах.
+- Palmer et al. (2004), Pena et al. (2005): баланс VDR и SNAI1 критичен для экспрессии E-кадгерина при прогрессии рака толстой кишки.
+
+**Из OMIM (Molecular Genetics):**
+- VDDR2A (MIM 277440) — аутосомно-рецессивное заболевание, вызванное патогенными вариантами VDR.
+- Исследования роли полиморфизмов VDR в BMD противоречивы: одни находят связь (Morrison et al., 1994), другие — нет (Hustmyer et al., 1994; Ensrud et al., 1999; Uitterlinden et al., 2006).
+- Uitterlinden et al. (2006): умеренное снижение риска вертебральных переломов (9%) ассоциировано с Cdx2 промоторным A-аллелем (rs11568820).
+- Garnero et al. (2005): VDR-генотипы связаны с риском переломов у постменопаузальных женщин независимо от BMD.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+- Все Summary Annotations имеют уровень доказательности 3.
+- Наибольшее число аннотаций — по препаратам: деферазирокс, варфарин, мидазолам, алендронат, клодронат, интерфероны + рибавирин, иринотекан, кальций, ГКС + медроксипрогестерон.
+- По rs1544410 — аннотации по деферазироксу, алендронату, мидазоламу, кальцию, клодронату, рифампину, интерферонам + рибавирину, кальцию + этидроновой кислоте.
+
+*Источники: ClinPGx (PharmGKB) PA37301, ClinVar, OMIM 601769, PMID:2835767, PMID:2849209, PMID:16252240, PMID:16908916, PMID:17551468, PMID:17970811, PMID:10736278 и др.*
+## ГЕН 3: GC — Group-Specific Component (Vitamin D Binding Protein)
+
+### 3.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | GC vitamin D binding protein (group-specific component) |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *139200 |
+| OMIM Disease | не предоставлено |
+| PharmGKB ID | PA28601 |
+| HGNC Approved Gene Symbol | GC |
+| Альтернативные названия | GC, vitamin D binding protein; group-specific component (vitamin D binding protein) |
+| Альтернативные символы | DBP, VDBP, hDBP |
+| Локация | chr4 : q12 – q13.3 (минусовая цепь); GRCh37: chr4:72,607,410-72,671,237; GRCh38: chr4:71,741,693-71,805,520 |
+| Структура гена | Секвенирован полностью (Witke et al., 1993). Включает 4 228 bp 5'-фланкирующей области и 8 514 bp 3'-фланкирующей области. Последовательность охватывает 42 394 bp от cap-сайта до сайта полиаденилирования. Состоит из 13 экзонов. Первый экзон частично нетранслируемый; экзон 12 содержит терминирующий кодон TAG; экзон 13 полностью нетранслируемый, содержит сигнал полиаденилирования AATAAA. Десять центральных интронов разбивают кодирующую последовательность в чередующемся паттерне. Ген примерно в 2,5 раза крупнее других генов семейства альбумина за счёт 13 инсерционных DNA-повторов |
+| Функция | Основной витамин-D-связывающий белок плазмы. Основная функция DBP — связывание, солюбилизация и транспорт витамина D и его метаболитов. DBP является предшественником макрофаг-активирующего фактора (Yamamoto and Homma, 1991). Вместе с gelsolin (137350) Gc-белок связывает актин, высвобождающийся в кровоток при некрозе клеток (extracellular actin-scavenger system) |
+| Ключевые варианты | GC*1F, GC*1S, GC*2 (обусловлены заменами в кодонах 416 и 420 экзона 11); rs7041; rs4588 |
+
+Примечание: в OMIM для GC disease-запись отсутствует; в разделе Cytogenetics описан случай гомозиготной делеции GC с дефицитом витамин-D-связывающего белка (Henderson et al., 2019).
+
+### 3.2 Варианты GC
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+Все 21 вариант с классификацией Pathogenic по гену GC — крупные структурные перестройки (copy number gain / copy number loss), захватывающие регион 4q12–22.3 и прилегающие цитогенетические локусы. Коротких внутригенных вариантов GC (missense, nonsense, frameshift, splice site, UTR, ncRNA) с классификацией Pathogenic / Likely pathogenic в ClinVar не обнаружено (по фильтрам Molecular consequence: Frameshift 0, Missense 0, Nonsense 0, Splice site 0, ncRNA 0, UTR 0; по Variation type: Single nucleotide 0, Indel 0, Insertion 0, Duplication 0).
+
+| # | HGVS / Локация | Тип | Классификация | Условие | Детали |
+|---|---|---|---|---|---|
+| 1 | GRCh38/hg38 4q12-22.3(chr4:51831622-97505618)x3 | copy number gain, 45 673 997 bp | Pathogenic | See cases | Variation ID 58029; VCV000058029.2; HGVS NC_000004.12:g.(?_51831622)_(97505618_?)dup; RCV000051772.6; GeneDx (SCV000079120.6); гены ANKRD17, KIT, PKD2, WDFY3, YTHDC1, ANTXR2, COQ2, DMP1, HSD17B13, HTN3 и ещё 764 гена |
+| 2 | GRCh38/hg38 4q12-21.1(chr4:51891814-76009719)x1 | copy number loss | Pathogenic | Piebaldism | Variation ID 1098574; VCV001098574.4; RCV001420508.6; Kasturba Medical College, Manipal, India (SCV001548560.2); клинические признаки White forelock, гипо- и гиперпигментированные пятна на животе и конечностях, сенсоневральный дефект слуха, глобальная задержка развития; гены ANKRD17, KIT, YTHDC1, HTN3, PDGFRA, AASDH, ADAMTS3, ADGRL3, ADGRL3-AS1, AFM и ещё 363 гена |
+| 3 | GRCh38/hg38 4q13.1-13.3(chr4:65454562-72313693)x1 | copy number loss, 6 859 132 bp | Pathogenic | See cases | Variation ID 59451; VCV000059451.2; HGVS NC_000004.12:g.(?_65454562)_(72313693_?)del; RCV000053293.5; GeneDx (SCV000080651.5); клинические признаки Short stature, Global developmental delay; гены YTHDC1, HTN3, ADAMTS3, AMBN, AMTN, CABS1, CENPC, CSN1S1, CSN2, CSN3 и ещё 97 генов |
+| 4 | GRCh38/hg38 4q13.2-21.1(chr4:67406178-76619632)x1 | copy number loss | Pathogenic | not provided | Variation ID 4796371; VCV004796371.1; RCV006605838.1; Medical Genetic Center, Changzhi Maternal and Child Health Care Hospital (SCV007495596.1); клинические признаки — пренатальное УЗИ: mild ventriculomegaly; гены ANKRD17, YTHDC1, HTN3, SCARB2, ADAMTS3, AFM, AFP, ALB, AMBN, AMTN и ещё 199 генов |
+| 5 | NC_000004.12:g.67833055_82716065del | Deletion, 14 883 011 bp | Pathogenic | See cases | Variation ID 1684642; VCV001684642.4; RCV003313802.8; Laboratorio de Genetica e Diagnostico Molecular, Hospital Israelita Albert Einstein (SCV004013136.1); клинические признаки Neurodevelopmental delay, Short stature, Hydrocephalus, Atrial septal defect, Aplasia/hypoplasia of the extremities, Small hand; географическое происхождение Brazil; гены ANKRD17, YTHDC1, ANTXR2, HTN3, HNRNPDL, SCARB2, ADAMTS3, AFM, AFP, ALB и ещё 327 генов |
+| 6 | GRCh38/hg38 4q13.2-22.3(chr4:68686088-95294456)x3 | copy number gain, 26 608 369 bp | Pathogenic | See cases | Variation ID 155391; VCV000155391.2; HGVS NC_000004.12:g.(?_68686088)_(95294456_?)dup; RCV000143458.5; ISCA site 1 / International Standards For Cytogenomic Arrays Consortium (SCV000182838.4); публикация PubMed: 20466091; клинические признаки Renal hypoplasia, Microcephaly, Ventricular septal defect, Ventriculomegaly, Abnormal facial shape; гены ANKRD17, PKD2, WDFY3, ANTXR2, COQ2, DMP1, HSD17B13, HTN3, ABRAXAS1, DSPP и ещё 532 гена |
+| 7 | GRCh38/hg38 4q13.3-21.21(chr4:71128874-78099088)x3 | copy number gain | Pathogenic | See cases | Детальная страница не предоставлена; источник — search results ClinVar |
+| 8 | GRCh37/hg19 4q13.3-22.1(chr4:70910927-92961027)x1 | copy number loss | Pathogenic | not specified | Детальная страница не предоставлена; источник — search results ClinVar |
+| 9 | GRCh37/hg19 4p12-q35.2(chr4:45455621-191003541)x3 | copy number gain | Pathogenic | not provided | Детальная страница не предоставлена; источник — search results ClinVar |
+| 10 | GRCh37/hg19 4q13.2-13.3(chr4:69146217-75500577)x1 | copy number loss | Pathogenic | not provided | Детальная страница не предоставлена; источник — search results ClinVar |
+| 11 | GRCh37/hg19 4q13.1-13.3(chr4:61867555-74711517)x1 | copy number loss | Pathogenic | not specified | Детальная страница не предоставлена; источник — search results ClinVar |
+| 12 | GRCh37/hg19 4q12-31.21(chr4:52866944-143582507)x3 | copy number gain | Pathogenic | not provided | Детальная страница не предоставлена; источник — search results ClinVar |
+| 13 | GRCh37/hg19 4q13.3-21.3(chr4:71412409-87920784)x1 | copy number loss | Pathogenic | See cases | Детальная страница не предоставлена; источник — search results ClinVar |
+| 14 | GRCh37/hg19 4q13.2-21.21(chr4:68950363-79738598)x1 | copy number loss | Pathogenic | not provided | Детальная страница не предоставлена; источник — search results ClinVar |
+| 15 | GRCh37/hg19 4q13.3-21.1(chr4:71561780-78304341)x1 | copy number loss | Pathogenic | not provided | Детальная страница не предоставлена; источник — search results ClinVar |
+| 16 | GRCh37/hg19 4q13.2-21.22(chr4:68242784-82991431)x3 | copy number gain | Pathogenic | not provided | Детальная страница не предоставлена; источник — search results ClinVar |
+| 17 | GRCh37/hg19 4q13.1-13.3(chr4:64705501-73469716)x3 | copy number gain | Pathogenic | not provided | Детальная страница не предоставлена; источник — search results ClinVar |
+| 18 | GRCh37/hg19 4q13.1-21.1(chr4:66017575-76772947)x1 | copy number loss | Pathogenic | See cases | Детальная страница не предоставлена; источник — search results ClinVar |
+| 19 | GRCh37/hg19 4p16.3-q35.2(chr4:68346-190957473) | copy number gain | Pathogenic | See cases | Детальная страница не предоставлена; источник — search results ClinVar |
+| 20 | GRCh37/hg19 4p16.3-q35.2(chr4:68346-190957473)x3 | copy number gain | Pathogenic | See cases | Детальная страница не предоставлена; источник — search results ClinVar |
+| 21 | GRCh37/hg19 4p16.3-q35.2(chr4:12440-190904441)x3 | copy number gain | Pathogenic | See cases | Детальная страница не предоставлена; источник — search results ClinVar |
+
+**Allelic Variants (OMIM):**
+
+| OMIM # | Мутация | Фенотип | Этническая группа |
+|---|---|---|---|
+| .0001 | GC1/GC2 POLYMORPHISM, THR420LYS | GC2-фенотип (аминокислота 420 — лизин); GC1F и GC1S — треонин в положении 420 | не предоставлено |
+| .0002 | GC1/GC2 POLYMORPHISM, ASP416GLU | GC1S-фенотип (глутаминовая кислота в позиции 416); GC2 и GC1F — аспарагиновая кислота | не предоставлено |
+| .0003 | GC1/GC2 POLYMORPHISM, (TAAA)n, IVS8 | 3 частых аллеля — GC-I8*6, GC-I8*8, GC-I8*10 (по числу TAAA-повторов) | население южной Германии |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 21 |
+| Likely pathogenic | 0 |
+| Uncertain significance | 0 |
+| Likely benign | 0 |
+| Benign | 0 |
+| Conflicting | 0 |
+| Всего (без фильтра) | 101 |
+
+Дополнительно по ClinVar:
+- Germline (всего): 21
+- Somatic (clinical impact): 0
+- Somatic (oncogenicity): 0
+- Molecular consequence: Frameshift 0, Missense 0, Nonsense 0, Splice site 0, ncRNA 0, UTR 0
+- Variation type: Deletion 1, Duplication 0, Indel 0, Insertion 0, Single nucleotide 0
+- Variation size: Short variant (< 50 bps) 0, Structural variant (>= 50 bps) 5
+- Variant length: < 1kb single gene 0, > 1kb single gene 0, > 1kb multiple genes 5
+- Review status: Practice guideline 0, Expert panel 0, Multiple submitters 0, Single submitter 10, At least one star 10, Conflicting classifications 0
+
+### 3.3 Фармакогенетика GC
+
+**Summary Annotations (ClinPGx):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1450933001 | 3 | rs7041 | deferasirox | Efficacy | Beta-thalassemia and related diseases |
+
+**Pediatric Clinical Annotations (ClinPGx):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+Нет педиатрических вариантных аннотаций.
+
+**Non-Pediatric Variant Annotations (ClinPGx):**
+
+**rs4588 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449163954 | PMCID:PMC7505162 | bevacizumab | Genotype TT is associated with decreased overall survival when treated with bevacizumab in people with Colorectal Neoplasms and Neoplasm Metastasis as compared to genotypes GG + GT. More Details: Patients all also received FOLFIRI. Alleles complemented to plus chromosomal strand. | yes | = 0.019 | 514 | не предоставлено | Efficacy |
+| 1449163971 | PMCID:PMC7505162 | cetuximab | Genotype TT is associated with increased overall survival when treated with cetuximab in people with Colorectal Neoplasms and Neoplasm Metastasis as compared to genotypes GG + GT. More Details: Patients all also received FOLFIRI. This was opposite to what was seen with bevacizumab. This was only significant in the discovery cohort with univariate analysis, but PFS was significantly increased in validation cohort. Alleles complemented to plus chromosomal strand. | yes | = 0.021 | 278 | не предоставлено | Efficacy |
+
+**rs7041 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1450932983 | PMID:30651574 | deferasirox | Genotype AA is associated with increased response to deferasirox in people with beta-Thalassemia as compared to genotypes AC + CC. More Details: Patients with the AA genotype had lower liver stiffness values (proxy measurement for liver fibrosis) as compared to patients with the AC or CC genotypes. However, there was no association between this variant and liver T2* values. Please note that alleles have been complemented to the positive strand. | yes | = 0.042 | 105 | не предоставлено | Efficacy |
+
+Biogeographical Groups для rs7041: Multiple groups, Caucasian and 'Other' ethnicities. Для rs4588: Unknown.
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген GC не упоминается; альтернативные символы DBP и VDBP не упоминаются; препарат deferasirox отсутствует в списке Drugs ни в одном руководстве.
+
+### 3.4 Рекомендации GC
+
+**Из OMIM (Description / Gene Function):**
+
+- GC (group-specific component) — основной витамин-D-связывающий белок плазмы.
+- Основная функция DBP — связывание, солюбилизация и транспорт витамина D и его метаболитов (Daiger et al., 1975).
+- DBP является предшественником макрофаг-активирующего фактора; конверсия Gc-белка в макрофаг-активирующий фактор может происходить in vitro под действием мембранных гликозидаз B- и T-клеток (Yamamoto and Homma, 1991).
+- Вместе с gelsolin (137350) Gc-белок связывает актин, высвобождающийся в кровоток при некрозе клеток (extracellular actin-scavenger system), предотвращая токсические эффекты актина.
+
+**Из OMIM (Molecular Genetics):**
+
+- Hirschfeld (1959) обнаружил 3 частых GC-фенотипа: GC1-1 (GC1), GC2-1, GC2-2 (см. 139200.0001 и 139200.0002, описывающие аллели GC2, GC1F и GC1S).
+- Mourant et al. (1976): высокая частота аллеля Gc(2) соответствует, с некоторыми исключениями, низкому уровню инсоляции.
+- Kofler et al. (1995): помимо 3 частых аллелей (GC*2, GC*1S, GC*1F), идентифицировано более 120 вариантных аллелей GC. Молекулярные различия 3 частых аллелей локализованы в экзоне 11 в кодонах 416 и 420.
+- Baier et al. (1998): у недиабетических индейцев пима варианты DBP (GC1f, GC1s, GC2) ассоциированы с различиями в пероральной толерантности к глюкозе.
+- Speeckaert et al. (2006): наблюдаемые различия частот аллелей Gc в разных географических регионах могут коррелировать с пигментацией кожи и интенсивностью инсоляции.
+- Henderson et al. (2019): у 58-летней женщины ливанского происхождения с тяжёлым анкилозирующим спондилитом, низкотравматичными переломами и нормокальциемической остеопенией с низкими/неопределяемыми уровнями кальцидиола, кальцитриола и секальциферола выявлена гомозиготность по делеции 139 kb в 4q13.3, охватывающей весь ген GC, а также смежная делеция 144 kb, затрагивающая часть NPFFR2 (607449). Уровни метаболитов витамина D: у носителей — промежуточные, у неносителя — в норме или близко к норме.
+- Ассоциации, ожидающие подтверждения: возможная связь между вариацией в гене GC и восприимчивостью к болезни Грейвса (см. 275000).
+
+**Из OMIM (Cytogenetics):**
+
+- Henderson et al. (2019): гомозиготная делеция 139 kb в 4q13.3, охватывающая весь ген GC, у пациентки с дефицитом витамин-D-связывающего белка.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 1 запись, Level 3 — rs7041 / deferasirox / Efficacy / Beta-thalassemia and related diseases.
+- Non-Pediatric Variant Annotations: 3 записи — rs4588 / bevacizumab / P = 0.019 / Efficacy (Colorectal Neoplasms and Neoplasm Metastasis); rs4588 / cetuximab / P = 0.021 / Efficacy (Colorectal Neoplasms and Neoplasm Metastasis); rs7041 / deferasirox / P = 0.042 / Efficacy (beta-Thalassemia).
+- Pediatric Clinical Annotations и Pediatric Variant Annotations отсутствуют.
+- Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA28601, ClinVar (Variation ID: 58029, 1098574, 59451, 4796371, 1684642, 155391, а также search results для 15 CNV), OMIM *139200, CPIC guidelines registry (29 guidelines, GC отсутствует), PMID:1352271, PMID:8381387, PMID:30893535, PMCID:PMC7505162, PMID:30651574, PubMed:20466091.*
+## ГЕН 4: HFE — Homeostatic Iron Regulator
+
+### 4.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Homeostatic iron regulator (hemochromatosis) |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *613609 |
+| OMIM Disease | 235200 (Hemochromatosis, type 1, AR) |
+| PharmGKB ID | PA29263 |
+| HGNC Approved Gene Symbol | HFE |
+| Альтернативные названия | hemochromatosis; high Fe |
+| Альтернативные символы | HFE1; HLA-H |
+| Локация | 6p22.2 (плюсовая цепь); GRCh37: chr6:26,087,422-26,096,438; GRCh38: chr6:26,087,281-26,096,216 |
+| Структура гена | 7 экзонов, охватывают 12 kb (Feder et al., 1996) |
+| Функция | HFE — белок, связанный с MHC class I. Кодирует 343-аминокислотный протеин, включающий сигнальный пептид, пептид-связывающие регионы (alpha-1 и alpha-2 домены), трансмембранный регион и малый цитоплазматический участок. HFE образует стабильные комплексы с рецептором трансферрина (TFRC), снижает аффинность TFRC к трансферрину и уменьшает захват железа клеткой (Feder et al., 1998; Roy et al., 1999). HFE также ингибирует экспорт железа из макрофагов (Drakesmith et al., 2002) |
+| Ключевые варианты | C282Y (rs1800562, 845G>A); H63D (rs1799945, 187C>G); S65C (rs1800562-независимый, 193A>T); rs2071303; rs2858996 |
+
+### 4.2 Варианты HFE
+
+**Pathogenic / Likely pathogenic варианты (ClinVar, 40 шт.):**
+
+| # | HGVS | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 6p25.3-12.3(chr6:156974-46789291)x3 | copy number gain | Pathogenic | See cases |
+| 2 | GRCh38/hg38 6p25.2-21.33(chr6:3224310-30657190)x3 | copy number gain | Pathogenic | See cases |
+| 3 | NM_000410.4(HFE):c.166C>T (p.Gln56Ter) | single nucleotide variant | Pathogenic | Hemochromatosis type 1 |
+| 4 | NM_000410.4(HFE):c.211C>T (p.Arg71Ter) | single nucleotide variant | Pathogenic/Likely pathogenic | Hemochromatosis type 1 (+1 more) |
+| 5 | NM_000410.4(HFE):c.279del (p.Trp94fs) | Deletion | Pathogenic/Likely pathogenic | Hereditary hemochromatosis (+1 more) |
+| 6 | NM_000410.4(HFE):c.407G>A (p.Trp136Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 7 | NM_000410.4(HFE):c.414C>G (p.Tyr138Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 8 | NM_000410.4(HFE):c.440_446del (p.Glu147fs) | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 9 | NM_000410.4(HFE):c.480del (p.Arg161fs) | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 10 | NM_000410.4(HFE):c.502G>T (p.Glu168Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 11 | NM_000410.4(HFE):c.546C>A (p.Tyr182Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 12 | NM_000410.4(HFE):c.546_547del (p.Leu183fs) | Deletion | Pathogenic/Likely pathogenic | Hereditary hemochromatosis (+6 more) |
+| 13 | NM_000410.4(HFE):c.548T>C (p.Leu183Pro) | single nucleotide variant | Pathogenic/Likely pathogenic | Hereditary hemochromatosis (+1 more) |
+| 14 | NM_000410.4(HFE):c.568C>T (p.Gln190Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 15 | NM_000410.4(HFE):c.610C>T (p.Gln204Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 16 | NM_000410.4(HFE):c.616+1G>A | splice site | Pathogenic/Likely pathogenic | Hemochromatosis type 1 (+2 more) |
+| 17 | NM_000410.4(HFE):c.616+1G>T | splice site | Pathogenic | Hemochromatosis type 1 (+1 more) |
+| 18 | NM_000410.4(HFE):c.626del (p.Leu209fs) | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 19 | NM_000410.4(HFE):c.663del (p.Thr222fs) | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 20 | NM_000410.4(HFE):c.693C>G (p.Tyr231Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 21 | NM_000410.4(HFE):c.712A>T (p.Lys238Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 22 | NM_000410.4(HFE):c.720_726dup (p.Lys243delinsGluGlyTer) | Duplication | Pathogenic | Hereditary hemochromatosis |
+| 23 | NM_000410.4(HFE):c.760A>T (p.Lys254Ter) | single nucleotide variant | Pathogenic/Likely pathogenic | Hemochromatosis type 1 (+1 more) |
+| 24 | NM_000410.4(HFE):c.762del (p.Asp255fs) | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 25 | NM_000410.4(HFE):c.774del (p.Asn259fs) | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 26 | NM_000410.4(HFE):c.832C>T (p.Gln278Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 27 | NM_000410.4(HFE):c.840T>A (p.Tyr280Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 28 | NM_000410.4(HFE):c.845G>A (p.Cys282Tyr) | single nucleotide variant | Pathogenic / Pathogenic, low penetrance; risk factor | Hemochromatosis type 1 (+19 more) |
+| 29 | NM_000410.4(HFE):c.848A>C (p.Gln283Pro) | single nucleotide variant | Pathogenic/Likely pathogenic | Hemochromatosis type 1 (+3 more) |
+| 30 | NM_000410.4(HFE):c.892G>T (p.Glu298Ter) | single nucleotide variant | Pathogenic/Likely pathogenic | Hereditary hemochromatosis (+1 more) |
+| 31 | NM_000410.4(HFE):c.899C>A (p.Ser300Ter) | single nucleotide variant | Pathogenic | Hereditary hemochromatosis |
+| 32 | NM_000410.4(HFE):c.989G>T (p.Arg330Met) | single nucleotide variant | Pathogenic | Hemochromatosis type 1 |
+| 33 | NM_000410.4(HFE):c.1006+1G>T | splice site | Pathogenic | Hereditary hemochromatosis |
+| 34 | NM_000410.4(HFE):c.1006+1G>A | splice site | Pathogenic/Likely pathogenic | Alzheimer disease type 1 (+8 more) |
+| 35 | NM_000410.4(HFE):c.1022_1034del (p.His341fs) | Deletion | Pathogenic | Hemochromatosis type 1 (+1 more) |
+| 36 | NC_000006.11:g.(?_26087669)_(26091837_?)del | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 37 | NC_000006.11:g.(?_26087669)_(26094454_?)del | Deletion | Pathogenic | Hereditary hemochromatosis |
+| 38 | GRCh37/hg19 6p22.2(chr6:26008259-26168230)x1 | copy number loss | Pathogenic | not provided |
+| 39 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482) | copy number gain | Pathogenic | See cases |
+| 40 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482)x3 | copy number gain | Pathogenic | See cases |
+
+**Allelic Variants (OMIM, 11 selected examples):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | HFE, CYS282TYR (C282Y, 845G>A) | Hemochromatosis, type 1 (235200) | Реклассифицирован как полиморфизм (gnomAD v2.1.1: 9 544/282 608 аллелей, 276 гомозигот, частота 0.03377) |
+| .0002 | HFE, HIS63ASP (H63D, 187C>G) | Hemochromatosis, type 1 (235200) | Реклассифицирован как полиморфизм (gnomAD v2.1.1: 30 592/282 855 аллелей, 2 023 гомозигот, частота 0.1082) |
+| .0003 | HFE, SER65CYS (S65C, 193A>T) | Hemochromatosis, type 1 (235200) | Ассоциирован с мягкой формой гемохроматоза; 7.8% HH-хромосом без C282Y/H63D |
+| .0004 | HFE, 5569G-A (интронный полиморфизм) | HFE intronic polymorphism | Может приводить к переоценке распространённости гомозигот C282Y |
+| .0005 | HFE, VAL53MET (V53M, 157G>A) | HFE polymorphism | Обнаружен только в южноафриканских Black и Bushman (Khoisan) популяциях |
+| .0006 | HFE, VAL59MET (V59M, 175G>A) | HFE polymorphism | Обнаружен у южноафриканского Caucasian |
+| .0007 | HFE, GLN127HIS (Q127H, 381A>C) | Hemochromatosis, type 1 (235200) | Компаунд-гетерозигота с H63D у 11-летней девочки с гемохроматозом и вариегатной порфирией |
+| .0008 | HFE, ARG330MET (R330M, 989G>T) | Hemochromatosis, type 1 (235200) | Обнаружен у 13 кавказских южноафриканских пациентов |
+| .0009 | HFE, ILE105THR (I105T, 314T>C) | Hemochromatosis, type 1 (235200) | Компаунд-гетерозигота с H63D |
+| .0010 | HFE, GLY93ARG (G93R, 277G>C) | Hemochromatosis, type 1 (235200) | Компаунд-гетерозигота с C282Y |
+| .0011 | HFE, GLN283PRO (Q283P, 848A>C) | Hemochromatosis, type 1 (235200) | Компаунд-гетерозигота с C282Y во французской семье; Q283P нарушает взаимодействие HFE с B2M и TFRC |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 40 |
+| Likely pathogenic | 9 |
+| Uncertain significance | 0 |
+| Likely benign | 0 |
+| Benign | 0 |
+| Conflicting | 0 |
+| Всего (без фильтра) | 361 |
+
+Дополнительно по ClinVar:
+- Germline (всего): 40
+- Somatic (clinical impact): 0
+- Somatic (oncogenicity): 0
+- Molecular consequence: Frameshift 9, Missense 4, Nonsense 16, Splice site 4, ncRNA 2, UTR 0
+- Variation type: Deletion 11, Duplication 1, Indel 0, Insertion 0, Single nucleotide 23
+- Variation size: Short variant (< 50 bps) 33, Structural variant (>= 50 bps) 2
+- Variant length: < 1kb single gene 31, > 1kb single gene 0, > 1kb multiple genes 2
+- Review status: Practice guideline 0, Expert panel 0, Multiple submitters 12, Single submitter 22, At least one star 34, Conflicting classifications 0
+
+### 4.3 Фармакогенетика HFE
+
+**Summary Annotations (ClinPGx):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1448100222 | 3 | rs2071303 | adalimumab | Efficacy | Crohn Disease |
+
+**Pediatric Clinical Annotations (ClinPGx):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+| ID | Variant | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|---|
+| 1454193260 | rs1799945 | PMCID:PMC12308240 | daunorubicin; doxorubicin | Allele G is associated with decreased likelihood of Cardiotoxicity when treated with daunorubicin or doxorubicin in children with Neoplasms as compared to allele C. More Details: Two cardioprotective variants were identified: GSTA2 rs2180314 (0.62; 0.46–0.84) and HFE rs1799945 (0.63; 0.49–0.80). Both variants had similar pooled ORs with no heterogeneity detected. Authors note this as C>G/C>T but no T reported in major frequency sources so assuming G as the protective allele. | yes | не предоставлено | 109 | 362 | Toxicity |
+
+**Non-Pediatric Variant Annotations (ClinPGx):**
+
+**rs1799945 — 3 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 769171145 | PMID:18025780 | erythropoietin | Allele G is associated with decreased dose of epoetin alfa in people with hemodialysis treatment as compared to allele C. More Details: Required dosage to maintain a fixed hemoglobin target level was lower. Required iron dose was also lower in carriers, but not significantly. Carriers of this mutation or the rs1800562 C282Y mutation were pooled together. G allele corresponds to the H63D (CAT>GAT) loss of function mutation. | yes | = 0.01 | 96 | Dosage, Metabolism/PK |
+| 1183491501 | PMCID:PMC3529147 | atenolol | Allele G is not associated with response to atenolol in people with Hypertension as compared to allele C. More Details: Not significant when using Bonferroni-corrected alpha of 0.0014. Response was assessed by change in systolic blood pressure (SBP) and diastolic blood pressure (DBP) after 9 weeks of treatment. | no | = 0.02 | 233 | Efficacy |
+| 769171170 | PMID:18025780 | erythropoietin; iron | Allele G is associated with decreased risk of mortality (due to sepsis or cardiovascular causes) when treated with epoetin alfa and iron in people with hemodialysis treatment as compared to allele C. More Details: Carriers of this mutation or the rs1800562 C282Y mutation were pooled together. G allele corresponds to the H63D (CAT>GAT) loss of function mutation. | no | = 0.06 | 96 | Other |
+
+**rs2858996 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1447946553 | PMID:21145803 | pazopanib | Genotype TT is associated with increased likelihood of drug-induced liver injury when treated with pazopanib in people with Carcinoma, Renal Cell as compared to genotypes GG + GT. More Details: as measured by ALT elevation. | yes | = 0.003 | 21 | 54 | Toxicity |
+
+**rs1800562 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 769171171 | PMID:18025780 | erythropoietin | Allele A is associated with decreased dose of epoetin alfa in people with hemodialysis treatment as compared to allele G. More Details: Required dosage to maintain a fixed hemoglobin target level was lower. Required iron dose was also lower in carriers, but not significantly. Carriers of this mutation or the rs1799945 H63D mutation were pooled together. A allele corresponds to the C282Y (TGC>TAC) loss of function mutation. | yes | = 0.01 | 96 | Dosage, Metabolism/PK |
+| 769171173 | PMID:18025780 | erythropoietin; iron | Allele A is associated with decreased risk of mortality (due to sepsis or cardiovascular causes) when treated with epoetin alfa and iron in people with hemodialysis treatment as compared to allele G. More Details: Carriers of this mutation or the rs1799945 H63D mutation were pooled together. A allele corresponds to the C282Y (TGC>TAC) loss of function mutation. | no | = 0.06 | 96 | Other |
+
+**rs2071303 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1447983363 | PMID:27115882 | adalimumab | Genotypes CC + CT are associated with increased response to adalimumab in people with Crohn Disease as compared to genotype TT. More Details: Alleles given as A and G. Based on inflammatory bowel disease questionnaire at week 20. Also looked at 4, 12, and 30 weeks after initiation of treatment. Response defined as increase in IBDQ of more than 22 points, or as IBDQ higher than 170 points. | yes | = 0.009 | 68 | Efficacy |
+
+Biogeographical Groups: для всех Non-Pediatric Variant Annotations — European.
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген HFE не упоминается; альтернативные символы HFE1 и HLA-H не упоминаются; препараты adalimumab, erythropoietin, pazopanib, atenolol, daunorubicin, doxorubicin отсутствуют в списке Drugs ни в одном руководстве.
+
+### 4.4 Рекомендации HFE
+
+**Из OMIM (Cloning and Expression):**
+
+- El Kahloun et al. (1993): с помощью YAC с 320-kb вставкой геномной ДНК, включающей HLA-A, выделено 7 новых неклассовых структурных генов (HCG I–VII) в регионе-кандидате гемохроматоза (HFE1; 235200).
+- Feder et al. (1996): идентифицирован ген HLA-H (HFE), кодирующий 343-аминокислотный протеин, родственный семейству MHC class I. Белок включает сигнальный пептид, пептид-связывающие регионы (alpha-1 и alpha-2 домены), трансмембранный регион и малый цитоплазматический участок. Северный блот-анализ выявил основной 4-kb мРНК-транскрипт во всех тканях, кроме мозга.
+- Hashimoto et al. (1995): HLA-H идентичен гену MR2. Hashimoto et al. (1997): выделен мышиный гомолог, сходство аминокислотной последовательности ~66%.
+- Thenie et al. (2001): выделен антисмысловой транскрипт с локуса HFE, который снижает экспрессию HFE in vitro.
+
+**Из OMIM (Nomenclature):**
+
+- Mercier et al. (1997) и Bodmer et al. (1997): рекомендовано использовать символ HFE вместо «HLA-H».
+
+**Из OMIM (Biochemical Features):**
+
+- Lebron et al. (1998): определена кристаллическая структура HFE-белка с разрешением 2.6 Å.
+
+**Из OMIM (Gene Structure):**
+
+- Feder et al. (1996): ген HFE содержит 7 экзонов, охватывающих 12 kb.
+
+**Из OMIM (Mapping):**
+
+- Hashimoto et al. (1995): HFE картирован на 6p22 методом FISH.
+- Feder et al. (1996): HFE картирован в регионе MHC на 6p21.3.
+- Hashimoto et al. (1997): мышиный гомолог транслоцирован с хромосомы 17 на хромосому 13.
+
+**Из OMIM (Gene Function):**
+
+- Parkkila et al. (1997): HFE-белок экспрессируется в эпителиальных клетках ЖКТ (уникальный паттерн в тонком кишечнике — внутриклеточная перинуклеарная локализация в глубоких криптах), в плаценте (апикальная плазматическая мембрана синцитиотрофобластов), ассоциирован с B2M и TFR.
+- Feder et al. (1998): HFE образует стабильные комплексы с рецептором трансферрина; H63D-мутант сохраняет способность к комплексообразованию, но не снижает аффинность TFR к трансферрину; C282Y-мутант лишь слабо ассоциирован с TFR.
+- Lebron et al. (1998): HFE и TFR связываются при основном pH клеточной поверхности, но не при кислом pH внутриклеточных везикул; стехиометрия TFR:HFE (2:1) отличается от TFR:transferrin (2:2).
+- Roy et al. (1999): HFE снижает захват радиоактивного железа из TF на 33%, не влияя на эндоцитарные/экзоцитарные скорости цикла TFRC.
+- Drakesmith et al. (2002): HFE ингибирует экспорт железа из макрофагов; H63D утрачивает эту способность.
+- Zoller et al. (2003): при гемохроматозе, вызванном мутациями HFE, активность CYBRD1 в дуоденальных биоптатах повышена посттрансляционно, в отличие от дефицита железа.
+- Drakesmith et al. (2005): белок Nef ВИЧ-1 снижает экспрессию HFE в макрофагах, что ведёт к накоплению железа и ферритина и повышению экспрессии HIV-1 Gag.
+- Rohrlich et al. (2005): HFE распознаётся alpha/beta TCR мыши, что ведёт к фосфорилированию Zap70.
+- Gao et al. (2008): HFE снижает захват как TF-связанного, так и не-TF-связанного железа в HepG2; нокдаун ZIP14 (SLC39A14) отменяет ингибирующий эффект HFE на захват не-TF-связанного железа.
+
+**Из OMIM (Molecular Genetics):**
+
+- Feder et al. (1996): у пациентов с наследственным гемохроматозом (HFE1; 235200) идентифицированы 2 мутации — C282Y (613609.0001) и H63D (613609.0002). C282Y обнаружен в 85% всех HFE-хромосом; 83% случаев гемохроматоза связаны с гомозиготностью C282Y.
+- Barton et al. (1999): у 4 из 20 пробандов с гемохроматозом без C282Y-гомозиготности, C282Y/H63D-компаунд-гетерозиготности или H63D-гомозиготности выявлены новые мутации I105T и G93R, а также S65C.
+- Wallace and Subramaniam (2016): проанализирован 161 вариант, ассоциированный с наследственным гемохроматозом; 43 представлены в публичных базах NGS (ESP, 1000 Genomes, ExAC). Частота C282Y соответствовала предыдущим оценкам. Не-HFE формы перегрузки железом (TFR2, HFE2, HAMP) крайне редки (частота патогенных аллелей 0.00007–0.0005); варианты SLC40A1 наиболее распространены среди африканцев (0.0004).
+- C282Y (rs1800562) ассоциирован с сывороточным железом, трансферрином, насыщением трансферрина и ферритином (Benyamin et al., 2009).
+- C282Y — фактор риска пролиферативной диабетической ретинопатии (Peterlin et al., 2003) и нефропатии при СД2 (Oliva et al., 2004).
+- Сочетание TF*C2 и HFE C282Y повышает риск болезни Альцгеймера (Robson et al., 2004).
+
+**Из OMIM (Animal Model):**
+
+- Zhou et al. (1998): мыши с нокаутом Hfe демонстрируют повышенную насыщенность трансферрина, 8-кратное повышение печёночного железа, перипортальное отложение железа в гепатоцитах.
+- Bahram et al. (1999): мыши с делецией alpha-1 и alpha-2 лиганд-связывающих доменов HFE развивают перегрузку железом с повышенным дуоденальным всасыванием.
+- Roy et al. (2004): мыши с дефицитом Hfe не развивают гипосидеремию в ответ на ЛПС.
+- Nairz et al. (2009): мыши без Hfe защищены от септицемии Salmonella typhimurium за счёт индукции Lcn2.
+- Jenkitkasemwong et al. (2015): потеря Slc39a14 предотвращает печёночную перегрузку железом в моделях Hfe-/- и Hfe2-/-.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 1 запись, Level 3 — rs2071303 / adalimumab / Efficacy / Crohn Disease.
+- Pediatric Variant Annotations: 1 запись — rs1799945 / daunorubicin; doxorubicin / P-value не предоставлено / Toxicity (снижение вероятности кардиотоксичности у детей с новообразованиями, аллель G).
+- Non-Pediatric Variant Annotations: 7 записей по rs1799945, rs2858996, rs1800562, rs2071303 (препараты: erythropoietin, iron, pazopanib, atenolol, adalimumab).
+- Pediatric Clinical Annotations отсутствуют.
+- Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA29263, ClinVar (40 Pathogenic вариантов HFE), OMIM *613609, CPIC guidelines registry (29 guidelines, HFE отсутствует), PMID:8696333, PMID:9465039, PMID:10085150, PMID:12429850, PMID:12949720, PMID:16043695, PMID:16123136, PMID:18524764, PMID:10557317, PMID:15098034, PMID:19700664, PMID:26028554, PMID:18025780, PMID:21145803, PMID:27115882, PMCID:PMC12308240, PMCID:PMC3529147.*
+## ГЕН 5: FUT2 — Fucosyltransferase 2 (H Blood Group)
+
+### 5.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Fucosyltransferase 2 (H blood group) |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *182100 |
+| OMIM Disease | 616754 (Bombay phenotype, digenic, AR); 612542 (Vitamin B12 plasma level QTL1) |
+| PharmGKB ID | PA28429 |
+| HGNC Approved Gene Symbol | FUT2 |
+| Альтернативные названия | GDP-L-fucose:beta-D-galactoside 2-alpha-L-fucosyltransferase 2; alpha (1,2) fucosyltransferase; alpha(1,2)FT2; fucosyltransferase 2; fucosyltransferase 2 (secretor status included); galactoside 2-alpha-L-fucosyltransferase 2; secretor blood group alpha-2-fucosyltransferase; secretor factor |
+| Альтернативные символы | SE; SEC2; Se2; sej |
+| Локация | 19q13.33 (плюсовая цепь); GRCh37: chr19:49,199,228-49,209,191; GRCh38: chr19:48,695,971-48,705,934 |
+| Структура гена | не предоставлено |
+| Функция | Классический локус секретора человека (Se) FUT2 кодирует alpha-(1,2)фукозилтрансферазу, которая регулирует экспрессию антигенов Lewis ABO(H) гисто-групп крови на поверхности эпителиальных клеток и в биологических жидкостях и определяет секреторный статус ABO-антигенов (см. 616093). Секреторный статус этого полиморфного белка был использован Mohr (1951) для первого аутосомного сцепления у человека — между секреторным фактором и группой крови Lutheran (см. 111200). Секреторный фактор (Se) может рассматриваться либо как физиологический признак, либо как «почётная» группа крови. Индивид-«секретор» имеет детектируемый ABH-антиген группы крови в слюне и других биологических жидкостях; «несекретор» — не имеет. Секретор — доминантный признак (Hazra et al., 2008) |
+| Ключевые варианты | rs492602; rs601338 (W143X, 428G>A); rs602662; se2 (385A>T, I129F); se3 (571C>T); se4 (628C>T); se5 (fusion gene FUT2P/FUT2) |
+
+### 5.2 Варианты FUT2
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+Все 9 вариантов с классификацией Pathogenic по гену FUT2 — крупные структурные перестройки (copy number gain / copy number loss / Deletion), захватывающие регион 19q13.31–13.43 и прилегающие цитогенетические локусы. Коротких внутригенных вариантов FUT2 (missense, nonsense, frameshift, splice site, UTR, ncRNA) с классификацией Pathogenic / Likely pathogenic в ClinVar не обнаружено (по фильтрам Molecular consequence: Frameshift 0, Missense 0, Nonsense 0, Splice site 0, ncRNA 0, UTR 0; по Variation type: Single nucleotide 0, Indel 0, Insertion 0, Duplication 0).
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 19q13.32-13.33(chr19:46658791-49050450)x3 | copy number gain | Pathogenic | See cases |
+| 2 | GRCh38/hg38 19q13.33-13.43(chr19:47908540-58539965)x3 | copy number gain | Pathogenic | See cases |
+| 3 | GRCh38/hg38 19q13.33-13.43(chr19:47929575-58572206)x3 | copy number gain | Pathogenic | See cases |
+| 4 | GRCh37/hg19 19q13.33-13.43(chr19:48463931-57095254)x3 | copy number gain | Pathogenic | not provided |
+| 5 | GRCh37/hg19 19q13.31-13.42(chr19:44738088-53621561)x3 | copy number gain | Pathogenic | not provided |
+| 6 | GRCh37/hg19 19q11-13.33(chr19:28271106-49213832)x3 | copy number gain | Pathogenic | not provided |
+| 7 | GRCh37/hg19 19p13.3-q13.43(chr19:260912-58956888) | copy number gain | Pathogenic | See cases |
+| 8 | GRCh37/hg19 19p13.3-q13.43(chr19:260912-58956888)x3 | copy number gain | Pathogenic | See cases |
+| 9 | NG_007511.1:g.6141_16535del | Deletion | Pathogenic | BOMBAY PHENOTYPE, DIGENIC |
+
+**Allelic Variants (OMIM, 3 selected examples):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | FUT2, TRP143TER (W143X, 428G>A) | Secretor/nonsecretor polymorphism; Vitamin B12 plasma level QTL1; Resistance to Norwalk virus infection | Нонсенс-мутация в кодоне 143; G-to-A транзиция в нуклеотиде 428; частая у Caucasians (символ se1) |
+| .0002 | FUT2, ILE129PHE (I129F, 385A>T) | Secretor/nonsecretor polymorphism, Japanese type | Миссенс-мутация; A-to-T трансверсия в нуклеотиде 385; sej/sej гомозиготность >15% японской популяции; частота аллеля 39% в Японии |
+| .0003 | FUT2, DEL | Bombay phenotype, digenic | Полная делеция FUT2 в комбинации с 725T>G в FUT1 (211100.0004, Leu242Arg); гомозиготность по обеим мутациям; делеция образована Alu-Alu рекомбинацией (Koda et al., 2000) |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 9 |
+| Likely pathogenic | 0 |
+| Uncertain significance | 0 |
+| Likely benign | 0 |
+| Benign | 0 |
+| Conflicting | 0 |
+| Всего (без фильтра) | 90 |
+
+Дополнительно по ClinVar:
+
+- Germline (всего): 9
+- Somatic (clinical impact): 0
+- Somatic (oncogenicity): 0
+- Molecular consequence: Frameshift 0, Missense 0, Nonsense 0, Splice site 0, ncRNA 0, UTR 0
+- Variation type: Deletion 1, Duplication 0, Indel 0, Insertion 0, Single nucleotide 0
+- Variation size: Short variant (< 50 bps) 0, Structural variant (>= 50 bps) 3
+- Variant length: < 1kb single gene 0, > 1kb single gene 0, > 1kb multiple genes 3
+- Review status: Practice guideline 0, Expert panel 0, Multiple submitters 0, Single submitter 3, At least one star 3, Conflicting classifications 0
+
+### 5.3 Фармакогенетика FUT2
+
+**Summary Annotations (ClinPGx):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1451151560 | 3 | rs492602 | ethanol | Toxicity | Alcohol abuse |
+
+**Pediatric Clinical Annotations (ClinPGx):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+Нет педиатрических вариантных аннотаций.
+
+**Non-Pediatric Variant Annotations (ClinPGx):**
+
+**rs492602 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1451149965 | PMCID:PMC7485556 | ethanol | Allele A is associated with decreased risk of Alcoholism due to ethanol as compared to allele G. More Details: Meta-analysis of four GWAS datasets: MVP phase 1, MVP phase 2, PGC and UK Biobank. The direction of effect was consistent across all four datasets. | yes | = 8.08E-10 | 179 168 | 256 395 | Toxicity |
+
+Biogeographical Groups: European.
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген FUT2 не упоминается; альтернативные символы SE, SEC2, Se2, sej не упоминаются; препарат ethanol отсутствует в списке Drugs ни в одном руководстве.
+
+### 5.4 Рекомендации FUT2
+
+**Из OMIM (Description / Gene Function):**
+
+- FUT2 (Se) кодирует alpha-(1,2)фукозилтрансферазу, которая регулирует экспрессию антигенов Lewis ABO(H) гисто-групп крови на поверхности эпителиальных клеток и в биологических жидкостях и определяет секреторный статус ABO-антигенов.
+- Секреторный локус сцеплен с локусом группы крови Lutheran (111200) и локусом миотонической дистрофии (DMPK; 605377). В сочетании с возможностью определения секреторного статуса плода по амниотической жидкости (Harper et al., 1971) это сцепление потенциально позволяет проводить пренатальную диагностику миотонической дистрофии (DM; 160900).
+- Oriol et al. (1981): проанализировав 44 опубликованные родословные с Bombay-фенотипом, пришли к выводу, что подавления Se у Bombay-лиц нет; lod score 12.9 при 1% рекомбинации для сцепления Bombay и secretor. Предположили, что Hh и Se — оба структурные гены, каждый кодирует 2-alpha-L-фукозилтрансферазу.
+- Le Pendu et al. (1982): фукозилтрансфераза эпителиального происхождения, кодируемая геном Se, способна превращать как type 1, так и type 2 естественный субстрат, тогда как фермент мезодермального происхождения, кодируемый геном H (мутантный при Bombay-фенотипе), работает преимущественно на type 2 субстрате.
+
+**Из OMIM (Mapping):**
+
+- Lutheran-secretor сцепление — первое аутосомное сцепление, идентифицированное у человека. Впервые обнаружено Mohr (1951) как сцепление группы крови Lutheran и «рецессивной» группы крови Lewis. Признано Lutheran-secretor сцеплением (Mohr, 1954) после интерпретации Grubb (1953).
+- Rouquier et al. (1995): космидный контиг 100 kb, локализованный в 19q13.3 методом FISH, содержит FUT1 и 2 FUT1-родственные последовательности (SEC1 и SEC2). SEC1 и SEC2 разделены 12 kb и находятся на расстоянии 65.5 kb и 35 kb соответственно от гена FUT1. SEC1 — псевдоген.
+- Reguigne-Arnould et al. (1995): 5 из 7 клонированных на тот момент генов фукозилтрансфераз картированы в 2 кластера: FUT1 и FUT2 на 19q; FUT6 (136836), FUT3 и FUT5 (136835) на 19p.
+
+**Из OMIM (Molecular Genetics):**
+
+- Kelly et al. (1995): примерно 20% случайно выбранных индивидов были гомозиготны по инактивирующей нонсенс-мутации W143X (182100.0001), что соответствует частоте несекреторного фенотипа в большинстве человеческих популяций. Каждый из 6 неродственных несекреторов был гомозиготен по этому нуль-аллелю.
+- Kudo et al. (1996): обсуждена возможность селективного преимущества, объясняющего развитие различных инактивирующих мутаций гена SEC2 в разных этнических группах. Отсутствие или присутствие антигенов Lewis, продукта генов Le и Se, и экспрессия антигенов в пищеварительных органах могут быть биологически гораздо важнее, чем экспрессия в эритроцитах.
+- Koda et al. (1996): нонсенс-мутация 428G>A (se1) у Caucasians не обнаружена у японцев. Вместо неё найдены миссенс-мутация 385A>T (se2) и 2 нонсенс-мутации (571C>T, se3, и 628C>T, se4) в японском Se-дефицитном аллеле. Кроме того, найден fusion-ген, состоящий из 5'-региона псевдогена (FUT2P) и 3'-региона функционального гена FUT2, как Se-дефицитный аллель (se5). Анализ последовательности fusion-гена показал, что область кроссовера соответствует регионам между основаниями 253 и 313 псевдогена и между основаниями 211 и 271 гена FUT2. Предположено, что fusion-ген образован гомологичным неравным кроссовером. Популяционное исследование 141 случайно выбранного японца показало, что se2 — частая Se-дефицитная аллель в японской популяции, а секретор-дефицитные аллели расоспецифичны.
+- Liu et al. (1999): исследовано 5 популяций из 3 этнических групп Восточной Азии на наличие fusion-гена. Fusion-ген найден с высокой частотой в 2 японских популяциях (0.0551 в Окинаве и 0.0792 в Аките) и с очень низкой частотой в корейской популяции (0.0063 в Сеуле). Среди 292 пациентов из 2 китайских популяций индивидов с fusion-геном не выявлено. Авторы предположили, что fusion-ген, вероятно, возник внутри японской популяции.
+- Yu et al. (1999): частая несекреторная аллель у Caucasians (182100.0001) практически отсутствует у тайваньцев и китайцев материкового Китая. В нескольких группах коренного населения Тайваня обнаружен фенотип Le(a+b-) nonsecretor.
+
+**Из OMIM (Vitamin B12 Plasma Level Quantitative Trait Locus 1):**
+
+- Hazra et al. (2008): найдена сильная ассоциация между rs492602 в FUT2 и положительными уровнями витамина B12 в плазме в полногеномном сканировании и независимой репликационной выборке из Nurses' Health Study. Женщины, гомозиготные по аллелю G rs492602, имели более высокие уровни B12. Этот аллель в сильном неравновесии по сцеплению с несекреторным вариантом FUT2, кодирующим W143X (182100.0001), что предполагает правдоподобный механизм изменения абсорбции B12 и уровней в плазме. Ассоциация найдена в когорте здоровых женщин европейского происхождения.
+- Tanaka et al. (2009): полногеномный анализ ассоциаций для идентификации генетических факторов, влияющих на циркулирующие уровни витамина B12, выявил rs602662 в гене FUT2 (p = 2.83 x 10^-20) у итальянцев в исследованиях InCHIANTI (1175 участников), SardiNIA (1115 участников) и BLSA (640 участников). Топ-локус реплицирован в независимой выборке из 687 участников исследования Progetto Nutrizione.
+
+**Из OMIM (Bombay Phenotype):**
+
+- Koda et al. (1997): 725T>G трансверсия в FUT1 (211100.0004), приводящая к аминокислотной замене Leu242Arg, и полная делеция FUT2 (182100.0003) ответственны за классический Bombay-фенотип (см. 616754).
+- Koda et al. (2000): выделен регион соединения делеции FUT2; получены доказательства, что делеция образована Alu-Alu рекомбинацией.
+
+**Из OMIM (Norwalk Virus Infection, Resistance to):**
+
+- Lindesmith et al. (2003): индивиды, гомозиготные по аллелю FUT2 428G>A (182100.0001), не экспрессируют H type-1 олигосахаридный лиганд, необходимый для связывания Norwalk virus. Аллель восприимчивости FUT2 полностью пенетрантен против Norwalk virus infection: ни один из этих индивидов не развил инфекцию после challenge, независимо от дозы. Из восприимчивой популяции, кодирующей функциональный ген FUT2, часть была резистентна к инфекции, что предполагает наличие иммунного ответа памяти или другого неидентифицированного фактора защиты.
+
+**Из OMIM (Animal Model):**
+
+- Falk et al. (1995): созданы трансгенные мыши с человеческим геном Le; Helicobacter pylori прикреплялся к эпителиальным клеткам желудка у трансгенных мышей, но не у нормальных сиблингов. Это предполагает, что Le/Le индивиды могут иметь преимущество в избегании инфекции H. pylori (600263).
+- Domino et al. (2001): с помощью gene targeting в эмбриональных стволовых клетках получены линии мышей с дефицитом Fut2. Fut2-null мыши развивались нормально и не проявляли грубых фенотипических аномалий. Иммуногистохимия показала, что Fut2-null мыши больше не проявляли wildtype-паттерн экспрессии alpha(1,2)-фукозилированных гликанов в эпителии матки. Однако фертильность оставалась нормальной. Авторы заключили, что alpha(1,2)-фукозилированные гликаны играют неessential-роли в имплантации бластоцисты или функции сперматозоидов у мышей.
+
+**Из OMIM (Associations Pending Confirmation):**
+
+- Обсуждение возможной ассоциации между вариацией в гене FUT2 и восприимчивостью к болезни Крона см. 266600.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 1 запись, Level 3 — rs492602 / ethanol / Toxicity / Alcohol abuse.
+- Non-Pediatric Variant Annotations: 1 запись — rs492602 / ethanol / P = 8.08E-10 / Toxicity (снижение риска алкоголизма, аллель A, мета-анализ 4 GWAS).
+- Pediatric Clinical Annotations и Pediatric Variant Annotations отсутствуют.
+- Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA28429, ClinVar (9 Pathogenic вариантов FUT2), OMIM *182100, CPIC guidelines registry (29 guidelines, FUT2 отсутствует), PMID:7876234, PMID:7876235, PMID:8755920, PMID:8621666, PMID:9299444, PMID:10982186, PMID:10319583, PMID:18776911, PMID:19303062, PMID:12692541, PMID:11713270, PMID:7878011, PMID:20570966, PMCID:PMC7485556.*

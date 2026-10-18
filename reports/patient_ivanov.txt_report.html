@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Генетический отчёт — patient_ivanov.txt.txt</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f8fafc; color: #1e293b;
+    margin: 0; padding: 24px;
+    line-height: 1.55;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  header {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white; padding: 28px 32px; border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25);
+  }
+  header h1 { margin: 0 0 6px; font-size: 24px; }
+  header .file { opacity: 0.85; font-size: 14px; }
+  header .date { opacity: 0.7; font-size: 13px; margin-top: 4px; }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 28px;
+  }
+  .summary .stat {
+    background: white; padding: 14px 18px; border-radius: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .summary .stat .num { font-size: 26px; font-weight: 700; }
+  .summary .stat .label { font-size: 13px; color: #64748b; }
+  .stat.green .num { color: #16a34a; }
+  .stat.yellow .num { color: #ca8a04; }
+  .stat.orange .num { color: #ea580c; }
+  .stat.gray .num { color: #64748b; }
+
+  h2 {
+    font-size: 19px; margin: 32px 0 14px;
+    padding-bottom: 8px; border-bottom: 2px solid #e2e8f0;
+  }
+
+  .card {
+    background: white; border-radius: 12px; padding: 18px 22px;
+    margin-bottom: 14px; border-left: 5px solid #cbd5e1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card.matched { border-left-color: #16a34a; }
+  .card.no-table { border-left-color: #ca8a04; }
+  .card.no-match { border-left-color: #94a3b8; }
+
+  .card-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .gene-name { font-size: 18px; font-weight: 700; color: #0f172a; }
+  .gene-group { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+  .status-icon { font-size: 20px; }
+
+  .patient-line {
+    background: #f1f5f9; padding: 8px 12px; border-radius: 7px;
+    margin-bottom: 10px; font-size: 14px;
+  }
+  .patient-line.comment { font-style: italic; color: #475569; }
+
+  .match {
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 12px; margin-top: 10px;
+  }
+  .match-head {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-bottom: 8px;
+  }
+  .genotype {
+    background: #eef2ff; color: #3730a3;
+    padding: 3px 10px; border-radius: 6px;
+    font-family: ui-monospace, Menlo, monospace; font-weight: 600;
+  }
+  .badge {
+    padding: 3px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  .row-details {
+    list-style: none; padding: 0; margin: 6px 0 0;
+    font-size: 14px;
+  }
+  .row-details li {
+    padding: 4px 0; border-bottom: 1px solid #f1f5f9;
+  }
+  .row-details li:last-child { border-bottom: none; }
+  .row-details b { color: #334155; }
+
+  .patient-rec {
+    background: #ecfdf5; border-left: 4px solid #16a34a;
+    padding: 10px 14px; margin-top: 12px; border-radius: 6px;
+    font-size: 14px; color: #14532d;
+  }
+
+  .note {
+    color: #64748b; font-size: 13px;
+    background: #f8fafc; padding: 8px 12px; border-radius: 6px;
+    margin-top: 8px;
+  }
+
+  .not-in-base {
+    background: white; border-radius: 10px; padding: 16px 20px;
+    border: 1px dashed #cbd5e1;
+  }
+  .not-in-base .hint { color: #64748b; font-size: 13px; margin: 0 0 10px; }
+  .not-in-base ul { padding-left: 20px; margin: 0; font-size: 14px; }
+  .not-in-base li { padding: 2px 0; }
+
+  footer {
+    margin-top: 40px; padding: 20px;
+    text-align: center; color: #94a3b8; font-size: 12px;
+  }
+
+  .print-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #1e40af; color: white; border: none;
+    padding: 12px 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(30,64,175,0.3);
+  }
+  .print-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .print-btn { display: none; }
+    .card { box-shadow: none; border: 1px solid #e2e8f0; page-break-inside: avoid; }
+    header { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🧬 Генетический отчёт</h1>
+    <div class="file">Источник: patient_ivanov.txt.txt</div>
+    <div class="date">Сформировано: 11.10.2026 18:32</div>
+  </header>
+
+  <div class="summary">
+    <div class="stat green">
+      <div class="num">23</div>
+      <div class="label">✅ Найдено в базе</div>
+    </div>
+    <div class="stat yellow">
+      <div class="num">2</div>
+      <div class="label">🟡 Нет таблицы генотипов</div>
+    </div>
+    <div class="stat orange">
+      <div class="num">1</div>
+      <div class="label">⚠️ Не сопоставлено</div>
+    </div>
+    <div class="stat gray">
+      <div class="num">0</div>
+      <div class="label">❌ Нет в базе знаний</div>
+    </div>
+  </div>
+
+  <section><h2>✅ Интерпретированные гены (23)</h2>
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP2C9</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> *1/*3 (Intermediate Metabolizer)</div>
+            <div class="patient-line comment">Сниженная активность фермента. Требуется осторожное титрование дозы варфарина.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">*1/*2, *1/*3, *1/*5</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> *1/*2, *1/*3, *1/*5</li><li><b>Фенотип:</b> Intermediate Metabolizer (IM)</li><li><b>Функция:</b> Одна нормальная + одна сниженная</li><li><b>Клинический риск:</b> Снижение дозы варфарина, фенитоина. Мониторинг INR</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP2C19</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> *2/*2 (Poor Metabolizer)</div>
+            <div class="patient-line comment">Лекарство клопидогрел не активируется. Рекомендуется замена на тикагрелор.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">*2/*2, *2/*3, *3/*3</span>
+                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> *2/*2, *2/*3, *3/*3</li><li><b>Фенотип:</b> Poor Metabolizer (PM)</li><li><b>Функция:</b> Две аллели без функции</li><li><b>Клинический риск:</b> **Клопидогрел не активируется** — замена на тикагрелор/прасугрел. Риск QT на циталопраме. Снижение доз вориконазола, ИПП</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP2D6</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> *1/*1 (Extensive Metabolizer)</div>
+            <div class="patient-line comment">Нормальная скорость метаболизма. Стандартные дозировки.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">*1/*1, *1/*2, *2/*2</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> *1/*1, *1/*2, *2/*2</li><li><b>Фенотип:</b> Normal Metabolizer (NM)</li><li><b>Функция:</b> Две нормальные аллели</li><li><b>Клинический риск:</b> Стандартные дозы</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP1A2</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> AC (Медленный метаболизатор)</div>
+            <div class="patient-line comment">Кофеин долго циркулирует в крови. Ограничить потребление до 1-2 чашек в день.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">AC</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> AC</li><li><b>Фенотип:</b> Промежуточный метаболизатор</li><li><b>Функция:</b> Средняя активность</li><li><b>Клинический риск:</b> Умеренный метаболизм кофеина</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">SLCO1B1</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> TC (Сниженный захват)</div>
+            <div class="patient-line comment">Повышенный риск миалгии при приёме симвастатина.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">TC (521 TC)</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> TC (521 TC)</li><li><b>Фенотип:</b> Intermediate function</li><li><b>Функция:</b> Сниженный захват</li><li><b>Клинический риск:</b> **Повышенный риск миопатии** на симвастатине 80 мг. Снижение дозы</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">ACTN3</div>
+                    <div class="gene-group">Группа 6: Нутригенетика и спорт</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> RX (гетерозигота)</div>
+            <div class="patient-line comment">Смешанный тип мышечных волокон. Хорошая адаптация к интервальным нагрузкам.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">RX</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> RX</li><li><b>Аллели:</b> C/T</li><li><b>Частота*:</b> ~50%</li><li><b>Функциональный эффект:</b> Сниженный синтез ACTN3. Гетерозигота.</li><li><b>Спортивный профиль:</b> Смешанный тип. Хорошая адаптация к интервальным нагрузкам (футбол, хоккей).</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">MCM6 / LCT</div>
+                    <div class="gene-group">Группа 6: Нутригенетика и спорт</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CT (гетерозигота)</div>
+            <div class="patient-line comment">Нормальная персистенция лактазы. Молочные продукты переносятся хорошо.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CT</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CT</li><li><b>Аллели:</b> C/T</li><li><b>Функциональный эффект:</b> Персистенция лактазы. Выработка фермента сохраняется на достаточном уровне.</li><li><b>Клинический риск:</b> Нормальная переносимость лактозы.</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">COMT</div>
+                    <div class="gene-group">Группа 6: Нутригенетика и спорт</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> Val/Met (гетерозигота)</div>
+            <div class="patient-line comment">Промежуточная активность фермента. Баланс между стрессоустойчивостью и когнитивными функциями.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">Val/Met</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> Val/Met</li><li><b>Аллели:</b> G/A</li><li><b>Фенотип:</b> Смешанный</li><li><b>Функциональный эффект:</b> Промежуточная активность фермента. Баланс между стрессоустойчивостью и когнитивными функциями.</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">FTO</div>
+                    <div class="gene-group">Группа 6: Нутригенетика и спорт</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> AA (гомозигота)</div>
+            <div class="patient-line comment">Сниженный контроль аппетита. Повышенный риск ожирения и СД2.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">AA</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> AA</li><li><b>Аллели:</b> A/A</li><li><b>Функциональный эффект:</b> Сниженный контроль аппетита. Склонность к выбору жирной и сладкой пищи. ИМТ в среднем выше на 1.5-2.0 кг/м². Риск ожирения повышен в 1.7 раз.</li><li><b>Клинический риск:</b> Повышенный риск ожирения и ассоциированного СД2.</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">PPARG</div>
+                    <div class="gene-group">Группа 6: Нутригенетика и спорт</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CG (гетерозигота)</div>
+            <div class="patient-line comment">Повышенная чувствительность тканей к инсулину. Протективный эффект против СД2.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CG</span>
+                        <span class="badge" style="color:#ca8a04;background:#fef9c3;">Likely Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CG</li><li><b>Аллели:</b> C/G (Pro/Ala)</li><li><b>Функциональный эффект:</b> Сниженная аффинность рецептора. Повышенная чувствительность тканей к инсулину.</li><li><b>Клинический риск СД2:</b> Сниженный (протективный эффект).</li><li><b>ACMG:</b> Likely Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">MTHFR</div>
+                    <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> C677T (гетерозигота)</div>
+            <div class="patient-line comment">Снижение активности фермента до 60-65%. Рекомендуется контроль гомоцистеина.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CT</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CT</li><li><b>Аллели:</b> C/T</li><li><b>Частота*:</b> ~40-45%</li><li><b>Функциональный эффект:</b> Снижение активности фермента примерно до 60-65% от нормы.</li><li><b>Клинический риск:</b> Умеренный (при дефиците фолатов)</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">MTR</div>
+                    <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> A2756G (гетерозигота)</div>
+            <div class="patient-line comment">Незначительное снижение активности. Контроль витамина B12.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">AG</span>
+                        <span class="badge" style="color:#ca8a04;background:#fef9c3;">Likely Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> AG</li><li><b>Аллели:</b> A/G</li><li><b>Функциональный эффект:</b> Незначительное снижение ферментативной активности.</li><li><b>Клинический риск:</b> Низкий</li><li><b>ACMG:</b> Likely Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">MTRR</div>
+                    <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> A66G (гетерозигота)</div>
+            <div class="patient-line comment">Сниженная реактивация MTR. При дефиците B12 — риск роста гомоцистеина.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">AG</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> AG</li><li><b>Аллели:</b> A/G</li><li><b>Функциональный эффект:</b> Сниженная способность реактивировать MTR.</li><li><b>Клинический риск:</b> Низкий/Умеренный</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">APOE</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> E3/E4 (гетерозигота)</div>
+            <div class="patient-line comment">Повышенный риск болезни Альцгеймера и атеросклероза.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">E3/E4</span>
+                        <span class="badge" style="color:#64748b;background:#f1f5f9;">—</span>
+                    </div>
+                    <ul class="row-details"><li><b>Изоформа:</b> **E3/E4**</li><li><b>Генотип rs429358 / rs7412:</b> T/C + C/C</li><li><b>Частота:</b> ~22%</li><li><b>Функциональный эффект:</b> Снижение стабильности, повышенный LDL</li><li><b>Клинический риск:</b> **Повышенный риск болезни Альцгеймера и атеросклероза**</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">F2</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> GG (дикий тип)</div>
+            <div class="patient-line comment">Норма. Риск тромбозов базовый.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">GG (дикий)</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> GG (дикий)</li><li><b>Аллели:</b> G/G</li><li><b>Частота:</b> ~98%</li><li><b>Функциональный эффект:</b> Нормальный уровень протромбина</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">F5</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CT (гетерозигота, Лейден)</div>
+            <div class="patient-line comment">Повышенный риск венозных тромбозов. Гормональные контрацептивы противопоказаны.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CT (гетерозигота)</span>
+                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CT (гетерозигота)</li><li><b>Аллели:</b> C/T</li><li><b>Частота (Европа):</b> ~4-5%</li><li><b>Функциональный эффект:</b> APC-резистентность, риск тромбоза в 7 раз</li><li><b>Клинический риск:</b> **Повышенный риск ВТЭ; контрацептивы ПРОТИВОПОКАЗАНЫ**</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">LPL</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CG (S/X)</div>
+            <div class="patient-line comment">Протективный вариант. Снижение триглицеридов.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CG (S/X)</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CG (S/X)</li><li><b>Аллели:</b> C/G</li><li><b>Частота:</b> ~18%</li><li><b>Функциональный эффект:</b> Повышенная активность LPL, снижение ТГ</li><li><b>Клинический риск:</b> **Протективный**</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">PCSK9</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> GG (R/R)</div>
+            <div class="patient-line comment">Нормальная функция. Стандартные рекомендации.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">GG (R/R)</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> GG (R/R)</li><li><b>Аллели:</b> G/G</li><li><b>Частота:</b> ~97%</li><li><b>Функциональный эффект:</b> Нормальная функция PCSK9</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP1A1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> AA (Ile/Ile)</div>
+            <div class="patient-line comment">Нормальная активность. Стандартные риски.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">A/A (Ile462)</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип / Гаплотип:</b> *1/*1 (дикий)</li><li><b>Аллели:</b> A/A (Ile462)</li><li><b>Фенотип:</b> Нормальная активность</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">GSTP1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> AG (Ile/Val)</div>
+            <div class="patient-line comment">Умеренный риск рака лёгкого при курении.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">AG (Ile/Val)</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> AG (Ile/Val)</li><li><b>Аллели:</b> A/G</li><li><b>Частота:</b> ~40%</li><li><b>Функциональный эффект:</b> Умеренное снижение активности</li><li><b>Клинический риск:</b> Умеренный риск рака лёгкого и ротовой полости при курении; изменённая токсичность платиновых препаратов</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">GSTM1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> норма (non-null)</div>
+            <div class="patient-line comment">Фермент присутствует. Нормальная детоксикация.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">non-null / non-null</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> non-null / non-null</li><li><b>Фенотип:</b> Нормальная детоксикация</li><li><b>Функциональный эффект:</b> Фермент присутствует, активен</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">GSTT1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> норма (non-null)</div>
+            <div class="patient-line comment">Фермент присутствует. Нормальная детоксикация.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">non-null / non-null</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> non-null / non-null</li><li><b>Фенотип:</b> Нормальная детоксикация</li><li><b>Функциональный эффект:</b> Фермент присутствует, активен</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                    
+                </div>
+            
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">TP53</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CG (Pro/Arg)</div>
+            <div class="patient-line comment">Гетерозигота. Умеренный риск опухолей. Регулярные онкоскрининги.</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CG (Pro/Arg)</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Benign / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CG (Pro/Arg)</li><li><b>Аллели:</b> C/G</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функциональный эффект:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск опухолей</li><li><b>ACMG:</b> Benign / Risk factor</li></ul>
+                    
+                </div>
+            
+        </div>
+        </section>
+  <section><h2>🟡 Гены без таблиц генотипов (2)</h2>
+        <div class="card no-table">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">AHCY</div>
+                    <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
+                </div>
+                <span class="status-icon">🟡</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> не обнаружено патогенных вариантов</div>
+            <div class="patient-line comment">Носительство не выявлено.</div>
+            <div class="note">В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации.</div>
+        </div>
+        
+        <div class="card no-table">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CBS</div>
+                    <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
+                </div>
+                <span class="status-icon">🟡</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> 844ins68 (гетерозигота)</div>
+            <div class="patient-line comment">Нейтральный вариант. Уровень гомоцистеина в пределах нормы.</div>
+            <div class="note">В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации.</div>
+        </div>
+        </section>
+  <section><h2>⚠️ Не сопоставленные генотипы (1)</h2>
+    <div class="card no-match">
+        <div class="card-head">
+            <div>
+                <div class="gene-name">NAT2</div>
+                <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+            </div>
+            <span class="status-icon">⚠️</span>
+        </div>
+        <div class="patient-line"><b>Результат:</b> G590A (гетерозигота)</div>
+        <div class="note">Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.</div>
+    </div>
+    </section>
+  
+
+  <footer>
+    Отчёт сформирован автоматически. Не является медицинским диагнозом.<br>
+    Для интерпретации обратитесь к врачу-генетику.
+  </footer>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨 Печать / PDF</button>
+</body>
+</html>

@@ -1,0 +1,452 @@
+[
+  {
+    "orcid_id": "0000-0002-8390-208X",
+    "name": "Michael Winther",
+    "given_names": "Michael",
+    "family_name": "Winther",
+    "affiliation": "Engine Biosciences Pte Ltd; Genome Institute of Singapore; Lee Kong Chian School of Medicine; National University of Singapore; Stirling University; University of California Santa Barbara",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-8390-208X"
+  },
+  {
+    "orcid_id": "0000-0002-0109-6441",
+    "name": "Adithan Chandrasekaran",
+    "given_names": "Adithan",
+    "family_name": "Chandrasekaran",
+    "affiliation": "CIDRF and SBV; JIPMER; Sri Balaji Vidyapeeth University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-0109-6441"
+  },
+  {
+    "orcid_id": "0000-0003-2107-8600",
+    "name": "Nusrat Jahan",
+    "given_names": "Nusrat",
+    "family_name": "Jahan",
+    "affiliation": "Eskayef Pharmaceuticals Ltd.; Noakhali Science and Technology University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-2107-8600"
+  },
+  {
+    "orcid_id": "0000-0003-2083-4961",
+    "name": "Hany Elsaleh",
+    "given_names": "Hany",
+    "family_name": "Elsaleh",
+    "affiliation": "Australian National University; David Geffen School of Medicine at UCLA; Monash University; Royal Australian and New Zealand College of Radiologists; The University of Western Australia",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-2083-4961"
+  },
+  {
+    "orcid_id": "0000-0003-3838-7119",
+    "name": "Katie Pizzolato",
+    "given_names": "Katie",
+    "family_name": "Pizzolato",
+    "affiliation": "Genomind; Tabula Rasa HealthCare; University of Louisiana at Monroe",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-3838-7119"
+  },
+  {
+    "orcid_id": "0009-0005-7992-2167",
+    "name": "Lauren Collier Lauren Collier Murray",
+    "given_names": "Lauren Collier",
+    "family_name": "Lauren Collier Murray",
+    "affiliation": "United States Department of Veterans Affairs",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0005-7992-2167"
+  },
+  {
+    "orcid_id": "0000-0001-7851-5651",
+    "name": "John T. Callaghan",
+    "given_names": "John T.",
+    "family_name": "Callaghan",
+    "affiliation": "Indiana University School of Medicine",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-7851-5651"
+  },
+  {
+    "orcid_id": "0000-0001-5789-5747",
+    "name": "Caroline Thorn",
+    "given_names": "Caroline",
+    "family_name": "Thorn",
+    "affiliation": "International Society for Biocuration; Stanford University; Trinity College Dublin; University of Bath",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-5789-5747"
+  },
+  {
+    "orcid_id": "0000-0001-9738-9988",
+    "name": "Wesley S. van de Geer",
+    "given_names": "Wesley S.",
+    "family_name": "van de Geer",
+    "affiliation": "Erasmus MC",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-9738-9988"
+  },
+  {
+    "orcid_id": "0000-0001-6623-406X",
+    "name": "Sarah Morris",
+    "given_names": "Sarah",
+    "family_name": "Morris",
+    "affiliation": "Levine Cancer Institute; St. Jude Children's Research Hospital; University of California, San Diego; University of Notre Dame",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-6623-406X"
+  },
+  {
+    "orcid_id": "0000-0002-5943-7229",
+    "name": "Yazun Jarrar",
+    "given_names": "Yazun",
+    "family_name": "Jarrar",
+    "affiliation": "Al-Balqa Applied University; Al-Zaytoonah University of Jordan; Inje University",
+    "email": "yazan.jarrar@bau.edu.jo",
+    "orcid_url": "https://orcid.org/0000-0002-5943-7229"
+  },
+  {
+    "orcid_id": "0000-0002-6432-582X",
+    "name": "Yolande Saab",
+    "given_names": "Yolande",
+    "family_name": "Saab",
+    "affiliation": "",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-6432-582X"
+  },
+  {
+    "orcid_id": "0009-0004-2228-7708",
+    "name": "Halleluyah Idowu Folayemi",
+    "given_names": "Halleluyah Idowu",
+    "family_name": "Folayemi",
+    "affiliation": "Mindvolta; National Institution of Professional Engineers and Scientist; Obafemi Awolowo University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0004-2228-7708"
+  },
+  {
+    "orcid_id": "0000-0003-0384-5749",
+    "name": "mona shabana",
+    "given_names": "mona",
+    "family_name": "shabana",
+    "affiliation": "Alexandria University; Cairo University Faculty of Medicine; Fayoum University Faculty of Medicine",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-0384-5749"
+  },
+  {
+    "orcid_id": "0000-0002-5175-0552",
+    "name": "Konstantinos Kardamiliotis",
+    "given_names": "Konstantinos",
+    "family_name": "Kardamiliotis",
+    "affiliation": "Aristotle University of Thessaloniki; Center for Research and Technology Hellas",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-5175-0552"
+  },
+  {
+    "orcid_id": "0000-0002-6403-4360",
+    "name": "SARAVANABHAVAN R",
+    "given_names": "SARAVANABHAVAN",
+    "family_name": "R",
+    "affiliation": "Vels University; Vels University School of Pharmaceutical Science",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-6403-4360"
+  },
+  {
+    "orcid_id": "0009-0000-5928-6443",
+    "name": "Natnicha Wankaew",
+    "given_names": "Natnicha",
+    "family_name": "Wankaew",
+    "affiliation": "Chulalongkorn University; Faculty of Medicine Siriraj Hospital, Mahidol University; Mahidol University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0000-5928-6443"
+  },
+  {
+    "orcid_id": "0000-0002-6609-0075",
+    "name": "Kristine Ashcraft",
+    "given_names": "Kristine",
+    "family_name": "Ashcraft",
+    "affiliation": "Babson College; Genelex; Invitae Corporation; University of New Haven; YouScript; YouScript, Inc.",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-6609-0075"
+  },
+  {
+    "orcid_id": "0000-0002-1386-5367",
+    "name": "Jorge E.B. Da Rocha",
+    "given_names": "Jorge E.B.",
+    "family_name": "Da Rocha",
+    "affiliation": "EMBL-EBI; South  African Society for Human Genetics; Student Council of the South African Society for Bioinformatics (SASBi); University of the Witwatersrand; University of the Witwatersrand Faculty of Science; University of the Witwatersrand Johannesburg Faculty of Health Sciences; Wellcome Connecting Science",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-1386-5367"
+  },
+  {
+    "orcid_id": "0009-0006-6745-237X",
+    "name": "Lauren Lemke",
+    "given_names": "Lauren",
+    "family_name": "Lemke",
+    "affiliation": "Brown University Health; University of Florida College of Pharmacy; University of Minnesota Twin Cities College of Pharmacy; University of Rhode Island College of Pharmacy",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0006-6745-237X"
+  },
+  {
+    "orcid_id": "0000-0003-2954-360X",
+    "name": "AHMET MUDERRISOGLU",
+    "given_names": "AHMET",
+    "family_name": "MUDERRISOGLU",
+    "affiliation": "Hacettepe Üniversitesi; Hacettepe Üniversitesi Tıp Fakültesi; Kirikkale Universitesi Tip Fakultesi; Kırıkkale Üniversitesi; Türk Farmakoloji Derneği; Yozgat Bozok Üniversitesi",
+    "email": "a.muderrisoglu@kku.edu.tr",
+    "orcid_url": "https://orcid.org/0000-0003-2954-360X"
+  },
+  {
+    "orcid_id": "0000-0001-6565-3238",
+    "name": "Mark Kunzli",
+    "given_names": "Mark",
+    "family_name": "Kunzli",
+    "affiliation": "University of British Columbia; University of British Columbia Sauder School of Business",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-6565-3238"
+  },
+  {
+    "orcid_id": "0000-0002-4351-8956",
+    "name": "SIRIVARA SIRIDAMRONGVATTANA",
+    "given_names": "SIRIVARA",
+    "family_name": "SIRIDAMRONGVATTANA",
+    "affiliation": "Khon Kaen University; Mahidol University; Prince of Songkla University",
+    "email": "sirivara.s@psu.ac.th",
+    "orcid_url": "https://orcid.org/0000-0002-4351-8956"
+  },
+  {
+    "orcid_id": "0009-0007-0640-4320",
+    "name": "Naveed Rahman",
+    "given_names": "Naveed",
+    "family_name": "Rahman",
+    "affiliation": "University of Peshawar",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0007-0640-4320"
+  },
+  {
+    "orcid_id": "0009-0003-2499-0707",
+    "name": "Anna Tsironi",
+    "given_names": "Anna",
+    "family_name": "Tsironi",
+    "affiliation": "University of Patras",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0003-2499-0707"
+  },
+  {
+    "orcid_id": "0009-0009-3865-6981",
+    "name": "Subrina Chowdhury",
+    "given_names": "Subrina",
+    "family_name": "Chowdhury",
+    "affiliation": "NSTU Debating Society; Noakhali Science and Technology University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0009-3865-6981"
+  },
+  {
+    "orcid_id": "0000-0001-8663-2284",
+    "name": "Dipty Rani Bhowmik",
+    "given_names": "Dipty",
+    "family_name": "Rani Bhowmik",
+    "affiliation": "Eskayef Pharmaceuticals Ltd.; Noakhali Science and Technology University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-8663-2284"
+  },
+  {
+    "orcid_id": "0009-0002-4735-5311",
+    "name": "NUR NADHIRAH ZAKARIA",
+    "given_names": "NUR NADHIRAH",
+    "family_name": "ZAKARIA",
+    "affiliation": "",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0002-4735-5311"
+  },
+  {
+    "orcid_id": "0000-0002-7440-7095",
+    "name": "Stephen Murtough",
+    "given_names": "Stephen",
+    "family_name": "Murtough",
+    "affiliation": "Imperial College London; Queen Mary University of London; Springer Nature (United Kingdom); University College London; University of Reading",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-7440-7095"
+  },
+  {
+    "orcid_id": "0000-0002-7662-8481",
+    "name": "Natasa Karas Kuzelicki",
+    "given_names": "Natasa",
+    "family_name": "Karas Kuzelicki",
+    "affiliation": "Faculty of pharmacy; Faculty of pharmacy University of Ljubljana",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-7662-8481"
+  },
+  {
+    "orcid_id": "0000-0002-7459-3502",
+    "name": "Irena Mlinaric-Rascan",
+    "given_names": "Irena",
+    "family_name": "Mlinaric-Rascan",
+    "affiliation": "University of Ljubljana",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-7459-3502"
+  },
+  {
+    "orcid_id": "0000-0002-4457-954X",
+    "name": "Masoud Asadi-Khiavi",
+    "given_names": "Masoud",
+    "family_name": "Asadi-Khiavi",
+    "affiliation": "Shahid Beheshti University of Medical Sciences; Tabriz University of Medical Sciences; Zanjan University of Medical Sciences",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-4457-954X"
+  },
+  {
+    "orcid_id": "0000-0002-7341-455X",
+    "name": "Bani Tamraz",
+    "given_names": "Bani",
+    "family_name": "Tamraz",
+    "affiliation": "University of California Davis; University of California San Francisco; University of California San Francisco Graduate Division; University of California, San Francisco",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-7341-455X"
+  },
+  {
+    "orcid_id": "0000-0002-2836-6712",
+    "name": "Sadaf Qureshi",
+    "given_names": "Sadaf",
+    "family_name": "Qureshi",
+    "affiliation": "",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-2836-6712"
+  },
+  {
+    "orcid_id": "0000-0003-2540-2391",
+    "name": "JIYOUNG KIM",
+    "given_names": "JIYOUNG",
+    "family_name": "KIM",
+    "affiliation": "CHA Bundang Medical Center; Kyung Hee University; Myongji University; Pusan National University; Pusan National University School of Medicine; Seoul National University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-2540-2391"
+  },
+  {
+    "orcid_id": "0000-0002-6190-3129",
+    "name": "Wei Zhang",
+    "given_names": "Wei",
+    "family_name": "Zhang",
+    "affiliation": "Central South University; International Union of Basic and Clinical Pharmacology; University of Maryland School of Pharmacy; University of North Carolina; Xiangya Hospital Central South University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-6190-3129"
+  },
+  {
+    "orcid_id": "0000-0002-0884-318X",
+    "name": "Tim Rendell",
+    "given_names": "Tim",
+    "family_name": "Rendell",
+    "affiliation": "Day Lewis; Royal Pharmaceutical Society; University of Bath; University of Leicester",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-0884-318X"
+  },
+  {
+    "orcid_id": "0000-0003-4978-4400",
+    "name": "Daniel Mueller",
+    "given_names": "Daniel",
+    "family_name": "Mueller",
+    "affiliation": "12th World Congress of Psychiatry (WPA); 7th World Congress of Biological Psychiatry (WFSBP); 9th World Congress on Psychiatric Genetics (ISPG); American College of Neuropsychopharmacology; Brain and Behavior Research Foundation; Canadian Biomarker Integration Network in Depression; Canadian College of Neuropsychopharmacology; Canadian Institutes of Health Research; Canadian Psychiatric Association; Centre for Addiction and Mental Health; Charité Universitätsmedizin Berlin; Clinical Pharmacogenetics Implementation Consortium; College of Physicians and Surgeons of Ontario; German Psychiatric Association; German Society for Psychiatry and Psychotherapy (DGPPN); German Society of Neuropsychopharmacology (AGNP); German Society of Psychiatry and Psychotherapy (DGPPN); International Conference on Schizophrenia Research (ICOSR); International Society of Psychiatric Genetics; King's College London; Medical Chamber Berlin; Ontario Shores Centre for Mental Health Sciences; Pharmacogene Variation Consortium; Pharmacogenetics Research Network; Schizophrenia International Research Society; Society of Biological Psychiatry; Society of Biological Psychiatry (SOBP); University of Bonn; University of Toronto; World Psychiatry Association",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-4978-4400"
+  },
+  {
+    "orcid_id": "0000-0001-5404-7929",
+    "name": "Simon de Denus",
+    "given_names": "Simon",
+    "family_name": "de Denus",
+    "affiliation": "Hôpital du Sacré-Cœur de Montréal; Montreal Heart Institute; University of the Sciences in Philadelphia; Université de Montréal",
+    "email": "Simon.Dedenus@icm-mhi.org; simon.de.denus@umontreal.ca",
+    "orcid_url": "https://orcid.org/0000-0001-5404-7929"
+  },
+  {
+    "orcid_id": "0000-0002-6069-5081",
+    "name": "Suresh Pradhan",
+    "given_names": "Suresh",
+    "family_name": "Pradhan",
+    "affiliation": "Banaras Hindu University Institute of Medical Sciences; Indian Pharmacological Society; Jawaharlal Institute of Postgraduate Medical Education and Research; Kalinga Institute of Medical Sciences",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-6069-5081"
+  },
+  {
+    "orcid_id": "0000-0002-4396-0517",
+    "name": "Zahurin Mohamed",
+    "given_names": "Zahurin",
+    "family_name": "Mohamed",
+    "affiliation": "University of Dundee; University of Malaya",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-4396-0517"
+  },
+  {
+    "orcid_id": "0000-0001-9510-0474",
+    "name": "Julian Paul Kibudde Kaboggoza",
+    "given_names": "Julian Paul Kibudde",
+    "family_name": "Kaboggoza",
+    "affiliation": "Makerere University College of Health Sciences; Makerere University Infectious Diseases Institute; University of Liverpool",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-9510-0474"
+  },
+  {
+    "orcid_id": "0000-0001-9245-9510",
+    "name": "Stephane Bourgeois",
+    "given_names": "Stephane",
+    "family_name": "Bourgeois",
+    "affiliation": "Queen Mary University of London",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-9245-9510"
+  },
+  {
+    "orcid_id": "0000-0003-0045-0354",
+    "name": "Ahmad Zidan",
+    "given_names": "Ahmad",
+    "family_name": "Zidan",
+    "affiliation": "Cairo University Faculty of Pharmacy; Genetic engineering & Biotechnology research institute (GEBRI)",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-0045-0354"
+  },
+  {
+    "orcid_id": "0009-0003-0556-2619",
+    "name": "Ben Felmingham",
+    "given_names": "Ben",
+    "family_name": "Felmingham",
+    "affiliation": "",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0003-0556-2619"
+  },
+  {
+    "orcid_id": "0000-0003-4480-8303",
+    "name": "Yuanting Zheng",
+    "given_names": "Yuanting",
+    "family_name": "Zheng",
+    "affiliation": "Fudan University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-4480-8303"
+  },
+  {
+    "orcid_id": "0000-0002-0774-7583",
+    "name": "Ryan Smith",
+    "given_names": "Ryan",
+    "family_name": "Smith",
+    "affiliation": "Eli Lilly and Company; Ohio State University; The University of Iowa",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0002-0774-7583"
+  },
+  {
+    "orcid_id": "0000-0003-2396-1915",
+    "name": "Adam Lavertu",
+    "given_names": "Adam",
+    "family_name": "Lavertu",
+    "affiliation": "Colby College; Stanford University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0003-2396-1915"
+  },
+  {
+    "orcid_id": "0000-0001-5267-6406",
+    "name": "Alaa' M. Yehya",
+    "given_names": "Alaa'",
+    "family_name": "M. Yehya",
+    "affiliation": "",
+    "email": "",
+    "orcid_url": "https://orcid.org/0000-0001-5267-6406"
+  },
+  {
+    "orcid_id": "0009-0004-7247-8019",
+    "name": "Oghenefejiro Dorcas Efeurhobo",
+    "given_names": "Oghenefejiro Dorcas",
+    "family_name": "Efeurhobo",
+    "affiliation": "Delta State University",
+    "email": "",
+    "orcid_url": "https://orcid.org/0009-0004-7247-8019"
+  }
+]

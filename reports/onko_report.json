@@ -1,0 +1,11 @@
+{
+  "file": "onko.pdf",
+  "genes_total": 0,
+  "stats": {
+    "matched": 0,
+    "no_genotype_match": 0,
+    "no_table_in_base": 0,
+    "not_in_knowledge_base": 0
+  },
+  "results": []
+}

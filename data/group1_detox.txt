@@ -1,0 +1,681 @@
+# Группа 1: Детоксикация и антиоксидантная защита
+## ГЕН 1: SOD2 — Superoxide Dismutase 2 (Mitochondrial)
+
+### 1.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Superoxide dismutase 2, mitochondrial (manganese superoxide dismutase) |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *147460 |
+| OMIM Disease | 612634 (Microvascular complications of diabetes 6, susceptibility to) |
+| PharmGKB ID | PA36017 |
+| HGNC Approved Gene Symbol | SOD2 |
+| Альтернативные названия | gastric cancer–associated lncRNA 1; manganese superoxide dismutase; superoxide dismutase 2, mitochondrial |
+| Альтернативные символы | GC1; GCInc1; IPOB; MnSOD; lncRNA-GC1 |
+| Локация | 6q25.3 (минусовая цепь); GRCh37: chr6:160,100,148-160,114,353; GRCh38: chr6:159,679,064-159,762,529 |
+| Структура гена | Ген содержит 5 экзонов и охватывает почти 20 kb (Wan et al., 1994). 5'-фланкирующий регион не содержит TATA- или CAAT-боксов, но богат GC (78%) и содержит кластер из 7 потенциальных сайтов связывания SP1 (189906) и 3 консенсусных сайта AP2 (107580). 3'-регион содержит альтернативные сайты полиаденилирования, сайт связывания SP1 и консенсусную последовательность NF-kappa-B (см. 164011). Сравнение геномной последовательности с 5'-UTR опубликованных кДНК SOD2 показало наличие как минимум одного альтернативного сайта инициации транскрипции |
+| Функция | SOD2 (EC 1.15.1.1) — митохондриальный матриксный фермент, который утилизирует кислородные радикалы, образующиеся в результате интенсивных окислительно-восстановительных и электронно-транспортных реакций, происходящих в митохондриях. В отличие от цитоплазматической SOD1 (147450) — гомодимерного медь- и цинк-содержащего фермента — SOD2 является тетрамерным и содержит марганец (Beckman et al., 1973; Beck et al., 1987) |
+| Ключевые варианты | A16V (rs4880, 47C>T, Ala16Val); G181V (c.542G>T, вариант неизвестной значимости); rs2758339; rs5746136; rs7754103 |
+
+### 1.2 Варианты SOD2
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+Все варианты с классификацией Pathogenic по гену SOD2 — крупные структурные перестройки (copy number gain / copy number loss / Complex / Deletion), захватывающие регион 6q23.2–27 и прилегающие цитогенетические локусы. Коротких внутригенных вариантов SOD2 (missense, nonsense, frameshift, splice site, UTR, ncRNA) с классификацией Pathogenic / Likely pathogenic в присланной выгрузке ClinVar не обнаружено.
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 6q23.2-27(chr6:133537271-165875545)x3 | copy number gain | Pathogenic | See cases |
+| 2 | GRCh38/hg38 6q24.1-27(chr6:141132990-169339571)x3 | copy number gain | Pathogenic | See cases |
+| 3 | GRCh38/hg38 6q24.2-27(chr6:144488859-170610382)x3 | copy number gain | Pathogenic | See cases |
+| 4 | GRCh38/hg38 6q25.2-27(chr6:152376338-170612001)x3 | copy number gain | Pathogenic | See cases |
+| 5 | GRCh38/hg38 6q25.2-27(chr6:152793402-170610394)x1 | copy number loss | Pathogenic | See cases |
+| 6 | GRCh38/hg38 6q25.2-27(chr6:154118058-170602152)x1 | copy number loss | Pathogenic | See cases |
+| 7 | GRCh38/hg38 6q25.2-27(chr6:154539655-170714507)x1 | copy number loss | Pathogenic | See cases |
+| 8 | GRCh38/hg38 6q25.3-26(chr6:155378049-163133499)x1 | copy number loss | Pathogenic | See cases |
+| 9 | GRCh38/hg38 6q25.3(chr6:157827805-159726548)x3 | copy number gain | Pathogenic | See cases |
+| 10 | GRCh38/hg38 6q25.3-27(chr6:159454639-170612001)x1 | copy number loss | Pathogenic | See cases |
+| 11 | GRCh37/hg19 6q25.3-27(chr6:158471960-170919482)x1 | copy number loss | Pathogenic | not provided |
+| 12 | GRCh37/hg19 6q25.2-27(chr6:153777725-170919482)x1 | copy number loss | Pathogenic | not provided |
+| 13 | GRCh37/hg19 6q24.2-27(chr6:144561123-170919482)x3 | copy number gain | Pathogenic | not provided |
+| 14 | GRCh37/hg19 6q25.2-27(chr6:152853218-170914297)x1 | copy number loss | Pathogenic | See cases |
+| 15 | NC_000006.11:g.(?_158532398)_(162868359_?)del | Deletion | Pathogenic | not provided |
+| 16 | GRCh37/hg19 6q25.3-27(chr6:157318401-165233548)x1 | copy number loss | Pathogenic | See cases |
+| 17 | GRCh37/hg19 6q25.2-26(chr6:153207930-164322346)x1 | copy number loss | Pathogenic | not specified |
+| 18 | GRCh37/hg19 6q24.3-25.3(chr6:148195086-160127254)x3 | copy number gain | Pathogenic | not provided |
+| 19 | GRCh37/hg19 6q25.3-27(chr6:159844762-170919482)x3 | copy number gain | Pathogenic | not provided |
+| 20 | 46,XX,der(6)(q25.1,q28)dn.seq[GRCh37/hg19]der(6)(6pter->6q25.2(+)(154768571)::q25.2(+)(154778901),q25.2(+)154778992::q25.2(-)(154774048),q25.2(-)(154768571)::q25.2(-)(154768571),q25.1(-)(~151443183-151443483))dn | Complex | Pathogenic | Coffin-Siris syndrome 1 |
+| 21 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482) | copy number gain | Pathogenic | See cases |
+| 22 | GRCh37/hg19 6p25.3-q27(chr6:156975-170919482)x3 | copy number gain | Pathogenic | See cases |
+| 23 | GRCh37/hg19 6q25.1-27(chr6:151214792-170892243)x3 | copy number gain | Pathogenic | See cases |
+
+**Allelic Variants (OMIM, 2 selected examples):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | SOD2, ALA16VAL (A16V, 47C>T, rs4880) | SOD2 polymorphism; Microvascular complications of diabetes, susceptibility to, 6 (612634) | Транзиция 47C>T приводит к замене GCT (аланин) на GTT (валин) в кодоне 16. Эффективность процессинга V-типа лидерного пептида SOD2 в присутствии митохондрий значимо ниже, чем у A-типа, на 11 ± 4% (Hiroi et al., 1999). Активность SOD2 на 33% выше у индивидов с генотипом CT или TT по сравнению с CC (Bastaki et al., 2006). Ассоциирован с диабетической нефропатией у японцев с СД2 (Nomiyama et al., 2003) и у финских/шведских пациентов с СД1 (Mollsten et al., 2007) |
+| .0002 | SOD2, GLY181VAL (G181V, c.542G>T) | Вариант неизвестной значимости; возможная связь с летальной неонатальной дилатационной кардиомиопатией (см. 115200) | Гомозиготность по c.542G>T (NM_000636.3) выявлена у голландской девочки, умершей на 4-й день жизни с тяжёлой бивентрикулярной дилатационной кардиомиопатией (Almomani et al., 2020). У родителей — гетерозиготность. Вариант отсутствует в GoNL, но присутствует в 1 из 248 906 аллелей gnomAD. В фибробластах пациента — значимое повышение уровня супероксид-аниона и снижение общей активности SOD; трансдукция wildtype SOD2 cDNA полностью восстанавливала митохондриальную активность SOD |
+
+**Общая статистика вариантов (ClinVar):**
+
+Общая статистика по гену SOD2 в присланной выгрузке ClinVar не предоставлена отдельной таблицей классификаций (Pathogenic / Likely pathogenic / VUS / Likely benign / Benign / Conflicting). В выгрузке `clinvar_download_20261016_070553.tsv` перечислены только варианты с Germline classification = Pathogenic. Все они — крупные структурные перестройки (CNV).
+
+Итого в выгрузке: **23 варианта**, все Pathogenic (Germline).
+
+### 1.3 Фармакогенетика SOD2
+
+**Summary Annotations / Clinical Annotations (ClinPGx):**
+
+**Педиатрические (Pediatric Only = true):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1444667912 | 3 | rs4880 | valproic acid | Toxicity | Epilepsy |
+
+**Непедиатрические (Pediatric Only = false):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1449171168 | 3 | rs2758339 | heroin | Toxicity | Heroin Dependence |
+| 655384534 | 3 | rs4880 | cyclophosphamide | Efficacy | Breast Neoplasms |
+| 1449171162 | 3 | rs5746136 | heroin | Toxicity | Heroin Dependence |
+| 1447959508 | 3 | rs4880 | asparaginase | Toxicity | Acute lymphoblastic leukemia |
+| 1447990789 | 3 | rs4880 | methotrexate | Other | — |
+| 1445401804 | 3 | rs4880 | paclitaxel | Toxicity | Breast Neoplasms |
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+| ID | Variant | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|---|
+| 1452709527 | rs4880 | PMCID:PMC11558073 | valproic acid | Genotypes AG + GG is associated with decreased likelihood of Alopecia when treated with valproic acid in people with Epilepsy as compared to genotype AA. More Details: «Conversely, rs4880 (SOD2) was found in 73.43% of patients without hair loss compared to 52.63% of those with hair loss (p = 0.061). This association became statistically significant when adjusting for gender and VPA maintenance dose, with a multivariate OR of 0.276 [0.089; 0.858], suggesting a protective effect of this SNP against hair loss.» | yes | = 0.026 | 19 | 143 | Toxicity |
+| 1451128188 | rs4880 | PMID:31666714 | cisplatin | Allele G is not associated with risk of Ototoxicity due to cisplatin in children with Neoplasms as compared to allele A. | no | = 0.72 | 428 | — | Toxicity |
+| 1451804940 | rs4880 | PMCID:PMC9450009 | asparaginase | Genotype GG is associated with increased likelihood of Toxic liver disease when treated with asparaginase in children with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to genotypes AA + AG. More Details: «hepatotoxicity as defined above occurred in 24 (52.2%) patients with CC genotype, and in 36 (37.1%) patients with CT and TT genotype, further showing a higher frequency of CC genotype in individuals who developed hepatotoxicity during chemotherapy» but was not significant. Alleles complemented to plus chromosomal strand. | no | = 0.09 | 143 | — | Toxicity |
+| 1447681534 | rs7754103 | PMID:26230641 | daunorubicin; doxorubicin | Allele T is associated with decreased likelihood of cardiotoxicity when treated with daunorubicin or doxorubicin in children with Neoplasms as compared to allele C. More Details: «This was not significant but authors state shows "suggestive evidence" "it is possible that some of these variants are true associations".» | no | = 0.0024 | 122 | 398 | Toxicity |
+| 1451804900 | rs4880 | PMCID:PMC9450009 | bilirubin | Genotype GG is associated with increased concentrations of bilirubin in children with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to genotypes AA + AG. More Details: when treated with asparaginase. ALT and AST were also significantly elevated but it was not significantly associated with hepatotoxicity. Alleles complemented to plus chromosomal strand. | yes | < 0.001 | 143 | — | Toxicity |
+| 1444608518 | rs4880 | PMCID:PMC4220988 | valproic acid | Genotypes AA + AG are associated with decreased likelihood of Drug Toxicity when exposed to valproic acid in people with Epilepsy as compared to genotype GG. More Details: Drug toxicity here refers to hepatic toxicity as assayed by serum levels of the enzyme gamma-glutamyltransferase (gamma-GT) (IU/L). The authors used NONEM to assess the probability of elevation of gamma-GT in epileptic patients administered valproic acid (VPA) using a PK-PD model. The dose of VPA as well as the presence of intellectual disability were significant co-variates in the model, which predicted increased likelihood of elevated gamma-GT levels in epileptics administered VPA. | yes | не предоставлено | 169 | — | Toxicity |
+
+**Non-Pediatric Variant Annotations (ClinPGx):**
+
+**rs4880 — 14 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1451306720 | PMID:33356548 | cyclophosphamide; docetaxel; epirubicin | Genotypes AG + GG is associated with increased likelihood of drug-induced liver injury when treated with cyclophosphamide, docetaxel and epirubicin in women with Breast Neoplasms as compared to genotype AA. More Details: significant in multivariate analysis. | yes | = 0.036 | 112 | 283 | Toxicity |
+| 699642290 | PMCID:PMC2697269 | cyclophosphamide | Allele G is associated with decreased survival when treated with cyclophosphamide in people with Breast Neoplasms as compared to allele A. | yes | = 0.038 | 244 | — | Efficacy |
+| 1444667615 | PMCID:PMC4203676 | methotrexate | Allele G is associated with decreased sensitivity to methotrexate in peripheral blood mononuclear cells as compared to allele A. More Details: PBMCs were obtained from healthy volunteers and response to methotrexate (MTX) was assessed by genotype. The G allele was associated with a decreased sensitivity to the cytotoxic effects of MTX (little change in cell proliferation or cell viability upon exposure to MTX). At increasing MTX concentration the GG genotype was also associated with decreased SOD2 protein activity and increased SOD2 gene expression. The ratio of anti-apoptotic/pro-apoptotic gene expression (BAX/Bcl2) was lowest in cells with the AG and GG genotype and highest in the AA genotype cells, indicating that the AA genotype had an increased sensitivity to the cytotoxic effects of MTX. Markers of oxidative stress were also observed. DNA damage did not differ significantly between groups. The GG genotype showed evidence of decreased oxidative stress upon exposure to MTX. Note: the authors refer to this polymorphism (rs4880) as Ala16Val and each allele as A for alanine or V for valine. The correct AA change is Val16Ala and A>G. Therefore the genotypes in this annotation were determined by the amino acid change that was stated in the study. | yes | не предоставлено | 120 | — | Toxicity |
+| 1444935352 | PMID:25495407 | paclitaxel | Genotype AA is associated with increased risk of Peripheral Nervous System Diseases when treated with paclitaxel in women with Breast Neoplasms as compared to genotypes AG + GG. More Details: After multivariate logistic regression, and with significant p-value set at <=0.01, and in individuals who are CYP3A4 and CYP3A5 nonexpressers (i.e. CYP3A4 *1/*1 and CYP3A5 *3/*3). Neuropathy grade >=2. Alleles have been complemented to the plus chromosomal strand. | yes | = 0.001 | 36 | — | Toxicity |
+| 1449002742 | PMCID:PMC5642896 | isoniazid | Allele G is not associated with risk of drug-induced liver injury when treated with isoniazid in people with Tuberculosis as compared to allele A. | no | = 0.805 | 24 | 79 | Toxicity |
+| 981502377 | PMID:19946932 | clozapine | Allele G is not associated with response to clozapine in people with Schizophrenia as compared to allele A. | no | не предоставлено | 216 | — | Efficacy |
+| 655387550 | PMID:19863340 | anthracyclines and related substances | Allele A is not associated with increased risk of Heart Failure when treated with anthracyclines and related substances in people with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to allele G. | no | не предоставлено | 76 | — | Toxicity |
+| 1447959457 | PMCID:PMC5089920 | asparaginase | Genotype GG is associated with increased risk of Toxic liver disease when treated with asparaginase in people with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to genotypes AA + AG. More Details: Hepatotoxicity defined as grade 3/4 of both AST and ALT, grade 4 of either AST or ALT, or grade 3/4 of bilirubin elevation. The GG genotype was also found at higher frequencies in patients with acute lymphoblastic leukemia (ALL). Alleles have been complemented to the plus chromosomal strand. | yes | = 0.006 | 190 | — | Toxicity |
+| 1444694858 | PMCID:PMC4278770 | epirubicin; fluorouracil; oxaliplatin | Allele G is not associated with response to epirubicin, fluorouracil and oxaliplatin in people with Neoplasm Metastasis and Stomach Neoplasms. | not stated | > 0.05 | 108 | — | Efficacy |
+| 769261250 | PMID:17400324 | Drugs For Treatment Of Tuberculosis | Genotypes AG + GG are associated with increased likelihood of Toxic liver disease when treated with Drugs For Treatment Of Tuberculosis as compared to genotype AA. | yes | = 0.02 | 63 | 63 | Toxicity |
+| 769261253 | PMID:17400324 | Analgesics and anesthetics; Antibiotics; antiepileptics; Antifungals For Systemic Use; antiinflammatory and antirheumatic products, non-steroids; Antimycobacterials; Antithyroid Preparations | Genotypes AG + GG are associated with increased risk of drug-induced liver injury when treated with Analgesics and anesthetics, Antibiotics, antiepileptics, Antifungals For Systemic Use, antiinflammatory and antirheumatic products, non-steroids, Antimycobacterials and Antithyroid Preparations. | yes | = 0.002 | 115 | 115 | Toxicity |
+
+**rs2758339 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449171141 | PMID:29459008 | heroin | Genotypes AC + CC are associated with decreased risk of Heroin Dependence due to heroin as compared to genotype AA. More Details: Variant is in significant linkage disequilibrium with rs5746136, which was also found to be associated with risk of heroin dependence in this paper. | yes | = 0.013 | 442 | 799 | Toxicity |
+
+**rs5746136 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449171147 | PMID:29459008 | heroin | Genotype TT is associated with increased risk of Heroin Dependence due to heroin as compared to genotype CC. More Details: Alleles have been complemented to the positive strand. Variant is in significant linkage disequilibrium with rs2758339, which was also found to be associated with risk of heroin dependence in this paper. | yes | = 0.031 | 442 | 799 | Toxicity |
+| 1449171154 | PMID:29459008 | heroin | Genotype CT is not associated with risk of Heroin Dependence due to heroin as compared to genotype CC. More Details: Alleles have been complemented to the positive strand. Variant is in significant linkage disequilibrium with rs2758339, which was also found to be associated with risk of heroin dependence in this paper. | no | = 0.109 | 442 | 799 | Toxicity |
+
+Biogeographical Groups: варьируют по записям (Unknown, East Asian, European, Near Eastern, Latino, Multiple groups). См. More Details в исходных TSV.
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген SOD2 не упоминается; альтернативные символы MnSOD и IPOB не упоминаются; препараты valproic acid, cyclophosphamide, asparaginase, methotrexate, paclitaxel, heroin, cisplatin, daunorubicin, doxorubicin отсутствуют в списке Drugs ни в одном руководстве.
+
+### 1.4 Рекомендации SOD2
+
+**Из OMIM (Description / Gene Function):**
+
+- SOD2 (EC 1.15.1.1) — митохондриальный матриксный фермент, утилизирующий кислородные радикалы, образующиеся в результате окислительно-восстановительных и электронно-транспортных реакций в митохондриях.
+- В отличие от цитоплазматической SOD1 (147450) — гомодимерного медь- и цинк-содержащего фермента — SOD2 является тетрамерным и содержит марганец (Beckman et al., 1973; Beck et al., 1987).
+- MnSOD, glutathione peroxidase-1 (GPX1; 138320) и catalase (CAT; 115500) — антиоксидантные ферменты, разделяющие общий путь детоксикации. Активность MnSOD на 15% выше у женщин, чем у мужчин, и на 33% выше у индивидов с генотипом CT или TT по полиморфизму 47C>T по сравнению с CC (Bastaki et al., 2006).
+
+**Из OMIM (Gene Structure):**
+
+- Wan et al. (1994): ген SOD2 содержит 5 экзонов и охватывает почти 20 kb. 5'-фланкирующий регион не содержит TATA- или CAAT-боксов, но богат GC (78%) и содержит кластер из 7 потенциальных сайтов связывания SP1 (189906) и 3 консенсусных сайта AP2 (107580). 3'-регион содержит альтернативные сайты полиаденилирования, сайт связывания SP1 и консенсусную последовательность NF-kappa-B (см. 164011).
+
+**Из OMIM (Mapping):**
+
+- Creagan et al. (1973): локус митохондриальной SOD назначен на хромосому 6 с помощью соматических клеточных гибридов. Синтеничен с цитоплазматической малик-энзимом (154250).
+- Church et al. (1992): SOD2 картирован в 6q25 методом FISH; с помощью панели соматических клеточных гибридов, содержащих различные сегменты хромосомы 6, показано, что SOD2 расположен в регионе 6q25.3-qter — в дистальной части 6q25.
+- Figueroa et al. (1988): Sod2 картирован в t-комплексе у мыши. Поскольку Sod2 — митохондриальный фермент, а митохондрии важны для подвижности сперматозоидов, предположено, что локус Sod2 может быть одним из генов, вовлечённых в сегрегационное искажение у мыши. TCP1 (186980), ген, связанный с мышиным t-комплексом, расположен близко к SOD2 у человека.
+
+**Из OMIM (Molecular Genetics):**
+
+- Rosenblum et al. (1996): обнаружен полиморфизм в сигнальном пептиде SOD2 — однонуклеотидная замена, приводящая к наличию либо аланина, либо валина (147460.0001). Предположено, что такой полиморфизм сигнальной последовательности может приводить к «болезням распределения», при которых essential-белки неправильно таргетируются, что ведёт к абсолютным или относительным дефицитам критических ферментов в специфических клеточных компартментах. Высказано предположение, что прогерия (176670) и родственные синдромы могут быть болезнями распределения.
+- Bastaki et al. (2006): измерена активность MnSOD, GPX1 и CAT в образцах клеток крови 231 здорового некурящего студента-добровольца. Частоты минорных аллелей: 13% для CAT (T), 18% для GPX1 (T), 33% для MnSOD (C) со значимой вариацией между этническими группами. Активность GPX1 показала 6-кратную разницу между низшими и высшими уровнями; CAT — 8-кратную; MnSOD — 56-кратный диапазон значений.
+- Nomiyama et al. (2003): у японских пациентов с СД2 значимо более высокая частота генотипа SOD2-VV (147460.0001) по сравнению с AA или VA у пациентов с диабетической нефропатией (MVCD6; 612634). Заключение: полиморфизм A16V может быть не связан с этиологией СД2, но ассоциирован с диабетической нефропатией у японцев с СД2.
+- Mollsten et al. (2007): проанализирован полиморфизм SOD2 A16V (rs4880) у 1510 финских и шведских пациентов с СД1 (222100). Генотип VV ассоциирован с повышением риска диабетической нефропатии (OR = 1.32; p = 0.049). Логистическая регрессия: группа высокого риска — VV-пациенты, когда-либо курившие — имела 2.52-кратное повышение риска по сравнению с группой низкого риска, что подтверждает гипотезу о вкладе окислительного стресса в развитие диабетической нефропатии.
+- Ассоциации, ожидающие подтверждения: Hiroi et al. (1999) обнаружили повышенную частоту генотипа SOD2-VV у японцев с нефамильной идиопатической дилатационной кардиомиопатией (CMD; см. 115200); предположено, что полиморфизм может взаимодействовать с аллелем DRP1*1401 гена HLA-DRB1 (142857). Valenti et al. (2004): аллель val16 значимо чаще встречался среди 217 неродственных пациентов с наследственным гемохроматозом (235200), развивших дилатационную или недилатационную кардиомиопатию, по сравнению с HH-пациентами без кардиомиопатии и контролями (частоты 0.67, 0.45 и 0.52 соответственно). Генотип val/val обусловливал 10.1-кратное повышение риска кардиомиопатии у HH-пациентов. Ассоциация не зависела от цирроза, диабета, артропатии и гипогонадизма и не относилась к ишемической болезни сердца.
+
+**Из OMIM (Cytogenetics):**
+
+- Yoshimitsu et al. (1987): обнаружена низкая активность лейкоцитарной SOD2 у пациента с ring-хромосомой 6. Точки разрыва — p24 (или p25) и q26 (или q27).
+
+**Из OMIM (Animal Model):**
+
+- Li et al. (1995): инактивация гена Sod2 у трансгенных мышей гомологичной рекомбинацией. Гомозиготные мутантные мыши погибали в первые 10 дней жизни с дилатационной кардиомиопатией, накоплением липидов в печени и скелетных мышцах и метаболическим ацидозом. Цитохимический анализ выявил выраженное снижение активности сукцинатдегидрогеназы (комплекс II; 600857) и аконитазы (фермент ЦТК; 100850) в сердце и, в меньшей степени, в других органах. Заключение: MnSOD необходим для нормальной биологической функции тканей, поддерживая целостность митохондриальных ферментов, чувствительных к прямой инактивации супероксидом.
+- Melov et al. (1998): лечение SOD-миметиком MnTBAP спасло Sod2-/- мышей от системной патологии и значительно продлило их выживание. Выжившие животные развили выраженное двигательное расстройство, прогрессирующее до полной недееспособности к 3-недельному возрасту. Нейропатологическая оценка выявила выраженную спонгиформную дегенерацию коры и специфических ядер ствола мозга, связанную с глиозом и внутримиелиновой вакуолизацией, сходную с наблюдаемой при цитотоксическом отёке и расстройствах, связанных с митохондриальными аномалиями (например, болезнь Лея и болезнь Канавана). Предположено, что из-за неспособности MnTBAP пересекать гематоэнцефалический барьер прогрессирующая нейропатология вызвана избыточной митохондриальной продукцией ROS.
+- Melov et al. (1999): охарактеризованы биохимические и метаболические эффекты инактивации гена митохондриальной SOD у мышей. Sod2-мутантные мыши exhibited tissue-specific ингибирование ферментов дыхательной цепи NADH-дегидрогеназы (комплекс I) и сукцинатдегидрогеназы (комплекс II), инактивацию аконитазы, развитие мочевой органической ацидурии в сочетании с частичным дефектом 3-гидрокси-3-метилглутарил-КоА-лиазы (HMGCL; 613898) и накопление окислительных повреждений ДНК.
+- Qi et al. (2003): hammerhead-рибозимы, деградирующие мРНК SOD2, снижали уровень мРНК и белка SOD2 до 85%, повышали клеточный супероксид, снижали митохондриальный мембранный потенциал и приводили к апоптозу инфицированных клеточных линий. При инокуляции в глаза мышей рибозим приводил к потере аксонов и миелина в зрительном нерве и ганглиозных клеток в сетчатке — гистопатологическим признакам LHON.
+- Qi et al. (2004): создана мышиная модель тяжёлого дефицита комплекса I (252010) путём таргетного разрушения мРНК Ndufa1 (300078) с помощью рибозимов. Аденоассоциированная вирусная доставка человеческого гена SOD2 приводила к подавлению дегенерации зрительного нерва и спасению ганглиозных клеток сетчатки, что подтверждает вклад ROS в гибель клеток сетчатки и повреждение зрительного нерва.
+
+**Из OMIM (History):**
+
+- Pauling (1979): супероксиддисмутаза была открыта лишь около 10 лет назад; за предыдущие 5 лет появилось больше работ по SOD, чем по любому другому отдельному ферменту.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 7 записей, все Level 3 — педиатрическая (rs4880 / valproic acid / Toxicity / Epilepsy, ID 1444667912) и непедиатрические (rs2758339 / heroin; rs4880 / cyclophosphamide, asparaginase, methotrexate, paclitaxel; rs5746136 / heroin).
+- Pediatric Variant Annotations: 6 записей — rs4880 (valproic acid, cisplatin, asparaginase, bilirubin, valproic acid), rs7754103 (daunorubicin; doxorubicin).
+- Non-Pediatric Variant Annotations: 17 записей — rs4880 (14), rs2758339 (1), rs5746136 (2).
+- Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA36017, ClinVar (23 Pathogenic варианта SOD2 из выгрузки `clinvar_download_20261016_070553.tsv`), OMIM *147460, CPIC guidelines registry (29 guidelines, SOD2 отсутствует), PMID:3684581, PMID:3399391, PMID:7702755, PMID:1427917, PMID:4358964, PMID:2901401, PMID:8633092, PMID:16538174, PMID:12624725, PMID:17192491, PMID:10425186, PMID:15591282, PMID:3314511, PMID:7493016, PMID:9462746, PMID:9927656, PMID:12601034, PMID:15293270, PMID:31494578, PMID:33356548, PMID:31666714, PMID:26230641, PMID:25495407, PMID:19946932, PMID:19863340, PMID:17400324, PMID:29459008, PMCID:PMC11558073, PMCID:PMC9450009, PMCID:PMC4220988, PMCID:PMC2697269, PMCID:PMC4203676, PMCID:PMC5642896, PMCID:PMC5089920, PMCID:PMC4278770.*
+## ГЕН 2: CAT — Catalase
+
+### 2.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Catalase |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *115500 |
+| OMIM Disease | 614097 (Acatalasemia, AR) |
+| PharmGKB ID | PA26099 |
+| HGNC Approved Gene Symbol | CAT |
+| Альтернативные названия | не предоставлено |
+| Альтернативные символы | не предоставлено |
+| Локация | 11p13 (плюсовая цепь); GRCh37: chr11:34,460,472-34,493,607; GRCh38: chr11:34,438,925-34,472,060 |
+| Структура гена | Ген CAT длиной 34 kb, состоит из 13 экзонов (Quan et al., 1986) |
+| Функция | Каталаза (EC 1.11.1.6) катализирует разложение перекиси водорода на кислород и воду. Млекопитающая каталаза (~240 кД) представляет собой комплекс из 4 идентичных субъединиц, каждая из которых содержит 526 аминокислотных остатков (Ogata, 1991; Ogata et al., 2008) |
+| Ключевые варианты | rs10836235; rs1001179; rs7943316; IVS4, G-A, +5 (японский тип акаталаземии); 1-BP DEL, 358T; 2-BP INS, 138GA (венгерский тип) |
+
+### 2.2 Варианты CAT
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+В присланной выгрузке `clinvar_download_20261016_071111.tsv` для гена CAT представлены 21 вариант: 19 крупных структурных перестроек (copy number gain / copy number loss / Complex / Deletion), захватывающих регион 11p, и 2 коротких варианта (frameshift) в самом гене CAT.
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 11p15.1-13(chr11:20079474-34463996)x1 | copy number loss | Pathogenic | See cases |
+| 2 | GRCh38/hg38 11p14.3-12(chr11:22550115-38199159)x1 | copy number loss | Pathogenic | See cases |
+| 3 | GRCh38/hg38 11p14.2-13(chr11:26368962-35252976)x1 | copy number loss | Pathogenic | See cases |
+| 4 | GRCh38/hg38 11p13-12(chr11:34161694-36799127)x3 | copy number gain | Pathogenic | See cases |
+| 5 | NM_001752.4(CAT):c.203_204dup (p.Ile69fs) | frameshift | Pathogenic | Acatalasia |
+| 6 | NM_001752.4(CAT):c.358del (p.Ser120fs) | frameshift | Pathogenic | Acatalasemia, japanese type |
+| 7 | GRCh37/hg19 11p14.1-13(chr11:30171191-35483727)x1 | copy number loss | Pathogenic | not specified |
+| 8 | GRCh37/hg19 11p14.3-12(chr11:22428384-37196643)x1 | copy number loss | Pathogenic | not provided |
+| 9 | GRCh37/hg19 11p15.1-12(chr11:17120358-41424289)x1 | copy number loss | Pathogenic | not provided |
+| 10 | GRCh37/hg19 11p13-12(chr11:31372721-38259316)x1 | copy number loss | Pathogenic | not provided |
+| 11 | GRCh37/hg19 11p13-q25(chr11:32799481-134938470)x3 | copy number gain | Pathogenic | MISSED ABORTION |
+| 12 | Single allele (сложная перестройка, содержит CAT) | Deletion | Pathogenic | Intellectual disability |
+| 13 | GRCh37/hg19 11p15.3-13(chr11:11053978-34732891)x3 | copy number gain | Pathogenic | not provided |
+| 14 | GRCh37/hg19 11p14.3-13(chr11:22079154-35597645)x1 | copy number loss | Pathogenic | not provided |
+| 15 | GRCh37/hg19 11p15.5-q25(chr11:230616-134938470) | copy number gain | Pathogenic | See cases |
+| 16 | GRCh37/hg19 11p15.5-q25(chr11:230616-134938470)x3 | copy number gain | Pathogenic | See cases |
+| 17 | GRCh37/hg19 11p14.3-13(chr11:25771208-35614978)x1 | copy number loss | Pathogenic | See cases |
+| 18 | GRCh37/hg19 11p15.5-12(chr11:230615-37698540)x3 | copy number gain | Pathogenic | See cases |
+| 19 | GRCh37/hg19 11p14.1-12(chr11:27588560-41770792)x1 | copy number loss | Pathogenic | See cases |
+| 20 | GRCh37/hg19 11p13(chr11:31210842-35436121)x1 | copy number loss | Pathogenic | See cases |
+| 21 | GRCh37/hg19 11p14.1-12(chr11:30615127-40606139)x1 | copy number loss | Pathogenic | See cases |
+
+**Allelic Variants (OMIM):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | CAT, IVS4, G-A, +5 | Acatalasemia, Japanese type (614097) | Сплайсинговая мутация — замена G на A в 5-м положении интрона 4. Wen et al. (1990) показали, что мутантный конструкт вызывает аномальный сплайсинг в COS-7. Kishimoto et al. (1992) обнаружили ту же мутацию у 2 других неродственных японских пациентов, предположив распространение одного мутантного аллеля в японской популяции |
+| .0002 | CAT, 1-BP DEL, 358T | Acatalasemia, Japanese type (614097) | Гомозиготная делеция 1 bp (358T) в экзоне 4, вызывающая сдвиг рамки и преждевременный стоп-кодон. Усечённая пептидная цепь состоит из 133 аминокислотных остатков (Hirono et al., 1995) |
+| .0003 | CAT, 2-BP INS, 138GA | Acatalasemia, Hungarian type (614097) | Инсерция 138GA в экзоне 2, увеличивающая число GA-повторов с 4 до 5. Вызывает сдвиг рамки и преждевременный стоп-кодон. Усечённый белок лишён essential-аминокислоты (гистидин 74) в активном центре (Goth et al., 2000) |
+
+**Общая статистика вариантов (ClinVar):**
+
+В присланной выгрузке `clinvar_download_20261016_071111.tsv` представлен 21 вариант, все с Germline classification = Pathogenic. Отдельная статистика по классификациям (Pathogenic / Likely pathogenic / VUS / Likely benign / Benign / Conflicting) для гена CAT не предоставлена.
+
+### 2.3 Фармакогенетика CAT
+
+**Summary Annotations / Clinical Annotations (ClinPGx):**
+
+**Непедиатрические (Pediatric Only = false):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 652595205 | 3 | rs10836235 | anthracyclines and related substances | Toxicity | Acute lymphoblastic leukemia |
+| 1447946088 | 3 | rs1001179 | ethanol | Other | Alcohol abuse |
+
+**Педиатрические (Pediatric Only = true):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+Нет педиатрических вариантных аннотаций.
+
+**Non-Pediatric Variant Annotations (ClinPGx):**
+
+**rs1001179 — 5 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 655387553 | PMID:19863340 | anthracyclines and related substances | Allele C is not associated with increased risk of Heart Failure when treated with anthracyclines and related substances in people with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to allele T. | no | не предоставлено | 76 | — | Toxicity |
+| 1447520929 | PMID:25514903 | ethanol | Allele T is associated with increased risk of Alcoholism when exposed to ethanol as compared to allele C. More Details: Patients with the T allele had a significantly higher risk for developing alcohol dependence as compared to the C allele. Cases were alcohol dependent patients (n=101) and formerly alcohol dependent patients (n=100), and controls were healthy individuals. | yes | = 0.007 | 201 | 97 | Other |
+| 1043763662 | PMID:19274593 | atorvastatin | Genotype CC is not associated with response to atorvastatin in people with Dyslipidaemia as compared to genotypes CT + TT. More Details: No differences between genotypes were seen for change in various parameters measured including triglycerides, LDL-C, HDL-C, apoB, apoA-I, CHOL, HOMA-IR, Na-Li CT. | no | не предоставлено | 54 | — | Efficacy |
+| 1447520958 | PMID:25514903 | ethanol | Allele T is associated with increased severity of Alcoholism when exposed to ethanol in people with Alcoholism as compared to allele C. More Details: Patients with the T allele had a significantly higher scores on AUDIT (alcohol use disorders identification test) as compared to the C allele. AUDIT measures the severity of alcohol dependence. | yes | = 0.023 | 101 | — | Other |
+| 1454267220 | PMCID:PMC7510454 | hydroxyurea | Genotypes CT + TT is associated with increased clinical benefit to hydroxyurea in people with Sickle Cell Anemia as compared to genotype CC. More Details: «The present study observed associations between the CAT-21TT and CAT-262CT genotypes in patients receiving HU with respect to reductions in inflammatory biomarkers, such as AAT levels and lymphocyte counts. In addition, carriers of heterozygote and variant genotypes of both CAT -21A>T and -262C>T also exhibited significant reductions in lymphocyte and platelet counts compared to carriers of the wild type genotypes of both polymorphisms.» | yes | = 0.014 | 45 | — | Efficacy |
+
+**rs10836235 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 655387557 | PMID:19863340 | anthracyclines and related substances | Genotype CC is associated with increased risk of cardiac damage when treated with anthracyclines and related substances in people with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to genotypes CT + TT. | yes | = 0.02 | 76 | — | Toxicity |
+
+**rs7943316 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1454267200 | PMCID:PMC7510454 | hydroxyurea | Genotypes AT + TT is associated with increased clinical benefit to hydroxyurea in people with Sickle Cell Anemia as compared to genotype AA. More Details: «The present study observed associations between the CAT-21TT and CAT-262CT genotypes in patients receiving HU with respect to reductions in inflammatory biomarkers, such as AAT levels and lymphocyte counts. In addition, carriers of heterozygote and variant genotypes of both CAT -21A>T and -262C>T also exhibited significant reductions in lymphocyte and platelet counts compared to carriers of the wild type genotypes of both polymorphisms.» | yes | = 0.035 | 45 | — | Efficacy |
+
+Biogeographical Groups: варьируют (European, Unknown). См. More Details в исходных TSV.
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген CAT не упоминается; альтернативные символы не упоминаются; препараты anthracyclines, ethanol, atorvastatin, hydroxyurea отсутствуют в списке Drugs ни в одном руководстве.
+
+### 2.4 Рекомендации CAT
+
+**Из OMIM (Description / Biochemical Features / Gene Function):**
+
+- Каталаза (EC 1.11.1.6) катализирует разложение перекиси водорода на кислород и воду.
+- Млекопитающая каталаза (~240 кД) — комплекс из 4 идентичных субъединиц, каждая содержит 526 аминокислотных остатков (Ogata, 1991; Ogata et al., 2008).
+- Kenney et al. (2005): в роговицах с кератоконусом наблюдается 2.20-кратное увеличение мРНК каталазы и 1.8-кратное увеличение активности фермента. Повышенные уровни катепсинов V/L2, B (116810) и G (116830) могут стимулировать продукцию перекиси водорода, которая, в свою очередь, может повышать регуляцию каталазы — антиоксидантного фермента. Эти данные поддерживают гипотезу о том, что роговицы при кератоконусе подвергаются окислительному стрессу и деградации тканей.
+- Shibata et al. (1967): в эритроцитах пациентов с акаталаземией (614097) присутствует иммунологически реактивный, но ферментативно неактивный белок размером около 1/6 от активной каталазы.
+
+**Из OMIM (Gene Structure / Mapping):**
+
+- Quan et al. (1986): ген CAT длиной 34 kb, состоит из 13 экзонов.
+- Wieacker et al. (1980): ген каталазы картирован на 11p с помощью гибридов человек-мышь.
+- Niikawa et al. (1982): подтверждено тесное сцепление каталазы с геном комплекса WAGR (см. 194070) — низкие уровни активности каталазы в эритроцитах 2 неродственных пациентов с синдромом WAGR и небольшими делециями в 11p.
+- Narahara et al. (1984): локусы каталазы и WAGR расположены в сегменте 11p1306-p1305, при этом каталаза дистальнее WAGR.
+- Kittur et al. (1985): последовательность локусов: cen--CAT--16 cM--CALC--8 cM--PTH--pter, интервал между CAT и PTH ~26 cM.
+
+**Из OMIM (Cytogenetics / Molecular Genetics):**
+
+- Junien et al. (1980): исследованы эффекты дозы гена каталазы при делеции 11p13, трисомии всего 11p кроме 11p13 и трисомии 11p13. Результаты согласуются с отнесением локуса каталазы к 11p13 и его сцеплением с комплексом WAGR (194070). Анализ активности каталазы полезен для идентификации случаев предполагаемой новой мутации аниридии с риском опухоли Вильмса или гонадобластомы даже при отсутствии видимой хромосомной делеции.
+- Ferrell and Riccardi (1981): у кариотипически нормальных пациентов с аниридией, опухолью Вильмса или их сочетанием уровни каталазы нормальные.
+- Wen et al. (1990): у японских пациентов с акаталаземией (614097) идентифицирована гомозиготная сплайсинговая мутация в гене CAT (115500.0001).
+- Goth and Eaton (2000): сообщили о повышенной частоте диабета у пациентов с дефицитом каталазы (гипо/акаталаземия) венгерского происхождения по сравнению с непоражёнными родственниками первой степени родства и общей венгерской популяцией. Авторы предположили, что количественный дефицит каталазы может предрасполагать к кумулятивному окислительному повреждению бета-клеток поджелудочной железы и, как следствие, к диабету.
+- Boyd et al. (1986): описан RFLP каталазы с 2 различными ферментами; с помощью этих полиморфизмов исключена делеция гена каталазы у пациентов со спорадической аниридией.
+- Mannens et al. (1987): делеция локуса каталазы обнаружена у 6 из 9 пациентов с аниридией (AN2; 106210). У одного из этих пациентов с дефицитом каталазы и аниридией кариотип был нормальным. Ни в одной из 7 опухолей Вильмса делеция каталазы не обнаружена.
+- Jiang et al. (2001): найдена ассоциация между эссенциальной гипертензией (определяемой как повышение систолического артериального давления) и однонуклеотидным полиморфизмом, расположенным на 844 bp выше стартового кодона гена CAT. Фенотип TT ассоциирован с более высоким артериальным давлением, чем фенотип CC, а CT — промежуточный.
+
+**Из OMIM (Animal Model):**
+
+- Shaffer and Preston (1990): у акаталаземической мыши трансверсия CAG (глутамин) → CAT (гистидин) в третьей позиции кодона 11 ответственна за дефицит.
+- Schriner et al. (2005): для определения роли активных форм кислорода в продолжительности жизни млекопитающих созданы трансгенные мыши, сверхэкспрессирующие человеческую каталазу, локализованную в пероксисомах, ядре или митохондриях. Медианная и максимальная продолжительность жизни максимально увеличились (в среднем на 5 и 5.5 месяцев соответственно) у животных, экспрессирующих митохондриальную каталазу. Задерживалось развитие сердечной патологии и катаракты, снижалось окислительное повреждение, ослаблялась продукция пероксида и индуцированная пероксидом инактивация аконитазы, уменьшалось развитие митохондриальных делеций. Авторы заключили, что результаты поддерживают свободнорадикальную теорию старения и подчёркивают важность митохондрий как источника этих радикалов.
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 2 записи, все Level 3 — rs10836235 / anthracyclines / Toxicity / Acute lymphoblastic leukemia (ID 652595205); rs1001179 / ethanol / Other / Alcohol abuse (ID 1447946088).
+- Pediatric Clinical Annotations и Pediatric Variant Annotations отсутствуют.
+- Non-Pediatric Variant Annotations: 7 записей — rs1001179 (5), rs10836235 (1), rs7943316 (1).
+- Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA26099, ClinVar (выгрузка `clinvar_download_20261016_071111.tsv`, 21 вариант CAT), OMIM *115500, CPIC guidelines registry (29 guidelines, CAT отсутствует), PMID:3755525, PMID:3755526, PMID:3944256, PMID:13967025, PMID:3013756, PMID:5929246, PMID:6273073, PMID:11117918, PMID:11001624, PMID:8673475, PMID:11479740, PMID:6252821, PMID:15728537, PMID:2885154, PMID:1551654, PMID:2991908, PMID:5648259, PMID:6325323, PMID:7106775, PMID:1999334, PMID:19122680, PMID:2933636, PMID:15879174, PMID:3107917, PMID:2268310, PMID:2308162, PMID:6967289, PMID:19863340, PMID:25514903, PMID:19274593, PMCID:PMC7510454.*
+## ГЕН 3: GPX1 — Glutathione Peroxidase 1
+
+### 3.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | Glutathione peroxidase 1 |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *138320 |
+| OMIM Disease | 614164 (Hemolytic anemia due to glutathione peroxidase deficiency, AR) |
+| PharmGKB ID | PA28949 |
+| HGNC Approved Gene Symbol | GPX1 |
+| Альтернативные названия | selenoprotein GPX1 |
+| Альтернативные символы | не предоставлено |
+| Локация | 3p21.31 (минусовая цепь); GRCh37: chr3:49,394,609-49,395,791; GRCh38: chr3:49,357,176-49,358,358 |
+| Структура гена | не предоставлено |
+| Функция | Глутатионпероксидаза (EC 1.11.1.9) катализирует восстановление органических гидропероксидов и перекиси водорода глутатионом и тем самым защищает от окислительного повреждения. GPX1 — один из немногих белков высших позвоночных, содержащих селеноцистеин, который кодируется стоп-кодоном TGA (UGA) и включён в активный центр фермента. Селен необходим для синтеза белка: при дефиците селена снижается не только активность, но и концентрация GPX1 (Takahashi et al., 1986) |
+| Ключевые варианты | rs1050450 (Pro197Leu, C593T) |
+
+### 3.2 Варианты GPX1
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+В присланной выгрузке `clinvar_download_20261016_071347.tsv` для гена GPX1 представлены 10 вариантов, все с Germline classification = Pathogenic. Все они — крупные структурные перестройки (copy number gain / copy number loss / Deletion), захватывающие регион 3p21.31 и прилегающие цитогенетические локусы. Коротких внутригенных вариантов GPX1 (missense, nonsense, frameshift, splice site, UTR, ncRNA) с классификацией Pathogenic / Likely pathogenic в выгрузке не обнаружено.
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 3p21.31-21.2(chr3:45879883-50749922)x4 | copy number gain | Pathogenic | See cases |
+| 2 | GRCh37/hg19 3p26.3-14.3(chr3:2263690-55016039)x3 | copy number gain | Pathogenic | not provided |
+| 3 | NC_000003.11:g.(?_48895920)_(49570632_?)del | Deletion | Pathogenic | Autosomal recessive limb-girdle muscular dystrophy type 2P; Muscular dystrophy-dystroglycanopathy (congenital with brain and eye anomalies), type A9; Carnitine acylcarnitine translocase deficiency |
+| 4 | NC_000003.11:g.(?_48507870)_(50340407_?)del | Deletion | Pathogenic | Aicardi-Goutieres syndrome 1; Retinal vasculopathy with cerebral leukoencephalopathy and systemic manifestations; Chilblain lupus 1 |
+| 5 | GRCh37/hg19 3p21.31-21.2(chr3:48807193-51363558)x1 | copy number loss | Pathogenic | not provided |
+| 6 | NC_000003.12:g.(?_49121216)_(49533209_?)del | Deletion | Pathogenic | LAMB2-related infantile-onset nephrotic syndrome; Pierson syndrome |
+| 7 | GRCh37/hg19 3p21.31(chr3:48346677-49630228)x1 | copy number loss | Pathogenic | not provided |
+| 8 | GRCh37/hg19 3p21.31-21.1(chr3:45153770-53878616) | copy number gain | Pathogenic | not provided |
+| 9 | GRCh37/hg19 3p26.3-q29(chr3:61892-197851986)x3 | copy number gain | Pathogenic | See cases |
+| 10 | GRCh37/hg19 3p26.3-q29(chr3:61892-197851986) | copy number gain | Pathogenic | See cases |
+
+**Allelic Variants (OMIM, 1 selected example):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | GPX1, PRO197LEU (C593T) | GPX1 polymorphism | Замена пролина на лейцин в кодоне 197, обусловленная транзицией C>T в нуклеотиде 593. Частоты аллелей: ~70% для Pro197 и ~30% для Leu197 (Forsberg et al., 1999) |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 10 |
+| Likely pathogenic | 0 |
+| Uncertain significance | 0 |
+| Likely benign | 0 |
+| Benign | 0 |
+| Conflicting | 0 |
+| Всего (в выгрузке) | 10 |
+
+### 3.3 Фармакогенетика GPX1
+
+**Summary Annotations (ClinPGx):**
+
+Не предоставлено. В присланных файлах Summary Annotations для GPX1 отсутствуют.
+
+**Pediatric Clinical Annotations (ClinPGx):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+Нет педиатрических вариантных аннотаций.
+
+**Non-Pediatric Variant Annotations (ClinPGx):**
+
+**rs1050450 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 981204733 | PMID:22890915 | aspirin; Beta Blocking Agents; clopidogrel; HMG-CoA reductase inhibitors | Allele A is associated with increased risk of in-stent restenosis when treated with aspirin, Beta Blocking Agents, clopidogrel and hmg coa reductase inhibitors in men with Coronary Artery Disease as compared to allele G. More Details: Not reported as a pharmacogenetic association - patients were on standard therapy including the above drugs and may also have been taking angiotensin converting enzyme inhibitors and calcium antagonists. The minor allele of this genetic variant (reported as GPx-1 599 T allele) results in decreased GPx-1 activity and increased free-radical processes. This allele was associated with increased risk of in-stent restenosis. In carriers of the T allele, ISR was 1.9x higher - p value given. Odds ratio p value not given. | yes | = 0.0085 | 44 | 57 | Other |
+| 981502364 | PMID:19946932 | clozapine | Allele G is not associated with response to clozapine in people with Schizophrenia as compared to allele A. | no | не предоставлено | 216 | — | Efficacy |
+
+Biogeographical Groups: для ID 981204733 — Unknown; для ID 981502364 — Multiple groups, 171 White; 45 African American.
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген GPX1 не упоминается; альтернативные символы не упоминаются; препараты aspirin, clopidogrel, clozapine и др. отсутствуют в списке Drugs ни в одном руководстве.
+
+### 3.4 Рекомендации GPX1
+
+**Из OMIM (Description / Gene Function):**
+
+- Глутатионпероксидаза (EC 1.11.1.9) катализирует восстановление органических гидропероксидов и перекиси водорода глутатионом и тем самым защищает от окислительного повреждения (Cohen et al., 1989).
+- GPX1 содержит селеноцистеин, кодируемый стоп-кодоном TGA (UGA). Селен необходим для синтеза белка: при дефиците селена снижается и активность, и концентрация GPX1 (Takahashi et al., 1986). Существует селеноцистеил-тРНК, которая доставляет селеноцистеин к растущей полипептидной цепи (Bock et al., 1991).
+- Takahashi et al. (1987): в плазме человека обнаружена селен-зависимая GPX, отличная от эритроцитарной.
+
+**Из OMIM (Molecular Genetics):**
+
+- Beutler and West (1974): электрофоретический полиморфизм глутатионпероксидазы в эритроцитах афроамериканцев.
+- Beutler and Matsumoto (1975): у лиц еврейского происхождения и других средиземноморских популяций снижена активность GPX в эритроцитах, но не в лейкоцитах или фибробластах. Предположено существование аллеля низкой активности GPX с частотой ~0.556 в еврейской популяции и 0.181 в североевропейской популяции США.
+- Meera Khan et al. (1986): у джука Суринама частота аллеля GPX1*2 составляет 0.054; предложено, что GPX1*2 — африканский маркер. Гетерозигота 2-1 имеет более высокую каталитическую активность, чем гомозигота 1-1, что может давать селективное преимущество в малярийной среде.
+- Shen et al. (1994): описан вариабельный in-frame тринуклеотидный повтор GCG в гене GPX1. Частоты аллелей с 4, 5 и 6 повторами: 0.40, 0.35 и 0.25 соответственно. Ни один аллель не ассоциирован со снижением активности фермента.
+- Forsberg et al. (1999): идентифицирована замена Pro197Leu (C593T) с частотами аллелей ~70% (Pro) и ~30% (Leu).
+
+**Из OMIM (Animal Model):**
+
+- De Haan et al. (1998): мыши Gpx1 -/- высокочувствительны к окислителю параквату; летальность в течение 24 ч при дозе 10 мг/кг (≈1/7 LD50 дикого типа). Кортикальные нейроны Gpx1 -/- более чувствительны к перекиси: 30% нейронов погибали при 65 мкМ перекиси, тогда как контрольные не повреждались. Паракват транскрипционно повышает Gpx1 в нормальных клетках.
+- Reddy et al. (2001): у мышей Gpx1 -/- с возрастом развивается помутнение хрусталика (катаракта). Изменения ядра выявляются уже в 3 недели, зрелая катаракта — после 15 месяцев. Заключено, что GPX1 критичен для антиоксидантной защиты ядра хрусталика.
+- Shiomi et al. (2004): мыши со сверхэкспрессией Gpx1 в сердце после инфаркта миокарда имели повышенную выживаемость, уменьшение дилатации и дисфункции левого желудочка, снижение гипертрофии миоцитов, апоптоза и интерстициального фиброза по сравнению с диким типом.
+
+**Из ClinPGx (Variant Annotations):**
+
+- rs1050450: аллель A ассоциирован с повышенным риском рестеноза in-stent у мужчин с ИБС на фоне стандартной терапии (включая аспирин, бета-блокаторы, клопидогрел, статины), P = 0.0085, OR ~1.9 (ID 981204733).
+- rs1050450: аллель G не ассоциирован с ответом на клозапин при шизофрении, P не предоставлено (ID 981502364).
+- Уровень доказательности для Variant Annotations не указан (в ClinPGx для variant annotations уровень не присваивается); не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA28949, ClinVar (VariationID: 144168, 4682581, 3246864, 1068732, 980510, 833037, 814442, 625696, 442401, 442400), OMIM *138320, CPIC guidelines registry (29 guidelines, GPX1 отсутствует), PMID:6066618, PMID:1131421, PMID:4823031, PMID:4467780, PMID:6193709, PMID:1828528, PMID:5305372, PMID:2307470, PMID:2492138, PMID:9712879, PMID:10220143, PMID:7358403, PMID:7239518, PMID:9605859, PMID:3255357, PMID:6586636, PMID:3717160, PMID:8662233, PMID:11726630, PMID:7829093, PMID:14744974, PMID:3658677, PMID:3619451, PMID:3457020, PMID:752481, PMID:22890915, PMID:19946932.*
+## ГЕН 4: NQO1 — NAD(P)H Quinone Dehydrogenase 1
+
+### 4.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное название | NAD(P)H quinone dehydrogenase 1 |
+| Ensembl ID | не предоставлено |
+| OMIM Gene | *125860 |
+| OMIM Disease | не предоставлено |
+| PharmGKB ID | PA31744 |
+| HGNC Approved Gene Symbol | NQO1 |
+| Альтернативные названия | DT-diaphorase; NAD(P)H dehydrogenase, quinone 1; NAD(P)H-quinone oxidoreductase; quinone reductase |
+| Альтернативные символы | DHQU; DIA4; DTD; NMOR1; QR1 |
+| Локация | 16q22.1 (минусовая цепь); GRCh37: chr16:69,743,304-69,760,849; GRCh38: chr16:69,709,401-69,726,668 |
+| Структура гена | Ген NQO1 содержит 6 кодирующих экзонов и охватывает около 20 kb (Jaiswal, 1991). 3'-конец гена содержит 4 сигнала полиаденилирования, с Alu-повтором между сайтами полиаденилирования 2 и 3 (Jaiswal et al., 1988) |
+| Функция | NQO1 (EC 1.6.5.2) — флавопротеин, катализирующий 2-электронное восстановление различных хинонов и редокс-красителей, таких как филлохинон и витамин K менадион (Jaiswal et al., 1988). NQO1 детоксифицирует хиноны, образующиеся при окислении фенольных метаболитов бензола. Описано, что варианты гена могут приводить к резистентности к химиотерапевтическим препаратам (Overview ClinPGx) |
+| Ключевые варианты | P187S (rs1800566, 609C>T, NQO1*2); rs10517; rs1131341; rs2917670; rs2917677 |
+
+### 4.2 Варианты NQO1
+
+**Pathogenic / Likely pathogenic варианты (ClinVar):**
+
+В присланной выгрузке `clinvar_download_20261016_071849.tsv` для гена NQO1 представлены 28 вариантов, все с Germline classification = Pathogenic. Все они — крупные структурные перестройки (copy number gain / copy number loss), захватывающие регион 16q11.2–24.3 и прилегающие цитогенетические локусы. Коротких внутригенных вариантов NQO1 (missense, nonsense, frameshift, splice site, UTR, ncRNA) с классификацией Pathogenic / Likely pathogenic в выгрузке не обнаружено.
+
+| # | HGVS / Локация | Тип | Классификация | Условие |
+|---|---|---|---|---|
+| 1 | GRCh38/hg38 16q12.2-24.3(chr16:52899183-90088654)x3 | copy number gain | Pathogenic | See cases |
+| 2 | GRCh38/hg38 16q13-22.2(chr16:56883592-71279975)x3 | copy number gain | Pathogenic | See cases |
+| 3 | GRCh38/hg38 16q21-23.1(chr16:58456122-74708723)x3 | copy number gain | Pathogenic | See cases |
+| 4 | GRCh38/hg38 16q21-24.1(chr16:62925929-84585795)x3 | copy number gain | Pathogenic | See cases |
+| 5 | GRCh38/hg38 16q21-24.3(chr16:64389378-90081985)x3 | copy number gain | Pathogenic | See cases |
+| 6 | GRCh38/hg38 16q21-24.3(chr16:65313395-90081985)x3 | copy number gain | Pathogenic | See cases |
+| 7 | GRCh38/hg38 16q21-24.3(chr16:65511483-90096995)x3 | copy number gain | Pathogenic | See cases |
+| 8 | GRCh38/hg38 16q21-23.3(chr16:65957829-83611443)x3 | copy number gain | Pathogenic | See cases |
+| 9 | GRCh38/hg38 16q22.1-23.1(chr16:68698941-74353205)x1 | copy number loss | Pathogenic | See cases |
+| 10 | GRCh38/hg38 16q22.1-23.3(chr16:69053457-83274681)x3 | copy number gain | Pathogenic | See cases |
+| 11 | GRCh37/hg19 16q11.2-24.3(chr16:46432879-90294753)x3 | copy number gain | Pathogenic | Partial trisomy of the long arm of chromosome 16 |
+| 12 | GRCh37/hg19 16q21-24.1(chr16:62746020-84485022)x3 | copy number gain | Pathogenic | not provided |
+| 13 | GRCh37/hg19 16q22.1-22.3(chr16:69709450-73535741)x1 | copy number loss | Pathogenic | not provided |
+| 14 | GRCh37/hg19 16q22.1-23.1(chr16:68971067-74823560)x1 | copy number loss | Pathogenic | See cases |
+| 15 | GRCh37/hg19 16q11.2-24.3(chr16:46503968-90155062)x3 | copy number gain | Pathogenic | not provided |
+| 16 | GRCh37/hg19 16q21-22.1(chr16:65669673-70180183)x1 | copy number loss | Pathogenic | not provided |
+| 17 | GRCh37/hg19 16q12.2-22.2(chr16:54416050-72453266)x3 | copy number gain | Pathogenic | not provided |
+| 18 | GRCh37/hg19 16p13.3-q24.3(chr16:85881-90155062)x3 | copy number gain | Pathogenic | See cases |
+| 19 | GRCh37/hg19 16p13.3-q24.3(chr16:85881-90155062) | copy number gain | Pathogenic | See cases |
+| 20 | GRCh37/hg19 16q13-24.3(chr16:57051473-89797669)x3 | copy number gain | Pathogenic | See cases |
+| 21 | GRCh37/hg19 16p13.3-q24.3(chr16:69193-90274381)x3 | copy number gain | Pathogenic | See cases |
+| 22–28 | Прочие CNV из выгрузки (16q12.2-24.3, 16q21-24.3, 16p13.3-q24.3 и др.) | copy number gain/loss | Pathogenic | See cases / not provided |
+
+(Полный перечень: 28 вариантов, все представлены в `clinvar_download_20261016_071849.tsv`.)
+
+**Allelic Variants (OMIM, 1 selected example):**
+
+| OMIM # | Мутация | Фенотип | Примечание |
+|---|---|---|---|
+| .0001 | NQO1, PRO187SER (P187S, 609C>T, rs1800566, NQO1*2) | Реклассифицирован как полиморфизм (ранее: Benzene toxicity, susceptibility to; Leukemia, post-chemotherapy, susceptibility to; Breast cancer, post-chemotherapy poor survival in) | C-to-T замена в позиции 609 кДНК NQO1, приводящая к замене пролина на серин в остатке 187. В клетках с генотипом T/T активность NQO1 не определяется, что соответствует отсутствию белка NQO1 (Traver et al., 1992, 1997). Частота аллеля в gnomAD: 0.2468 (69 078 из 279 866 аллелей, 9 942 гомозиготы) (Hamosh, 2025). Распространённость генотипа T/T варьирует от 4 до 20% в разных этнических группах, максимум — в азиатских популяциях (Kelsey et al., 1997) |
+
+**Общая статистика вариантов (ClinVar):**
+
+| Классификация | Количество |
+|---|---|
+| Pathogenic | 28 |
+| Likely pathogenic | 0 |
+| Uncertain significance | 0 |
+| Likely benign | 0 |
+| Benign | 0 |
+| Conflicting | 0 |
+| Всего (в выгрузке) | 28 |
+
+### 4.3 Фармакогенетика NQO1
+
+**Summary Annotations / Clinical Annotations (ClinPGx):**
+
+**Непедиатрические (Pediatric Only = false):**
+
+| ID | Level | Variant | Drug | Category | Phenotype |
+|---|---|---|---|---|---|
+| 1450373616 | 3 | rs10517 | imatinib | Efficacy | Gastrointestinal Stromal Tumors |
+| 1451398240 | 3 | rs1800566 | epirubicin; fluorouracil; oxaliplatin | Efficacy | Metastatic neoplasm; Stomach Neoplasms |
+| 1446899176 | 3 | rs10517 | warfarin | Dosage | — |
+| 1451606000 | 3 | rs1800566 | warfarin | Efficacy | Thrombotic disease |
+| 1183491004 | 3 | rs1800566 | Platinum compounds | Efficacy | Neoplasms |
+| 1043880367 | 3 | rs1800566 | warfarin | Dosage | — |
+| 1451605980 | 3 | rs1800566 | warfarin | Toxicity | Hemorrhage |
+| 1451398300 | 3 | rs1800566 | cyclophosphamide; epirubicin; fluorouracil | Efficacy | Breast Neoplasms |
+| 1447749024 | 4 | rs1800566 | warfarin | Dosage | — |
+
+**Педиатрические (Pediatric Only = true):**
+
+Нет педиатрических клинических аннотаций.
+
+**Pediatric Variant Annotations (ClinPGx):**
+
+Нет педиатрических вариантных аннотаций.
+
+**Non-Pediatric Variant Annotations (ClinPGx):**
+
+**rs1800566 (P187S) — 26 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1449163694 | PMID:26644204 | antineoplastic agents; corticosteroids | Allele A is not associated with risk of Drug Toxicity when treated with antineoplastic agents and corticosteroids in children with Precursor Cell Lymphoblastic Leukemia-Lymphoma as compared to allele G. | no | не предоставлено | 508 | — | Toxicity |
+| 1184348627 | PMID:24533712 | cisplatin; cyclophosphamide | Genotype AA is not associated with decreased overall survival when treated with cisplatin and cyclophosphamide in women with Ovarian Neoplasms as compared to genotype GG. | no | = 0.916 | 79 | — | Efficacy |
+| 1184310994 | PMID:24533712 | cisplatin; cyclophosphamide | Genotype AG is not associated with decreased progression-free survival when treated with cisplatin and cyclophosphamide in women with Ovarian Neoplasms as compared to genotype GG. | no | = 0.0004 | 97 | — | Efficacy |
+| 655387542 | PMID:18457324 | anthracyclines and related substances | Allele A is not associated with risk of Heart Failure when treated with anthracyclines and related substances as compared to allele G. | no | = 0.97 | 145 | — | Toxicity |
+| 981419833 | PMID:18511948 | — (без препарата) | Genotype AA is associated with decreased likelihood of survival in women with Breast Neoplasms as compared to genotypes AG + GG. | yes | = 0.002 | 973 | — | Other |
+| 1446765943 | PMID:26257249 | warfarin | Genotype AA is associated with decreased dose of warfarin as compared to genotypes AG + GG. | yes | = 0.029 | 164 | — | Dosage |
+| 981419822 | PMID:18511948 | cyclophosphamide; epirubicin; fluorouracil | Genotype AA is associated with decreased likelihood of survival when treated with cyclophosphamide, epirubicin and fluorouracil in women with Breast Neoplasms as compared to genotypes AG + GG. | yes | = 7.52E-6 | 172 | — | Toxicity |
+| 827552263 | PMID:11160862 | — (без препарата) | Allele A is associated with decreased expression of NQO1. | yes | не предоставлено | — | — | — |
+| 1452534277 | PMID:39012380 | cyclophosphamide; doxorubicin; FEC100; fluorouracil | Genotypes AA + AG is associated with decreased likelihood of Anemia, Neutropenia or gastrointestinal toxicity when treated with cyclophosphamide, doxorubicin, FEC100 or fluorouracil in people with Breast Neoplasms as compared to genotype GG. | yes | = 0.006 | 330 | — | Efficacy |
+| 827552324 | PMID:12370763 | — (без препарата) | Genotype AA is associated with significantly shorter survival in people with Carcinoma, Non-Small-Cell Lung as compared to genotypes AG + GG. | yes | = 0.007 | 27 | — | Other |
+| 981502935 | PMCID:PMC3586586 | warfarin | Allele A is associated with a 34% increase in therapeutic warfarin dose requirement while holding clinical and genetic predictors constant in Hispanic-Americans when treated with warfarin as compared to allele G. | yes | = 0.004 | 53 | — | Dosage |
+| 1184348623 | PMID:24533712 | cisplatin; cyclophosphamide | Genotype AG is not associated with decreased overall survival when treated with cisplatin and cyclophosphamide in women with Ovarian Neoplasms as compared to genotype GG. | no | = 0.007 | 98 | — | Efficacy |
+| 1451721821 | PMID:33675324 | cytarabine; idarubicin | Genotype AA is associated with increased risk of mucositis when treated with cytarabine and idarubicin in people with Leukemia, Myeloid, Acute as compared to genotype GG. | yes | = 0.018 | 225 | — | Toxicity |
+| 981862309 | PMID:17400324 | Drugs For Treatment Of Tuberculosis | Genotypes AA + AG are not associated with likelihood of Toxic liver disease when treated with Drugs For Treatment Of Tuberculosis. | no | не предоставлено | 63 | 63 | Toxicity |
+| 827785716 | PMID:21946896 | cyclophosphamide; doxorubicin | Allele A is associated with worse outcome (overall survival and progression-free survival) when treated with cyclophosphamide and doxorubicin in people with Breast Neoplasms as compared to genotype GG. | yes | < 0.003 | 227 | — | Efficacy |
+| 981502947 | PMCID:PMC3586586 | warfarin | Allele A is not associated with therapeutic warfarin dose requirement while holding clinical and genetic predictors constant in African-Americans when treated with warfarin as compared to allele G. | no | = 0.27 | 260 | — | Dosage |
+| 1448427517 | PMID:27168101 | clozapine | Allele A is not associated with risk of Agranulocytosis and Neutropenia when treated with clozapine as compared to allele G. | no | > 0.05 | 310 | — | Toxicity |
+| 827552314 | PMID:10208650 | — (без препарата) | Genotype AA is associated with decreased enzyme activity of NQO1. | yes | не предоставлено | — | — | — |
+| 1444844087 | PMID:26014925 | cyclophosphamide; doxorubicin; epirubicin; fluorouracil; methotrexate | Genotype AA is associated with decreased risk of Anemia and Drug Toxicity when treated with cyclophosphamide, doxorubicin, epirubicin, fluorouracil or methotrexate in women Breast Neoplasms as compared to genotype GG. | yes | = 0.027 | 243 | — | Toxicity |
+| 1447521710 | PMID:21923605 | warfarin | Allele G is not associated with increased time to achieve stable dose when treated with warfarin as compared to allele A. | no | > 0.05 | 46 | 46 | Efficacy |
+| 1447682722 | PMCID:PMC4706412 | warfarin | Genotypes AA + AG are associated with increased dose of warfarin as compared to genotype GG. | yes | = 0.125 | 255 | — | Dosage |
+| 827566968 | PMCID:PMC3211091 | cisplatin; etoposide | Genotype AA is associated with decreased overall survival when treated with cisplatin and etoposide in people with Carcinoma, Non-Small-Cell Lung as compared to genotype GG. | yes | = 0.04 | 152 | — | Other |
+| 1448604092 | PMCID:PMC5298566 | warfarin | Allele A is associated with decreased response to warfarin in women with Thrombosis as compared to allele G. | not stated | не предоставлено | 1 | — | Efficacy |
+| 981419860 | PMID:18511948 | epirubicin | Genotype AA is associated with decreased response to epirubicin in Breast Cancer Cell Lines as compared to genotype GG. | yes | = 0.01 | 3 | — | Efficacy, Toxicity |
+| 1452128160 | PMID:37273173 | warfarin | Genotypes AA + AG is associated with increased dose of warfarin as compared to genotype GG. | yes | = 0.003 | — | — | Dosage |
+| 1452534270 | PMID:39012380 | cyclophosphamide; doxorubicin; FEC100; fluorouracil | Allele A is not associated with increased clinical benefit to cyclophosphamide, doxorubicin, FEC100 or fluorouracil in people with Breast Neoplasms as compared to allele G. | no | = 0.224 | 88 | 62 | Efficacy |
+| 1184310392 | PMID:24533712 | cisplatin; cyclophosphamide | Genotype AA is not associated with decreased progression-free survival when treated with cisplatin and cyclophosphamide in women with Ovarian Neoplasms as compared to genotype GG. | no | = 0.0008 | 78 | — | Efficacy |
+| 827552292 | PMCID:PMC22203 | benzene | Genotype AA is associated with increased risk of hematotoxicity when exposed to benzene. | yes | не предоставлено | — | — | Toxicity |
+| 981862321 | PMID:17400324 | Analgesics and anesthetics; Antibiotics; antiepileptics; Antifungals For Systemic Use; antiinflammatory and antirheumatic products, non-steroids; Antimycobacterials; Antithyroid Preparations | Genotypes AA + AG are not associated with risk of drug-induced liver injury when treated with the listed drugs. | no | не предоставлено | 115 | 115 | Toxicity |
+| 1448262958 | PMID:27581200 | warfarin | Genotypes AA + AG are associated with increased risk of Hemorrhage when treated with warfarin as compared to genotype GG. | yes | = 0.001 | 552 | — | Toxicity |
+| 827552302 | PMID:11222389 | — (без препарата) | Allele A is associated with increased risk of Leukemia. | yes | не предоставлено | 493 | 838 | Toxicity |
+| 1444694818 | PMCID:PMC4278770 | epirubicin; fluorouracil; oxaliplatin | Genotypes AA + AG are associated with decreased response to epirubicin, fluorouracil and oxaliplatin in people with Neoplasm Metastasis and Stomach Neoplasms as compared to genotype GG. | yes | = 0.005 | 108 | — | Efficacy |
+
+**rs10517 — 5 записей:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Controls | Phenotype |
+|---|---|---|---|---|---|---|---|---|
+| 1454203840 | PMID:40744310 | valproic acid | Genotype GG is associated with decreased likelihood of Toxic liver disease when treated with valproic acid in people with Epilepsy as compared to genotypes AA + AG. | yes | = 0.037 | 41 | 156 | Toxicity |
+| 1446767165 | PMID:26257249 | warfarin | Genotype GG is associated with decreased dose of warfarin as compared to genotypes AA + AG. | yes | = 0.004 | 164 | — | Dosage |
+| 1450373419 | PMID:30237583 | imatinib | Genotype GG is associated with decreased progression-free survival when treated with imatinib in people with Gastrointestinal Stromal Tumors as compared to genotypes AA + AG. | yes | = 0.022 | 49 | — | Efficacy |
+| 1444694848 | PMCID:PMC4278770 | epirubicin; fluorouracil; oxaliplatin | Allele G is not associated with response to epirubicin, fluorouracil and oxaliplatin in people with Neoplasm Metastasis and Stomach Neoplasms. | not stated | > 0.05 | 108 | — | Efficacy |
+| 1448267368 | PMID:27740732 | warfarin | Genotype AA is associated with increased dose of warfarin in people with heart valve replacement as compared to genotypes AG + GG. | yes | < 0.05 | 420 | — | Dosage |
+
+**rs1131341 — 2 записи:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1184308756 | PMID:24533712 | cisplatin; cyclophosphamide | Genotype AG is not associated with decreased progression-free survival when treated with cisplatin and cyclophosphamide in women with Ovarian Neoplasms as compared to genotype GG. | no | = 0.0007 | 98 | Efficacy |
+| 1184348619 | PMID:24533712 | cisplatin; cyclophosphamide | Genotype AG is not associated with decreased overall survival when treated with cisplatin and cyclophosphamide in women with Ovarian Neoplasms as compared to genotype GG. | no | = 0.002 | 99 | Efficacy |
+
+**rs2917670 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1446765971 | PMID:26257249 | warfarin | Genotype CC is not associated with dose of warfarin as compared to genotypes CT + TT. | no | = 0.36 | 206 | Dosage |
+
+**rs2917677 — 1 запись:**
+
+| ID | Literature | Drug | Association | Sig | P-value | Cases | Phenotype |
+|---|---|---|---|---|---|---|---|
+| 1446767176 | PMID:26257249 | warfarin | Genotype CC is not associated with dose of warfarin as compared to genotypes CT + TT. | no | = 0.91 | 206 | Dosage |
+
+Biogeographical Groups: варьируют (East Asian, European, Latino, Central/South Asian, African American/Afro-Caribbean, Near Eastern, Multiple groups, Unknown). См. More Details в исходных TSV.
+
+**CPIC guidelines:**
+
+CPIC guideline отсутствует.
+
+Проверка реестра CPIC (файл `cpic-guidelines.tsv`, 29 руководств): ген NQO1 не упоминается; альтернативные символы DIA4, DTD, NMOR1, QR1 не упоминаются; препараты imatinib, warfarin, epirubicin, cyclophosphamide, cytarabine, idarubicin, clozapine, cisplatin отсутствуют в списке Drugs ни в одном руководстве.
+
+### 4.4 Рекомендации NQO1
+
+**Из OMIM (Description / Gene Function):**
+
+- NQO1 (EC 1.6.5.2) — флавопротеин, катализирующий 2-электронное восстановление различных хинонов и редокс-красителей, таких как филлохинон и витамин K менадион (Jaiswal et al., 1988).
+- Jaiswal et al. (1988): обработка клеток HepG2 тетрахлордибензо-п-диоксином (TCDD) вызывает 5-кратную индукцию активности NMOR1; TCDD преимущественно индуцирует транскрипцию 2.7-kb мРНК NMOR.
+- Edwards et al. (1983): количественный полиморфизм DIA4 объясняется сегрегацией «низкоактивного» аллеля; у 4–6% людей наблюдается DIA4-отсутствующий фенотип. DIA4, вероятно, идентичен NAD(P)H:менадион оксидоредуктазе (NMOR1).
+
+**Из OMIM (Gene Structure / Mapping):**
+
+- Jaiswal (1991): ген NQO1 содержит 6 кодирующих экзонов и охватывает около 20 kb.
+- Grzeschik (1980), Povey et al. (1980): четвёртый локус диафоразы (DIA4) сегрегирует с хромосомой 16; региональная локализация 16q12-q22.
+- Jaiswal et al. (1988): ген NMOR1 (однокопийный) картирован на хромосоме 16.
+- Chen et al. (1991): локус NMOR1 отнесён к 16q22.1.
+
+**Из OMIM (Molecular Genetics):**
+
+- Moran et al. (1999): NQO1 — 2-электронная редуктаза, детоксифицирующая хиноны, образующиеся при окислении фенольных метаболитов бензола. Лица, гомозиготные по T/T-форме полиморфизма 609C-T (125860.0001), имеют повышенный риск бензольной гематотоксичности. Экспозиция нетоксичной концентрации гидрохинона (HQ) индуцирует NQO1 и растворимые тиолы, защищая от HQ-индуцированного апоптоза. В клетках костного мозга с генотипом T/T NQO1 не индуцируется HQ; в гетерозиготах (C/T) — промежуточная индукция. Данные позволяют предположить, что неспособность индуцировать функциональный NQO1 может вносить вклад в повышенный риск бензольного отравления у гомозигот по 609C-T.
+- Millstein et al. (2006): выявлен значимый многоlocus-эффект между генами NQO1, MPO (606989) и CAT (115500) — 3 генами, вовлечёнными в путь окислительного стресса — при астме (см. 600807). В независимом наборе данных (афроамериканские и азиато-американские дети) эти 3 гена также показали значимую ассоциацию со статусом астмы (P = 0.0008).
+- Fagerholm et al. (2008): гомозиготность по распространённому миссенс-варианту NQO1 P187S (125860.0001) (rs1800566) инактивирует NQO1 и strongly предсказывает плохую выживаемость в 2 независимых сериях женщин с раком молочной железы (P = 0.002, N = 1 005; P = 0.005, N = 1 162), эффект особенно выражен после адъювантной химиотерапии на основе антрациклинов с эпирубицином (P = 7.52 x 10(-6)) и при p53-аберрантных опухолях (P = 6.15 x 10(-5)). Выживаемость после метастазирования снижена у гомозигот NQO1*2, что дополнительно указывает на роль дефицита NQO1 в прогрессировании рака и резистентности к лечению. Ответ на эпирубицин был нарушен в гомозиготных по NQO1*2 клетках карциномы молочной железы in vitro.
+
+**Из OMIM (Animal Model):**
+
+- Radjendirane et al. (1998): созданы Nqo1-null мыши путём таргетного разрушения. Мыши без экспрессии NQO1 неотличимы от дикого типа. Однако Nqo1-null мыши проявляли повышенную токсичность при введении менадиона по сравнению с диким типом. Результаты подтверждают роль NQO1 в защите от хиноновой токсичности.
+
+**Из OMIM (Allelic Variants — Susceptibility to Benzene Toxicity / Post-Chemotherapy Leukemia / Breast Cancer):**
+
+- Rothman et al. (1997): случай-контроль среди рабочих, экспонированных бензолом в Китае, показал повышенный риск гематотоксичности у лиц с генотипом T/T NQO1.
+- Smith (1999): исследована роль полиморфизма 609C>T при лейкозах в серии из 104 случаев из Чикаго (более половины — миелоидные лейкозы, вторичные после химиотерапии). Частота мутантного аллеля в 1.4 раза выше ожидаемой при посттерапевтических ОМЛ и в 1.6 раза выше у пациентов с аномалиями хромосом 5 и/или 7.
+- Fagerholm et al. (2008): гомозиготность T/T NQO1 (NQO1*2, rs1800566T) strongly предсказывала плохую выживаемость в 2 независимых сериях женщин с раком молочной железы (114480).
+
+**Из ClinPGx (Summary / Variant Annotations):**
+
+- Summary Annotations: 9 записей, все Level 3, кроме одной Level 4 — rs10517 / imatinib / Efficacy / GIST (ID 1450373616); rs1800566 / epirubicin; fluorouracil; oxaliplatin / Efficacy / Metastatic neoplasm; Stomach Neoplasms (ID 1451398240); rs10517 / warfarin / Dosage (ID 1446899176); rs1800566 / warfarin / Efficacy / Thrombotic disease (ID 1451606000); rs1800566 / Platinum compounds / Efficacy / Neoplasms (ID 1183491004); rs1800566 / warfarin / Dosage (ID 1043880367); rs1800566 / warfarin / Toxicity / Hemorrhage (ID 1451605980); rs1800566 / cyclophosphamide; epirubicin; fluorouracil / Efficacy / Breast Neoplasms (ID 1451398300); rs1800566 / warfarin / Dosage / Level 4 (ID 1447749024).
+- Non-Pediatric Variant Annotations: 35 записей — rs1800566 (26), rs10517 (5), rs1131341 (2), rs2917670 (1), rs2917677 (1).
+- Pediatric Clinical Annotations и Pediatric Variant Annotations отсутствуют.
+- Уровень доказательности для Summary Annotations — Level 3 (за исключением ID 1447749024 — Level 4); не заменяет клинического решения.
+
+**Из CPIC:**
+
+- CPIC guideline отсутствует.
+
+*Источники: ClinPGx (PharmGKB) PA31744, ClinVar (выгрузка `clinvar_download_20261016_071849.tsv`, 28 вариантов NQO1), OMIM *125860, CPIC guidelines registry (29 guidelines, NQO1 отсутствует), PMID:2843525, PMID:1657151, PMID:6928411, PMID:6893112, PMID:2071140, PMID:6309068, PMID:6933553, PMID:10393963, PMID:16385446, PMID:18511948, PMID:9516435, PMID:9230185, PMID:10393869, PMID:1737339, PMID:9000600, PMID:9855009, PMID:9593466, PMID:9328142, PMID:26644204, PMID:24533712, PMID:18457324, PMID:26257249, PMID:39012380, PMID:12370763, PMID:33675324, PMID:17400324, PMID:21946896, PMID:27168101, PMID:10208650, PMID:26014925, PMID:21923605, PMID:37273173, PMID:27581200, PMID:11222389, PMID:11160862, PMID:30237583, PMID:27740732, PMID:40744310, PMCID:PMC3586586, PMCID:PMC4706412, PMCID:PMC3211091, PMCID:PMC5298566, PMCID:PMC22203, PMCID:PMC4278770.*

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Генетический отчёт — onko_parsed.txt</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f8fafc; color: #1e293b;
+    margin: 0; padding: 24px;
+    line-height: 1.55;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  header {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white; padding: 28px 32px; border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25);
+  }
+  header h1 { margin: 0 0 6px; font-size: 24px; }
+  header .file { opacity: 0.85; font-size: 14px; }
+  header .date { opacity: 0.7; font-size: 13px; margin-top: 4px; }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 28px;
+  }
+  .summary .stat {
+    background: white; padding: 14px 18px; border-radius: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .summary .stat .num { font-size: 26px; font-weight: 700; }
+  .summary .stat .label { font-size: 13px; color: #64748b; }
+  .stat.green .num { color: #16a34a; }
+  .stat.yellow .num { color: #ca8a04; }
+  .stat.orange .num { color: #ea580c; }
+  .stat.gray .num { color: #64748b; }
+
+  h2 {
+    font-size: 19px; margin: 32px 0 14px;
+    padding-bottom: 8px; border-bottom: 2px solid #e2e8f0;
+  }
+
+  .card {
+    background: white; border-radius: 12px; padding: 18px 22px;
+    margin-bottom: 14px; border-left: 5px solid #cbd5e1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card.matched { border-left-color: #16a34a; }
+  .card.no-table { border-left-color: #ca8a04; }
+  .card.no-match { border-left-color: #94a3b8; }
+
+  .card-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .gene-name { font-size: 18px; font-weight: 700; color: #0f172a; }
+  .gene-group { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+  .status-icon { font-size: 20px; }
+
+  .patient-line {
+    background: #f1f5f9; padding: 8px 12px; border-radius: 7px;
+    margin-bottom: 10px; font-size: 14px;
+  }
+  .patient-line.comment { font-style: italic; color: #475569; }
+
+  .match {
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 12px; margin-top: 10px;
+  }
+  .match-head {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-bottom: 8px;
+  }
+  .genotype {
+    background: #eef2ff; color: #3730a3;
+    padding: 3px 10px; border-radius: 6px;
+    font-family: ui-monospace, Menlo, monospace; font-weight: 600;
+  }
+  .source { color: #64748b; font-size: 13px; }
+  .badge {
+    padding: 3px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  .row-details {
+    list-style: none; padding: 0; margin: 6px 0 0;
+    font-size: 14px;
+  }
+  .row-details li {
+    padding: 4px 0; border-bottom: 1px solid #f1f5f9;
+  }
+  .row-details li:last-child { border-bottom: none; }
+  .row-details b { color: #334155; }
+
+  .recs { margin-top: 12px; }
+  .recs h4 { margin: 0 0 6px; font-size: 14px; color: #0f172a; }
+  .recs ul { padding-left: 18px; margin: 0; font-size: 14px; }
+  .recs ul li { padding: 3px 0; }
+
+  .note {
+    color: #64748b; font-size: 13px;
+    background: #f8fafc; padding: 8px 12px; border-radius: 6px;
+    margin-top: 8px;
+  }
+
+  .not-in-base {
+    background: white; border-radius: 10px; padding: 16px 20px;
+    border: 1px dashed #cbd5e1;
+  }
+  .not-in-base .hint { color: #64748b; font-size: 13px; margin: 0 0 10px; }
+  .not-in-base ul { padding-left: 20px; margin: 0; font-size: 14px; }
+  .not-in-base li { padding: 2px 0; }
+
+  footer {
+    margin-top: 40px; padding: 20px;
+    text-align: center; color: #94a3b8; font-size: 12px;
+  }
+
+  .print-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #1e40af; color: white; border: none;
+    padding: 12px 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(30,64,175,0.3);
+  }
+  .print-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .print-btn { display: none; }
+    .card { box-shadow: none; border: 1px solid #e2e8f0; page-break-inside: avoid; }
+    header { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🧬 Генетический отчёт</h1>
+    <div class="file">Источник: onko_parsed.txt</div>
+    <div class="date">Сформировано: 04.10.2026 16:47</div>
+  </header>
+
+  <div class="summary">
+    <div class="stat green">
+      <div class="num">6</div>
+      <div class="label">✅ Найдено в базе</div>
+    </div>
+    <div class="stat yellow">
+      <div class="num">0</div>
+      <div class="label">🟡 Нет таблицы генотипов</div>
+    </div>
+    <div class="stat orange">
+      <div class="num">6</div>
+      <div class="label">⚠️ Не сопоставлено</div>
+    </div>
+    <div class="stat gray">
+      <div class="num">0</div>
+      <div class="label">❌ Нет в базе знаний</div>
+    </div>
+  </div>
+
+  <section><h2>✅ Интерпретированные гены (6)</h2>
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">GSTM1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> норма (non-null)</div>
+            
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">non-null / non-null</span>
+                        <span class="source">← норма (non-null)</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> non-null / non-null</li><li><b>Фенотип:</b> Нормальная детоксикация</li><li><b>Функциональный эффект:</b> Фермент присутствует, активен</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                </div>
+            
+            <div class='recs'><h4>Рекомендации</h4><ul><li>non-null / non-null (норма): Стандартные рекомендации.</li><li>null / null (делеция): Отсутствие фермента детоксикации. Избегать курения — повышен риск рака лёгкого и мочевого пузыря. При химиотерапии — обсудить с онкологом возможную коррекцию. Увеличить потребление крестоцветных.</li><li>Цисплатин: носители GSTM1 null — повышенный риск ототоксичности и глухоты, особенно при лечении рака яичка. Рекомендуется аудиологический мониторинг.</li><li>Невирапин: носители GSTM1 null — риск синдрома Стивенса-Джонсона и токсического эпидермального некролиза.</li><li>Бусульфан: носители rs3754446 — изменённый метаболизм, контроль концентрации при ОМЛ.</li><li>Не является моногенным заболеванием — эффекты реализуются при экспозиции к канцерогенам или при химиотерапии.</li><li>Уровень доказательности 3 (ClinPGx) — не заменяет клинического решения.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">GSTT1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> норма (non-null)</div>
+            
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">non-null / non-null</span>
+                        <span class="source">← норма (non-null)</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> non-null / non-null</li><li><b>Фенотип:</b> Нормальная детоксикация</li><li><b>Функциональный эффект:</b> Фермент присутствует, активен</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                </div>
+            
+            <div class='recs'><h4>Рекомендации</h4><ul><li>non-null / non-null (норма): Стандартные рекомендации.</li><li>null / null (делеция): Отсутствие фермента детоксикации хлорметанов и промышленных канцерогенов. Избегать контакта с растворителями, хлорсодержащими соединениями. При химиотерапии — обсудить с онкологом.</li><li>При лечении иматинибом (ХМЛ): носители GSTT1 null могут иметь сниженный ответ, особенно в сочетании с GSTM1 null — обсудить с гематологом.</li><li>Иматиниб (ХМЛ): носители GSTT1 null/null — риск неудачи терапии (P=0.021). Особенно высокий риск при сочетании GSTT1 null + GSTM1 null (P&lt;0.001) — рекомендован мониторинг BCR-ABL1.</li><li>Клозапин: носители GSTT1 null — риск токсичности.</li><li>Талидомид (множественная миелома): носители rs4630 — риск токсичности.</li><li>Не является моногенным заболеванием — эффекты реализуются при экспозиции к ксенобиотикам или при химиотерапии.</li><li>Уровень доказательности 3 (ClinPGx), для противотуберкулёзных — 4 (слабый) — не заменяет клинического решения.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">GSTP1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> Ile105Val А&gt;G → AG</div>
+            
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">AG (Ile/Val)</span>
+                        <span class="source">← Ile105Val А&gt;G → AG</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> AG (Ile/Val)</li><li><b>Аллели:</b> A/G</li><li><b>Частота:</b> ~40%</li><li><b>Функциональный эффект:</b> Умеренное снижение активности</li><li><b>Клинический риск:</b> Умеренный риск рака лёгкого и ротовой полости при курении; изменённая токсичность платиновых препаратов</li><li><b>ACMG:</b> Risk factor</li></ul>
+                </div>
+            
+            <div class='recs'><h4>Рекомендации</h4><ul><li>AA (норма): Стандартные рекомендации по профилактике онкозаболеваний.</li><li>AG / GG: Снижение активности детоксикации. Категорически избегать курения — риск рака лёгкого и ротовой полости значительно повышен. Увеличить потребление крестоцветных (брокколи, брюссельская капуста).</li><li>При химиотерапии платиновыми препаратами: обсудить с онкологом возможный риск токсичности.</li><li>Цисплатин / карбоплатин: носители G-аллеля — изменённый ответ и повышенный риск нейротоксичности, мониторинг.</li><li>Доксорубицин / эпирубицин: возможна повышенная гематологическая токсичность (лейкопения, нейтропения).</li><li>Метотрексат / меркаптопурин (ОЛЛ): носители G-аллеля — риск токсичности.</li><li>Не является моногенным заболеванием — эффекты реализуются при экспозиции к канцерогенам или при химиотерапии.</li><li>Уровень доказательности 3 (ClinPGx) — не заменяет клинического решения.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP1A1</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> Ile462Val (A&gt;G) → AA</div>
+            
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">A/A (Ile462)</span>
+                        <span class="source">← Ile462Val (A&gt;G) → AA</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип / Гаплотип:</b> *1/*1 (дикий)</li><li><b>Аллели:</b> A/A (Ile462)</li><li><b>Фенотип:</b> Нормальная активность</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                </div>
+            
+            <div class='recs'><h4>Рекомендации</h4><ul><li>AA (норма): Стандартные рекомендации. Избегать табачного дыма.</li><li>AG / GG: Повышенная активация проканцерогенов табачного дыма. Категорически избегать курения (включая пассивное). Увеличить потребление антиоксидантов (брокколи, крестоцветные). Регулярные онкоскрининги (лёгкие, мочевой пузырь).</li><li>Женщинам с GG: регулярный скрининг на рак эндометрия.</li><li>При лечении капецитабином / доцетакселом: обсудить с онкологом возможное снижение эффективности.</li><li>Генотип AG/GG увеличивает риск рака лёгкого у курильщиков в 2–4 раза.</li><li>Рекомендуется низкодозная КТ грудной клетки для курильщиков со стажем &gt;20 пачек-лет с генотипом AG/GG.</li><li>Оланзапин: носители rs2472297 T — возможное снижение концентрации.</li><li>Деферазирокс: носители rs2606345 CC — повышенная концентрация, мониторинг.</li><li>Варфарин: носители rs3826041 — коррекция дозы.</li><li>Капецитабин / доцетаксел: носители Ile462Val — возможное снижение эффективности.</li><li>Не является моногенным заболеванием — риск реализуется только при экспозиции к канцерогенам.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">TP53</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> Pro47Ser С&gt;Т → CC</div>
+            
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CC (Pro/Pro)</span>
+                        <span class="source">← Pro47Ser С&gt;Т → CC</span>
+                        <span class="badge" style="color:#16a34a;background:#dcfce7;">Benign</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CC (Pro/Pro)</li><li><b>Аллели:</b> C/C</li><li><b>Фенотип:</b> Arg/Arg (по белку)</li><li><b>Функциональный эффект:</b> Более активная индукция апоптоза</li><li><b>Клинический риск:</b> Базовый</li><li><b>ACMG:</b> Benign</li></ul>
+                </div>
+            
+            <div class='recs'><h4>Рекомендации</h4><ul><li>CC (Pro/Pro): Стандартные рекомендации.</li><li>CG (Pro/Arg) или GG (Arg/Arg): Регулярные онкоскрининги (лёгкие, желудок, кишечник, грудь). Избегать курения и канцерогенов. Защита от избыточной инсоляции.</li><li>При семейном анамнезе ранних опухолей: обсудить с генетиком тестирование на Li-Fraumeni syndrome (полное секвенирование TP53).</li><li>Капецитабин / паклитаксел (рак желудка): носители GG (Pro/Pro) — сниженный ответ (P&lt;0.001), обсудить альтернативные схемы.</li><li>Препараты платины: носители rs1042522 — влияние на общую выживаемость, мониторинг.</li><li>Циклофосфамид / эпирубицин / фторурацил: носители rs4968187 — риск нейтропении при раке груди.</li><li>Li-Fraumeni syndrome (патогенные варианты R175H, R248Q, R273H, R282W): наследственный синдром с высоким риском множественных опухолей. Рекомендуется:</li><li>МРТ всего тела ежегодно (с 20 лет)</li><li>Маммография + МРТ груди ежегодно (с 20–25 лет)</li><li>Колоноскопия каждые 2–5 лет (с 25 лет)</li><li>Дерматологический осмотр ежегодно</li><li>Генетическое консультирование родственников</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">TP53</div>
+                    <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> Pro72Arg G &gt; С → GC</div>
+            
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CG (Pro/Arg)</span>
+                        <span class="source">← Pro72Arg G &gt; С → GC</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Benign / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CG (Pro/Arg)</li><li><b>Аллели:</b> C/G</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функциональный эффект:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск опухолей</li><li><b>ACMG:</b> Benign / Risk factor</li></ul>
+                </div>
+            
+            <div class='recs'><h4>Рекомендации</h4><ul><li>CC (Pro/Pro): Стандартные рекомендации.</li><li>CG (Pro/Arg) или GG (Arg/Arg): Регулярные онкоскрининги (лёгкие, желудок, кишечник, грудь). Избегать курения и канцерогенов. Защита от избыточной инсоляции.</li><li>При семейном анамнезе ранних опухолей: обсудить с генетиком тестирование на Li-Fraumeni syndrome (полное секвенирование TP53).</li><li>Капецитабин / паклитаксел (рак желудка): носители GG (Pro/Pro) — сниженный ответ (P&lt;0.001), обсудить альтернативные схемы.</li><li>Препараты платины: носители rs1042522 — влияние на общую выживаемость, мониторинг.</li><li>Циклофосфамид / эпирубицин / фторурацил: носители rs4968187 — риск нейтропении при раке груди.</li><li>Li-Fraumeni syndrome (патогенные варианты R175H, R248Q, R273H, R282W): наследственный синдром с высоким риском множественных опухолей. Рекомендуется:</li><li>МРТ всего тела ежегодно (с 20 лет)</li><li>Маммография + МРТ груди ежегодно (с 20–25 лет)</li><li>Колоноскопия каждые 2–5 лет (с 25 лет)</li><li>Дерматологический осмотр ежегодно</li><li>Генетическое консультирование родственников</li></ul></div>
+        </div>
+        </section>
+  
+  <section><h2>⚠️ Не сопоставленные генотипы (6)</h2>
+    <div class="card no-match">
+        <div class="card-head">
+            <div>
+                <div class="gene-name">CYP2C9</div>
+                <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+            </div>
+            <span class="status-icon">⚠️</span>
+        </div>
+        <div class="patient-line"><b>Результат:</b> 430С&gt;Т (rs1799853) → CC</div>
+        <div class="note">Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.</div>
+    </div>
+    
+    <div class="card no-match">
+        <div class="card-head">
+            <div>
+                <div class="gene-name">CYP2C9</div>
+                <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+            </div>
+            <span class="status-icon">⚠️</span>
+        </div>
+        <div class="patient-line"><b>Результат:</b> 1075A&gt;C (rs1057910) → AA</div>
+        <div class="note">Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.</div>
+    </div>
+    
+    <div class="card no-match">
+        <div class="card-head">
+            <div>
+                <div class="gene-name">NAT2</div>
+                <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+            </div>
+            <span class="status-icon">⚠️</span>
+        </div>
+        <div class="patient-line"><b>Результат:</b> A803G (rs1208) → AA</div>
+        <div class="note">Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.</div>
+    </div>
+    
+    <div class="card no-match">
+        <div class="card-head">
+            <div>
+                <div class="gene-name">NAT2</div>
+                <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+            </div>
+            <span class="status-icon">⚠️</span>
+        </div>
+        <div class="patient-line"><b>Результат:</b> G590A (rs1799930) → GA</div>
+        <div class="note">Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.</div>
+    </div>
+    
+    <div class="card no-match">
+        <div class="card-head">
+            <div>
+                <div class="gene-name">NAT2</div>
+                <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+            </div>
+            <span class="status-icon">⚠️</span>
+        </div>
+        <div class="patient-line"><b>Результат:</b> G857A (rs1799931) → GG</div>
+        <div class="note">Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.</div>
+    </div>
+    
+    <div class="card no-match">
+        <div class="card-head">
+            <div>
+                <div class="gene-name">NAT2</div>
+                <div class="gene-group">Группа 8: Онкогенетика и метаболизм канцерогенов</div>
+            </div>
+            <span class="status-icon">⚠️</span>
+        </div>
+        <div class="patient-line"><b>Результат:</b> C481T (rs1799929) → CC</div>
+        <div class="note">Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.</div>
+    </div>
+    </section>
+  
+
+  <footer>
+    Отчёт сформирован автоматически. Не является медицинским диагнозом.<br>
+    Для интерпретации обратитесь к врачу-генетику.
+  </footer>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨 Печать / PDF</button>
+</body>
+</html>
