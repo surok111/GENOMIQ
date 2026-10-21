@@ -1,20 +1,12 @@
 """
-html_report.py — генерация HTML-отчёта по данным patient_report.json (v13).
-
-Ключевые отличия от v12:
-- Блок фармакогенетики показывает ТОЛЬКО аннотации, релевантные пациенту.
-- Если совпадений нет — выводится честное сообщение:
-  "Нет данных для вашего генотипа. Изучено N ассоциаций: <список генотипов>".
-- Убрана колонка "Генотип в исследовании" (врачу не нужна).
-- Совпадения помечены: ✅ exact, ◐ allele.
+html_report.py — генерация HTML-отчёта по данным patient_report.json (v14).
+- Добавлен статус "matched_annotation_only" (зелёный, но с пометкой).
+- Обновлена шапка: 5 счётчиков вместо 6.
 """
 
 import html
 from datetime import datetime
 from pathlib import Path
-
-
-# ---------------- Цвета по ACMG ----------------
 
 ACMG_COLORS = {
     "pathogenic": ("#dc2626", "#fee2e2"),
@@ -25,7 +17,6 @@ ACMG_COLORS = {
     "normal": ("#16a34a", "#dcfce7"),
 }
 
-
 def _acmg_color(acmg_text: str):
     if not acmg_text:
         return ("#64748b", "#f1f5f9")
@@ -35,10 +26,8 @@ def _acmg_color(acmg_text: str):
             return colors
     return ("#64748b", "#f1f5f9")
 
-
 def _esc(s) -> str:
     return html.escape(str(s)) if s is not None else ""
-
 
 def _pick_risk(row: dict) -> str:
     for k, v in row.items():
@@ -47,18 +36,7 @@ def _pick_risk(row: dict) -> str:
             return v
     return ""
 
-
-# ---------------- Фармакогенетика (v13) ----------------
-
 def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
-    """
-    Блок фармакогенетики в карточке гена.
-
-    - Если есть совпадения — рисуем таблицу.
-    - Если совпадений нет, но в базе есть аннотации — честное сообщение.
-    - Если база пуста — блок не рисуем.
-    """
-    # Случай 1: нет совпадений, но в базе есть аннотации
     if not pgx_annotations:
         if no_match_info and no_match_info.get("total_annotations", 0) > 0:
             patient_gts = ", ".join(no_match_info.get("patient_genotypes", [])) or "—"
@@ -82,7 +60,6 @@ def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
             """
         return ""
 
-    # Случай 2: есть совпадения — рисуем таблицу
     PHENO_COLORS = {
         "toxicity": ("#dc2626", "#fee2e2"),
         "efficacy": ("#2563eb", "#dbeafe"),
@@ -95,10 +72,8 @@ def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
     allele_count = sum(1 for a in pgx_annotations if a.get("match_kind") == "allele")
 
     counter_parts = []
-    if exact_count:
-        counter_parts.append(f"✅ точных: {exact_count}")
-    if allele_count:
-        counter_parts.append(f"◐ по аллели: {allele_count}")
+    if exact_count: counter_parts.append(f"✅ точных: {exact_count}")
+    if allele_count: counter_parts.append(f"◐ по аллели: {allele_count}")
     counter_text = " · ".join(counter_parts)
 
     rows_html = []
@@ -157,9 +132,6 @@ def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
         </div>
     """
 
-
-# ---------------- Карточка гена ----------------
-
 def _gene_card(result: dict, status_kind: str) -> str:
     gene = _esc(result["gene"])
     group = _esc(result.get("group", ""))
@@ -171,6 +143,30 @@ def _gene_card(result: dict, status_kind: str) -> str:
         result.get("pgx_annotations", []),
         result.get("pgx_no_match_info"),
     )
+
+    # НОВЫЙ СТАТУС: Есть данные, но нет таблицы генотипов
+    if status_kind == "matched_annotation":
+        note = _esc(result.get("note", ""))
+        recs_html = ""
+        if recs:
+            recs_html = "<div class='recs'><h4>Рекомендации из базы</h4><ul>" + \
+                "".join(f"<li>{_esc(r)}</li>" for r in recs) + "</ul></div>"
+        return f"""
+        <div class="card matched" style="border-left-color: #10b981;">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">{gene}</div>
+                    <div class="gene-group">{group}</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> {patient_result}</div>
+            {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
+            {f'<div class="note" style="color: #047857; background: #ecfdf5;">{note}</div>' if note else ''}
+            {pgx_block}
+            {recs_html}
+        </div>
+        """
 
     if status_kind == "matched":
         matches = result.get("matches", [])
@@ -246,7 +242,6 @@ def _gene_card(result: dict, status_kind: str) -> str:
         </div>
         """
 
-    # no_genotype_match
     note = _esc(result.get("note", ""))
     return f"""
     <div class="card no-match">
@@ -263,20 +258,18 @@ def _gene_card(result: dict, status_kind: str) -> str:
     </div>
     """
 
-
-# ---------------- Полный HTML ----------------
-
 def generate_html_report(rep: dict, output_path: str):
-    """rep — словарь одного отчёта (как в reports/*_report.json)."""
     stats = rep.get("stats", {})
     results = rep.get("results", [])
 
     matched = [r for r in results if r.get("status") == "matched"]
+    matched_annotation = [r for r in results if r.get("status") == "matched_annotation_only"]
     no_table = [r for r in results if r.get("status") == "no_table_in_base"]
     no_match = [r for r in results if r.get("status") == "no_genotype_match"]
     not_in_base = [r for r in results if r.get("status") == "not_in_knowledge_base"]
 
     matched_html = "".join(_gene_card(r, "matched") for r in matched)
+    matched_annotation_html = "".join(_gene_card(r, "matched_annotation") for r in matched_annotation)
     no_table_html = "".join(_gene_card(r, "no_table") for r in no_table)
     no_match_html = "".join(_gene_card(r, "no_match") for r in no_match)
 
@@ -299,12 +292,7 @@ def generate_html_report(rep: dict, output_path: str):
     now = datetime.now().strftime("%d.%m.%Y %H:%M")
     file_name = _esc(rep.get("file", "отчёт"))
 
-    # Статистика фармакогенетики
     total_pgx = sum(len(r.get("pgx_annotations", [])) for r in results)
-    total_pgx_exact = sum(
-        sum(1 for a in r.get("pgx_annotations", []) if a.get("match_kind") == "exact")
-        for r in results
-    )
     genes_with_no_data = sum(
         1 for r in results
         if not r.get("pgx_annotations") and r.get("pgx_no_match_info")
@@ -348,7 +336,6 @@ def generate_html_report(rep: dict, output_path: str):
   .summary .stat .num {{ font-size: 26px; font-weight: 700; }}
   .summary .stat .label {{ font-size: 13px; color: #64748b; }}
   .stat.green .num {{ color: #16a34a; }}
-  .stat.yellow .num {{ color: #ca8a04; }}
   .stat.orange .num {{ color: #ea580c; }}
   .stat.gray .num {{ color: #64748b; }}
   .stat.blue .num {{ color: #2563eb; }}
@@ -517,7 +504,6 @@ def generate_html_report(rep: dict, output_path: str):
     white-space: nowrap;
   }}
 
-  /* Честное "нет данных" */
   .pgx-no-match {{
     background: #f8fafc;
     border: 1px dashed #cbd5e1;
@@ -576,12 +562,8 @@ def generate_html_report(rep: dict, output_path: str):
 
   <div class="summary">
     <div class="stat green">
-      <div class="num">{stats.get('matched', 0)}</div>
+      <div class="num">{stats.get('matched', 0) + stats.get('matched_annotation_only', 0)}</div>
       <div class="label">✅ Найдено в базе</div>
-    </div>
-    <div class="stat yellow">
-      <div class="num">{stats.get('no_table_in_base', 0)}</div>
-      <div class="label">🟡 Нет таблицы генотипов</div>
     </div>
     <div class="stat orange">
       <div class="num">{stats.get('no_genotype_match', 0)}</div>
@@ -601,8 +583,7 @@ def generate_html_report(rep: dict, output_path: str):
     </div>
   </div>
 
-  {f'<section><h2>✅ Интерпретированные гены ({len(matched)})</h2>{matched_html}</section>' if matched else ''}
-  {f'<section><h2>🟡 Гены без таблиц генотипов ({len(no_table)})</h2>{no_table_html}</section>' if no_table else ''}
+  {f'<section><h2>✅ Интерпретированные гены ({len(matched) + len(matched_annotation)})</h2>{matched_html}{matched_annotation_html}</section>' if (matched or matched_annotation) else ''}
   {f'<section><h2>⚠️ Не сопоставленные генотипы ({len(no_match)})</h2>{no_match_html}</section>' if no_match else ''}
   {not_in_base_html}
 

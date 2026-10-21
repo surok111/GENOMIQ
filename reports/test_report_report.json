@@ -2,9 +2,10 @@
   "file": "test_report.txt",
   "genes_total": 35,
   "stats": {
-    "matched": 19,
-    "no_genotype_match": 1,
-    "no_table_in_base": 15,
+    "matched": 23,
+    "matched_annotation_only": 12,
+    "no_genotype_match": 0,
+    "no_table_in_base": 0,
     "not_in_knowledge_base": 0
   },
   "results": [
@@ -647,11 +648,11 @@
         "genotypes_in_base": [],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "CBS",
@@ -675,11 +676,11 @@
         "genotypes_in_base": [],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "APOE",
@@ -1054,11 +1055,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "CAT",
@@ -1110,11 +1111,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "GPX1",
@@ -1151,11 +1152,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "NQO1",
@@ -1165,8 +1166,11 @@
       "parts": [
         "P187S (гетерозигота)"
       ],
-      "extracted_candidates": [],
-      "has_genotype_table": false,
+      "extracted_candidates": [
+        "CT",
+        "TC"
+      ],
+      "has_genotype_table": true,
       "recommendations": [
         "NQO1 (EC 1.6.5.2) — флавопротеин, катализирующий 2-электронное восстановление различных хинонов и редокс-красителей, таких как филлохинон и витамин K менадион (Jaiswal et al., 1988).",
         "Jaiswal et al. (1988): обработка клеток HepG2 тетрахлордибензо-п-диоксином (TCDD) вызывает 5-кратную индукцию активности NMOR1; TCDD преимущественно индуцирует транскрипцию 2.7-kb мРНК NMOR.",
@@ -1200,11 +1204,72 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
-      "matches": [],
-      "matched_genotype": null,
-      "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Фенотип": "Ala/Val (гетерозигота)",
+            "Функция": "Активность SOD2 повышена на 33% (Bastaki et al.)",
+            "Клинический риск": "Умеренный риск окислительного стресса",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "P187S (гетерозигота)"
+        },
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Умеренное снижение активности",
+            "Клинический риск": "Умеренный риск алкогольной зависимости",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "P187S (гетерозигота)"
+        },
+        {
+          "genotype": "CT (Pro/Leu)",
+          "full_row": {
+            "Генотип": "CT (Pro/Leu)",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Умеренное снижение активности",
+            "Клинический риск": "Умеренный риск оксидативного стресса",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "P187S (гетерозигота)"
+        },
+        {
+          "genotype": "CT (Pro/Ser)",
+          "full_row": {
+            "Генотип": "CT (Pro/Ser)",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Промежуточная активность",
+            "Клинический риск": "Умеренный риск бензольной гематотоксичности",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "P187S (гетерозигота)"
+        },
+        {
+          "genotype": "CT (Pro/Ser)",
+          "full_row": {
+            "Генотип": "CT (Pro/Ser)",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Промежуточная активность",
+            "Клинический риск": "Умеренный риск бензольной токсичности",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "P187S (гетерозигота)"
+        }
+      ],
+      "matched_genotype": "CT, CT, CT (Pro/Leu), CT (Pro/Ser), CT (Pro/Ser)",
+      "full_row": {
+        "Генотип": "CT",
+        "Фенотип": "Ala/Val (гетерозигота)",
+        "Функция": "Активность SOD2 повышена на 33% (Bastaki et al.)",
+        "Клинический риск": "Умеренный риск окислительного стресса",
+        "ACMG": "Risk factor"
+      }
     },
     {
       "gene": "IL6",
@@ -1268,11 +1333,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "TNF",
@@ -1330,11 +1395,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "CRP",
@@ -1344,8 +1409,10 @@
       "parts": [
         "1059G>C (норма)"
       ],
-      "extracted_candidates": [],
-      "has_genotype_table": false,
+      "extracted_candidates": [
+        "норма (дикий тип)"
+      ],
+      "has_genotype_table": true,
       "recommendations": [
         "CRP — белок острой фазы, член семейства пентраксинов, состоящий из 5 идентичных субъединиц с молекулярной массой 21 500. Синтезируется в печени; концентрация в плазме может возрастать в 1000 раз и более после повреждения тканей или воспаления.",
         "Функция CRP связана со способностью распознавать чужеродные патогены и повреждённые клетки хозяина и инициировать их элиминацию путём взаимодействия с гуморальными и клеточными эффекторными системами крови. Обладает как распознающей, так и эффекторной функцией (Kilpatrick and Volanakis, 1991).",
@@ -1377,6 +1444,28 @@
         "Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.",
         "CPIC guideline отсутствует."
       ],
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "GG",
+          "full_row": {
+            "Генотип": "GG",
+            "Фенотип": "Высокая продукция IL-6",
+            "Функция": "Нормальная экспрессия",
+            "Клинический риск": "Умеренный риск воспалительных реакций, риск саркомы Капоши при ВИЧ",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "1059G>C (норма)"
+        }
+      ],
+      "matched_genotype": "GG",
+      "full_row": {
+        "Генотип": "GG",
+        "Фенотип": "Высокая продукция IL-6",
+        "Функция": "Нормальная экспрессия",
+        "Клинический риск": "Умеренный риск воспалительных реакций, риск саркомы Капоши при ВИЧ",
+        "ACMG": "Risk factor"
+      },
       "pgx_annotations": [],
       "pgx_no_match_info": {
         "total_annotations": 7,
@@ -1388,12 +1477,7 @@
           "TT"
         ],
         "patient_genotypes": []
-      },
-      "status": "no_table_in_base",
-      "matches": [],
-      "matched_genotype": null,
-      "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      }
     },
     {
       "gene": "HLA-DRB1",
@@ -1458,11 +1542,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "NLRP3",
@@ -1527,11 +1611,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "VDR",
@@ -1590,11 +1674,11 @@
           "FF"
         ]
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "GC",
@@ -1674,11 +1758,11 @@
         }
       ],
       "pgx_no_match_info": null,
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "FUT2",
@@ -1688,8 +1772,10 @@
       "parts": [
         "rs601338 AA (норма)"
       ],
-      "extracted_candidates": [],
-      "has_genotype_table": false,
+      "extracted_candidates": [
+        "норма (дикий тип)"
+      ],
+      "has_genotype_table": true,
       "recommendations": [
         "Germline (всего): 9",
         "Somatic (clinical impact): 0",
@@ -1725,6 +1811,28 @@
         "Уровень доказательности для Summary Annotations — Level 3; не заменяет клинического решения.",
         "CPIC guideline отсутствует."
       ],
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CC (FF)",
+          "full_row": {
+            "Генотип": "CC (FF)",
+            "Фенотип": "Норма",
+            "Функция": "Полноценный рецептор витамина D",
+            "Клинический риск": "Базовый риск",
+            "ACMG": "Benign"
+          },
+          "source_part": "rs601338 AA (норма)"
+        }
+      ],
+      "matched_genotype": "CC (FF)",
+      "full_row": {
+        "Генотип": "CC (FF)",
+        "Фенотип": "Норма",
+        "Функция": "Полноценный рецептор витамина D",
+        "Клинический риск": "Базовый риск",
+        "ACMG": "Benign"
+      },
       "pgx_annotations": [
         {
           "variant": "",
@@ -1744,12 +1852,7 @@
           "section": "5.3 Фармакогенетика FUT2"
         }
       ],
-      "pgx_no_match_info": null,
-      "status": "no_table_in_base",
-      "matches": [],
-      "matched_genotype": null,
-      "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "pgx_no_match_info": null
     },
     {
       "gene": "HFE",
@@ -1819,11 +1922,11 @@
         ],
         "patient_genotypes": []
       },
-      "status": "no_table_in_base",
+      "status": "matched_annotation_only",
       "matches": [],
-      "matched_genotype": null,
+      "matched_genotype": "Ассоциативный анализ",
       "full_row": null,
-      "note": "В базе знаний нет таблицы генотипов для этого гена. Используйте комментарий пациента и общие рекомендации."
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "MTHFD1",
@@ -1833,7 +1936,10 @@
       "parts": [
         "R653Q (гетерозигота)"
       ],
-      "extracted_candidates": [],
+      "extracted_candidates": [
+        "GA",
+        "AG"
+      ],
       "has_genotype_table": true,
       "recommendations": [
         "GG (R/R) — норма: Стандартные рекомендации.",
@@ -1852,11 +1958,28 @@
         "genotypes_in_base": [],
         "patient_genotypes": []
       },
-      "status": "no_genotype_match",
-      "matches": [],
-      "matched_genotype": null,
-      "full_row": null,
-      "note": "Генотип не удалось сопоставить с таблицей базы. Проверьте вручную."
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "AG (R/Q)",
+          "full_row": {
+            "Генотип": "AG (R/Q)",
+            "Аллели": "G/A",
+            "Функциональный эффект": "Промежуточная активность",
+            "Клинический риск": "Умеренный риск токсичности метотрексата",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "R653Q (гетерозигота)"
+        }
+      ],
+      "matched_genotype": "AG (R/Q)",
+      "full_row": {
+        "Генотип": "AG (R/Q)",
+        "Аллели": "G/A",
+        "Функциональный эффект": "Промежуточная активность",
+        "Клинический риск": "Умеренный риск токсичности метотрексата",
+        "ACMG": "Risk factor"
+      }
     }
   ]
 }

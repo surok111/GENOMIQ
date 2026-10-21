@@ -225,14 +225,15 @@ def parse_file(path: str) -> Dict[str, Any]:
     for line in lines:
         stripped = line.rstrip()
 
-        m = RE_GROUP_TITLE.match(stripped)
-        if m and not stripped.startswith('##'):
+        # # Группа N: ... (ВАЖНО: вернуть этот блок, иначе группы не парсятся!)
+        if stripped.startswith('# ') and not stripped.startswith('## '):
             flush_gene()
             current_gene_num = None
-            group_title = m.group(1).strip()
+            group_title = stripped[2:].strip()
             mode = "header"
             continue
 
+        # ## ГЕН N: ...
         m = RE_GENE_HEADER.match(stripped)
         if m:
             flush_gene()
@@ -242,6 +243,12 @@ def parse_file(path: str) -> Dict[str, Any]:
             mode = "gene"
             continue
 
+        # ИГНОРИРУЕМ заголовки "Дополнительные таблицы" или "ГЕН 1.6"
+        if stripped.startswith('## Дополнительные') or stripped.startswith('## ГЕН 1.6'):
+            # Просто пропускаем строку, не создавая новый ген
+            continue
+
+        # ## Введение: ...
         m = RE_INTRO.match(stripped)
         if m:
             flush_gene()
@@ -250,6 +257,7 @@ def parse_file(path: str) -> Dict[str, Any]:
             intro_lines.append(m.group(1))
             continue
 
+        # ## Взаимодействия ...
         m = RE_INTERACTION.match(stripped)
         if m:
             flush_gene()
@@ -258,6 +266,7 @@ def parse_file(path: str) -> Dict[str, Any]:
             interactions_lines.append(m.group(1))
             continue
 
+        # Наполнение текущего режима
         if mode == "intro":
             if stripped.strip():
                 intro_lines.append(stripped.strip())
