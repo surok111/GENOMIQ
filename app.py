@@ -25,7 +25,7 @@ SAMPLES_DIR = ROOT / "samples"
 REPORTS_DIR = ROOT / "reports"
 DATA_DIR = ROOT / "data"
 SRC_DIR = ROOT / "src"
-BASE_JSON = ROOT / "parsed_knowledge_base_clean.json"
+BASE_JSON = DATA_DIR / "parsed_knowledge_base_clean.json"
 
 
 # ============================================================

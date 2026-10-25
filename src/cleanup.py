@@ -88,8 +88,8 @@ def clean_group(group: dict) -> dict:
 
 
 def main():
-    src = "parsed_knowledge_base.json"
-    dst = "parsed_knowledge_base_clean.json"
+    src = "data/parsed_knowledge_base.json"
+    dst = "data/parsed_knowledge_base_clean.json"
 
     with open(src, encoding="utf-8") as f:
         data = json.load(f)

@@ -17,7 +17,7 @@ def _ensure_dirs():
         d.mkdir(exist_ok=True)
 
 def _load_module(name: str):
-    sys.path.insert(0, str(ROOT))
+    sys.path.insert(0, str(ROOT / "src"))
     import importlib
     if name in sys.modules:
         importlib.reload(sys.modules[name])
@@ -37,7 +37,7 @@ def cmd_build(args):
     try:
         print("\n[1/2] Парсинг data/…")
         base = md_parser.parse_directory("data")
-        with open("parsed_knowledge_base.json", "w", encoding="utf-8") as f:
+        with open("data/parsed_knowledge_base.json", "w", encoding="utf-8") as f:
             json.dump(base, f, ensure_ascii=False, indent=2)
         print(f"      Групп: {len(base)}")
         for g in base:
@@ -91,7 +91,7 @@ def cmd_report(args):
     old_cwd = os.getcwd()
     os.chdir(ROOT)
     try:
-        base = interpreter.load_base("parsed_knowledge_base_clean.json")
+        base = interpreter.load_base("data/parsed_knowledge_base_clean.json")
         gene_index = interpreter.build_gene_index(base)
         print(f"Генов в базе: {len(gene_index)}")
 

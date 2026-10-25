@@ -1,6 +1,6 @@
 import json
 
-with open('parsed_knowledge_base_clean.json', encoding='utf-8') as f:
+with open('data/parsed_knowledge_base_clean.json', encoding='utf-8') as f:
     data = json.load(f)
 
 gene = None

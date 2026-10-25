@@ -16,9 +16,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 
-SRC = "parsed_knowledge_base_clean.json"
-OUT_JSON = "analysis_report.json"
-OUT_MD = "analysis_report.md"
+SRC = "data/parsed_knowledge_base_clean.json"
+OUT_JSON = "reports/analysis_report.json"
+OUT_MD = "reports/analysis_report.md"
 
 
 # ---------- Загрузка ----------

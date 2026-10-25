@@ -304,7 +304,7 @@ def parse_directory(data_dir: str) -> List[Dict[str, Any]]:
 
 if __name__ == "__main__":
     data_dir = "data"
-    out_path = "parsed_knowledge_base.json"
+    out_path = "data/parsed_knowledge_base.json"
     groups = parse_directory(data_dir)
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(groups, f, ensure_ascii=False, indent=2)

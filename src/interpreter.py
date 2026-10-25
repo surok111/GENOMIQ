@@ -13,10 +13,10 @@ from pathlib import Path
 from typing import Optional
 
 
-BASE_PATH = "parsed_knowledge_base_clean.json"
+BASE_PATH = "data/parsed_knowledge_base_clean.json"
 SAMPLES_DIR = "samples"
-OUT_JSON = "patient_report.json"
-OUT_MD = "patient_report.md"
+OUT_JSON = "reports/patient_report.json"
+OUT_MD = "reports/patient_report.md"
 
 
 NORMAL_PHRASES = [

@@ -10,8 +10,8 @@ pdf_parser.py — извлекает гены из PDF-отчётов лабор
     Результат: YYY
 
 Использование:
-    python pdf_parser.py samples/onko.pdf
-    python pdf_parser.py samples/onko.pdf -o samples/onko.txt
+    python src/pdf_parser.py samples/onko.pdf
+    python src/pdf_parser.py samples/onko.pdf -o samples/onko.txt
 """
 
 import argparse

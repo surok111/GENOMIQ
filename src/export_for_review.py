@@ -7,8 +7,8 @@ import pandas as pd
 import re
 from pathlib import Path
 
-BASE_PATH = "parsed_knowledge_base_clean.json"
-OUT_FILE = "GENOMIQ_Review_Export.xlsx"
+BASE_PATH = "data/parsed_knowledge_base_clean.json"
+OUT_FILE = "reports/GENOMIQ_Review_Export.xlsx"
 
 # Списки генов для правильной методологической маркировки
 PHARMACOGENES = {
