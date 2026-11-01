@@ -99,6 +99,11 @@ def cmd_report(args):
         print(f"Генов в отчёте: {len(patients)}\n")
 
         results = [interpreter.interpret_gene(p, gene_index) for p in patients]
+        try:
+            from genedb.enrich import attach_live_db
+            attach_live_db(results)
+        except Exception as e:
+            print(f"Живая БД генов не подключена: {e}")
 
         rep = {
             "file": src_path.name,
@@ -128,6 +133,55 @@ def cmd_report(args):
     finally:
         os.chdir(old_cwd)
 
+def cmd_sync(args):
+    _ensure_dirs()
+    sys.path.insert(0, str(ROOT / "src"))
+    from genedb.sync import sync_genes
+
+    symbols = [s.strip() for s in (args.genes or "").split(",") if s.strip()] or None
+    sources = [s.strip() for s in (args.sources or "").split(",") if s.strip()] or None
+    print("=" * 70)
+    print("  SYNC: OMIM / ClinVar / ClinPGx")
+    print("=" * 70)
+    summary = sync_genes(
+        symbols=symbols,
+        sources=sources,
+        backup_first=not args.no_backup,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
+def cmd_backup(args):
+    sys.path.insert(0, str(ROOT / "src"))
+    from genedb.backup import create_backup, list_backups, restore_backup
+
+    if args.list:
+        items = list_backups()
+        if not items:
+            print("Бэкапов пока нет.")
+            return
+        for item in items:
+            print(f"{item['id']}  {item.get('kind')}  {item.get('created_at')}  {item.get('path')}")
+        return
+    if args.restore:
+        result = restore_backup(args.restore, what=args.what)
+        print("Восстановлено:", result)
+        return
+    meta = create_backup(kind="manual")
+    print(f"Создан бэкап {meta['id']}")
+    print(f"  путь: {meta['path']}")
+    for f in meta.get("files", []):
+        print(f"  {f['name']}: {f['bytes']} байт")
+
+
+def cmd_db_status(args):
+    sys.path.insert(0, str(ROOT / "src"))
+    from genedb.store import GeneStore
+
+    with GeneStore() as store:
+        print(json.dumps(store.counts(), ensure_ascii=False, indent=2))
+
+
 def main():
     parser = argparse.ArgumentParser(prog="run.py", description="Parsing-Gen CLI")
     sub = parser.add_subparsers(dest="cmd")
@@ -137,11 +191,29 @@ def main():
     p_report = sub.add_parser("report", help="Обработать один файл")
     p_report.add_argument("file", help="Путь к файлу (.txt/.md/.docx/.pdf)")
 
+    p_sync = sub.add_parser("sync", help="Обновить живую БД генов из OMIM/ClinVar/ClinPGx")
+    p_sync.add_argument("--genes", help="Список символов через запятую (по умолчанию все из базы знаний)")
+    p_sync.add_argument("--sources", help="omim,clinvar,clinpgx (по умолчанию все)")
+    p_sync.add_argument("--no-backup", action="store_true", help="Не делать бэкап перед синхронизацией")
+
+    p_backup = sub.add_parser("backup", help="Снимок SQLite и JSON базы знаний")
+    p_backup.add_argument("--list", action="store_true", help="Показать бэкапы")
+    p_backup.add_argument("--restore", metavar="ID", help="Восстановить бэкап по timestamp")
+    p_backup.add_argument("--what", default="all", choices=["all", "sqlite", "knowledge"])
+
+    sub.add_parser("db-status", help="Статистика живой БД генов")
+
     args = parser.parse_args()
     if args.cmd == "build":
         cmd_build(args)
     elif args.cmd == "report":
         cmd_report(args)
+    elif args.cmd == "sync":
+        cmd_sync(args)
+    elif args.cmd == "backup":
+        cmd_backup(args)
+    elif args.cmd == "db-status":
+        cmd_db_status(args)
     else:
         parser.print_help()
 

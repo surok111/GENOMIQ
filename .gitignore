@@ -4,3 +4,8 @@ venv/
 .venv/
 .idea/
 desktop.ini
+.env
+data/genedb/*.sqlite
+data/genedb/*.sqlite-*
+data/backups/*
+!data/backups/.gitkeep

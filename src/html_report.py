@@ -7,6 +7,7 @@ html_report.py — генерация HTML-отчёта по данным patien
 import html
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 ACMG_COLORS = {
     "pathogenic": ("#dc2626", "#fee2e2"),
@@ -132,6 +133,89 @@ def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
         </div>
     """
 
+
+def _render_live_db(live: Optional[dict]) -> str:
+    if not live:
+        return ""
+    omim = live.get("omim") or []
+    stats = live.get("clinvar_stats") or {}
+    highlights = live.get("clinvar_highlights") or []
+    pgx = live.get("clinpgx_annotations") or []
+    labels = live.get("clinpgx_labels") or []
+
+    omim_html = ""
+    if omim:
+        items = []
+        for e in omim[:4]:
+            title = _esc(e.get("title") or e.get("mim_number"))
+            url = _esc(e.get("url") or f"https://omim.org/entry/{e.get('mim_number')}")
+            ph = e.get("phenotypes") or []
+            ph_txt = "; ".join(
+                str(p.get("phenotype")) for p in ph[:4] if p.get("phenotype")
+            )
+            extra = f"<div class='live-sub'>{_esc(ph_txt)}</div>" if ph_txt else ""
+            items.append(f"<li><a href='{url}' target='_blank' rel='noreferrer'>OMIM {_esc(e.get('mim_number'))}</a> — {title}{extra}</li>")
+        omim_html = "<h5>OMIM</h5><ul>" + "".join(items) + "</ul>"
+
+    clinvar_html = ""
+    if stats or highlights:
+        bits = []
+        if stats.get("total") is not None:
+            bits.append(f"всего {stats.get('total', 0)}")
+        if stats.get("pathogenic"):
+            bits.append(f"P {stats['pathogenic']}")
+        if stats.get("likely_pathogenic"):
+            bits.append(f"LP {stats['likely_pathogenic']}")
+        if stats.get("vus"):
+            bits.append(f"VUS {stats['vus']}")
+        if stats.get("conflicting"):
+            bits.append(f"конфликт {stats['conflicting']}")
+        rows = []
+        for v in highlights[:6]:
+            cls = _esc(v.get("classification") or "—")
+            title = _esc(v.get("title") or v.get("variation_id"))
+            url = _esc(v.get("url") or "")
+            rsid = _esc(v.get("rsid") or "")
+            link = f"<a href='{url}' target='_blank' rel='noreferrer'>{title}</a>" if url else title
+            rows.append(f"<li><span class='live-cls'>{cls}</span> {link} {rsid}</li>")
+        clinvar_html = (
+            "<h5>ClinVar</h5>"
+            + (f"<div class='live-sub'>{_esc(' · '.join(bits))}</div>" if bits else "")
+            + ("<ul>" + "".join(rows) + "</ul>" if rows else "")
+        )
+
+    pgx_html = ""
+    if pgx or labels:
+        rows = []
+        for a in pgx[:6]:
+            level = _esc(a.get("level") or "—")
+            drugs = _esc(a.get("drugs") or "—")
+            types = _esc(a.get("types") or "")
+            url = _esc(a.get("url") or "")
+            variant = _esc(a.get("variant") or "")
+            inner = f"<b>{level}</b> {drugs} <span class='live-sub'>{types} {variant}</span>"
+            if url:
+                inner = f"<a href='{url}' target='_blank' rel='noreferrer'>{inner}</a>"
+            rows.append(f"<li>{inner}</li>")
+        lab_bits = ", ".join(_esc(x.get("name")) for x in labels[:5] if x.get("name"))
+        pgx_html = (
+            "<h5>ClinPGx</h5>"
+            + ("<ul>" + "".join(rows) + "</ul>" if rows else "")
+            + (f"<div class='live-sub'>FDA labels: {lab_bits}</div>" if lab_bits else "")
+        )
+
+    if not (omim_html or clinvar_html or pgx_html):
+        return ""
+    synced = _esc(live.get("last_synced_at") or "")
+    return f"""
+        <div class="live-db">
+            <h4>🌐 Внешние базы (OMIM / ClinVar / ClinPGx)</h4>
+            {f'<div class="live-sub">синхронизировано: {synced}</div>' if synced else ''}
+            {omim_html}{clinvar_html}{pgx_html}
+        </div>
+    """
+
+
 def _gene_card(result: dict, status_kind: str) -> str:
     gene = _esc(result["gene"])
     group = _esc(result.get("group", ""))
@@ -143,6 +227,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
         result.get("pgx_annotations", []),
         result.get("pgx_no_match_info"),
     )
+    live_block = _render_live_db(result.get("live_db"))
 
     # НОВЫЙ СТАТУС: Есть данные, но нет таблицы генотипов
     if status_kind == "matched_annotation":
@@ -164,6 +249,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
             {f'<div class="note" style="color: #047857; background: #ecfdf5;">{note}</div>' if note else ''}
             {pgx_block}
+            {live_block}
             {recs_html}
         </div>
         """
@@ -215,6 +301,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
             {cards_inner}
             {pgx_block}
+            {live_block}
             {recs_html}
         </div>
         """
@@ -238,6 +325,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
             {f'<div class="note">{note}</div>' if note else ''}
             {pgx_block}
+            {live_block}
             {recs_html}
         </div>
         """
@@ -255,6 +343,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
         <div class="patient-line"><b>Результат:</b> {patient_result}</div>
         {f'<div class="note">{note}</div>' if note else ''}
         {pgx_block}
+        {live_block}
     </div>
     """
 
@@ -397,6 +486,21 @@ def generate_html_report(rep: dict, output_path: str):
   }}
   .row-details li:last-child {{ border-bottom: none; }}
   .row-details b {{ color: #334155; }}
+
+  .live-db {{
+    margin-top: 12px; padding: 12px 14px;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+  }}
+  .live-db h4 {{ margin: 0 0 8px; font-size: 14px; color: #1e3a8a; }}
+  .live-db h5 {{ margin: 10px 0 4px; font-size: 13px; color: #334155; }}
+  .live-db ul {{ padding-left: 18px; margin: 0; font-size: 13px; }}
+  .live-db li {{ padding: 2px 0; }}
+  .live-db a {{ color: #1d4ed8; text-decoration: none; }}
+  .live-cls {{
+    display: inline-block; font-size: 11px; font-weight: 600;
+    background: #e2e8f0; border-radius: 4px; padding: 1px 6px; margin-right: 4px;
+  }}
+  .live-sub {{ color: #64748b; font-size: 12px; margin: 4px 0; }}
 
   .recs {{ margin-top: 12px; }}
   .recs h4 {{ margin: 0 0 6px; font-size: 14px; color: #0f172a; }}

@@ -86,6 +86,13 @@ def process_uploaded_file(file_path: Path, original_name: str) -> dict:
 
     patients = interpreter.parse_patient_report(text)
     results = [interpreter.interpret_gene(p, gene_index) for p in patients]
+    if str(SRC_DIR) not in sys.path:
+        sys.path.insert(0, str(SRC_DIR))
+    try:
+        from genedb.enrich import attach_live_db
+        attach_live_db(results)
+    except Exception:
+        pass
 
     # Формируем отчёт
     rep = {
@@ -159,6 +166,44 @@ def main():
         else:
             st.error("❌ База не найдена")
             st.code("python run.py build", language="bash")
+
+        st.divider()
+        st.header("🌐 Живая БД генов")
+        if str(SRC_DIR) not in sys.path:
+            sys.path.insert(0, str(SRC_DIR))
+        try:
+            from genedb.store import GeneStore
+            from genedb.backup import list_backups, create_backup
+            from genedb.sync import sync_genes
+            from genedb.catalog import load_knowledge_genes
+
+            with GeneStore() as store:
+                counts = store.counts()
+            st.caption(
+                f"генов {counts['genes']} · OMIM {counts['omim_entries']} · "
+                f"ClinVar {counts['clinvar_variants']} · ClinPGx {counts['clinpgx_annotations']}"
+            )
+            last = counts.get("last_sync")
+            if last:
+                st.caption(f"последний sync: {last.get('finished_at') or last.get('started_at')}")
+
+            gene_choice = st.selectbox(
+                "Синхронизировать",
+                ["все гены базы"] + [g["symbol"] for g in load_knowledge_genes()],
+            )
+            if st.button("Обновить из API", use_container_width=True):
+                symbols = None if gene_choice == "все гены базы" else [gene_choice]
+                with st.spinner("Запрос OMIM / ClinVar / ClinPGx…"):
+                    summary = sync_genes(symbols=symbols, backup_first=True)
+                st.success(f"Ок: {summary['ok']}, ошибок: {summary['failed']}")
+
+            backups = list_backups()
+            st.caption(f"бэкапов: {len(backups)}")
+            if st.button("Создать бэкап", use_container_width=True):
+                meta = create_backup(kind="manual-ui")
+                st.success(f"Бэкап {meta['id']}")
+        except Exception as e:
+            st.warning(f"Живая БД недоступна: {e}")
 
         st.divider()
         st.header("ℹ️ Форматы")
