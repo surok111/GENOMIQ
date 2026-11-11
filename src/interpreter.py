@@ -100,8 +100,8 @@ KNOWN_VARIANTS = {
     'rs1801133': ('C', 'T'),
     'rs1805087': ('A', 'G'),
     'rs1801394': ('A', 'G'),
-    'p187s': ('C', 'T'),  # Для NQO1
-    'r653q': ('G', 'A'),  # Для MTHFD1
+    'p187s': ('C', 'T'),  # NQO1
+    'mthfd1_r653q': ('G', 'A'),  # MTHFD1 (rs2236225)
 }
 
 # ============================================================
@@ -113,17 +113,32 @@ def load_base(path: str) -> list[dict]:
         return json.load(f)
 
 def extract_gene_name(header: str) -> str:
-    m = re.match(r'^([A-Z0-9/ ]+?)\s*[—\-–]', header)
+    try:
+        from genedb.catalog import extract_gene_symbols
+        symbols = extract_gene_symbols(header)
+        if symbols:
+            return symbols[0]
+    except ImportError:
+        pass
+    m = re.match(r'^([A-Z0-9/* \-]+)\s+[—–]', header.strip())
     if m:
-        return m.group(1).strip()
+        return m.group(1).strip().split("/")[0].strip()
     return header.split()[0] if header.split() else header
 
 def build_gene_index(base: list[dict]) -> dict:
-    index = {}
+    try:
+        from genedb.catalog import extract_gene_symbols as _symbols
+    except ImportError:
+        def _symbols(header: str) -> list[str]:
+            return [extract_gene_name(header).upper()]
+
+    index: dict[str, tuple] = {}
     for group in base:
         for gene in group["genes"]:
-            name = extract_gene_name(gene["header"])
-            index[name.upper()] = (group["group"], gene)
+            entry = (group["group"], gene)
+            for sym in _symbols(gene["header"]):
+                key = sym.upper().replace(" ", "")
+                index[key] = entry
     return index
 
 def _strip_md(s: str) -> str:
@@ -191,9 +206,21 @@ def read_docx(path: str) -> str:
     doc = Document(path)
     return "\n".join(p.text for p in doc.paragraphs)
 
+def read_pdf(path: str) -> str:
+    try:
+        import pdfplumber
+    except ImportError as e:
+        raise ImportError("Для PDF нужен pdfplumber. Установите: pip install pdfplumber") from e
+    with pdfplumber.open(path) as pdf:
+        return "\n".join(page.extract_text() or "" for page in pdf.pages)
+
+
 def read_any(path: str) -> str:
-    if path.lower().endswith(".docx"):
+    low = path.lower()
+    if low.endswith(".docx"):
         return read_docx(path)
+    if low.endswith(".pdf"):
+        return read_pdf(path)
     return read_txt(path)
 
 # ============================================================
@@ -215,7 +242,15 @@ def _normalize(gt: str) -> str:
 
 def _is_normal(result: str) -> bool:
     low = result.lower()
-    return any(k in low for k in NORMAL_PHRASES)
+    if re.search(r"\bне\s+норм", low):
+        return False
+    for phrase in NORMAL_PHRASES:
+        if phrase == "норма":
+            if re.search(r"(?<!\w)норма(?!\w)", low):
+                return True
+        elif phrase in low:
+            return True
+    return False
 
 def _is_het(text: str) -> bool:
     return 'гетерозигот' in text.lower()
@@ -348,15 +383,20 @@ def has_real_genotype_table(gene: dict) -> bool:
                 return True
     return False
 
+def _star_haplotype_parts(value: str) -> list[str]:
+    return [p for p in value.replace(" ", "").split("/") if p.startswith("*")]
+
+
 def _is_star_overlap(cn: str, row_norm: str) -> bool:
-    if not (cn.startswith('*') or row_norm.startswith('*')):
+    if "*" not in cn and "*" not in row_norm:
         return False
-    if cn not in row_norm and row_norm not in cn:
-        return False
-    if 'xn' in row_norm or 'x2' in row_norm or 'x3' in row_norm:
-        if 'xn' not in cn and 'x2' not in cn and 'x3' not in cn:
-            return False
-    return True
+    c_parts = _star_haplotype_parts(cn)
+    r_parts = _star_haplotype_parts(row_norm)
+    if not c_parts or not r_parts:
+        return cn == row_norm
+    if len(c_parts) == 1 and "/" not in cn.replace(" ", ""):
+        return c_parts[0] in r_parts
+    return set(c_parts) == set(r_parts)
 
 def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list[dict]:
     if not candidates:
@@ -465,9 +505,6 @@ def _extract_patient_alleles(result: str) -> set:
     for m in re.finditer(r'(?:аллель|allele|носител)\w*\s+([ACGT])(?![A-Z])', text, re.IGNORECASE):
         alleles.add(m.group(1))
 
-    for m in re.finditer(r'(?<![A-Za-z])([a-z]{2})(?![A-Za-z])', result):
-        alleles.add(m.group(1).upper())
-
     return alleles
 
 def _parse_pvalue(p: str) -> float:
@@ -549,10 +586,16 @@ def find_pgx_annotations(gene: dict, patient_alleles: set, top_n: int = 50) -> d
                                 break
                     if len(g_norm) == 1:
                         for p in patient_norm:
-                            if len(p) == 2 and g_norm in p:
+                            if len(p) == 2 and p.count(g_norm) == 2:
                                 is_matched = True
                                 match_kind = match_kind or 'allele'
                                 matched_genotypes.append(g)
+                                break
+                            if len(p) == 2 and p[0] != p[1] and g_norm in p:
+                                is_matched = True
+                                match_kind = match_kind or 'allele'
+                                matched_genotypes.append(g)
+                                break
 
                 if not is_matched:
                     continue
@@ -702,10 +745,11 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
     raw_name = patient_gene["gene"].strip()
     name_upper = raw_name.upper()
 
-    base_entry = gene_index.get(name_upper)
+    compact = re.sub(r"\s+", "", name_upper)
+    base_entry = gene_index.get(compact) or gene_index.get(name_upper)
     if base_entry is None:
         for key, entry in gene_index.items():
-            if name_upper in key or key in name_upper:
+            if re.sub(r"\s+", "", key) == compact:
                 base_entry = entry
                 break
 
@@ -784,7 +828,7 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
     }
 
     # === НОВАЯ ЛОГИКА ЗЕЛЁНОГО СТАТУСА ===
-    has_any_data = bool(recommendations) or bool(pgx_result.get("matches")) or bool(pgx_result.get("no_match_info"))
+    has_any_data = bool(recommendations) or bool(pgx_result.get("matches"))
 
     if unique_matches:
         base_info["status"] = "matched"
@@ -819,6 +863,32 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
 # ============================================================
 #  Обработка файла
 # ============================================================
+
+def save_markdown(reports: list[dict], path: str) -> None:
+    """Краткий Markdown-отчёт для выгрузки из UI/CLI."""
+    lines: list[str] = []
+    for rep in reports:
+        lines.append(f"# Отчёт: {rep.get('file', '')}\n")
+        stats = rep.get("stats", {})
+        lines.append(
+            f"Генов: {rep.get('genes_total', 0)} | "
+            f"matched: {stats.get('matched', 0)} | "
+            f"annotation_only: {stats.get('matched_annotation_only', 0)} | "
+            f"no_match: {stats.get('no_genotype_match', 0)} | "
+            f"no_table: {stats.get('no_table_in_base', 0)} | "
+            f"not_in_base: {stats.get('not_in_knowledge_base', 0)}\n"
+        )
+        for r in rep.get("results", []):
+            lines.append(f"## {r.get('gene', '')} — {r.get('status', '')}")
+            lines.append(f"Результат: {r.get('patient_result', '')}")
+            if r.get("matched_genotype"):
+                lines.append(f"Сопоставление: {r.get('matched_genotype')}")
+            if r.get("note"):
+                lines.append(f"Примечание: {r.get('note')}")
+            lines.append("")
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_text("\n".join(lines), encoding="utf-8")
+
 
 def process_sample(path: str, gene_index: dict) -> dict:
     text = read_any(path)

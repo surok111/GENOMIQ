@@ -52,11 +52,7 @@ def fetch_clinpgx(symbol: str) -> dict:
         genes = _as_list(gene_payload_raw)
         if genes:
             gene_payload = genes[0]
-            gene_id = (
-                gene_payload.get("id")
-                or gene_payload.get("accessionId")
-                or gene_payload.get("objCls")
-            )
+            gene_id = gene_payload.get("id") or gene_payload.get("accessionId")
             if isinstance(gene_id, dict):
                 gene_id = gene_id.get("id")
     except HttpError as e:

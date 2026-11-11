@@ -61,11 +61,26 @@ def _ensure_dirs():
 #  Обработка одного файла
 # ============================================================
 
+def _report_stats(results: list[dict]) -> dict:
+    return {
+        "matched": sum(1 for r in results if r["status"] == "matched"),
+        "matched_annotation_only": sum(
+            1 for r in results if r["status"] == "matched_annotation_only"
+        ),
+        "no_genotype_match": sum(1 for r in results if r["status"] == "no_genotype_match"),
+        "no_table_in_base": sum(1 for r in results if r["status"] == "no_table_in_base"),
+        "not_in_knowledge_base": sum(1 for r in results if r["status"] == "not_in_knowledge_base"),
+    }
+
+
 def process_uploaded_file(file_path: Path, original_name: str) -> dict:
     """
     Обрабатывает один файл: парсит, интерпретирует, генерирует HTML.
     Возвращает словарь с результатом и путями к файлам.
     """
+    if str(SRC_DIR) not in sys.path:
+        sys.path.insert(0, str(SRC_DIR))
+
     interpreter = _load_module("interpreter")
     html_report = _load_module("html_report")
 
@@ -86,8 +101,6 @@ def process_uploaded_file(file_path: Path, original_name: str) -> dict:
 
     patients = interpreter.parse_patient_report(text)
     results = [interpreter.interpret_gene(p, gene_index) for p in patients]
-    if str(SRC_DIR) not in sys.path:
-        sys.path.insert(0, str(SRC_DIR))
     try:
         from genedb.enrich import attach_live_db
         attach_live_db(results)
@@ -98,12 +111,7 @@ def process_uploaded_file(file_path: Path, original_name: str) -> dict:
     rep = {
         "file": original_name,
         "genes_total": len(results),
-        "stats": {
-            "matched": sum(1 for r in results if r["status"] == "matched"),
-            "no_genotype_match": sum(1 for r in results if r["status"] == "no_genotype_match"),
-            "no_table_in_base": sum(1 for r in results if r["status"] == "no_table_in_base"),
-            "not_in_knowledge_base": sum(1 for r in results if r["status"] == "not_in_knowledge_base"),
-        },
+        "stats": _report_stats(results),
         "results": results,
     }
 
@@ -220,10 +228,16 @@ def main():
         st.info("👆 Перетащите файл в поле выше или нажмите «Browse files».")
         return
 
-    # Сохраняем загруженный файл во временный путь
-    temp_path = SAMPLES_DIR / uploaded.name
-    with open(temp_path, "wb") as f:
-        f.write(uploaded.getbuffer())
+    upload_key = f"upload_{uploaded.name}"
+    if upload_key not in st.session_state:
+        stamp = len(st.session_state.get("_upload_seq", 0)) + 1
+        st.session_state["_upload_seq"] = stamp
+        safe_name = f"_{stamp}_{uploaded.name}"
+        temp_path = SAMPLES_DIR / safe_name
+        with open(temp_path, "wb") as f:
+            f.write(uploaded.getbuffer())
+        st.session_state[upload_key] = str(temp_path)
+    temp_path = Path(st.session_state[upload_key])
 
     st.success(f"📄 Файл загружен: **{uploaded.name}** ({len(uploaded.getbuffer())} байт)")
 
@@ -234,18 +248,21 @@ def main():
     with col_info:
         st.caption("Нажмите, чтобы запустить интерпретацию.")
 
-    if not run_clicked:
-        return
+    if run_clicked:
+        with st.spinner("Обработка отчёта…"):
+            try:
+                st.session_state["last_report"] = process_uploaded_file(
+                    temp_path, uploaded.name
+                )
+            except Exception as e:
+                st.error(f"❌ Ошибка: {e}")
+                with st.expander("Подробности (traceback)"):
+                    st.exception(e)
+                return
 
-    # --- Обработка ---
-    with st.spinner("Обработка отчёта…"):
-        try:
-            result = process_uploaded_file(temp_path, uploaded.name)
-        except Exception as e:
-            st.error(f"❌ Ошибка: {e}")
-            with st.expander("Подробности (traceback)"):
-                st.exception(e)
-            return
+    result = st.session_state.get("last_report")
+    if not result or result["rep"].get("file") != uploaded.name:
+        return
 
     rep = result["rep"]
     stats = rep["stats"]
@@ -253,11 +270,13 @@ def main():
     st.success("✅ Анализ завершён")
 
     # --- Счётчики ---
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("✅ Найдено", stats["matched"])
-    c2.metric("🟡 Нет таблицы", stats["no_table_in_base"])
-    c3.metric("⚠️ Не сопоставлено", stats["no_genotype_match"])
-    c4.metric("❌ Нет в базе", stats["not_in_knowledge_base"])
+    matched_green = stats["matched"] + stats.get("matched_annotation_only", 0)
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("✅ Найдено", matched_green)
+    c2.metric("📝 Только аннотации", stats.get("matched_annotation_only", 0))
+    c3.metric("🟡 Нет таблицы", stats["no_table_in_base"])
+    c4.metric("⚠️ Не сопоставлено", stats["no_genotype_match"])
+    c5.metric("❌ Нет в базе", stats["not_in_knowledge_base"])
 
     # --- Результаты по генам ---
     with st.expander("📋 Результаты по генам", expanded=False):
@@ -265,6 +284,7 @@ def main():
             status = r["status"]
             icon = {
                 "matched": "✅",
+                "matched_annotation_only": "✅",
                 "no_genotype_match": "⚠️",
                 "no_table_in_base": "🟡",
                 "not_in_knowledge_base": "❌",

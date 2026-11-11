@@ -12,9 +12,14 @@ from typing import Any
 USER_AGENT = "GENOMIQ/1.0 (gene-database-sync; https://github.com)"
 
 
+def _redact_url(url: str) -> str:
+    base = url.split("?", 1)[0]
+    return base
+
+
 class HttpError(RuntimeError):
     def __init__(self, status: int, url: str, body: str = ""):
-        super().__init__(f"HTTP {status} for {url}")
+        super().__init__(f"HTTP {status} for {_redact_url(url)}")
         self.status = status
         self.url = url
         self.body = body

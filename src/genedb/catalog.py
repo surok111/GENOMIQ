@@ -8,7 +8,8 @@ from pathlib import Path
 
 from .paths import KB_CLEAN
 
-RE_HEADER = re.compile(r"^([A-Z0-9/ \-]+?)\s*[—\-–]")
+# Разделитель — типографское тире (— / –), не дефис внутри символа гена (HLA-DRB1)
+RE_HEADER = re.compile(r"^([A-Z0-9/* \-]+)\s+[—–]")
 
 
 def extract_gene_symbols(header: str) -> list[str]:
