@@ -32,9 +32,13 @@ def fetch_omim(symbol: str) -> list[dict]:
     key = os.environ.get("OMIM_API_KEY", "").strip()
     if key:
         try:
-            return _fetch_official(symbol, key)
-        except HttpError:
-            return _fetch_ncbi(symbol)
+            entries = _fetch_official(symbol, key)
+            if entries:
+                return entries
+        except HttpError as e:
+            if e.status not in (401, 403, 429):
+                raise
+        return _fetch_ncbi(symbol)
     return _fetch_ncbi(symbol)
 
 
@@ -61,30 +65,6 @@ def _fetch_official(symbol: str, api_key: str) -> list[dict]:
         mim = entry.get("mimNumber")
         if mim:
             mim_numbers.append(str(mim))
-    if not mim_numbers:
-        # более широкий поиск по символу
-        search = get_json(
-            f"{OMIM_API}/entry/search",
-            {
-                "search": symbol,
-                "filter": "prefix:*",
-                "start": 0,
-                "limit": 5,
-                "format": "json",
-                "apiKey": api_key,
-            },
-            min_interval=0.5,
-        )
-        search_response = (
-            search.get("omim", {}).get("searchResponse", {})
-            or search.get("searchResponse", {})
-        )
-        for item in search_response.get("entryList") or []:
-            entry = item.get("entry") or item
-            mim = entry.get("mimNumber")
-            if mim:
-                mim_numbers.append(str(mim))
-
     if not mim_numbers:
         return _fetch_ncbi(symbol)
 

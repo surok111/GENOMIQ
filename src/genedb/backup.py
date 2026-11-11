@@ -155,6 +155,10 @@ def restore_backup(backup_id: str, what: str = "all") -> dict:
         if not src.exists():
             continue
         target.parent.mkdir(parents=True, exist_ok=True)
+        if name == "genes.sqlite":
+            for sidecar in (target.parent / f"{target.name}-wal", target.parent / f"{target.name}-shm"):
+                if sidecar.exists():
+                    sidecar.unlink()
         shutil.copy2(src, target)
         restored.append(name)
 

@@ -17,6 +17,22 @@ SOURCES = ("omim", "clinvar", "clinpgx")
 ProgressCb = Callable[[str], None]
 
 
+def _merge_aliases(symbol: str, *lists: list[str] | None) -> list[str]:
+    seen: set[str] = {symbol.strip().upper()}
+    merged: list[str] = []
+    for lst in lists:
+        for raw in lst or []:
+            alias = str(raw).strip()
+            if not alias:
+                continue
+            key = alias.upper()
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(alias)
+    return merged
+
+
 def _log(cb: ProgressCb | None, message: str) -> None:
     if cb:
         cb(message)
@@ -88,7 +104,11 @@ def sync_genes(
                     if meta:
                         store.upsert_gene({
                             "symbol": symbol,
-                            "aliases": gene.get("aliases") or meta.get("aliases") or [],
+                            "aliases": _merge_aliases(
+                                symbol,
+                                gene.get("aliases"),
+                                meta.get("aliases"),
+                            ),
                             "name": gene.get("name") or meta.get("name"),
                             "chromosome": meta.get("chromosome"),
                             "summary": meta.get("summary"),
@@ -119,7 +139,7 @@ def sync_genes(
                         f"   ClinPGx: {len(pgx.get('annotations') or [])} аннотаций, "
                         f"{len(pgx.get('labels') or [])} FDA-лейблов",
                     )
-            except (HttpError, OSError, ValueError) as e:
+            except Exception as e:
                 gene_error = str(e)
                 failed += 1
                 errors.append(f"{symbol}: {e}")

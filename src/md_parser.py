@@ -18,7 +18,11 @@ from typing import List, Dict, Any, Optional
 # ---------- Регулярки ----------
 
 RE_GROUP_TITLE = re.compile(r'^#\s+(.+)$')
-RE_GENE_HEADER = re.compile(r'^##\s+ГЕН\s+(\d+):\s*(.+?)\s*$', re.IGNORECASE)
+RE_GENE_HEADER = re.compile(r'^##\s+ГЕН\s+(\d+(?:\.\d+)?):\s*(.+?)\s*$', re.IGNORECASE)
+RE_SUPPLEMENT_TABLE = re.compile(
+    r'^###\s+Таблица генотипов\s+([A-Z0-9*\-]+)',
+    re.IGNORECASE,
+)
 RE_SECTION = re.compile(r'^###\s+(\d+\.\d+)\s+(.+?)\s*$')
 RE_INTRO = re.compile(r'^##\s+(Введение.+?)\s*$', re.IGNORECASE)
 RE_INTERACTION = re.compile(r'^##\s+(Взаимодействия.+?)\s*$', re.IGNORECASE)
@@ -200,6 +204,56 @@ def parse_gene_block(gene_num: int, gene_header: str, lines: List[str]) -> Dict[
     }
 
 
+# ---------- Дополнительные таблицы (## ГЕН 1.5) ----------
+
+def _primary_symbol_from_header(header: str) -> str:
+    m = re.match(r'^([A-Z0-9/* \-]+)\s+[—–]', header.strip())
+    raw = m.group(1).strip() if m else (header.split()[0] if header.split() else header)
+    return raw.split("/")[0].strip().upper()
+
+
+def _attach_genotype_table(genes: List[Dict[str, Any]], symbol: str, table: Dict[str, Any]) -> bool:
+    sym = symbol.strip().upper()
+    for gene in genes:
+        if _primary_symbol_from_header(gene["header"]) != sym:
+            continue
+        gene["sections"].append({
+            "code": "supp",
+            "title": f"Таблица генотипов {sym} (дополнение)",
+            "tables": [table],
+            "pharmacogenomics": [],
+            "bullets": [],
+            "text": "",
+        })
+        return True
+    return False
+
+
+def _apply_supplement_tables(genes: List[Dict[str, Any]], lines: List[str]) -> None:
+    """Парсит блок ## ГЕН 1.5 и добавляет таблицы к соответствующим генам группы."""
+    i = 0
+    while i < len(lines):
+        stripped = lines[i].strip()
+        m = RE_SUPPLEMENT_TABLE.match(stripped)
+        if not m:
+            i += 1
+            continue
+        symbol = m.group(1).upper()
+        i += 1
+        table_lines: List[str] = []
+        while i < len(lines):
+            s = lines[i].strip()
+            if s.startswith("###") or s.startswith("##"):
+                break
+            if s.startswith("|"):
+                table_lines.append(lines[i])
+            i += 1
+        if table_lines:
+            parsed = parse_table(table_lines)
+            if parsed and parsed.get("kind") == "genotype":
+                _attach_genotype_table(genes, symbol, parsed)
+
+
 # ---------- Разбор файла ----------
 
 def parse_file(path: str) -> Dict[str, Any]:
@@ -216,41 +270,57 @@ def parse_file(path: str) -> Dict[str, Any]:
     current_gene_num = None
     current_gene_header = ""
     current_gene_lines = []
+    supplement_lines: List[str] = []
     mode = "header"
 
     def flush_gene():
         if current_gene_num is not None:
             genes.append(parse_gene_block(current_gene_num, current_gene_header, current_gene_lines))
 
+    def flush_supplement():
+        nonlocal supplement_lines, mode
+        if supplement_lines:
+            _apply_supplement_tables(genes, supplement_lines)
+        supplement_lines = []
+
     for line in lines:
         stripped = line.rstrip()
 
         # # Группа N: ... (ВАЖНО: вернуть этот блок, иначе группы не парсятся!)
         if stripped.startswith('# ') and not stripped.startswith('## '):
+            flush_supplement()
             flush_gene()
             current_gene_num = None
             group_title = stripped[2:].strip()
             mode = "header"
             continue
 
-        # ## ГЕН N: ...
+        # ## ГЕН N: ...  (N может быть 1.5 — блок доп. таблиц)
         m = RE_GENE_HEADER.match(stripped)
         if m:
+            num_str = m.group(1)
+            if "." in num_str:
+                flush_gene()
+                flush_supplement()
+                current_gene_num = None
+                supplement_lines = []
+                mode = "supplement"
+                continue
+            flush_supplement()
             flush_gene()
-            current_gene_num = int(m.group(1))
+            current_gene_num = int(num_str.split(".")[0])
             current_gene_header = m.group(2).strip()
             current_gene_lines = []
             mode = "gene"
             continue
 
-        # ИГНОРИРУЕМ заголовки "Дополнительные таблицы" или "ГЕН 1.6"
-        if stripped.startswith('## Дополнительные') or stripped.startswith('## ГЕН 1.6'):
-            # Просто пропускаем строку, не создавая новый ген
+        if stripped.startswith("## Дополнительные") or stripped.startswith("## ГЕН 1.6"):
             continue
 
         # ## Введение: ...
         m = RE_INTRO.match(stripped)
         if m:
+            flush_supplement()
             flush_gene()
             current_gene_num = None
             mode = "intro"
@@ -260,6 +330,7 @@ def parse_file(path: str) -> Dict[str, Any]:
         # ## Взаимодействия ...
         m = RE_INTERACTION.match(stripped)
         if m:
+            flush_supplement()
             flush_gene()
             current_gene_num = None
             mode = "interactions"
@@ -272,10 +343,13 @@ def parse_file(path: str) -> Dict[str, Any]:
                 intro_lines.append(stripped.strip())
         elif mode == "gene":
             current_gene_lines.append(stripped)
+        elif mode == "supplement":
+            supplement_lines.append(stripped)
         elif mode == "interactions":
             if stripped.strip():
                 interactions_lines.append(stripped.strip())
 
+    flush_supplement()
     flush_gene()
 
     interactions = parse_section_body(interactions_lines)
