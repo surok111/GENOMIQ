@@ -12,6 +12,7 @@ class TaskStatusResponse(BaseModel):
 
     task_id: uuid.UUID
     status: TaskStatus
+    correlation_id: str | None = None
     attempts: int
     result: dict[str, Any] | None = None
     created_at: datetime

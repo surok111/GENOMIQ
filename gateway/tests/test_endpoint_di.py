@@ -60,10 +60,11 @@ async def test_endpoint_resolves_ai_service_but_leaves_processing_to_worker(
                 "raw_data": "rs1801133:CT",
                 "callback_url": "https://lis.example.org/cb",
             },
-            headers={"Idempotency-Key": "di-test-1"},
+            headers={"Idempotency-Key": "di-test-1", "X-Request-ID": "corr-test-1"},
         )
 
     assert response.status_code == 202
+    assert response.headers["X-Request-ID"] == "corr-test-1"
     assert resolved == 1  # DI is wired into the endpoint...
     assert stub.calls == 0  # ...but interpretation is left to the worker
 
@@ -72,7 +73,10 @@ async def test_endpoint_resolves_ai_service_but_leaves_processing_to_worker(
         record = await session.get(TaskRecord, task_id)
     assert record is not None
     assert record.status == TaskStatus.QUEUED
+    assert record.correlation_id == "corr-test-1"
 
     message = json.loads(await redis.rpop(GENOMIC_QUEUE))
     assert message["task_id"] == str(task_id)
+    assert message["correlation_id"] == "corr-test-1"
+    assert isinstance(message["trace_context"], dict)
     assert message["payload"]["raw_data"] == "rs1801133:CT"

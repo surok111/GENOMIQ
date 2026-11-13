@@ -1,5 +1,7 @@
 from collections.abc import AsyncIterator
 
+from sqlalchemy import inspect
+from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import (
     AsyncEngine,
     AsyncSession,
@@ -49,7 +51,20 @@ async def get_db() -> AsyncIterator[AsyncSession]:
         yield session
 
 
+def _ensure_correlation_id(connection: Connection) -> None:
+    """Add correlation_id on databases created before Milestone 6. create_all does not alter."""
+    inspector = inspect(connection)
+    if not inspector.has_table("task_records"):
+        return
+    columns = {column["name"] for column in inspector.get_columns("task_records")}
+    if "correlation_id" not in columns:
+        connection.exec_driver_sql(
+            "ALTER TABLE task_records ADD COLUMN correlation_id VARCHAR(64)"
+        )
+
+
 async def init_db() -> None:
     """Create tables if missing. Dev convenience only; replace with Alembic."""
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        await conn.run_sync(_ensure_correlation_id)
