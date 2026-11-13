@@ -82,9 +82,11 @@ async def test_worker_completes_task_and_saves_mock_result(
     assert record.status == TaskStatus.COMPLETED
     assert record.attempts == 1
     assert record.result is not None
-    assert record.result["gene"] == "MTHFR"
-    assert record.result["genotype"] == genotype
-    assert record.result["risk"] == risk
+    assert record.result["resourceType"] == "Bundle"
+    encoded = json.dumps(record.result)
+    assert "MTHFR" in encoded
+    assert genotype in encoded
+    assert risk in encoded
     assert await redis.llen(DEAD_LETTER_QUEUE) == 0
 
 
@@ -112,7 +114,8 @@ async def test_run_worker_consumes_queue_end_to_end(
 
     record = await load_task(session_factory, task_id)
     assert record.result is not None
-    assert record.result["risk"] == "High"
+    assert record.result["resourceType"] == "Bundle"
+    assert "High" in json.dumps(record.result)
     assert await redis.llen(GENOMIC_QUEUE) == 0
 
 

@@ -21,6 +21,7 @@ from app.core.redis_client import DEAD_LETTER_QUEUE, GENOMIC_QUEUE
 from app.db.models import TaskRecord, TaskStatus
 from app.db.session import AsyncSessionLocal
 from app.services.dependencies import get_ai_service
+from app.services.fhir_mapper import build_fhir_bundle
 
 logger = logging.getLogger(__name__)
 
@@ -180,11 +181,17 @@ async def _run_attempt(task_id: uuid.UUID, payload: dict[str, Any]) -> None:
         # The AI engine rejected the input; retrying the same input can't help.
         raise PermanentTaskError("input could not be interpreted") from exc
 
+    try:
+        fhir_bundle = build_fhir_bundle(result)
+    except ValueError as exc:
+        # The same AI payload will fail FHIR validation every time.
+        raise PermanentTaskError("input could not be interpreted") from exc
+
     async with AsyncSessionLocal() as session:
         await session.execute(
             update(TaskRecord)
             .where(TaskRecord.task_id == task_id)
-            .values(status=TaskStatus.COMPLETED, result=result)
+            .values(status=TaskStatus.COMPLETED, result=fhir_bundle)
         )
         await session.commit()
     logger.info("Task %s completed", task_id)
