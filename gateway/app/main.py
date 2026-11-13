@@ -8,7 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.endpoints import router
 from app.core.config import settings
-from app.core.redis_client import RateLimitMiddleware, close_redis, init_redis
+from app.core.rate_limiter import RateLimitMiddleware
+from app.core.redis_client import close_redis, init_redis
 from app.db.session import engine, init_db
 from app.workers.task_worker import SHUTDOWN_GRACE_SECONDS, run_worker
 
@@ -65,13 +66,19 @@ def create_app() -> FastAPI:
 
     # Starlette makes the LAST added middleware the outermost. CORS goes last
     # so that 429 responses from the rate limiter also carry CORS headers.
-    # app.add_middleware(RateLimitMiddleware)
+    app.add_middleware(RateLimitMiddleware)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
         allow_credentials=False,
         allow_methods=["*"],
         allow_headers=["*"],
+        expose_headers=[
+            "X-RateLimit-Limit",
+            "X-RateLimit-Remaining",
+            "X-RateLimit-Reset",
+            "Retry-After",
+        ],
     )
 
     app.include_router(router)
