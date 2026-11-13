@@ -17,10 +17,10 @@ from tenacity import (
     wait_exponential,
 )
 
-from app.core.config import settings
 from app.core.redis_client import DEAD_LETTER_QUEUE, GENOMIC_QUEUE
 from app.db.models import TaskRecord, TaskStatus
 from app.db.session import AsyncSessionLocal
+from app.services.dependencies import get_ai_service
 
 logger = logging.getLogger(__name__)
 
@@ -28,13 +28,15 @@ MAX_CONCURRENCY = 5
 MAX_ATTEMPTS = 3
 BRPOP_TIMEOUT_SECONDS = 1  # short, so the loop notices the stop event quickly
 SHUTDOWN_GRACE_SECONDS = 15
-
-# Dev-only hook to exercise the retry/DLQ path: send raw_data == this value.
-_FORCE_FAIL_MARKER = "FORCE_FAIL"
+RETRY_WAIT = wait_exponential(multiplier=1, min=1, max=10)  # 1s, 2s, ... (patched in tests)
 
 
 class TaskNotFound(Exception):
     """Queue message references a task that no longer exists in the DB."""
+
+
+class PermanentTaskError(Exception):
+    """A failure that retrying cannot fix (e.g. the AI engine rejected the input)."""
 
 
 # --------------------------------------------------------------------------- #
@@ -120,7 +122,9 @@ def _parse_message(raw: str) -> tuple[uuid.UUID, dict[str, Any]]:
 
 def _is_retryable(exc: BaseException) -> bool:
     # Excludes CancelledError/KeyboardInterrupt (BaseException) and permanent errors.
-    return isinstance(exc, Exception) and not isinstance(exc, TaskNotFound)
+    return isinstance(exc, Exception) and not isinstance(
+        exc, (TaskNotFound, PermanentTaskError, NotImplementedError)
+    )
 
 
 def _log_retry(task_id: uuid.UUID, retry_state: RetryCallState) -> None:
@@ -135,20 +139,22 @@ def _log_retry(task_id: uuid.UUID, retry_state: RetryCallState) -> None:
 async def _process_with_retries(
     redis: Redis, task_id: uuid.UUID, payload: dict[str, Any]
 ) -> None:
+    attempts_made = 0
     try:
         async for attempt in AsyncRetrying(
             stop=stop_after_attempt(MAX_ATTEMPTS),
-            wait=wait_exponential(multiplier=1, min=1, max=10),  # 1s, 2s, ...
+            wait=RETRY_WAIT,
             retry=retry_if_exception(_is_retryable),
             before_sleep=functools.partial(_log_retry, task_id),
             reraise=True,
         ):
             with attempt:
+                attempts_made += 1
                 await _run_attempt(task_id, payload)
     except TaskNotFound:
         logger.error("Task %s not found in DB; message discarded", task_id)
     except Exception as exc:
-        await _fail_task(redis, task_id, payload, exc)
+        await _fail_task(redis, task_id, payload, exc, attempts_made)
 
 
 async def _run_attempt(task_id: uuid.UUID, payload: dict[str, Any]) -> None:
@@ -163,7 +169,16 @@ async def _run_attempt(task_id: uuid.UUID, payload: dict[str, Any]) -> None:
             raise TaskNotFound(str(task_id))
         await session.commit()
 
-    result = await _simulate_ai(payload)
+    raw_data = payload.get("raw_data")
+    if not isinstance(raw_data, str):
+        raise PermanentTaskError("payload has no raw_data")
+
+    ai_service = await get_ai_service()
+    try:
+        result = await ai_service.interpret(raw_data)
+    except ValueError as exc:
+        # The AI engine rejected the input; retrying the same input can't help.
+        raise PermanentTaskError("input could not be interpreted") from exc
 
     async with AsyncSessionLocal() as session:
         await session.execute(
@@ -175,31 +190,27 @@ async def _run_attempt(task_id: uuid.UUID, payload: dict[str, Any]) -> None:
     logger.info("Task %s completed", task_id)
 
 
-async def _simulate_ai(payload: dict[str, Any]) -> dict[str, Any]:
-    """Stand-in for the AI interpretation engine (real integration: later milestone)."""
-    if not settings.USE_MOCK_AI:
-        raise NotImplementedError("Real AI engine is not implemented yet")
-    if settings.ENVIRONMENT == "development" and payload.get("raw_data") == _FORCE_FAIL_MARKER:
-        raise RuntimeError("Simulated AI failure")
-    await asyncio.sleep(2)
-    return {"mock": True, "summary": "Dummy interpretation result", "variants_analyzed": 0}
-
-
 async def _fail_task(
-    redis: Redis, task_id: uuid.UUID, payload: dict[str, Any], exc: Exception
+    redis: Redis,
+    task_id: uuid.UUID,
+    payload: dict[str, Any],
+    exc: Exception,
+    attempts: int,
 ) -> None:
     error_name = type(exc).__name__
-    logger.error("Task %s failed after %d attempts (%s)", task_id, MAX_ATTEMPTS, error_name)
+    logger.error("Task %s failed after %d attempt(s) (%s)", task_id, attempts, error_name)
 
+    message = (
+        "Input could not be interpreted"
+        if isinstance(exc, PermanentTaskError)
+        else f"Processing failed after {attempts} attempts"
+    )
     try:
         async with AsyncSessionLocal() as session:
             await session.execute(
                 update(TaskRecord)
                 .where(TaskRecord.task_id == task_id)
-                .values(
-                    status=TaskStatus.FAILED,
-                    result={"error": f"Processing failed after {MAX_ATTEMPTS} attempts"},
-                )
+                .values(status=TaskStatus.FAILED, result={"error": message})
             )
             await session.commit()
     except Exception as db_exc:
@@ -211,7 +222,7 @@ async def _fail_task(
             "task_id": str(task_id),
             "payload": payload,  # PHI: treat the DLQ with the same controls as the queue
             "error": error_name,
-            "attempts": MAX_ATTEMPTS,
+            "attempts": attempts,
             "failed_at": datetime.now(timezone.utc).isoformat(),
         },
     )

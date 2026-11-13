@@ -16,12 +16,15 @@ from app.db.models import TaskRecord, TaskStatus
 from app.db.session import get_db
 from app.schemas.genomic import GenomicReportAccepted, GenomicReportRequest
 from app.schemas.task import TaskStatusResponse
+from app.services.ai_interface import AIService
+from app.services.dependencies import get_ai_service
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 DbSession = Annotated[AsyncSession, Depends(get_db)]
 RedisClient = Annotated[Redis, Depends(get_redis)]
+AIServiceDep = Annotated[AIService, Depends(get_ai_service)]
 IdempotencyKeyHeader = Annotated[
     str | None,
     Header(
@@ -76,11 +79,17 @@ async def create_genomic_interpretation(
     response: Response,
     db: DbSession,
     redis: RedisClient,
+    ai_service: AIServiceDep,
     idempotency_key: IdempotencyKeyHeader = None,
 ) -> GenomicReportAccepted:
     """Accept a genomic report for asynchronous interpretation.
 
     The payload contains PHI and must never be logged.
+
+    `ai_service` is injected so the DI wiring is exercised here, but it is
+    intentionally NOT called: interpretation is the worker's job. Calling it
+    inline would add ~1.5s to every request, run the AI twice per task, and
+    turn an unreadable genotype into a 500 instead of a failed task.
     """
     fingerprint = hashlib.sha256(payload.model_dump_json().encode("utf-8")).hexdigest()
 
