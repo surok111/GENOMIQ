@@ -1,8 +1,27 @@
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import SecretStr
+from pydantic import BaseModel, ConfigDict, Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+DEFAULT_RATE_LIMIT_KEY = "default"
+
+
+class RateLimitRule(BaseModel):
+    """Token bucket parameters for one tenant plan."""
+
+    model_config = ConfigDict(frozen=True)
+
+    capacity: int = Field(gt=0, description="Bucket size (maximum burst).")
+    refill_rate: float = Field(gt=0, description="Tokens added per second.")
+
+
+def _default_rate_limits() -> dict[str, RateLimitRule]:
+    return {
+        "api_key_lab_a": RateLimitRule(capacity=100, refill_rate=50.0),
+        "api_key_lab_b": RateLimitRule(capacity=20, refill_rate=10.0),
+        DEFAULT_RATE_LIMIT_KEY: RateLimitRule(capacity=10, refill_rate=5.0),
+    }
 
 
 class Settings(BaseSettings):
@@ -19,13 +38,27 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api"
     ENVIRONMENT: Literal["development", "staging", "production"] = "development"
 
-    # Временно используем SQLite для локальной разработки (без Docker/Postgres)
-    DATABASE_URL: SecretStr = SecretStr("sqlite+aiosqlite:///./genomiq.db")
-
-    # Redis все еще нужен для очередей (пока оставляем как есть)
+    # Connection strings usually embed credentials, so they are SecretStr
+    # to keep them out of repr()/logs. Use .get_secret_value() to read them.
+    DATABASE_URL: SecretStr = SecretStr(
+        "postgresql+asyncpg://genomiq:genomiq@localhost:5432/genomiq"
+    )
     REDIS_URL: SecretStr = SecretStr("redis://localhost:6379/0")
 
     USE_MOCK_AI: bool = True
+
+    # Keys are API keys (X-API-Key header values); "default" applies to everyone else.
+    # Can be overridden with a JSON-encoded RATE_LIMITS env var.
+    RATE_LIMITS: dict[str, RateLimitRule] = Field(default_factory=_default_rate_limits)
+
+    @field_validator("RATE_LIMITS")
+    @classmethod
+    def _require_default_rule(
+        cls, value: dict[str, RateLimitRule]
+    ) -> dict[str, RateLimitRule]:
+        if DEFAULT_RATE_LIMIT_KEY not in value:
+            raise ValueError(f'RATE_LIMITS must define a "{DEFAULT_RATE_LIMIT_KEY}" entry')
+        return value
 
 
 @lru_cache
