@@ -9,3 +9,4 @@ data/genedb/*.sqlite
 data/genedb/*.sqlite-*
 data/backups/*
 !data/backups/.gitkeep
+gateway/*.db

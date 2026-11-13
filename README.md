@@ -30,7 +30,11 @@ GENOMIQ/
 ├── samples/               # анализы пациентов (txt/docx/pdf)
 ├── reports/               # сгенерированные отчёты (orcid/ — выгрузки ORCID)
 ├── scripts/               # отладочные проверки
-└── docs/                  # сайт проекта
+├── docs/                  # сайт проекта
+└── gateway/               # API для ЛИС (FastAPI): очередь, статусы, воркер
+    ├── app/               #   пакет приложения (uvicorn app.main:app)
+    ├── docker-compose.yml #   Postgres + Redis
+    └── requirements.txt
 ```
 
 ## Запуск
@@ -57,3 +61,17 @@ python run.py backup --restore 20261101T083000Z
 OMIM: при наличии `OMIM_API_KEY` (https://omim.org/api) используется официальный REST; иначе — NCBI Entrez (`db=omim`), которого достаточно для ссылок вида https://omim.org/entry/601769. ClinVar — NCBI E-utilities. ClinPGx — https://api.clinpgx.org/ (лимит 2 запроса/с). Ключи кладутся в `.env` (см. `.env.example`).
 
 Отдельные скрипты (`src/analyzer.py`, `src/export_for_review.py`, `scripts/*.py`) запускаются из корня проекта.
+
+## API Gateway
+
+Код из `genomiq-api-gateway` лежит в `gateway/`. Это приём запросов от лабораторной системы: `POST /v1/genomic-interpretations` ставит задачу в Redis, воркер пишет статус в БД. Веб-интерпретатор (`app.py`, `run.py`) остаётся отдельной точкой входа. Воркер пока отдаёт mock-результат (`USE_MOCK_AI=true`); подключение к `src/interpreter.py` — следующий шаг на этой ветке.
+
+По умолчанию БД — SQLite (`gateway/genomiq.db`, файл в `.gitignore`). Redis нужен для очереди. Postgres можно поднять через `docker compose` и переопределить `DATABASE_URL`.
+
+```
+cd gateway
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
