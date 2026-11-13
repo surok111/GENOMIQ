@@ -10,17 +10,33 @@ from sqlalchemy.ext.asyncio import (
 from app.core.config import settings
 from app.db.models import Base
 
-engine: AsyncEngine = create_async_engine(
-    settings.DATABASE_URL.get_secret_value(),
-    pool_size=10,
-    max_overflow=20,
-    pool_timeout=5,
-    pool_pre_ping=True,
-    pool_recycle=1800,
-    # PHI safety: never echo SQL, and keep bound parameters out of exception text.
-    echo=False,
-    hide_parameters=True,
-)
+
+def _create_engine(database_url: str) -> AsyncEngine:
+    """Build an async engine; SQLite uses a different pool/connect profile than Postgres."""
+    common = {
+        # PHI safety: never echo SQL, and keep bound parameters out of exception text.
+        "echo": False,
+        "hide_parameters": True,
+    }
+    if database_url.startswith("sqlite"):
+        return create_async_engine(
+            database_url,
+            connect_args={"check_same_thread": False},
+            **common,
+        )
+    return create_async_engine(
+        database_url,
+        pool_size=10,
+        max_overflow=20,
+        pool_timeout=5,
+        pool_pre_ping=True,
+        pool_recycle=1800,
+        **common,
+    )
+
+
+_db_url = settings.DATABASE_URL.get_secret_value()
+engine: AsyncEngine = _create_engine(_db_url)
 
 AsyncSessionLocal: async_sessionmaker[AsyncSession] = async_sessionmaker(
     engine, class_=AsyncSession, expire_on_commit=False

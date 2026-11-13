@@ -26,7 +26,10 @@ async def session_factory(
 
     The worker's `AsyncSessionLocal` is pointed at it for the duration of the test.
     """
-    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'tasks.db'}")
+    engine = create_async_engine(
+        f"sqlite+aiosqlite:///{tmp_path / 'tasks.db'}",
+        connect_args={"check_same_thread": False},
+    )
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 

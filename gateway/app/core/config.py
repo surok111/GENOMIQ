@@ -40,9 +40,7 @@ class Settings(BaseSettings):
 
     # Connection strings usually embed credentials, so they are SecretStr
     # to keep them out of repr()/logs. Use .get_secret_value() to read them.
-    DATABASE_URL: SecretStr = SecretStr(
-        "postgresql+asyncpg://genomiq:genomiq@localhost:5432/genomiq"
-    )
+    DATABASE_URL: SecretStr = SecretStr("sqlite+aiosqlite:///./genomiq.db")
     REDIS_URL: SecretStr = SecretStr("redis://localhost:6379/0")
 
     USE_MOCK_AI: bool = True
