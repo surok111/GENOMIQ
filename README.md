@@ -66,7 +66,7 @@ OMIM: при наличии `OMIM_API_KEY` (https://omim.org/api) использ
 
 Код из `genomiq-api-gateway` лежит в `gateway/`. Это приём запросов от лабораторной системы: `POST /v1/genomic-interpretations` ставит задачу в Redis, воркер пишет статус в БД. Веб-интерпретатор (`app.py`, `run.py`) остаётся отдельной точкой входа. Воркер пока отдаёт mock-результат (`USE_MOCK_AI=true`); подключение к `src/interpreter.py` — следующий шаг на этой ветке.
 
-По умолчанию БД — SQLite (`gateway/genomiq.db`, файл в `.gitignore`). Redis нужен для очереди. Postgres можно поднять через `docker compose` и переопределить `DATABASE_URL`.
+По умолчанию БД — Postgres (`docker compose` в `gateway/`). Redis нужен для очереди и rate limiting. Переопределите `DATABASE_URL` и `RATE_LIMITS` через `.env`.
 
 ```
 cd gateway
@@ -74,4 +74,5 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload
+pytest
 ```
