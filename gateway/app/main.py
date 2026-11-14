@@ -1,19 +1,25 @@
 import asyncio
-import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
 from app.api.endpoints import router
 from app.core.config import settings
+from app.core.logging import configure_logging, get_logger
 from app.core.rate_limiter import RateLimitMiddleware
 from app.core.redis_client import close_redis, init_redis
+from app.core.telemetry import (
+    RequestObservabilityMiddleware,
+    setup_telemetry,
+    shutdown_telemetry,
+)
 from app.db.session import engine, init_db
 from app.workers.task_worker import SHUTDOWN_GRACE_SECONDS, run_worker
 
-logger = logging.getLogger(__name__)
+logger = get_logger("app.main")
 
 
 def _log_worker_exit(task: asyncio.Task[None]) -> None:
@@ -21,7 +27,7 @@ def _log_worker_exit(task: asyncio.Task[None]) -> None:
         return
     exc = task.exception()
     if exc is not None:
-        logger.critical("Worker task crashed (%s)", type(exc).__name__)
+        logger.critical("worker_crashed", error_class=type(exc).__name__, status="failed")
 
 
 @asynccontextmanager
@@ -44,17 +50,16 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         try:
             await asyncio.wait_for(worker_task, timeout=SHUTDOWN_GRACE_SECONDS + 5)
         except (TimeoutError, asyncio.CancelledError):
-            logger.warning("Worker did not stop in time and was cancelled")
+            logger.warning("worker_shutdown_timeout", status="cancelled", error_class="TimeoutError")
         await close_redis()
         await engine.dispose()
+        shutdown_telemetry()
 
 
 def create_app() -> FastAPI:
     """Application factory."""
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    )
+    configure_logging()
+    setup_telemetry(settings.ENVIRONMENT, settings.OTEL_EXPORTER_OTLP_ENDPOINT)
 
     app = FastAPI(
         title="GenomIQ LIS API",
@@ -67,6 +72,7 @@ def create_app() -> FastAPI:
     # Starlette makes the LAST added middleware the outermost. CORS goes last
     # so that 429 responses from the rate limiter also carry CORS headers.
     app.add_middleware(RateLimitMiddleware)
+    app.add_middleware(RequestObservabilityMiddleware)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -78,10 +84,12 @@ def create_app() -> FastAPI:
             "X-RateLimit-Remaining",
             "X-RateLimit-Reset",
             "Retry-After",
+            "X-Request-ID",
         ],
     )
 
     app.include_router(router)
+    FastAPIInstrumentor.instrument_app(app)
     return app
 
 

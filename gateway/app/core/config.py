@@ -40,12 +40,14 @@ class Settings(BaseSettings):
 
     # Connection strings usually embed credentials, so they are SecretStr
     # to keep them out of repr()/logs. Use .get_secret_value() to read them.
-    DATABASE_URL: SecretStr = SecretStr(
-        "postgresql+asyncpg://genomiq:genomiq@localhost:5432/genomiq"
-    )
+    DATABASE_URL: SecretStr = SecretStr("sqlite+aiosqlite:///./genomiq.db")
     REDIS_URL: SecretStr = SecretStr("redis://localhost:6379/0")
 
     USE_MOCK_AI: bool = True
+
+    # Base URL of an OTLP/HTTP collector. Used when ENVIRONMENT is not development.
+    # Paths /v1/traces and /v1/metrics are appended when missing.
+    OTEL_EXPORTER_OTLP_ENDPOINT: str = "http://localhost:4318"
 
     # Keys are API keys (X-API-Key header values); "default" applies to everyone else.
     # Can be overridden with a JSON-encoded RATE_LIMITS env var.
