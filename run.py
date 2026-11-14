@@ -51,7 +51,7 @@ def cmd_build(args):
 
 def _read_file_text(path: Path) -> str:
     ext = path.suffix.lower()
-    if ext in (".txt", ".md"):
+    if ext in (".txt", ".md", ".vcf"):
         return path.read_text(encoding="utf-8")
     if ext == ".docx":
         try:
@@ -95,8 +95,17 @@ def cmd_report(args):
         gene_index = interpreter.build_gene_index(base)
         print(f"Генов в базе: {len(gene_index)}")
 
-        patients = interpreter.parse_patient_report(text)
-        print(f"Генов в отчёте: {len(patients)}\n")
+        raw_parser = _load_module("raw_parser")
+        if raw_parser.looks_like_raw_lab(text, str(src_path)):
+            patients = raw_parser.parse_raw_lab_report(text)
+            print("Parser: raw_parser (VCF / karyotype / notes)")
+        else:
+            patients = interpreter.parse_patient_report(text)
+            print("Parser: parse_patient_report (Ген / Результат)")
+        print(f"Генов в отчёте: {len(patients)}")
+        for p in patients:
+            print(f"  {p['gene']}: {p['result']}")
+        print()
 
         results = [interpreter.interpret_gene(p, gene_index) for p in patients]
         try:
@@ -189,7 +198,7 @@ def main():
     sub.add_parser("build", help="Построить базу знаний из data/")
 
     p_report = sub.add_parser("report", help="Обработать один файл")
-    p_report.add_argument("file", help="Путь к файлу (.txt/.md/.docx/.pdf)")
+    p_report.add_argument("file", help="Путь к файлу (.txt/.md/.docx/.pdf/.vcf)")
 
     p_sync = sub.add_parser("sync", help="Обновить живую БД генов из OMIM/ClinVar/ClinPGx")
     p_sync.add_argument("--genes", help="Список символов через запятую (по умолчанию все из базы знаний)")

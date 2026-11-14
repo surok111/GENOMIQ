@@ -3,10 +3,10 @@
   "genes_total": 35,
   "stats": {
     "matched": 23,
-    "matched_annotation_only": 3,
+    "matched_annotation_only": 4,
     "no_genotype_match": 7,
     "no_table_in_base": 0,
-    "not_in_knowledge_base": 2
+    "not_in_knowledge_base": 1
   },
   "results": [
     {
@@ -1061,6 +1061,178 @@
         "Функция": "Умеренное снижение активности",
         "Клинический риск": "Умеренный риск алкогольной зависимости",
         "ACMG": "Risk factor"
+      },
+      "live_db": {
+        "symbol": "CAT",
+        "name": "CAT — Catalase",
+        "chromosome": null,
+        "summary": null,
+        "omim_mim": "607424",
+        "clinpgx_id": "PA26099",
+        "last_synced_at": "2026-11-11T15:16:44Z",
+        "omim": [
+          {
+            "mim_number": "607424",
+            "title": "GLYCINE N-ACYLTRANSFERASE; GLYAT",
+            "prefix": null,
+            "url": "https://omim.org/entry/607424",
+            "source": "ncbi_omim",
+            "phenotypes": [],
+            "allelic_variants": []
+          },
+          {
+            "mim_number": "115500",
+            "title": "CATALASE; CAT",
+            "prefix": null,
+            "url": "https://omim.org/entry/115500",
+            "source": "ncbi_omim",
+            "phenotypes": [],
+            "allelic_variants": []
+          }
+        ],
+        "clinvar_stats": {
+          "gene_symbol": "CAT",
+          "total": 117,
+          "pathogenic": 21,
+          "likely_pathogenic": 4,
+          "vus": 40,
+          "likely_benign": 23,
+          "benign": 13,
+          "conflicting": 0,
+          "other": 16,
+          "fetched_at": "2026-11-11T15:16:39Z"
+        },
+        "clinvar_highlights": [
+          {
+            "variation_id": "395339",
+            "title": "GRCh37/hg19 11p13(chr11:31210842-35436121)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/395339/"
+          },
+          {
+            "variation_id": "1807696",
+            "title": "GRCh37/hg19 11p13-12(chr11:31372721-38259316)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/1807696/"
+          },
+          {
+            "variation_id": "1704646",
+            "title": "GRCh37/hg19 11p13-q25(chr11:32799481-134938470)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "MISSED ABORTION",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/1704646/"
+          },
+          {
+            "variation_id": "441612",
+            "title": "GRCh37/hg19 11p14.1-12(chr11:27588560-41770792)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/441612/"
+          },
+          {
+            "variation_id": "253513",
+            "title": "GRCh37/hg19 11p14.1-12(chr11:30615127-40606139)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/253513/"
+          },
+          {
+            "variation_id": "4279443",
+            "title": "GRCh37/hg19 11p14.1-13(chr11:30171191-35483727)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not specified",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/4279443/"
+          },
+          {
+            "variation_id": "3391910",
+            "title": "GRCh37/hg19 11p14.3-12(chr11:22428384-37196643)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/3391910/"
+          },
+          {
+            "variation_id": "688898",
+            "title": "GRCh37/hg19 11p14.3-13(chr11:22079154-35597645)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/688898/"
+          },
+          {
+            "variation_id": "441893",
+            "title": "GRCh37/hg19 11p14.3-13(chr11:25771208-35614978)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/441893/"
+          },
+          {
+            "variation_id": "3391909",
+            "title": "GRCh37/hg19 11p15.1-12(chr11:17120358-41424289)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/3391909/"
+          },
+          {
+            "variation_id": "815410",
+            "title": "GRCh37/hg19 11p15.3-13(chr11:11053978-34732891)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/815410/"
+          },
+          {
+            "variation_id": "441715",
+            "title": "GRCh37/hg19 11p15.5-12(chr11:230615-37698540)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/441715/"
+          }
+        ],
+        "clinpgx_annotations": [
+          {
+            "annotation_id": "652595205",
+            "level": "3",
+            "variant": "",
+            "drugs": "anthracyclines and related substances",
+            "types": "Toxicity",
+            "phenotypes": "Acute lymphoblastic leukemia",
+            "url": "https://www.clinpgx.org/clinicalAnnotation/652595205"
+          },
+          {
+            "annotation_id": "1447946088",
+            "level": "3",
+            "variant": "",
+            "drugs": "ethanol",
+            "types": "Other",
+            "phenotypes": "Alcohol abuse",
+            "url": "https://www.clinpgx.org/clinicalAnnotation/1447946088"
+          }
+        ],
+        "clinpgx_labels": []
       }
     },
     {
@@ -1447,12 +1619,72 @@
     },
     {
       "gene": "HLA-DRB1",
+      "group": "Группа 2: Иммунная система и воспаление",
       "patient_result": "*15:01 (носительство)",
       "patient_comment": "Ассоциация с риском рассеянного склероза и целиакии.",
-      "status": "not_in_knowledge_base",
-      "matches": [],
+      "parts": [
+        "*15:01 (носительство)"
+      ],
+      "extracted_candidates": [],
+      "has_genotype_table": false,
+      "recommendations": [
+        "Hill et al. (1991): HLA-Bw53 и гаплотип HLA class II DRB1*1302/DQB1*0501 независимо ассоциированы с защитой от тяжёлой малярии у детей Западной Африки.",
+        "Delgado et al. (1996): DQB1*0301 ассоциирован с буллёзным пемфигоидом, глазным рубцовым пемфигоидом и оральным пемфигоидом.",
+        "Petersdorf et al. (1995, 1996): несоответствие HLA-DRB1 между донором и реципиентом ассоциировано с повышенным риском острой реакции «трансплантат против хозяина» (GVHD) после неродственной трансплантации костного мозга. HLA-DQ также является трансплантационным антигеном.",
+        "Nishi et al. (1995), Hiroi et al. (1999): HLA-DRB1*1401 ассоциирован с неfamilial идиопатической кардиомиопатией у японцев; возможна синергия с гомозиготностью по V-аллелю SOD2.",
+        "Thursz et al. (1999): самокупирующаяся инфекция HCV ассоциирована с HLA-DRB1*1101 и DQB1*0301; персистирующая — с DRB1*0701 и DRB4*0101.",
+        "MacDonald et al. (2000): HLA-DRB1*0102 ассоциирован со сниженным риском сероконверсии HIV-1 у кенийских коммерческих секс-работниц.",
+        "Vyakarnam et al. (2004): гаплотип DRB1*15-DQB1*06 ассоциирован с более медленным снижением CD4 T-клеток при HIV-1.",
+        "Cooke and Hill (2001): DRB1*1302, *1352, *1101, *04 ассоциированы с резистентностью к гепатиту B, малярийной анемии, гепатиту C и тифоидной лихорадке соответственно; DR2 — с восприимчивостью к туберкулёзу и лепре; DR7 — с восприимчивостью к гепатиту B.",
+        "Moffatt et al. (2001): HLA-DRB1 ассоциирован с общим сывороточным IgE и титрами IgE против индивидуальных антигенов.",
+        "Lang et al. (2002): DRB1*1501-рестриктированный MBP (85-99) и DRB5*0101-рестриктированный EBV DNA polymerase peptide демонстрируют структурную эквивалентность, подтверждая молекулярную мимикрию при рассеянном склерозе.",
+        "Oksenberg et al. (2004): ассоциация с HLA-DRB1*15 при рассеянном склерозе у афроамериканцев независима от DQB1*0602.",
+        "International Multiple Sclerosis Genetics Consortium (2007): подтверждена ассоциация DRB1*1501 с рассеянным склерозом (p = 8.94 x 10^-81; OR 1.99).",
+        "Jawaheer et al. (2002): помимо DRB1, в MHC существуют как минимум 2 дополнительных генетических эффекта, ассоциированных с ревматоидным артритом.",
+        "Kallberg et al. (2007): взаимодействие между курением и HLA-DRB1 shared epitope alleles повышает риск anti-CCP-положительного ревматоидного артрита; взаимодействия с PTPN22 R620W не выявлено.",
+        "Scally et al. (2013): цитруллинирование, локус HLA-DRB1 и T-клеточная аутореактивность при ревматоидном артрите связаны.",
+        "Kotb et al. (2002): гаплотип DRB1*1501/DQB1*0602 ассоциирован с защитой от тяжёлой системной стрептококковой инфекции.",
+        "Moffatt et al. (2003): у аборигенов Австралии HLA-DRB1 объясняет 33% дисперсии общего сывороточного IgE и 17% дисперсии специфического IgE к HDM.",
+        "Gottenberg et al. (2003): при синдроме Шёгрена ассоциация с DRB1*03 и DQB1*02 ограничена пациентами с анти-SSA и/или анти-SSB антителами.",
+        "Goverdhan et al. (2005): Cw*0701 положительно, B*4001 и DRB1*1301 отрицательно ассоциированы с возрастной макулярной дегенерацией.",
+        "Chiaroni et al. (2006): HLA-DRB1*11 чаще, а DRB1*07 реже встречаются у пациентов с иммунизацией к антигену Kell.",
+        "Booth et al. (2006): DRB1*13 ассоциирован с более высокими IgE и IgG4 ответами на антигены S. mansoni после лечения празиквантелом и с более низкими показателями реинфекции.",
+        "Nejentsev et al. (2007): MHC class I гены HLA-B и HLA-A вносят вклад в этиологию диабета 1 типа в дополнение к HLA-DQB1 и HLA-DRB1.",
+        "Hoffmann et al. (2008): HLA-DRB1*0401 и *0408 сильно ассоциированы с развитием антител к интерферону-бета при лечении рассеянного склероза.",
+        "Nielsen et al. (2009): HY-рестриктирующие HLA class II аллели (DRB1*15, DQB1*0501/0502) снижают шанс живорождения у женщин с привычным невынашиванием и первым мальчиком.",
+        "Ramagopalan et al. (2009): в промоторе HLA-DRB1 идентифицирован витамин-D-ответный элемент (VDRE), консервативный на гаплотипах DRB1*15; 1,25-дигидроксивитамин D3 увеличивает экспрессию.",
+        "Li et al. (2009): DRB1*03 и DRB1*0701 ассоциированы с неответом на вакцинацию против гепатита B; DRB1*08 — с ответом.",
+        "Karp et al. (2010): комбинация остатков в пептид-связывающих карманах 4 (26F_28E) и 7 (67F_71R) HLA-DRB1 объясняет риск системной склеродермии.",
+        "International Multiple Sclerosis Genetics Consortium and Wellcome Trust Case Control Consortium 2 (2011): уточнены риск-аллели DRB1*15:01 и DRB1*13:03; подтверждён независимый защитный эффект HLA-A.",
+        "Foo et al. (2013): гексааллельный аминокислотный полиморфизм в позиции 13 экзона 2 HLA-DR beta chain ассоциирован с фолликулярной лимфомой; 4,2-кратная разница риска.",
+        "Hammer et al. (2015): варианты HLA-DRB1 ассоциированы с гуморальным ответом на вирусы гриппа A, Эпштейна-Барр, JC polyomavirus и Merkel cell polyomavirus.",
+        "Dunstan et al. (2014): HLA-DRB1*04:05 ассоциирован с резистентностью к энтерической лихорадке (OR 0.14).",
+        "Полиморфизм DRB1 существует не менее 30 млн лет и разделяется людьми, человекообразными обезьянами и другими приматами.",
+        "Ayala et al. (1994): полиморфизм DRB1 требует средней эффективной численности предковой популяции 100 000 особей на протяжении 30 млн лет; исключает теорию бутылочного горлышка до одной или нескольких женщин в Африке ~200 000 лет назад.",
+        "Bergstrom et al. (1998): большинство аллелей DRB1 возникли после разделения Homo и Pan (~4-7.4 млн лет назад); эффективный размер популяции ранних гоминид ~10 000 особей.",
+        "von Salome et al. (2007): большинство из более чем 400 аллелей HLA-DRB1 имеют недавнее происхождение; антиген-связывающие сайты имеют более древнее происхождение.",
+        "Teshima et al. (2002): host APC, но не эпителиальные клетки, экспрессирующие class II аллоантигены, достаточны для индукции экспансии CD4+ T-клеток, секреции цитокинов и летальной острой GVHD. Блокада TNF и IL1B может блокировать эффекторную фазу острой GVHD.",
+        "Summary Annotations: 1 pediatric (rs17885382 / asparaginase / ALL) и 27 non-pediatric (HLA-DRB1*01:01, *15:02, *07:01, *03:01, *04:02, *01:02, *01:03, *04:04, *04:03, *10:01, *11:01, *09:01, *16:01, *13:02, *08:03, *04:01, *14:01, *08:01, *15:01; rs701829, rs17211071, rs201929247).",
+        "Variant Annotations: множество записей по аллелям HLA-DRB1 и rs-вариантам.",
+        "Drug Label Annotations: 5 записей для lapatinib (PMDA, Swissmedic, EMA, FDA, HCSC), все с участием HLA-DRB1.",
+        "FDA PGx Associations: 1 запись — lapatinib, HLA-DRB1*07:01, повышенный риск гепатотоксичности.",
+        "Уровень доказательности Summary Annotations — Level 2B и 3; не заменяет клинического решения.",
+        "CPIC guideline отсутствует."
+      ],
       "pgx_annotations": [],
-      "pgx_no_match_info": null
+      "pgx_no_match_info": {
+        "total_annotations": 62,
+        "genotypes_in_base": [
+          "A",
+          "T"
+        ],
+        "patient_genotypes": []
+      },
+      "status": "matched_annotation_only",
+      "matches": [],
+      "matched_genotype": "Ассоциативный анализ",
+      "full_row": null,
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации."
     },
     {
       "gene": "NLRP3",
@@ -1866,7 +2098,179 @@
       "matches": [],
       "matched_genotype": null,
       "full_row": null,
-      "note": "Генотип не удалось сопоставить с таблицей базы. Проверьте вручную."
+      "note": "Генотип не удалось сопоставить с таблицей базы. Проверьте вручную.",
+      "live_db": {
+        "symbol": "MTHFD1",
+        "name": "MTHFD1 — Methylenetetrahydrofolate Dehydrogenase 1",
+        "chromosome": null,
+        "summary": null,
+        "omim_mim": "172460",
+        "clinpgx_id": "PA31236",
+        "last_synced_at": "2026-11-11T15:17:16Z",
+        "omim": [
+          {
+            "mim_number": "172460",
+            "title": "METHYLENETETRAHYDROFOLATE DEHYDROGENASE 1; MTHFD1",
+            "prefix": null,
+            "url": "https://omim.org/entry/172460",
+            "source": "ncbi_omim",
+            "phenotypes": [],
+            "allelic_variants": []
+          }
+        ],
+        "clinvar_stats": {
+          "gene_symbol": "MTHFD1",
+          "total": 707,
+          "pathogenic": 27,
+          "likely_pathogenic": 31,
+          "vus": 249,
+          "likely_benign": 357,
+          "benign": 30,
+          "conflicting": 0,
+          "other": 13,
+          "fetched_at": "2026-11-11T15:17:10Z"
+        },
+        "clinvar_highlights": [
+          {
+            "variation_id": "395470",
+            "title": "GRCh37/hg19 14q11.2-32.33(chr14:19794561-107234280)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/395470/"
+          },
+          {
+            "variation_id": "443977",
+            "title": "GRCh37/hg19 14q11.2-32.33(chr14:20511673-107285437)",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/443977/"
+          },
+          {
+            "variation_id": "1707441",
+            "title": "GRCh37/hg19 14q13.3-32.33(chr14:37671058-106985955)x2",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/1707441/"
+          },
+          {
+            "variation_id": "2684728",
+            "title": "GRCh37/hg19 14q23.1-32.33(chr14:58894502-107227240)x3",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/2684728/"
+          },
+          {
+            "variation_id": "155306",
+            "title": "GRCh38/hg38 14q11.2-32.33(chr14:20043514-106877229)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/155306/"
+          },
+          {
+            "variation_id": "146230",
+            "title": "GRCh38/hg38 14q11.2-32.33(chr14:20151149-106855263)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/146230/"
+          },
+          {
+            "variation_id": "57781",
+            "title": "GRCh38/hg38 14q22.3-23.3(chr14:57041036-67208231)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/57781/"
+          },
+          {
+            "variation_id": "57228",
+            "title": "GRCh38/hg38 14q23.1-23.3(chr14:59917051-66750803)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/57228/"
+          },
+          {
+            "variation_id": "149197",
+            "title": "GRCh38/hg38 14q23.2-23.3(chr14:62252700-65753416)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/149197/"
+          },
+          {
+            "variation_id": "446308",
+            "title": "NG_012450.1:g.(45534_?)_(?_47555)del",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "Combined immunodeficiency and megaloblastic anemia with or without hyperhomocysteinemia",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/446308/"
+          },
+          {
+            "variation_id": "2000402",
+            "title": "NM_005956.4(MTHFD1):c.1231C>T (p.Gln411Ter)",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "2078126852",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/2000402/"
+          },
+          {
+            "variation_id": "446305",
+            "title": "NM_005956.4(MTHFD1):c.1674G>A (p.Thr558=)",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "1456143398",
+            "conditions": "Combined immunodeficiency and megaloblastic anemia with or without hyperhomocysteinemia",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/446305/"
+          }
+        ],
+        "clinpgx_annotations": [
+          {
+            "annotation_id": "1451475700",
+            "level": "3",
+            "variant": "",
+            "drugs": "cisplatin, doxorubicin, methotrexate",
+            "types": "Efficacy",
+            "phenotypes": "Osteosarcoma",
+            "url": "https://www.clinpgx.org/clinicalAnnotation/1451475700"
+          },
+          {
+            "annotation_id": "981201387",
+            "level": "3",
+            "variant": "",
+            "drugs": "methotrexate",
+            "types": "Efficacy",
+            "phenotypes": "Acute lymphoblastic leukemia, Mesothelioma",
+            "url": "https://www.clinpgx.org/clinicalAnnotation/981201387"
+          },
+          {
+            "annotation_id": "1451476200",
+            "level": "3",
+            "variant": "",
+            "drugs": "methotrexate",
+            "types": "Toxicity",
+            "phenotypes": "Acute lymphoblastic leukemia, Anemia, Leukopenia, Mucositis, Non-Hodgkin Lymphoma, Osteosarcoma, Thrombocytopenia, Toxic liver disease",
+            "url": "https://www.clinpgx.org/clinicalAnnotation/1451476200"
+          }
+        ],
+        "clinpgx_labels": []
+      }
     }
   ]
 }

@@ -64,9 +64,9 @@ OMIM: при наличии `OMIM_API_KEY` (https://omim.org/api) использ
 
 ## API Gateway
 
-Код из `genomiq-api-gateway` лежит в `gateway/`. Это приём запросов от лабораторной системы: `POST /v1/genomic-interpretations` ставит задачу в Redis, воркер пишет статус в БД. Веб-интерпретатор (`app.py`, `run.py`) остаётся отдельной точкой входа. Воркер пока отдаёт mock-результат (`USE_MOCK_AI=true`); подключение к `src/interpreter.py` — следующий шаг на этой ветке.
+Код из `genomiq-api-gateway` лежит в `gateway/`. Это приём запросов от лабораторной системы: `POST /v1/genomic-interpretations` ставит задачу в Redis, воркер пишет статус в БД. Веб-интерпретатор (`app.py`, `run.py`) остаётся отдельной точкой входа. Воркер вызывает `MockAIService` при `USE_MOCK_AI=true` (MTHFR C677T по подстрокам CT/TT/CC в `raw_data`). Для демо используйте `"raw_data": "rs1801133:CT"`. Подключение к `src/interpreter.py` — следующий шаг.
 
-По умолчанию БД — Postgres (`docker compose` в `gateway/`). Redis нужен для очереди и rate limiting. Переопределите `DATABASE_URL` и `RATE_LIMITS` через `.env`.
+По умолчанию БД — SQLite (`gateway/genomiq.db`); Redis нужен для очереди и rate limiting. Postgres — через `docker compose` и `DATABASE_URL` в `.env`. Полная памятка по файлам, запуску и вехам: [docs/GENOMIQ_GATEWAY_GUIDE.md](docs/GENOMIQ_GATEWAY_GUIDE.md).
 
 ```
 cd gateway

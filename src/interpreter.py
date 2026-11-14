@@ -215,6 +215,15 @@ def read_pdf(path: str) -> str:
         return "\n".join(page.extract_text() or "" for page in pdf.pages)
 
 
+def parse_patient_input(text: str, path: Optional[str] = None) -> list[dict]:
+    """Dispatch: mixed VCF/lab dump vs classic Ген/Результат text."""
+    from raw_parser import looks_like_raw_lab, parse_raw_lab_report
+
+    if looks_like_raw_lab(text, path):
+        return parse_raw_lab_report(text)
+    return parse_patient_report(text)
+
+
 def read_any(path: str) -> str:
     low = path.lower()
     if low.endswith(".docx"):
@@ -391,12 +400,52 @@ def _is_star_overlap(cn: str, row_norm: str) -> bool:
     if "*" not in cn and "*" not in row_norm:
         return False
     c_parts = _star_haplotype_parts(cn)
+    if not c_parts:
+        return cn == row_norm
+    c_set = set(c_parts)
+    # PGx tables often list several diplotypes in one cell: "*1/*2, *1/*3, *2/*17".
+    for chunk in re.split(r"[,;]", row_norm.replace(" ", "")):
+        r_chunk = _star_haplotype_parts(chunk)
+        if r_chunk and set(r_chunk) == c_set:
+            return True
     r_parts = _star_haplotype_parts(row_norm)
-    if not c_parts or not r_parts:
+    if not r_parts:
         return cn == row_norm
     if len(c_parts) == 1 and "/" not in cn.replace(" ", ""):
         return c_parts[0] in r_parts
-    return set(c_parts) == set(r_parts)
+    return c_set == set(r_parts)
+
+
+def _canonical_star_diplotype(candidate: str) -> str:
+    """'*1/*2' from a patient candidate; empty if it is not a star genotype."""
+    parts = _star_haplotype_parts(_normalize(candidate))
+    if len(parts) >= 2:
+        return f"{parts[0]}/{parts[1]}"
+    if len(parts) == 1:
+        return parts[0]
+    return ""
+
+
+def _specific_matched_genotype(row_gt: str, candidate: str) -> str:
+    """Display the patient's star diplotype, not the whole comma-separated KB cell."""
+    star = _canonical_star_diplotype(candidate)
+    if star and _is_star_overlap(_normalize(candidate), _normalize(row_gt)):
+        return star
+    return row_gt
+
+
+def _row_with_specific_genotype(row: dict, display_gt: str, matched_column: Optional[str]) -> dict:
+    """Copy a KB row and replace the genotype cell with the patient's match."""
+    out = dict(row)
+    if matched_column and matched_column in out:
+        out[matched_column] = display_gt
+        return out
+    for k in out:
+        hl = k.strip().lower()
+        if hl in {"генотип", "genotype"} or hl.startswith("генотип"):
+            out[k] = display_gt
+            break
+    return out
 
 def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list[dict]:
     if not candidates:
@@ -453,9 +502,10 @@ def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list
                 seen_rows.add(row_key)
 
                 row_gt, orig, gt_col = best_match
+                display_gt = _specific_matched_genotype(row_gt, orig)
                 matches.append({
                     "section": sec, "table": tbl, "row": row,
-                    "matched_field": row_gt, "matched_candidate": orig, "matched_column": gt_col,
+                    "matched_field": display_gt, "matched_candidate": orig, "matched_column": gt_col,
                 })
 
     return matches
@@ -832,12 +882,19 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
 
     if unique_matches:
         base_info["status"] = "matched"
-        base_info["matches"] = [
-            {"genotype": _strip_md(m["matched_field"]), "full_row": m["row"], "source_part": m.get("source_part", "")}
-            for m in unique_matches
-        ]
-        base_info["matched_genotype"] = ", ".join(_strip_md(m["matched_field"]) for m in unique_matches)
-        base_info["full_row"] = unique_matches[0]["row"]
+        display_matches = []
+        for m in unique_matches:
+            display_gt = _strip_md(m["matched_field"])
+            display_matches.append({
+                "genotype": display_gt,
+                "full_row": _row_with_specific_genotype(
+                    m["row"], display_gt, m.get("matched_column")
+                ),
+                "source_part": m.get("source_part", ""),
+            })
+        base_info["matches"] = display_matches
+        base_info["matched_genotype"] = ", ".join(m["genotype"] for m in display_matches)
+        base_info["full_row"] = display_matches[0]["full_row"]
     elif not has_table and has_any_data:
         # Ген без таблицы генотипов, но с ассоциациями/рекомендациями — УСЛОВНО ЗЕЛЁНЫЙ
         base_info["status"] = "matched_annotation_only"
