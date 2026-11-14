@@ -215,6 +215,15 @@ def read_pdf(path: str) -> str:
         return "\n".join(page.extract_text() or "" for page in pdf.pages)
 
 
+def parse_patient_input(text: str, path: Optional[str] = None) -> list[dict]:
+    """Dispatch: mixed VCF/lab dump vs classic Ген/Результат text."""
+    from raw_parser import looks_like_raw_lab, parse_raw_lab_report
+
+    if looks_like_raw_lab(text, path):
+        return parse_raw_lab_report(text)
+    return parse_patient_report(text)
+
+
 def read_any(path: str) -> str:
     low = path.lower()
     if low.endswith(".docx"):
@@ -391,12 +400,20 @@ def _is_star_overlap(cn: str, row_norm: str) -> bool:
     if "*" not in cn and "*" not in row_norm:
         return False
     c_parts = _star_haplotype_parts(cn)
+    if not c_parts:
+        return cn == row_norm
+    c_set = set(c_parts)
+    # PGx tables often list several diplotypes in one cell: "*1/*2, *1/*3, *2/*17".
+    for chunk in re.split(r"[,;]", row_norm.replace(" ", "")):
+        r_chunk = _star_haplotype_parts(chunk)
+        if r_chunk and set(r_chunk) == c_set:
+            return True
     r_parts = _star_haplotype_parts(row_norm)
-    if not c_parts or not r_parts:
+    if not r_parts:
         return cn == row_norm
     if len(c_parts) == 1 and "/" not in cn.replace(" ", ""):
         return c_parts[0] in r_parts
-    return set(c_parts) == set(r_parts)
+    return c_set == set(r_parts)
 
 def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list[dict]:
     if not candidates:

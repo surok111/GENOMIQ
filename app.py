@@ -99,7 +99,7 @@ def process_uploaded_file(file_path: Path, original_name: str) -> dict:
     if not text.strip():
         raise ValueError("Файл пустой или не удалось извлечь текст.")
 
-    patients = interpreter.parse_patient_report(text)
+    patients = interpreter.parse_patient_input(text, str(file_path))
     results = [interpreter.interpret_gene(p, gene_index) for p in patients]
     try:
         from genedb.enrich import attach_live_db

@@ -1,0 +1,46 @@
+================================================================================
+MOLECULAR GENETICS LABORATORY - RAW DATA EXPORT
+Run ID: NGS-2026-11-14-001
+Instrument: Illumina NextSeq 550
+Pipeline: Bcl2Fastq v2.20 -> BWA-MEM -> GATK HaplotypeCaller
+Date: 2026-11-14 03:14:15
+================================================================================
+
+[PATIENT_INFO]
+Patient_ID: PAT-994821
+Sample_ID: SPEC-001-2026
+Sex: F
+Age: 34
+Clinical_Notes: Suspected pharmacogenomic resistance to clopidogrel after PCI. Also history of thrombosis. Family history of ovarian cancer.
+
+[VCF_HEADER]
+##fileformat=VCFv4.2
+##source=GenomIQ_Lab_Pipeline
+##reference=GRCh38
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SPEC-001-2026
+1	11856378	rs121913279	G	A	100	PASS	DP=50;AF=0.5;AC=1	GT:AD:DP	0/1:25,25:50
+10	96541616	rs4244285	G	A	99	PASS	DP=45;AF=0.5;AC=1	GT:AD:DP	0/1:20,25:45
+10	96541616	rs4986893	G	A	98	PASS	DP=42;AF=0.0;AC=0	GT:AD:DP	0/0:42,0:42
+19	44908684	rs429358	T	C	100	PASS	DP=60;AF=0.5;AC=1	GT:AD:DP	0/1:30,30:60
+19	44908822	rs7412	C	T	100	PASS	DP=58;AF=0.0;AC=0	GT:AD:DP	0/0:58,0:58
+1	169519049	rs6025	C	T	99	PASS	DP=55;AF=0.5;AC=1	GT:AD:DP	0/1:25,30:55
+1	11796321	rs1801133	C	T	98	PASS	DP=48;AF=1.0;AC=2	GT:AD:DP	1/1:0,48:48
+16	69720998	rs1800566	C	T	95	PASS	DP=30;AF=0.5;AC=1	GT:AD:DP	0/1:15,15:30
+22	42127941	rs1800497	G	A	90	PASS	DP=35;AF=0.0;AC=0	GT:AD:DP	0/0:35,0:35
+11	47326069	rs1799853	C	T	97	PASS	DP=40;AF=0.5;AC=1	GT:AD:DP	0/1:20,20:40
+...
+[VCF_TRUNCATED: 47382 variants omitted for brevity]
+
+[KARYOTYPE_REPORT]
+Method: G-banding, 550-band resolution
+Result: 46,XX,t(9;22)(q34;q11.2)[20]
+Interpretation: Female karyotype with a reciprocal translocation between chromosomes 9 and 22. This is the Philadelphia chromosome. Associated with chronic myeloid leukemia (CML).
+Note: This finding is unexpected for a 34-year-old patient with no hematological symptoms. Recommend FISH confirmation.
+
+[RAW_NOTES]
+Sanger sequencing for BRCA1/2 is pending. Turnaround time 14 days.
+Patient has been taking Clopidogrel 75mg daily. 
+Genotype results for CYP2C19 indicate *2 heterozygous. 
+APOE genotype is E3/E4 (based on rs429358 and rs7412).
+Patient is MTHFR C677T homozygous (TT).
+SLCO1B1 status: c.521T>C heterozygous (rs4149056). Risk of statin-induced myopathy if statins are prescribed.
