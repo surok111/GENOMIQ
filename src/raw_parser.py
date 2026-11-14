@@ -3,7 +3,9 @@
 Returns the same list-of-dicts shape as interpreter.parse_patient_report:
     {"gene": str, "result": str, "comment": str}
 
-Only rsIDs that map to genes in the GenomIQ knowledge base are kept.
+Only rsIDs that map to genes in the GenomIQ knowledge base are kept
+from strict VCF rows. Log lines and GENE: genotype summaries may add
+extra symbols (e.g. VKORC1). Negative findings are dropped.
 The old Ген/Результат parser is unchanged.
 """
 
@@ -26,6 +28,24 @@ RSID_TO_GENE: dict[str, str] = {
     "rs4149056": "SLCO1B1",
     "rs1799853": "CYP2C9",
     "rs1057910": "CYP2C9",
+    "rs9923231": "VKORC1",
+}
+
+# Used when a log line has GT but the VCF dump omitted FORMAT/SAMPLE.
+RSID_REF_ALT: dict[str, tuple[str, str]] = {
+    "rs4244285": ("G", "A"),
+    "rs4986893": ("G", "A"),
+    "rs12248560": ("C", "T"),
+    "rs1801133": ("C", "T"),
+    "rs1801131": ("A", "C"),
+    "rs6025": ("C", "T"),
+    "rs429358": ("T", "C"),
+    "rs7412": ("C", "T"),
+    "rs1800566": ("C", "T"),
+    "rs4149056": ("T", "C"),
+    "rs1799853": ("C", "T"),
+    "rs1057910": ("A", "C"),
+    "rs9923231": ("C", "T"),
 }
 
 CYP2C19_STAR: dict[str, str] = {
@@ -39,9 +59,27 @@ CYP2C9_STAR: dict[str, str] = {
     "rs1057910": "*3",
 }
 
+EXTRA_GENES = {"VKORC1", "BRCA1", "BRCA2", "F2", "F5", "APOE", "MTHFR"}
+
 # CHROM POS ID REF ALT QUAL FILTER INFO FORMAT SAMPLE  (tabs or spaces)
 _VCF_ROW = re.compile(
     r"^(?:chr)?\S+\s+\d+\s+(rs\d+)\s+([ACGTN]+)\s+([ACGTN.,]+)\s+\S+\s+\S+\s+\S+\s+(\S+)\s+(\S+)",
+    re.IGNORECASE,
+)
+# Truncated VCF (no FORMAT/SAMPLE / no GT).
+_VCF_LOOSE = re.compile(
+    r"^(?:chr)?\S+\s+\d+\s+(rs\d+)\s+([ACGTN]+)\s+([ACGTN.,]+)\b",
+    re.IGNORECASE,
+)
+_LOG_GT = re.compile(
+    r"(rs\d+).*?Gene:\s*([A-Z0-9]+).*?GT:\s*([0-9][/|][0-9])",
+    re.IGNORECASE,
+)
+_TEXT_GENE = re.compile(
+    r"(?m)^(?:[-*•]\s*)?([A-Z][A-Z0-9]{1,14})\s*:\s*(.+?)\s*$",
+)
+_NEGATIVE = re.compile(
+    r"не\s+обнаруж|не\s+выявл|\bnegative\b|not\s+detected|wild\s*type",
     re.IGNORECASE,
 )
 _KARYOTYPE = re.compile(
@@ -70,22 +108,41 @@ def looks_like_raw_lab(text: str, path: str | None = None) -> bool:
     """True for .vcf files or mixed lab dumps that embed a VCF header."""
     if path and str(path).lower().endswith(".vcf"):
         return True
-    head = text[:8000]
+    head = text[:12000]
+    low = head.lower()
     return (
-        "##fileformat=vcf" in head.lower()
+        "##fileformat=vcf" in low
         or "[VCF_HEADER]" in head
         or "[KARYOTYPE_REPORT]" in head
+        or "[RAW_VCF_DUMP_START]" in head
+        or "[INTERPRETATION_LOG]" in head
+        or "[TEXT_SUMMARY]" in head
+        or "found variant rs" in low
     )
 
 
 def parse_raw_lab_report(text: str) -> list[dict[str, str]]:
     """Extract gene/result pairs from a mixed VCF + karyotype + notes file."""
     by_gene: dict[str, dict[str, str]] = {}
+    ref_alt = _collect_ref_alt(text)
     vcf_hits = _parse_vcf(text)
-    _merge_vcf(by_gene, vcf_hits)
+    log_hits = _parse_log_gt(text, ref_alt)
+    _merge_vcf(by_gene, _dedupe_hits(vcf_hits + log_hits))
     _merge_notes(by_gene, text)
+    _merge_text_summary(by_gene, text)
     _merge_karyotype(by_gene, text)
     return list(by_gene.values())
+
+
+def _collect_ref_alt(text: str) -> dict[str, tuple[str, str]]:
+    found: dict[str, tuple[str, str]] = dict(RSID_REF_ALT)
+    for raw in text.splitlines():
+        m = _VCF_LOOSE.match(raw.strip())
+        if not m:
+            continue
+        rsid, ref, alt = m.group(1).lower(), m.group(2).upper(), m.group(3).upper()
+        found[rsid] = (ref, alt.split(",")[0])
+    return found
 
 
 def _parse_vcf(text: str) -> list[dict[str, Any]]:
@@ -106,17 +163,57 @@ def _parse_vcf(text: str) -> list[dict[str, Any]]:
         if alleles is None:
             continue
         gt_code, pair = alleles
-        hits.append(
-            {
-                "gene": gene,
-                "rsid": rsid_key,
-                "ref": ref.upper(),
-                "alt": alt.split(",")[0].upper(),
-                "gt": gt_code,
-                "pair": pair,
-            }
-        )
+        hits.append(_hit(gene, rsid_key, ref, alt, gt_code, pair))
     return hits
+
+
+def _parse_log_gt(
+    text: str, ref_alt: dict[str, tuple[str, str]]
+) -> list[dict[str, Any]]:
+    hits: list[dict[str, Any]] = []
+    for raw in text.splitlines():
+        m = _LOG_GT.search(raw)
+        if not m:
+            continue
+        rsid, gene, gt = m.group(1).lower(), m.group(2).upper(), m.group(3)
+        if not _is_gene_symbol(gene):
+            gene = RSID_TO_GENE.get(rsid, "")
+        if not gene:
+            continue
+        ref, alt = ref_alt.get(rsid, ("", ""))
+        alleles = _alleles_from_gt(ref, alt, "GT", gt) if ref and alt else None
+        pair = alleles[1] if alleles else gt.replace("|", "/")
+        hits.append(_hit(gene, rsid, ref or "N", alt or "N", gt.replace("|", "/"), pair))
+    return hits
+
+
+def _hit(gene: str, rsid: str, ref: str, alt: str, gt: str, pair: str) -> dict[str, Any]:
+    return {
+        "gene": gene,
+        "rsid": rsid,
+        "ref": ref.upper(),
+        "alt": alt.split(",")[0].upper(),
+        "gt": gt,
+        "pair": pair,
+    }
+
+
+def _dedupe_hits(hits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Keep one row per (gene, rsid); prefer a real REF/ALT allele pair."""
+    best: dict[tuple[str, str], dict[str, Any]] = {}
+    for hit in hits:
+        key = (hit["gene"], hit["rsid"])
+        prev = best.get(key)
+        if prev is None or _hit_rank(hit) >= _hit_rank(prev):
+            best[key] = hit
+    return list(best.values())
+
+
+def _hit_rank(hit: dict[str, Any]) -> int:
+    pair = hit.get("pair", "").replace("/", "")
+    if re.fullmatch(r"[ACGT]{2}", pair, re.I):
+        return 2
+    return 1
 
 
 def _alleles_from_gt(
@@ -162,12 +259,11 @@ def _merge_vcf(by_gene: dict[str, dict[str, str]], hits: list[dict[str, Any]]) -
         elif gene == "APOE":
             result, comment = _apoe_from_vcf(rows)
         else:
-            # One clinically relevant SNP per gene in this dump.
             row = rows[0]
             compact = row["pair"].replace("/", "")
             result = compact
             comment = f"{row['rsid']} {row['ref']}>{row['alt']} GT={row['gt']} → {row['pair']}"
-        by_gene[gene] = {"gene": gene, "result": result, "comment": comment}
+        _put(by_gene, gene, result, comment)
 
 
 def _star_from_vcf(rows: list[dict[str, Any]], star_map: dict[str, str]) -> tuple[str, str]:
@@ -243,23 +339,76 @@ def _merge_notes(by_gene: dict[str, dict[str, str]], text: str) -> None:
         _put(by_gene, "SLCO1B1", result, "c.521T>C (RAW_NOTES)")
 
 
+def _merge_text_summary(by_gene: dict[str, dict[str, str]], text: str) -> None:
+    for m in _TEXT_GENE.finditer(text):
+        gene = m.group(1).upper()
+        raw_val = m.group(2).strip()
+        if not _is_gene_symbol(gene):
+            continue
+        if _NEGATIVE.search(raw_val):
+            by_gene.pop(gene, None)
+            continue
+        result = _result_from_text_value(raw_val)
+        if not result:
+            continue
+        _put(by_gene, gene, result, "from TEXT_SUMMARY")
+
+
+def _result_from_text_value(value: str) -> str | None:
+    m = re.search(r"(\*\d+\s*/\s*\*\d+)", value)
+    if m:
+        return re.sub(r"\s+", "", m.group(1))
+    m = re.search(r"\b(E[234]\s*/\s*E[234])\b", value, re.I)
+    if m:
+        return re.sub(r"\s+", "", m.group(1).upper())
+    m = re.search(r"\b([ACGT])\s*/\s*([ACGT])\b", value, re.I)
+    if m:
+        return f"{m.group(1)}{m.group(2)}".upper()
+    m = re.search(r"\b([ACGT]{2})\b", value, re.I)
+    if m:
+        return m.group(1).upper()
+    cleaned = re.sub(r"\s+", " ", value).strip()
+    return cleaned[:80] if cleaned else None
+
+
 def _merge_karyotype(by_gene: dict[str, dict[str, str]], text: str) -> None:
     m = _KARYOTYPE.search(text)
     if not m:
         return
     iscn = m.group(1).rstrip(",")
-    by_gene["KARYOTYPE"] = {
-        "gene": "KARYOTYPE",
-        "result": iscn,
-        "comment": "ISCN from KARYOTYPE_REPORT",
-    }
+    _put(by_gene, "KARYOTYPE", iscn, "ISCN from KARYOTYPE_REPORT")
+
+
+def _is_gene_symbol(name: str) -> bool:
+    n = name.upper()
+    if n in EXTRA_GENES or n in RSID_TO_GENE.values():
+        return True
+    return bool(re.fullmatch(r"[A-Z]{2,}\d+[A-Z0-9]*", n))
+
+
+def _clarity(result: str) -> int:
+    r = result.strip()
+    if not r:
+        return 0
+    if re.search(r"\*\d+/\*\d+", r):
+        return 3
+    if re.fullmatch(r"E[234]/E[234]", r, re.I):
+        return 3
+    compact = r.replace("/", "").replace(" ", "")
+    if re.fullmatch(r"[ACGT]{2}", compact, re.I):
+        return 2
+    return 1
 
 
 def _put(by_gene: dict[str, dict[str, str]], gene: str, result: str, note: str) -> None:
-    if gene in by_gene:
-        prev = by_gene[gene]
-        comment = f"{prev['comment']}; {note}".strip("; ")
-        # Notes carry the clinical string the knowledge base tables use (*1/*2, E3/E4, TT).
+    if not result or _NEGATIVE.search(result):
+        return
+    if gene not in by_gene:
+        by_gene[gene] = {"gene": gene, "result": result, "comment": note}
+        return
+    prev = by_gene[gene]
+    comment = f"{prev['comment']}; {note}".strip("; ")
+    if _clarity(result) >= _clarity(prev["result"]):
         by_gene[gene] = {"gene": gene, "result": result, "comment": comment}
     else:
-        by_gene[gene] = {"gene": gene, "result": result, "comment": note}
+        by_gene[gene] = {"gene": gene, "result": prev["result"], "comment": comment}

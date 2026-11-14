@@ -1,0 +1,58 @@
+================================================================================
+LIS EXPORT - ERROR LOG - RUN ID: LIS-EXP-2026-11-14-09:45:12
+STATUS: PARTIAL_EXPORT
+WARNING: Some fields contain non-UTF8 characters from the instrument.
+================================================================================
+PATIENT: Иванова А. А. // ID: 8842-X // DOB: 1988-03-12 // SEX: F
+SPECIMEN: Blood EDTA 4ml // Barcode: 8842-X-BLD
+PIPELINE: bcl2fastq -> bwa-mem -> gatk4 -> VEP
+NOTES: Пациентка принимает варфарин. Нужно проверить CYP2C9 и VKORC1.
+Также запрос на BRCA1 (онкориск, семейный анамнез).
+
+[RAW_VCF_DUMP_START]
+##fileformat=VCFv4.2
+#CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO
+1       11856378        rs121913279     G       A       100     PASS    DP=50
+10      96541616        rs4244285       G       A       99      PASS    DP=45
+10      96541616        rs4986893       G       A       98      PASS    DP=42
+16      31101739        rs9923231       C       T       95      PASS    DP=60
+10      96741004        rs1799853       C       T       97      PASS    DP=55
+11      47326069        rs1057910       C       A       96      PASS    DP=48
+19      44908684        rs429358        T       C       100     PASS    DP=60
+19      44908822        rs7412          C       T       100     PASS    DP=58
+1       169519049       rs6025          C       T       99      PASS    DP=55
+1       11796321        rs1801133       C       T       98      PASS    DP=48
+22      42127941        rs1800497       G       A       90      PASS    DP=35
+1       11856378        rs121913279     G       A       100     PASS    DP=50
+... [TRUNCATED 15,000 ROWS] ...
+[RAW_VCF_DUMP_END]
+
+[INTERPRETATION_LOG]
+2026-11-14 09:45:13 - INFO - Found variant rs4244285. Gene: CYP2C19. GT: 0/1.
+2026-11-14 09:45:13 - INFO - Found variant rs1799853. Gene: CYP2C9. GT: 0/1.
+2026-11-14 09:45:14 - WARN - Could not map rs9923231. Gene: VKORC1. Not in database.
+2026-11-14 09:45:14 - INFO - Found variant rs1801133. Gene: MTHFR. GT: 1/1.
+2026-11-14 09:45:15 - ERROR - File encoding error at line 19283. Skipping.
+2026-11-14 09:45:15 - INFO - Found variant rs6025. Gene: F5. GT: 0/1.
+2026-11-14 09:45:16 - INFO - Found variant rs7412. Gene: APOE. GT: 0/0.
+2026-11-14 09:45:16 - INFO - Found variant rs429358. Gene: APOE. GT: 0/1.
+
+[TEXT_SUMMARY]
+Генетическое исследование.
+Выявлены следующие изменения:
+CYP2C19: *1/*2 (гетерозигота)
+CYP2C9: *1/*2 (гетерозигота)
+VKORC1: -1639 G>A (гетерозигота)
+MTHFR: C677T (гомозигота T/T)
+F5: Лейден (гетерозигота C/T)
+APOE: E3/E4
+BRCA1: c.5266dupC (не обнаружено / negative)
+
+[CONCLUSION]
+- Пациентка является носителем мутации F5 Лейден (риск тромбоза).
+- Генотип CYP2C9 *1/*2 требует снижения дозы варфарина.
+- MTHFR T/T требует контроля гомоцистеина.
+- BRCA1 мутация не обнаружена.
+- Рекомендовано: консультация гематолога, контроль INR.
+================================================================================
+EOF

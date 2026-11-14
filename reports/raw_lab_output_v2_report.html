@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Генетический отчёт — raw_lab_output_v2.txt</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f8fafc; color: #1e293b;
+    margin: 0; padding: 24px;
+    line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  header {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white; padding: 28px 32px; border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25);
+  }
+  header h1 { margin: 0 0 6px; font-size: 24px; }
+  header .file { opacity: 0.85; font-size: 14px; }
+  header .date { opacity: 0.7; font-size: 13px; margin-top: 4px; }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px; margin-bottom: 28px;
+  }
+  .summary .stat {
+    background: white; padding: 14px 18px; border-radius: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .summary .stat .num { font-size: 26px; font-weight: 700; }
+  .summary .stat .label { font-size: 13px; color: #64748b; }
+  .stat.green .num { color: #16a34a; }
+  .stat.orange .num { color: #ea580c; }
+  .stat.gray .num { color: #64748b; }
+  .stat.blue .num { color: #2563eb; }
+  .stat.teal .num { color: #0d9488; }
+
+  h2 {
+    font-size: 19px; margin: 32px 0 14px;
+    padding-bottom: 8px; border-bottom: 2px solid #e2e8f0;
+  }
+
+  .card {
+    background: white; border-radius: 12px; padding: 18px 22px;
+    margin-bottom: 14px; border-left: 5px solid #cbd5e1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card.matched { border-left-color: #16a34a; }
+  .card.no-table { border-left-color: #ca8a04; }
+  .card.no-match { border-left-color: #94a3b8; }
+
+  .card-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .gene-name { font-size: 18px; font-weight: 700; color: #0f172a; }
+  .gene-group { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+  .status-icon { font-size: 20px; }
+
+  .patient-line {
+    background: #f1f5f9; padding: 8px 12px; border-radius: 7px;
+    margin-bottom: 10px; font-size: 14px;
+  }
+  .patient-line.comment { font-style: italic; color: #475569; }
+
+  .match {
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 12px; margin-top: 10px;
+  }
+  .match-head {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-bottom: 8px;
+  }
+  .genotype {
+    background: #eef2ff; color: #3730a3;
+    padding: 3px 10px; border-radius: 6px;
+    font-family: ui-monospace, Menlo, monospace; font-weight: 600;
+  }
+  .source { color: #64748b; font-size: 13px; }
+  .badge {
+    padding: 3px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  .row-details {
+    list-style: none; padding: 0; margin: 6px 0 0;
+    font-size: 14px;
+  }
+  .row-details li {
+    padding: 4px 0; border-bottom: 1px solid #f1f5f9;
+  }
+  .row-details li:last-child { border-bottom: none; }
+  .row-details b { color: #334155; }
+
+  .live-db {
+    margin-top: 12px; padding: 12px 14px;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+  }
+  .live-db h4 { margin: 0 0 8px; font-size: 14px; color: #1e3a8a; }
+  .live-db h5 { margin: 10px 0 4px; font-size: 13px; color: #334155; }
+  .live-db ul { padding-left: 18px; margin: 0; font-size: 13px; }
+  .live-db li { padding: 2px 0; }
+  .live-db a { color: #1d4ed8; text-decoration: none; }
+  .live-cls {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    background: #e2e8f0; border-radius: 4px; padding: 1px 6px; margin-right: 4px;
+  }
+  .live-sub { color: #64748b; font-size: 12px; margin: 4px 0; }
+
+  .recs { margin-top: 12px; }
+  .recs h4 { margin: 0 0 6px; font-size: 14px; color: #0f172a; }
+  .recs ul { padding-left: 18px; margin: 0; font-size: 14px; }
+  .recs ul li { padding: 3px 0; }
+
+  .note {
+    color: #64748b; font-size: 13px;
+    background: #f8fafc; padding: 8px 12px; border-radius: 6px;
+    margin-top: 8px;
+  }
+
+  .not-in-base {
+    background: white; border-radius: 10px; padding: 16px 20px;
+    border: 1px dashed #cbd5e1;
+  }
+  .not-in-base .hint { color: #64748b; font-size: 13px; margin: 0 0 10px; }
+  .not-in-base ul { padding-left: 20px; margin: 0; font-size: 14px; }
+  .not-in-base li { padding: 2px 0; }
+
+  /* ----- Фармакогенетика ----- */
+  .pgx-block {
+    margin-top: 16px;
+    border-top: 2px solid #e2e8f0;
+    padding-top: 12px;
+  }
+  .pgx-block h4 {
+    font-size: 14px;
+    margin: 0 0 10px;
+    color: #0f172a;
+  }
+  .pgx-count {
+    font-weight: 400;
+    color: #64748b;
+  }
+  .pgx-counter {
+    font-weight: 600;
+    color: #16a34a;
+    margin-left: 8px;
+    font-size: 12px;
+  }
+  .pgx-table-wrap {
+    overflow-x: auto;
+  }
+  .pgx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .pgx-table th {
+    text-align: left;
+    padding: 6px 8px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    font-weight: 600;
+    color: #475569;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .pgx-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+  .pgx-match-col {
+    width: 28px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .pgx-row-exact {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+  }
+  .pgx-row-exact td:first-child {
+    color: #16a34a;
+    font-weight: 700;
+  }
+  .pgx-row-allele {
+    background: #fefce8;
+    border-left: 3px solid #ca8a04;
+  }
+  .pgx-row-allele td:first-child {
+    color: #ca8a04;
+    font-weight: 700;
+  }
+  .pgx-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .pgx-gt {
+    font-family: ui-monospace, Menlo, monospace;
+    font-weight: 600;
+    color: #0f172a;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  .pgx-pval {
+    font-family: ui-monospace, Menlo, monospace;
+    color: #64748b;
+    white-space: nowrap;
+  }
+
+  .pgx-no-match {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  .pgx-no-match-title {
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 6px;
+  }
+  .pgx-no-match-text {
+    color: #64748b;
+    margin-bottom: 4px;
+  }
+  .pgx-no-match-sub {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  footer {
+    margin-top: 40px; padding: 20px;
+    text-align: center; color: #94a3b8; font-size: 12px;
+  }
+
+  .print-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #1e40af; color: white; border: none;
+    padding: 12px 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(30,64,175,0.3);
+  }
+  .print-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .print-btn { display: none; }
+    .card { box-shadow: none; border: 1px solid #e2e8f0; page-break-inside: avoid; }
+    header { box-shadow: none; }
+    .pgx-table-wrap { overflow: visible; }
+    .pgx-table { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🧬 Генетический отчёт</h1>
+    <div class="file">Источник: raw_lab_output_v2.txt</div>
+    <div class="date">Сформировано: 14.11.2026 22:24</div>
+  </header>
+
+  <div class="summary">
+    <div class="stat green">
+      <div class="num">5</div>
+      <div class="label">✅ Найдено в базе</div>
+    </div>
+    <div class="stat orange">
+      <div class="num">0</div>
+      <div class="label">⚠️ Не сопоставлено</div>
+    </div>
+    <div class="stat gray">
+      <div class="num">1</div>
+      <div class="label">❌ Нет в базе знаний</div>
+    </div>
+    <div class="stat blue">
+      <div class="num">0</div>
+      <div class="label">💊 Фармакогенетика (ваших)</div>
+    </div>
+    <div class="stat teal">
+      <div class="num">5</div>
+      <div class="label">🔍 Генов без данных</div>
+    </div>
+  </div>
+
+  <section><h2>✅ Интерпретированные гены (5)</h2>
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP2C19</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> *1/*2</div>
+            <div class="patient-line comment">rs4244285 G/A (GT=0/1); from TEXT_SUMMARY</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">*1/*2, *1/*3, *2/*17</span>
+                        <span class="source">← *1/*2</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> *1/*2, *1/*3, *2/*17</li><li><b>Фенотип:</b> Intermediate Metabolizer (IM)</li><li><b>Функция:</b> Одна нормальная + одна сниженная</li><li><b>Клинический риск:</b> **Клопидогрел — снижение эффекта**, риск тромбоза стента. Снижение доз ИПП, циталопрама</li><li><b>ACMG:</b> Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Клопидогрел — это пролекарство. Для его активации нужен CYP2C19.</li><li>Медленные метаболисты (*2, *3): Лекарство не активируется. Риск повторного инфаркта/тромбоза стента. Рекомендуется замена на тикагрелор или прасугрел.</li><li>Ультрабыстрые метаболисты (*17): Риск кровотечений.</li><li>Ингибиторы протонной помпы (ИПП):</li><li>Медленные метаболисты: Препарат выводится долго, эффект лечения язвы выше.</li><li>Быстрые метаболисты: Стандартная доза может быть неэффективна (быстрое вымывание).</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP2C9</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> *1/*2</div>
+            <div class="patient-line comment">rs1799853 C/T (GT=0/1); from TEXT_SUMMARY</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">*1/*2, *1/*3, *1/*5</span>
+                        <span class="source">← *1/*2</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> *1/*2, *1/*3, *1/*5</li><li><b>Фенотип:</b> Intermediate Metabolizer (IM)</li><li><b>Функция:</b> Одна нормальная + одна сниженная</li><li><b>Клинический риск:</b> Снижение дозы варфарина, фенитоина. Мониторинг INR</li><li><b>ACMG:</b> Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>*1/*1 (Extensive Metabolizer): Нормальная скорость расщепления. Стандартные дозировки.</li><li>*1/*2, *1/*3 (Intermediate Metabolizer): Сниженная активность. Требуется осторожное титрование дозы варфарина.</li><li>*2/*2, *2/*3, *3/*3 (Poor Metabolizer): Значительное снижение активности. Высокий риск кровотечений на стандартных дозах варфарина и побочных эффектов НПВС (гастропатии).</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">MTHFR</div>
+                    <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> TT</div>
+            <div class="patient-line comment">rs1801133 C&gt;T GT=1/1 → T/T; from TEXT_SUMMARY</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">TT</span>
+                        <span class="source">← TT</span>
+                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> TT</li><li><b>Аллели:</b> T/T</li><li><b>Частота*:</b> ~10-15%</li><li><b>Функциональный эффект:</b> Выраженное снижение активности (термолабильный вариант, ~30% активности). Значительное повышение уровня гомоцистеина.</li><li><b>Клинический риск:</b> Высокий (ДНТ, невынашивание, ССЗ)</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>TT или CT+AC: Генетически снижена способность усваивать обычную фолиевую кислоту. Рекомендуется контроль уровня гомоцистеина в крови (целевой уровень обычно &lt; 7-8 мкмоль/л).</li><li>При планировании беременности необходимо обсудить с врачом прием активных форм фолатов (L-метилфолат/метафолин) вместо стандартной фолиевой кислоты для профилактики дефектов нервной трубки у плода.</li><li>Изолированные гетерозиготы (CT или AC) при нормальном уровне гомоцистеина не требуют медикаментозной коррекции, кроме стандартной профилактики в прегравидарном периоде.</li><li>При высоких значениях гомоцистеина (&gt;10-12 мкмоль/л) у носителей ТТ целесообразно назначение комплекса метилированных витаминов B9, B12 и B6.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">F5</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CT</div>
+            <div class="patient-line comment">rs6025 C&gt;T GT=0/1 → C/T; from TEXT_SUMMARY</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CT (гетерозигота)</span>
+                        <span class="source">← CT</span>
+                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CT (гетерозигота)</li><li><b>Аллели:</b> C/T</li><li><b>Частота (Европа):</b> ~4-5%</li><li><b>Функциональный эффект:</b> APC-резистентность, риск тромбоза в 7 раз</li><li><b>Клинический риск:</b> **Повышенный риск ВТЭ; контрацептивы ПРОТИВОПОКАЗАНЫ**</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>CC (норма): Стандартные рекомендации.</li><li>CT / TT (носители Лейден): Высокий риск венозного тромбоза. Категорически избегать гормональных контрацептивов (риск тромбоза у носителей на контрацептивах — RR = 34.7). Избегать длительной иммобилизации, пить много воды в полёте, двигаться. При планировании беременности — консультация гематолога.</li><li>Гомозиготы TT: риск тромбоза 40-80x — пожизненное наблюдение у гематолога, рассмотреть антикоагуляцию при провоцирующих факторах.</li><li>Гормональные контрацептивы (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): противопоказаны носителям FVL — FDA/EMA/HCSC labels.</li><li>Eltrombopag, avatrombopag, lusutrombopag: осторожно, тромботический риск.</li><li>Ривароксабан: FDA Biomarker, данных недостаточно.</li><li>При тромбозе в анамнезе — пожизненная антикоагуляция по решению гематолога.</li><li>Сочетание с F2 G20210A или MTHFR C677T — кумулятивный риск тромбоза, особенно при контрацептивах.</li><li>Уровень доказательности 2B (ClinPGx) — не заменяет клинического решения.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">APOE</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> E3/E4</div>
+            <div class="patient-line comment">rs7412 C/C (GT=0/0); rs429358 T/C (GT=0/1); from TEXT_SUMMARY</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">E3/E4</span>
+                        <span class="source">← E3/E4</span>
+                        <span class="badge" style="color:#64748b;background:#f1f5f9;">—</span>
+                    </div>
+                    <ul class="row-details"><li><b>Изоформа:</b> **E3/E4**</li><li><b>Генотип rs429358 / rs7412:</b> T/C + C/C</li><li><b>Частота:</b> ~22%</li><li><b>Функциональный эффект:</b> Снижение стабильности, повышенный LDL</li><li><b>Клинический риск:</b> **Повышенный риск болезни Альцгеймера и атеросклероза**</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>E3/E3 (норма): Стандартные рекомендации.</li><li>E3/E4 или E4/E4: Повышенный риск атеросклероза и болезни Альцгеймера. Контроль LDL-C, диета с низким содержанием насыщенных жиров, регулярная физическая активность, контроль АД и глюкозы.</li><li>E2/E2 или E2/E3: Риск гиперлипопротеинемии III типа. Контроль триглицеридов и холестерина.</li><li>Статины (аторвастатин, правастатин, симвастатин): носители E2 (C-аллель rs7412) могут иметь сниженный ответ по снижению LDL-C. При высоких дозах ассоциация значима.</li><li>Антитела к амилоиду (aducanumab, donanemab, lecanemab): тестирование ApoE ε4 обязательно до начала лечения — риск ARIA (амилоид-связанные аномалии визуализации). EMA: donanemab не показан ε4/ε4.</li><li>Варфарин / аценокумарол: носители rs429358 — риск геморрагии и венозной тромбоэмболии, требуется мониторинг INR.</li><li>Фенофибрат: носители E2 — может быть эффективнее при гипертриглицеридемии.</li><li>Ритонавир: носители E2 — риск гипертриглицеридемии.</li><li>Уровень доказательности 2B-3 (ClinPGx) — не заменяет клинического решения.</li></ul></div>
+        </div>
+        </section>
+  
+  
+        <section>
+            <h2>❌ Гены, отсутствующие в базе знаний (1)</h2>
+            <div class="not-in-base">
+                <p class="hint">Эти гены есть в вашем отчёте, но их нет в текущей базе знаний.</p>
+                <ul><li><b>VKORC1</b> — -1639 G&gt;A (гетерозигота)</li></ul>
+            </div>
+        </section>
+        
+
+  <footer>
+    Отчёт сформирован автоматически. Не является медицинским диагнозом.<br>
+    Для интерпретации обратитесь к врачу-генетику.
+  </footer>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨 Печать / PDF</button>
+</body>
+</html>
