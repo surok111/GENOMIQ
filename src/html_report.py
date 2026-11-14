@@ -37,6 +37,16 @@ def _pick_risk(row: dict) -> str:
             return v
     return ""
 
+def _is_genotype_label(key: str) -> bool:
+    hl = (key or "").strip().lower()
+    return hl in {"генотип", "genotype"} or hl.startswith("генотип")
+
+def _display_row_value(key: str, value, patient_gt) -> str:
+    """Генотип column: patient's matched diplotype, not the whole KB cell."""
+    if patient_gt and _is_genotype_label(key):
+        return patient_gt
+    return value
+
 def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
     if not pgx_annotations:
         if no_match_info and no_match_info.get("total_annotations", 0) > 0:
@@ -269,7 +279,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
                 f'{_esc(acmg) or "—"}</span>'
             )
             row_items = "".join(
-                f'<li><b>{_esc(k)}:</b> {_esc(v)}</li>'
+                f'<li><b>{_esc(k)}:</b> {_esc(_display_row_value(k, v, m.get("genotype")))}</li>'
                 for k, v in row.items() if v
             )
             cards_inner += f"""

@@ -12,6 +12,7 @@ from interpreter import (
     _is_normal,
     _is_star_overlap,
     _normalize,
+    _specific_matched_genotype,
     build_gene_index,
     interpret_gene,
     load_base,
@@ -47,6 +48,23 @@ class InterpreterSmokeTest(unittest.TestCase):
 
     def test_star_allele_no_substring(self):
         self.assertFalse(_is_star_overlap(_normalize("*1"), _normalize("*10/*10")))
+
+    def test_specific_star_genotype_not_whole_cell(self):
+        cell = "*1/*2, *1/*3, *2/*17"
+        self.assertEqual(_specific_matched_genotype(cell, "*1/*2"), "*1/*2")
+        r = interpret_gene(
+            {"gene": "CYP2C19", "result": "*1/*2", "comment": ""}, self.index
+        )
+        self.assertEqual(r["status"], "matched")
+        self.assertEqual(r["matched_genotype"], "*1/*2")
+        self.assertEqual(r["matches"][0]["genotype"], "*1/*2")
+        self.assertEqual(r["matches"][0]["full_row"].get("Генотип"), "*1/*2")
+        r9 = interpret_gene(
+            {"gene": "CYP2C9", "result": "*1/*2", "comment": ""}, self.index
+        )
+        self.assertEqual(r9["status"], "matched")
+        self.assertEqual(r9["matched_genotype"], "*1/*2")
+        self.assertNotIn(",", r9["matched_genotype"])
 
     def test_no_fuzzy_nat_to_nat2(self):
         r = interpret_gene({"gene": "NAT", "result": "CC", "comment": ""}, self.index)
