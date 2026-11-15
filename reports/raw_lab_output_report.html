@@ -118,6 +118,40 @@
   .recs ul { padding-left: 18px; margin: 0; font-size: 14px; }
   .recs ul li { padding: 3px 0; }
 
+  .why {
+    margin: 10px 0 4px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 0;
+  }
+  .why summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #f59e0b;
+    color: #1c1917;
+    font-size: 13px;
+    font-weight: 700;
+    user-select: none;
+  }
+  .why summary::-webkit-details-marker { display: none; }
+  .why summary::before { content: "?"; font-weight: 800; }
+  .why[open] summary { background: #d97706; color: white; }
+  .why-body {
+    padding: 4px 14px 12px;
+    font-size: 13px;
+    color: #334155;
+  }
+  .why-sentence { margin: 0 0 8px; line-height: 1.5; }
+  .why-body ul { padding-left: 18px; margin: 0; }
+  .why-body li { padding: 2px 0; }
+
   .note {
     color: #64748b; font-size: 13px;
     background: #f8fafc; padding: 8px 12px; border-radius: 6px;
@@ -259,6 +293,8 @@
   @media print {
     body { background: white; padding: 0; }
     .print-btn { display: none; }
+    details.why > *:not(summary) { display: block !important; }
+    .why summary { display: none; }
     .card { box-shadow: none; border: 1px solid #e2e8f0; page-break-inside: avoid; }
     header { box-shadow: none; }
     .pgx-table-wrap { overflow: visible; }
@@ -272,7 +308,7 @@
   <header>
     <h1>🧬 Генетический отчёт</h1>
     <div class="file">Источник: raw_lab_output.txt</div>
-    <div class="date">Сформировано: 14.11.2026 22:28</div>
+    <div class="date">Сформировано: 15.11.2026 16:02</div>
   </header>
 
   <div class="summary">
@@ -310,6 +346,12 @@
             <div class="patient-line"><b>Результат:</b> *1/*2</div>
             <div class="patient-line comment">rs4244285 G/A (GT=0/1); rs4986893 G/G (GT=0/0); from RAW_NOTES</div>
             
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body"><p class="why-sentence">CYP2C19 *1/*2 → Intermediate Metabolizer (IM). Source: CPIC Guideline for Clopidogrel (2022). Evidence: rs4244285 G&gt;A.</p><ul><li><b>Source:</b> CPIC Guideline for Clopidogrel (2022)</li><li><b>Evidence:</b> rs4244285 G&gt;A</li><li><b>Annotation:</b> Клопидогрел — снижение эффекта, риск тромбоза стента. Снижение доз ИПП, циталопрама</li></ul></div>
+        </details>
+    
+            
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">*1/*2</span>
@@ -321,7 +363,7 @@
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Клопидогрел — это пролекарство. Для его активации нужен CYP2C19.</li><li>Медленные метаболисты (*2, *3): Лекарство не активируется. Риск повторного инфаркта/тромбоза стента. Рекомендуется замена на тикагрелор или прасугрел.</li><li>Ультрабыстрые метаболисты (*17): Риск кровотечений.</li><li>Ингибиторы протонной помпы (ИПП):</li><li>Медленные метаболисты: Препарат выводится долго, эффект лечения язвы выше.</li><li>Быстрые метаболисты: Стандартная доза может быть неэффективна (быстрое вымывание).</li></ul></div>
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Медленные метаболисты (*2, *3): Лекарство не активируется. Риск повторного инфаркта/тромбоза стента. Рекомендуется замена на тикагрелор или прасугрел.</li></ul></div>
         </div>
         
         <div class="card matched">
@@ -335,6 +377,12 @@
             <div class="patient-line"><b>Результат:</b> E3/E4</div>
             <div class="patient-line comment">rs429358 T/C (GT=0/1); rs7412 C/C (GT=0/0); from RAW_NOTES</div>
             
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body"><p class="why-sentence">APOE E3/E4. Source: GenomIQ knowledge base. Evidence: rs429358 T&gt;C.</p><ul><li><b>Source:</b> GenomIQ knowledge base</li><li><b>Evidence:</b> rs429358 T&gt;C</li><li><b>Annotation:</b> Повышенный риск болезни Альцгеймера и атеросклероза</li></ul></div>
+        </details>
+    
+            
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">E3/E4</span>
@@ -346,7 +394,7 @@
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>E3/E3 (норма): Стандартные рекомендации.</li><li>E3/E4 или E4/E4: Повышенный риск атеросклероза и болезни Альцгеймера. Контроль LDL-C, диета с низким содержанием насыщенных жиров, регулярная физическая активность, контроль АД и глюкозы.</li><li>E2/E2 или E2/E3: Риск гиперлипопротеинемии III типа. Контроль триглицеридов и холестерина.</li><li>Статины (аторвастатин, правастатин, симвастатин): носители E2 (C-аллель rs7412) могут иметь сниженный ответ по снижению LDL-C. При высоких дозах ассоциация значима.</li><li>Антитела к амилоиду (aducanumab, donanemab, lecanemab): тестирование ApoE ε4 обязательно до начала лечения — риск ARIA (амилоид-связанные аномалии визуализации). EMA: donanemab не показан ε4/ε4.</li><li>Варфарин / аценокумарол: носители rs429358 — риск геморрагии и венозной тромбоэмболии, требуется мониторинг INR.</li><li>Фенофибрат: носители E2 — может быть эффективнее при гипертриглицеридемии.</li><li>Ритонавир: носители E2 — риск гипертриглицеридемии.</li><li>Уровень доказательности 2B-3 (ClinPGx) — не заменяет клинического решения.</li></ul></div>
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>E3/E4 или E4/E4: Повышенный риск атеросклероза и болезни Альцгеймера. Контроль LDL-C, диета с низким содержанием насыщенных жиров, регулярная физическая активность, контроль АД и глюкозы.</li><li>E2/E2 или E2/E3: Риск гиперлипопротеинемии III типа. Контроль триглицеридов и холестерина.</li><li>Варфарин / аценокумарол: носители rs429358 — риск геморрагии и венозной тромбоэмболии, требуется мониторинг INR.</li></ul></div>
         </div>
         
         <div class="card matched">
@@ -360,6 +408,12 @@
             <div class="patient-line"><b>Результат:</b> CT</div>
             <div class="patient-line comment">rs6025 C&gt;T GT=0/1 → C/T</div>
             
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body"><p class="why-sentence">F5 CT (гетерозигота). Source: GenomIQ knowledge base. Evidence: rs6025 C&gt;T.</p><ul><li><b>Source:</b> GenomIQ knowledge base</li><li><b>Evidence:</b> rs6025 C&gt;T</li><li><b>Annotation:</b> Повышенный риск ВТЭ; контрацептивы ПРОТИВОПОКАЗАНЫ</li></ul></div>
+        </details>
+    
+            
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">CT (гетерозигота)</span>
@@ -371,7 +425,7 @@
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>CC (норма): Стандартные рекомендации.</li><li>CT / TT (носители Лейден): Высокий риск венозного тромбоза. Категорически избегать гормональных контрацептивов (риск тромбоза у носителей на контрацептивах — RR = 34.7). Избегать длительной иммобилизации, пить много воды в полёте, двигаться. При планировании беременности — консультация гематолога.</li><li>Гомозиготы TT: риск тромбоза 40-80x — пожизненное наблюдение у гематолога, рассмотреть антикоагуляцию при провоцирующих факторах.</li><li>Гормональные контрацептивы (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): противопоказаны носителям FVL — FDA/EMA/HCSC labels.</li><li>Eltrombopag, avatrombopag, lusutrombopag: осторожно, тромботический риск.</li><li>Ривароксабан: FDA Biomarker, данных недостаточно.</li><li>При тромбозе в анамнезе — пожизненная антикоагуляция по решению гематолога.</li><li>Сочетание с F2 G20210A или MTHFR C677T — кумулятивный риск тромбоза, особенно при контрацептивах.</li><li>Уровень доказательности 2B (ClinPGx) — не заменяет клинического решения.</li></ul></div>
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Гормональные контрацептивы (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): противопоказаны носителям FVL — FDA/EMA/HCSC labels.</li></ul></div>
         </div>
         
         <div class="card matched">
@@ -385,6 +439,12 @@
             <div class="patient-line"><b>Результат:</b> TT</div>
             <div class="patient-line comment">rs1801133 C&gt;T GT=1/1 → T/T; C677T homozygous (RAW_NOTES)</div>
             
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body"><p class="why-sentence">MTHFR TT. Source: GenomIQ knowledge base. Evidence: rs1801133 C&gt;T.</p><ul><li><b>Source:</b> GenomIQ knowledge base</li><li><b>Evidence:</b> rs1801133 C&gt;T</li><li><b>Annotation:</b> Высокий (ДНТ, невынашивание, ССЗ)</li></ul></div>
+        </details>
+    
+            
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">TT</span>
@@ -396,7 +456,7 @@
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>TT или CT+AC: Генетически снижена способность усваивать обычную фолиевую кислоту. Рекомендуется контроль уровня гомоцистеина в крови (целевой уровень обычно &lt; 7-8 мкмоль/л).</li><li>При планировании беременности необходимо обсудить с врачом прием активных форм фолатов (L-метилфолат/метафолин) вместо стандартной фолиевой кислоты для профилактики дефектов нервной трубки у плода.</li><li>Изолированные гетерозиготы (CT или AC) при нормальном уровне гомоцистеина не требуют медикаментозной коррекции, кроме стандартной профилактики в прегравидарном периоде.</li><li>При высоких значениях гомоцистеина (&gt;10-12 мкмоль/л) у носителей ТТ целесообразно назначение комплекса метилированных витаминов B9, B12 и B6.</li></ul></div>
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>TT или CT+AC: Генетически снижена способность усваивать обычную фолиевую кислоту. Рекомендуется контроль уровня гомоцистеина в крови (целевой уровень обычно &lt; 7-8 мкмоль/л).</li></ul></div>
         </div>
         
         <div class="card matched">
@@ -410,14 +470,11 @@
             <div class="patient-line"><b>Результат:</b> CT</div>
             <div class="patient-line comment">rs1800566 C&gt;T GT=0/1 → C/T</div>
             
-                <div class="match">
-                    <div class="match-head">
-                        <span class="genotype">CT (Pro/Ser)</span>
-                        <span class="source">← CT</span>
-                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
-                    </div>
-                    <ul class="row-details"><li><b>Генотип:</b> CT (Pro/Ser)</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функция:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск бензольной гематотоксичности</li><li><b>ACMG:</b> Risk factor</li></ul>
-                </div>
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body"><p class="why-sentence">NQO1 CT (Pro/Ser) → Гетерозигота. Source: CPIC guidelines:. Evidence: rs1800566 C&gt;T.</p><ul><li><b>Source:</b> CPIC guidelines:</li><li><b>Evidence:</b> rs1800566 C&gt;T</li><li><b>Annotation:</b> Умеренный риск бензольной гематотоксичности</li></ul></div>
+        </details>
+    
             
                 <div class="match">
                     <div class="match-head">
@@ -425,7 +482,7 @@
                         <span class="source">← CT</span>
                         <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
                     </div>
-                    <ul class="row-details"><li><b>Генотип:</b> CT (Pro/Ser)</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функция:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск бензольной токсичности</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    <ul class="row-details"><li><b>Генотип:</b> CT (Pro/Ser)</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функция:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск бензольной гематотоксичности</li><li><b>ACMG:</b> Risk factor</li></ul>
                 </div>
             
             
@@ -463,7 +520,7 @@
         </div>
     
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>NQO1 (EC 1.6.5.2) — флавопротеин, катализирующий 2-электронное восстановление различных хинонов и редокс-красителей, таких как филлохинон и витамин K менадион (Jaiswal et al., 1988).</li><li>Jaiswal et al. (1988): обработка клеток HepG2 тетрахлордибензо-п-диоксином (TCDD) вызывает 5-кратную индукцию активности NMOR1; TCDD преимущественно индуцирует транскрипцию 2.7-kb мРНК NMOR.</li><li>Edwards et al. (1983): количественный полиморфизм DIA4 объясняется сегрегацией «низкоактивного» аллеля; у 4–6% людей наблюдается DIA4-отсутствующий фенотип. DIA4, вероятно, идентичен NAD(P)H:менадион оксидоредуктазе (NMOR1).</li><li>Jaiswal (1991): ген NQO1 содержит 6 кодирующих экзонов и охватывает около 20 kb.</li><li>Grzeschik (1980), Povey et al. (1980): четвёртый локус диафоразы (DIA4) сегрегирует с хромосомой 16; региональная локализация 16q12-q22.</li><li>Jaiswal et al. (1988): ген NMOR1 (однокопийный) картирован на хромосоме 16.</li><li>Chen et al. (1991): локус NMOR1 отнесён к 16q22.1.</li><li>Moran et al. (1999): NQO1 — 2-электронная редуктаза, детоксифицирующая хиноны, образующиеся при окислении фенольных метаболитов бензола. Лица, гомозиготные по T/T-форме полиморфизма 609C-T (125860.0001), имеют повышенный риск бензольной гематотоксичности. Экспозиция нетоксичной концентрации гидрохинона (HQ) индуцирует NQO1 и растворимые тиолы, защищая от HQ-индуцированного апоптоза. В клетках костного мозга с генотипом T/T NQO1 не индуцируется HQ; в гетерозиготах (C/T) — промежуточная индукция. Данные позволяют предположить, что неспособность индуцировать функциональный NQO1 может вносить вклад в повышенный риск бензольного отравления у гомозигот по 609C-T.</li><li>Millstein et al. (2006): выявлен значимый многоlocus-эффект между генами NQO1, MPO (606989) и CAT (115500) — 3 генами, вовлечёнными в путь окислительного стресса — при астме (см. 600807). В независимом наборе данных (афроамериканские и азиато-американские дети) эти 3 гена также показали значимую ассоциацию со статусом астмы (P = 0.0008).</li><li>Fagerholm et al. (2008): гомозиготность по распространённому миссенс-варианту NQO1 P187S (125860.0001) (rs1800566) инактивирует NQO1 и strongly предсказывает плохую выживаемость в 2 независимых сериях женщин с раком молочной железы (P = 0.002, N = 1 005; P = 0.005, N = 1 162), эффект особенно выражен после адъювантной химиотерапии на основе антрациклинов с эпирубицином (P = 7.52 x 10(-6)) и при p53-аберрантных опухолях (P = 6.15 x 10(-5)). Выживаемость после метастазирования снижена у гомозигот NQO1*2, что дополнительно указывает на роль дефицита NQO1 в прогрессировании рака и резистентности к лечению. Ответ на эпирубицин был нарушен в гомозиготных по NQO1*2 клетках карциномы молочной железы in vitro.</li><li>Radjendirane et al. (1998): созданы Nqo1-null мыши путём таргетного разрушения. Мыши без экспрессии NQO1 неотличимы от дикого типа. Однако Nqo1-null мыши проявляли повышенную токсичность при введении менадиона по сравнению с диким типом. Результаты подтверждают роль NQO1 в защите от хиноновой токсичности.</li><li>Rothman et al. (1997): случай-контроль среди рабочих, экспонированных бензолом в Китае, показал повышенный риск гематотоксичности у лиц с генотипом T/T NQO1.</li><li>Smith (1999): исследована роль полиморфизма 609C&gt;T при лейкозах в серии из 104 случаев из Чикаго (более половины — миелоидные лейкозы, вторичные после химиотерапии). Частота мутантного аллеля в 1.4 раза выше ожидаемой при посттерапевтических ОМЛ и в 1.6 раза выше у пациентов с аномалиями хромосом 5 и/или 7.</li><li>Fagerholm et al. (2008): гомозиготность T/T NQO1 (NQO1*2, rs1800566T) strongly предсказывала плохую выживаемость в 2 независимых сериях женщин с раком молочной железы (114480).</li><li>Summary Annotations: 9 записей, все Level 3, кроме одной Level 4 — rs10517 / imatinib / Efficacy / GIST (ID 1450373616); rs1800566 / epirubicin; fluorouracil; oxaliplatin / Efficacy / Metastatic neoplasm; Stomach Neoplasms (ID 1451398240); rs10517 / warfarin / Dosage (ID 1446899176); rs1800566 / warfarin / Efficacy / Thrombotic disease (ID 1451606000); rs1800566 / Platinum compounds / Efficacy / Neoplasms (ID 1183491004); rs1800566 / warfarin / Dosage (ID 1043880367); rs1800566 / warfarin / Toxicity / Hemorrhage (ID 1451605980); rs1800566 / cyclophosphamide; epirubicin; fluorouracil / Efficacy / Breast Neoplasms (ID 1451398300); rs1800566 / warfarin / Dosage / Level 4 (ID 1447749024).</li><li>Non-Pediatric Variant Annotations: 35 записей — rs1800566 (26), rs10517 (5), rs1131341 (2), rs2917670 (1), rs2917677 (1).</li><li>Pediatric Clinical Annotations и Pediatric Variant Annotations отсутствуют.</li><li>Уровень доказательности для Summary Annotations — Level 3 (за исключением ID 1447749024 — Level 4); не заменяет клинического решения.</li><li>CPIC guideline отсутствует.</li></ul></div>
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Специфических рекомендаций нет</li></ul></div>
         </div>
         
         <div class="card matched">
@@ -477,6 +534,12 @@
             <div class="patient-line"><b>Результат:</b> *1/*2</div>
             <div class="patient-line comment">rs1799853 C/T (GT=0/1)</div>
             
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body"><p class="why-sentence">CYP2C9 *1/*2 → Intermediate Metabolizer (IM). Source: CPIC Guideline for Warfarin (2017). Evidence: rs1799853 C&gt;T.</p><ul><li><b>Source:</b> CPIC Guideline for Warfarin (2017)</li><li><b>Evidence:</b> rs1799853 C&gt;T</li><li><b>Annotation:</b> Снижение дозы варфарина, фенитоина. Мониторинг INR</li></ul></div>
+        </details>
+    
+            
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">*1/*2</span>
@@ -488,7 +551,7 @@
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>*1/*1 (Extensive Metabolizer): Нормальная скорость расщепления. Стандартные дозировки.</li><li>*1/*2, *1/*3 (Intermediate Metabolizer): Сниженная активность. Требуется осторожное титрование дозы варфарина.</li><li>*2/*2, *2/*3, *3/*3 (Poor Metabolizer): Значительное снижение активности. Высокий риск кровотечений на стандартных дозах варфарина и побочных эффектов НПВС (гастропатии).</li></ul></div>
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>*1/*2, *1/*3 (Intermediate Metabolizer): Сниженная активность. Требуется осторожное титрование дозы варфарина.</li><li>*2/*2, *2/*3, *3/*3 (Poor Metabolizer): Значительное снижение активности. Высокий риск кровотечений на стандартных дозах варфарина и побочных эффектов НПВС (гастропатии).</li></ul></div>
         </div>
         
         <div class="card matched">
@@ -502,6 +565,12 @@
             <div class="patient-line"><b>Результат:</b> TC</div>
             <div class="patient-line comment">c.521T&gt;C (RAW_NOTES)</div>
             
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body"><p class="why-sentence">SLCO1B1 TC (521 TC) → Intermediate function. Source: CPIC Guideline, FDA Table of Pharmacogenetic Associations. Evidence: rs4149056 T&gt;C.</p><ul><li><b>Source:</b> CPIC Guideline, FDA Table of Pharmacogenetic Associations</li><li><b>Evidence:</b> rs4149056 T&gt;C</li><li><b>Annotation:</b> Повышенный риск миопатии на симвастатине 80 мг. Снижение дозы</li></ul></div>
+        </details>
+    
+            
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">TC (521 TC)</span>
@@ -513,12 +582,12 @@
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>TT (Норма): Эффективный захват статина печенью.</li><li>TC / CC (Сниженный захват): Концентрация статина в плазме крови повышается в несколько раз. Статины начинают воздействовать на скелетные мышцы.</li><li>Риск: Развитие мышечных болей (миалгии) и тяжелого осложнения — рабдомиолиза.</li><li>Рекомендация: Снижение дозы симвастатина или переход на правастатин/розувастатин, которые меньше зависят от этого транспортера.</li></ul></div>
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Рекомендация: Снижение дозы симвастатина или переход на правастатин/розувастатин, которые меньше зависят от этого транспортера.</li></ul></div>
         </div>
         </section>
   
   
-        <section>
+        <section id="missing_genes" class="missing_genes">
             <h2>❌ Гены, отсутствующие в базе знаний (1)</h2>
             <div class="not-in-base">
                 <p class="hint">Эти гены есть в вашем отчёте, но их нет в текущей базе знаний.</p>

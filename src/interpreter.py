@@ -465,6 +465,7 @@ def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list
 
     matches = []
     seen_rows = set()
+    seen_genotypes = set()
 
     for sec in gene["sections"]:
         for tbl in sec["tables"]:
@@ -506,6 +507,11 @@ def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list
 
                 row_gt, orig, gt_col = best_match
                 display_gt = _specific_matched_genotype(row_gt, orig)
+                gkey = _normalize(display_gt) or _normalize(row_gt)
+                if gkey and gkey in seen_genotypes:
+                    continue
+                if gkey:
+                    seen_genotypes.add(gkey)
                 matches.append({
                     "section": sec, "table": tbl, "row": row,
                     "matched_field": display_gt, "matched_candidate": orig, "matched_column": gt_col,
@@ -707,11 +713,208 @@ def find_pgx_annotations(gene: dict, patient_alleles: set, top_n: int = 50) -> d
 #  Интерпретация гена
 # ============================================================
 
+_SKIP_REC = re.compile(
+    r"et al\.|jaiswal|мыши|мышь|in vitro|pmid|pmcid|omim \*|mouse|mice",
+    re.IGNORECASE,
+)
+_ACTION_REC = re.compile(
+    r"(рекомендуется|снизить|снижение|контроль|избегать|замена|"
+    r"мониторинг|противопоказан|требуется|не назначать|начальная\s+доза)",
+    re.IGNORECASE,
+)
+
+
+def _is_actionable_recommendation(text: str) -> bool:
+    t = _strip_md(text or "").strip()
+    if not t or len(t) > 250:
+        return False
+    if _SKIP_REC.search(t):
+        return False
+    return bool(_ACTION_REC.search(t))
+
+
 def _collect_recommendations(gene: dict) -> list[str]:
     recs = []
+    seen = set()
     for sec in gene["sections"]:
-        recs.extend(sec.get("bullets", []))
-    return recs
+        for raw in sec.get("bullets", []):
+            t = _strip_md(str(raw)).strip()
+            if not _is_actionable_recommendation(t):
+                continue
+            key = t.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            recs.append(t)
+    return recs if recs else ["Специфических рекомендаций нет"]
+
+
+# Variant evidence used when the lab comment does not already name an rsID.
+_STAR_EVIDENCE = {
+    "CYP2C19": {"*2": "rs4244285 G>A", "*3": "rs4986893 G>A", "*17": "rs12248560 C>T"},
+    "CYP2C9": {"*2": "rs1799853 C>T", "*3": "rs1057910 A>C"},
+}
+_GENE_RSID_EVIDENCE = {
+    "MTHFR": "rs1801133 C>T",
+    "F5": "rs6025 C>T",
+    "F2": "rs1799963 G>A",
+    "NQO1": "rs1800566 C>T",
+    "SLCO1B1": "rs4149056 T>C",
+    "APOE": "rs429358 T>C / rs7412 C>T",
+    "VKORC1": "rs9923231 C>T",
+}
+_CPIC_BY_DRUG = {
+    "клопидогрел": "CPIC Guideline for Clopidogrel (2022)",
+    "clopidogrel": "CPIC Guideline for Clopidogrel (2022)",
+    "варфарин": "CPIC Guideline for Warfarin (2017)",
+    "warfarin": "CPIC Guideline for Warfarin (2017)",
+    "фенитоин": "CPIC Guideline for Phenytoin (2020)",
+    "phenytoin": "CPIC Guideline for Phenytoin (2020)",
+    "симвастатин": "CPIC Guideline for Statins (2022)",
+    "statin": "CPIC Guideline for Statins (2022)",
+    "омепразол": "CPIC Guideline for Proton Pump Inhibitors (2020)",
+    "лансопразол": "CPIC Guideline for Proton Pump Inhibitors (2020)",
+}
+_CPIC_BY_GENE = {
+    "CYP2C19": "CPIC Guideline for Clopidogrel (2022)",
+    "CYP2C9": "CPIC Guideline for Warfarin (2017)",
+    "SLCO1B1": "CPIC Guideline for Statins (2022)",
+    "CYP2D6": "CPIC Guideline for CYP2D6 substrates",
+    "VKORC1": "CPIC Guideline for Warfarin (2017)",
+}
+
+
+def _phenotype_codes(pheno: str) -> set[str]:
+    codes: set[str] = set()
+    if not pheno:
+        return codes
+    for m in re.finditer(r"\b(IM|PM|NM|UM|RM|EM)\b", pheno, re.I):
+        codes.add(m.group(1).upper())
+    low = pheno.lower()
+    if "intermediate" in low or "промежуточ" in low:
+        codes.add("IM")
+    if "poor metabol" in low or "медленн" in low:
+        codes.add("PM")
+    if "normal metabol" in low or "extensive" in low:
+        codes.add("NM")
+    return codes
+
+
+def _evidence_from_text(blob: str) -> list[str]:
+    found: list[str] = []
+    seen: set[str] = set()
+    for m in re.finditer(r"(rs\d+)(?:\s+([ACGT])\s*[/>]\s*([ACGT]))?", blob or "", re.I):
+        rsid = m.group(1).lower()
+        if rsid in seen:
+            continue
+        seen.add(rsid)
+        if m.group(2) and m.group(3):
+            ref, alt = m.group(2).upper(), m.group(3).upper()
+            if ref == alt:
+                continue
+            found.append(f"{rsid} {ref}>{alt}")
+        else:
+            found.append(rsid)
+    return found
+
+
+def _evidence_from_stars(gene_name: str, result: str) -> list[str]:
+    mapping = _STAR_EVIDENCE.get(gene_name.upper(), {})
+    out: list[str] = []
+    for star in re.findall(r"\*\d+", result or ""):
+        item = mapping.get(star)
+        if item and item not in out:
+            out.append(item)
+    return out
+
+
+def _pick_guideline(gene_name: str, drug: str, kb_source: str) -> str:
+    drug_l = (drug or "").lower()
+    src_u = (kb_source or "").upper()
+    for key, title in _CPIC_BY_DRUG.items():
+        if key in drug_l and (not kb_source or "CPIC" in src_u):
+            return title
+    if kb_source:
+        extra = f" ({drug})" if drug else ""
+        return f"{kb_source}{extra}"
+    return _CPIC_BY_GENE.get(gene_name.upper(), "GenomIQ knowledge base")
+
+
+def _source_from_gene_tables(gene: Optional[dict], gene_name: str, pheno: str) -> str:
+    if not gene:
+        return _CPIC_BY_GENE.get(gene_name.upper(), "GenomIQ knowledge base")
+    codes = _phenotype_codes(pheno)
+    ranked: list[str] = []
+    for sec in gene.get("sections", []):
+        for tbl in sec.get("tables", []):
+            headers = tbl.get("headers") or []
+            src_col = next((h for h in headers if "источник" in h.lower() or "source" in h.lower()), None)
+            if not src_col:
+                continue
+            gt_col = next((h for h in headers if "генотип" in h.lower() or "фенотип" in h.lower()), None)
+            drug_col = next((h for h in headers if "препарат" in h.lower() or "drug" in h.lower()), None)
+            for row in tbl.get("rows") or []:
+                src = _strip_md(str(row.get(src_col, "") or "")).strip()
+                if not src:
+                    continue
+                gt = str(row.get(gt_col, "") or "") if gt_col else ""
+                drug = _strip_md(str(row.get(drug_col, "") or "")).strip() if drug_col else ""
+                if codes and gt and not any(c in gt.upper() for c in codes):
+                    continue
+                ranked.append(_pick_guideline(gene_name, drug, src))
+        blob = " ".join(sec.get("bullets") or []) + " " + (sec.get("text") or "")
+        m = re.search(r"CPIC[^\n.*]{0,60}", blob, re.I)
+        if m and "отсутств" not in m.group(0).lower():
+            ranked.append(m.group(0).strip().rstrip(" ,;"))
+    if ranked:
+        return ranked[0]
+    return _CPIC_BY_GENE.get(gene_name.upper(), "GenomIQ knowledge base")
+
+
+def build_why_evidence(patient_gene: dict, gene: Optional[dict], info: dict) -> dict:
+    """Exact evidence for the HTML Why? block: source, variant, annotation."""
+    name = info.get("gene") or patient_gene.get("gene", "")
+    gt = info.get("matched_genotype") or patient_gene.get("result", "") or "—"
+    row = info.get("full_row") or {}
+    pheno = _strip_md(str(row.get("Фенотип") or row.get("Phenotype") or "")).strip()
+    annotation = _strip_md(
+        str(row.get("Клинический риск") or row.get("Clinical risk") or "")
+    ).strip()
+    if not annotation:
+        recs = info.get("recommendations") or []
+        annotation = recs[0] if recs else ""
+
+    comment = patient_gene.get("comment") or info.get("patient_comment") or ""
+    evidence_bits = _evidence_from_text(f"{patient_gene.get('result', '')} {comment}")
+    if not evidence_bits:
+        evidence_bits = _evidence_from_stars(name, patient_gene.get("result") or gt)
+    if not evidence_bits:
+        fallback = _GENE_RSID_EVIDENCE.get(name.upper())
+        if fallback:
+            evidence_bits = [fallback]
+    evidence = "; ".join(evidence_bits)
+
+    source = _source_from_gene_tables(gene, name, pheno)
+    parts = [f"{name} {gt}".strip()]
+    if pheno:
+        parts[0] = f"{name} {gt} → {pheno}"
+    sentence = parts[0] + "."
+    if source:
+        sentence += f" Source: {source}."
+    if evidence:
+        sentence += f" Evidence: {evidence}."
+    return {
+        "sentence": sentence,
+        "source": source,
+        "evidence": evidence,
+        "phenotype": pheno,
+        "annotation": annotation,
+    }
+
+
+def _with_why(info: dict, patient_gene: dict, gene: Optional[dict] = None) -> dict:
+    info["why"] = build_why_evidence(patient_gene, gene, info)
+    return info
 
 def split_result_into_parts(result: str) -> list[str]:
     parts = re.split(r',\s*(?=(?:[A-Za-z]{1,3}[\d\.]*[A-Za-z]|rs\d|\*))', result)
@@ -807,12 +1010,12 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
                 break
 
     if base_entry is None:
-        return {
+        return _with_why({
             "gene": raw_name, "patient_result": patient_gene["result"],
             "patient_comment": patient_gene.get("comment", ""),
             "status": "not_in_knowledge_base", "matches": [],
             "pgx_annotations": [], "pgx_no_match_info": None,
-        }
+        }, patient_gene, None)
 
     group_name, gene = base_entry
 
@@ -821,10 +1024,12 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
     pgx_result = find_pgx_annotations(gene, patient_alleles)
 
     special = _try_deletion_genes(raw_name, patient_gene, gene, group_name, pgx_result)
-    if special is not None: return special
+    if special is not None:
+        return _with_why(special, patient_gene, gene)
 
     apoe_special = _try_apoe_isoform(raw_name, patient_gene, gene, group_name, pgx_result)
-    if apoe_special is not None: return apoe_special
+    if apoe_special is not None:
+        return _with_why(apoe_special, patient_gene, gene)
 
     recommendations = _collect_recommendations(gene)
     has_table = has_real_genotype_table(gene)
@@ -832,7 +1037,7 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
     if _is_normal(patient_gene["result"]) and has_table:
         wild_row = _find_wild_type_row(gene)
         if wild_row:
-            return {
+            return _with_why({
                 "gene": raw_name, "group": group_name,
                 "patient_result": patient_gene["result"],
                 "patient_comment": patient_gene.get("comment", ""),
@@ -846,7 +1051,7 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
                 "full_row": wild_row["row"],
                 "pgx_annotations": pgx_result["matches"],
                 "pgx_no_match_info": pgx_result["no_match_info"],
-            }
+            }, patient_gene, gene)
 
     parts = split_result_into_parts(patient_gene["result"])
     all_matches = []
@@ -862,10 +1067,15 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
 
     unique_matches = []
     seen_rows = set()
+    seen_genotypes = set()
     for m in all_matches:
         row_key = tuple(sorted((k, str(v)) for k, v in m["row"].items() if v))
-        if row_key in seen_rows: continue
+        gkey = _normalize(_strip_md(m.get("matched_field") or ""))
+        if row_key in seen_rows or (gkey and gkey in seen_genotypes):
+            continue
         seen_rows.add(row_key)
+        if gkey:
+            seen_genotypes.add(gkey)
         unique_matches.append(m)
 
     base_info = {
@@ -918,7 +1128,7 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
         base_info["full_row"] = None
         base_info["note"] = "Генотип не удалось сопоставить с таблицей базы. Проверьте вручную."
 
-    return base_info
+    return _with_why(base_info, patient_gene, gene)
 
 # ============================================================
 #  Обработка файла

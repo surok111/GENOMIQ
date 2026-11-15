@@ -226,12 +226,36 @@ def _render_live_db(live: Optional[dict]) -> str:
     """
 
 
+def _render_why(result: dict) -> str:
+    why = result.get("why") or {}
+    sentence = (why.get("sentence") or "").strip()
+    if not sentence and not why.get("source") and not why.get("evidence"):
+        return ""
+    items = []
+    if why.get("source"):
+        items.append(f"<li><b>Source:</b> {_esc(why['source'])}</li>")
+    if why.get("evidence"):
+        items.append(f"<li><b>Evidence:</b> {_esc(why['evidence'])}</li>")
+    if why.get("annotation"):
+        items.append(f"<li><b>Annotation:</b> {_esc(why['annotation'])}</li>")
+    body = f'<p class="why-sentence">{_esc(sentence)}</p>' if sentence else ""
+    if items:
+        body += "<ul>" + "".join(items) + "</ul>"
+    return f"""
+        <details class="why">
+            <summary>Why?</summary>
+            <div class="why-body">{body}</div>
+        </details>
+    """
+
+
 def _gene_card(result: dict, status_kind: str) -> str:
     gene = _esc(result["gene"])
     group = _esc(result.get("group", ""))
     patient_result = _esc(result.get("patient_result", ""))
     comment = _esc(result.get("patient_comment", ""))
     recs = result.get("recommendations", [])
+    why_block = _render_why(result)
 
     pgx_block = _render_pgx_block(
         result.get("pgx_annotations", []),
@@ -257,6 +281,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             </div>
             <div class="patient-line"><b>Результат:</b> {patient_result}</div>
             {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
+            {why_block}
             {f'<div class="note" style="color: #047857; background: #ecfdf5;">{note}</div>' if note else ''}
             {pgx_block}
             {live_block}
@@ -309,6 +334,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             </div>
             <div class="patient-line"><b>Результат:</b> {patient_result}</div>
             {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
+            {why_block}
             {cards_inner}
             {pgx_block}
             {live_block}
@@ -333,6 +359,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             </div>
             <div class="patient-line"><b>Результат:</b> {patient_result}</div>
             {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
+            {why_block}
             {f'<div class="note">{note}</div>' if note else ''}
             {pgx_block}
             {live_block}
@@ -351,6 +378,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             <span class="status-icon">⚠️</span>
         </div>
         <div class="patient-line"><b>Результат:</b> {patient_result}</div>
+        {why_block}
         {f'<div class="note">{note}</div>' if note else ''}
         {pgx_block}
         {live_block}
@@ -517,6 +545,40 @@ def generate_html_report(rep: dict, output_path: str):
   .recs ul {{ padding-left: 18px; margin: 0; font-size: 14px; }}
   .recs ul li {{ padding: 3px 0; }}
 
+  .why {{
+    margin: 10px 0 4px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 0;
+  }}
+  .why summary {{
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #f59e0b;
+    color: #1c1917;
+    font-size: 13px;
+    font-weight: 700;
+    user-select: none;
+  }}
+  .why summary::-webkit-details-marker {{ display: none; }}
+  .why summary::before {{ content: "?"; font-weight: 800; }}
+  .why[open] summary {{ background: #d97706; color: white; }}
+  .why-body {{
+    padding: 4px 14px 12px;
+    font-size: 13px;
+    color: #334155;
+  }}
+  .why-sentence {{ margin: 0 0 8px; line-height: 1.5; }}
+  .why-body ul {{ padding-left: 18px; margin: 0; }}
+  .why-body li {{ padding: 2px 0; }}
+
   .note {{
     color: #64748b; font-size: 13px;
     background: #f8fafc; padding: 8px 12px; border-radius: 6px;
@@ -658,6 +720,8 @@ def generate_html_report(rep: dict, output_path: str):
   @media print {{
     body {{ background: white; padding: 0; }}
     .print-btn {{ display: none; }}
+    details.why > *:not(summary) {{ display: block !important; }}
+    .why summary {{ display: none; }}
     .card {{ box-shadow: none; border: 1px solid #e2e8f0; page-break-inside: avoid; }}
     header {{ box-shadow: none; }}
     .pgx-table-wrap {{ overflow: visible; }}

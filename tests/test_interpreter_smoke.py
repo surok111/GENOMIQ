@@ -70,6 +70,60 @@ class InterpreterSmokeTest(unittest.TestCase):
         r = interpret_gene({"gene": "NAT", "result": "CC", "comment": ""}, self.index)
         self.assertEqual(r["status"], "not_in_knowledge_base")
 
+    def test_nqo1_dedupes_and_filters_omim_recs(self):
+        r = interpret_gene(
+            {"gene": "NQO1", "result": "CT", "comment": "rs1800566 C>T"},
+            self.index,
+        )
+        self.assertEqual(r["status"], "matched")
+        self.assertEqual(len(r["matches"]), 1, msg=r["matches"])
+        self.assertNotIn(",", r["matched_genotype"])
+        recs = r["recommendations"]
+        self.assertTrue(recs)
+        blob = " ".join(recs).lower()
+        self.assertNotIn("jaiswal", blob)
+        self.assertNotIn("мыши", blob)
+        self.assertNotIn("pmid", blob)
+        self.assertNotIn("in vitro", blob)
+        for item in recs:
+            self.assertLessEqual(len(item), 300)
+        if recs == ["Специфических рекомендаций нет"]:
+            self.assertEqual(recs[0], "Специфических рекомендаций нет")
+
+    def test_why_evidence_for_cyp2c19(self):
+        import tempfile
+        from html_report import generate_html_report
+
+        r = interpret_gene(
+            {
+                "gene": "CYP2C19",
+                "result": "*1/*2",
+                "comment": "rs4244285 G/A (GT=0/1)",
+            },
+            self.index,
+        )
+        self.assertEqual(r["status"], "matched")
+        why = r["why"]
+        self.assertIn("Intermediate Metabolizer", why["sentence"])
+        self.assertIn("CPIC", why["source"])
+        self.assertIn("Clopidogrel", why["source"])
+        self.assertIn("rs4244285", why["evidence"])
+        self.assertIn("G>A", why["evidence"])
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "why.html"
+            generate_html_report(
+                {
+                    "file": "why.txt",
+                    "stats": {"matched": 1, "not_in_knowledge_base": 0},
+                    "results": [r],
+                },
+                str(out),
+            )
+            html = out.read_text(encoding="utf-8")
+        self.assertIn("Why?", html)
+        self.assertIn("rs4244285", html)
+        self.assertIn("CPIC Guideline for Clopidogrel", html)
+
 
 if __name__ == "__main__":
     unittest.main()
