@@ -914,7 +914,108 @@ def build_why_evidence(patient_gene: dict, gene: Optional[dict], info: dict) -> 
 
 def _with_why(info: dict, patient_gene: dict, gene: Optional[dict] = None) -> dict:
     info["why"] = build_why_evidence(patient_gene, gene, info)
+    row = info.get("full_row") or {}
+    info["clinical_risk"] = _strip_md(
+        str(row.get("Клинический риск") or row.get("Clinical risk") or "")
+    ).strip()
     return info
+
+
+def _result_gt_blob(r: dict) -> str:
+    parts = [r.get("patient_result") or "", r.get("matched_genotype") or ""]
+    for m in r.get("matches") or []:
+        parts.append(m.get("genotype") or "")
+    return " ".join(parts)
+
+
+def _nuc_pair(blob: str) -> str:
+    s = re.sub(r"\([^)]*\)", "", blob or "")
+    s = s.replace("/", "").replace("|", "").replace(" ", "")
+    m = re.search(r"[ACGTacgt]{2}", s)
+    if not m:
+        return ""
+    pair = m.group(0).upper()
+    return "".join(sorted(pair)) if pair[0] != pair[1] else pair
+
+
+def _star_pair(blob: str) -> str:
+    m = re.search(r"(\*\d+)\s*/\s*(\*\d+)", blob or "")
+    if not m:
+        return ""
+    a, b = m.group(1), m.group(2)
+    ordered = sorted([a, b], key=lambda x: int(x[1:] or 0))
+    return f"{ordered[0]}/{ordered[1]}"
+
+
+def collect_critical_alerts(results: list) -> list[dict]:
+    """High-risk combinations for the HTML critical-alert banner."""
+    alerts = []
+    seen = set()
+    for r in results or []:
+        gene = (r.get("gene") or "").upper()
+        blob = _result_gt_blob(r)
+        nuc = _nuc_pair(blob)
+        star = _star_pair(blob)
+        text = None
+        key = None
+        if gene == "F5" and nuc in {"CT", "TT"}:
+            key, text = "F5", (
+                "ПРОТИВОПОКАЗАНЫ гормональные контрацептивы (риск тромбоза, RR=34.7)."
+            )
+        elif gene == "CYP2C19" and star in {"*1/*2", "*2/*2", "*2/*3", "*3/*3"}:
+            key, text = "CYP2C19", (
+                "Снижение эффективности клопидогреля. Рекомендуется замена на тикагрелор или прасугрел."
+            )
+        elif gene == "MTHFR" and nuc == "TT":
+            key, text = "MTHFR", (
+                "Контроль уровня гомоцистеина. Рекомендуется прием активных форм фолатов (L-метилфолат)."
+            )
+        elif gene == "SLCO1B1" and nuc in {"CT", "CC"}:
+            key, text = "SLCO1B1", (
+                "Повышенный риск миопатии на симвастатине. Снизить дозу или заменить на розувастатин/правастатин."
+            )
+        if key and key not in seen:
+            seen.add(key)
+            alerts.append({"gene": key, "genotype": r.get("patient_result") or "", "text": text})
+    return alerts
+
+
+def build_doctors_note(results: list) -> str:
+    """Selectable clinical summary for the referring physician."""
+    sentences = []
+    for r in results or []:
+        if r.get("status") not in {"matched", "matched_annotation_only"}:
+            continue
+        gene = (r.get("gene") or "").upper()
+        blob = _result_gt_blob(r)
+        nuc = _nuc_pair(blob)
+        star = _star_pair(blob)
+        gt = (r.get("patient_result") or r.get("matched_genotype") or "").strip()
+        risk = (r.get("clinical_risk") or "").strip()
+        if gene == "F5" and nuc in {"CT", "TT"}:
+            zyg = "гомозиготная" if nuc == "TT" else "гетерозиготная"
+            sentences.append(
+                f"У пациента выявлена {zyg} мутация F5 (Лейден). "
+                "Рекомендовано: избегать гормональных контрацептивов, контроль гематолога."
+            )
+        elif gene == "CYP2C19" and star in {"*1/*2", "*2/*2", "*2/*3", "*3/*3"}:
+            sentences.append(
+                f"Выявлена мутация CYP2C19 {star} — снижение эффективности клопидогреля, "
+                "рекомендована замена на тикагрелор."
+            )
+        elif gene == "MTHFR" and nuc == "TT":
+            sentences.append(
+                "Выявлена гомозиготная мутация MTHFR C677T (TT) — контроль гомоцистеина, "
+                "прием активных фолатов."
+            )
+        elif gene == "SLCO1B1" and nuc in {"CT", "CC"}:
+            sentences.append(
+                "Выявлен вариант SLCO1B1 — повышенный риск миопатии на симвастатине; "
+                "снизить дозу или заменить на розувастатин/правастатин."
+            )
+        elif risk and "специфических рекомендаций нет" not in risk.lower():
+            sentences.append(f"{gene} ({gt}): {risk.rstrip('.')}." )
+    return " ".join(sentences)
 
 def split_result_into_parts(result: str) -> list[str]:
     parts = re.split(r',\s*(?=(?:[A-Za-z]{1,3}[\d\.]*[A-Za-z]|rs\d|\*))', result)

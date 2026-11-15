@@ -1,13 +1,15 @@
 """
-html_report.py — генерация HTML-отчёта по данным patient_report.json (v14).
-- Добавлен статус "matched_annotation_only" (зелёный, но с пометкой).
-- Обновлена шапка: 5 счётчиков вместо 6.
+html_report.py — генерация HTML-отчёта по данным patient_report.json (v15).
+Critical alerts, print-friendly CSS, doctor's note, PHI-safe header.
 """
 
 import html
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+
+from interpreter import build_doctors_note, collect_critical_alerts
 
 ACMG_COLORS = {
     "pathogenic": ("#dc2626", "#fee2e2"),
@@ -29,6 +31,76 @@ def _acmg_color(acmg_text: str):
 
 def _esc(s) -> str:
     return html.escape(str(s)) if s is not None else ""
+
+# Names / IDs that must never appear in the HTML report body or header.
+_PHI_PATTERNS = [
+    re.compile(r"(?i)\b(?:ф\.?\s*и\.?\s*о\.?|fio|имя|фамилия|patient\s*name)\s*[:=]\s*[^\n|;]+"),
+    re.compile(r"(?i)\b(?:адрес|address|прописка)\s*[:=]\s*[^\n|;]+"),
+    re.compile(r"(?i)\b(?:полис|policy|страх(?:овой)?(?:\s*номер)?|passport|паспорт)\s*[:=]\s*\S+"),
+    re.compile(r"\b[А-ЯЁ][а-яё]{2,}(?:\s+[А-ЯЁ][а-яё]+){0,2}\s+[А-ЯЁ]\.\s*[А-ЯЁ]\.?"),
+    re.compile(r"\bPID\|[^\n\r]+"),
+]
+
+
+def _redact_phi(text: str) -> str:
+    if not text:
+        return ""
+    out = str(text)
+    for pat in _PHI_PATTERNS:
+        out = pat.sub("[REDACTED]", out)
+    return out
+
+
+def _looks_like_person_name(value: str) -> bool:
+    v = (value or "").strip()
+    if not v:
+        return False
+    if re.fullmatch(r"PAT[-_A-Z0-9]+", v, re.I):
+        return False
+    if re.search(r"\d", v):
+        return False
+    return bool(re.search(r"[А-ЯЁа-яёA-Za-z]{2,}\s+[А-ЯЁа-яёA-Za-z]{2,}", v))
+
+
+def _safe_header_identity(rep: dict) -> tuple[str, str]:
+    """Return (patient_id_or_empty, file_name) with names stripped."""
+    raw_id = str(rep.get("patient_id") or rep.get("Patient_ID") or "").strip()
+    if _looks_like_person_name(raw_id) or any(k in (raw_id.lower()) for k in ("имя", "иванов")):
+        raw_id = "[REDACTED]"
+    elif raw_id and _redact_phi(raw_id) == "[REDACTED]":
+        raw_id = "[REDACTED]"
+    file_name = str(rep.get("file") or "отчёт")
+    # Never put a person name in the file label either.
+    if _looks_like_person_name(file_name):
+        file_name = "[REDACTED]"
+    return raw_id, file_name
+
+
+def _render_critical_alerts(results: list) -> str:
+    alerts = collect_critical_alerts(results)
+    if not alerts:
+        return ""
+    items = "".join(
+        f"<li><b>{_esc(a['gene'])}</b> — {_esc(a['text'])}</li>" for a in alerts
+    )
+    return f"""
+    <section class="critical-alerts" id="critical-alerts">
+      <h2>🚨 Критические предупреждения</h2>
+      <ul>{items}</ul>
+    </section>
+    """
+
+
+def _render_doctors_note(results: list) -> str:
+    note = build_doctors_note(results)
+    if not note:
+        return ""
+    return f"""
+    <section class="doctors-note" id="doctors-note">
+      <h2>📝 Рекомендуемый текст заключения</h2>
+      <p class="doctors-note-text">{_esc(note)}</p>
+    </section>
+    """
 
 def _pick_risk(row: dict) -> str:
     for k, v in row.items():
@@ -252,8 +324,8 @@ def _render_why(result: dict) -> str:
 def _gene_card(result: dict, status_kind: str) -> str:
     gene = _esc(result["gene"])
     group = _esc(result.get("group", ""))
-    patient_result = _esc(result.get("patient_result", ""))
-    comment = _esc(result.get("patient_comment", ""))
+    patient_result = _esc(_redact_phi(result.get("patient_result", "")))
+    comment = _esc(_redact_phi(result.get("patient_comment", "")))
     recs = result.get("recommendations", [])
     why_block = _render_why(result)
 
@@ -417,7 +489,14 @@ def generate_html_report(rep: dict, output_path: str):
         """
 
     now = datetime.now().strftime("%d.%m.%Y %H:%M")
-    file_name = _esc(rep.get("file", "отчёт"))
+    patient_id, raw_file = _safe_header_identity(rep)
+    file_name = _esc(raw_file)
+    patient_line = (
+        f'<div class="file">Patient ID: {_esc(patient_id)}</div>'
+        if patient_id else ""
+    )
+    alerts_html = _render_critical_alerts(results)
+    doctors_html = _render_doctors_note(results)
 
     total_pgx = sum(len(r.get("pgx_annotations", [])) for r in results)
     genes_with_no_data = sum(
@@ -579,6 +658,52 @@ def generate_html_report(rep: dict, output_path: str):
   .why-body ul {{ padding-left: 18px; margin: 0; }}
   .why-body li {{ padding: 2px 0; }}
 
+  .critical-alerts {{
+    background: #fee2e2;
+    border: 2px solid #dc2626;
+    border-radius: 12px;
+    padding: 16px 22px 8px;
+    margin: 0 0 24px;
+    color: #7f1d1d;
+  }}
+  .critical-alerts h2 {{
+    margin: 0 0 10px;
+    padding: 0;
+    border: none;
+    color: #991b1b;
+    font-size: 18px;
+  }}
+  .critical-alerts ul {{
+    margin: 0 0 8px;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.55;
+  }}
+  .critical-alerts li {{ padding: 4px 0; }}
+
+  .doctors-note {{
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 28px 0 8px;
+  }}
+  .doctors-note h2 {{
+    margin: 0 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 18px;
+  }}
+  .doctors-note-text {{
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #0f172a;
+    user-select: text;
+    -webkit-user-select: text;
+  }}
+
   .note {{
     color: #64748b; font-size: 13px;
     background: #f8fafc; padding: 8px 12px; border-radius: 6px;
@@ -718,12 +843,27 @@ def generate_html_report(rep: dict, output_path: str):
   .print-btn:hover {{ background: #1d4ed8; }}
 
   @media print {{
-    body {{ background: white; padding: 0; }}
-    .print-btn {{ display: none; }}
-    details.why > *:not(summary) {{ display: block !important; }}
-    .why summary {{ display: none; }}
-    .card {{ box-shadow: none; border: 1px solid #e2e8f0; page-break-inside: avoid; }}
-    header {{ box-shadow: none; }}
+    * {{ box-shadow: none !important; }}
+    body {{ background: #fff !important; color: #000; padding: 0; }}
+    header {{
+      background: none !important; color: #000; box-shadow: none;
+      border: 1px solid #000;
+    }}
+    .summary .stat, .patient-line, .genotype, .badge,
+    .pgx-row-exact, .pgx-row-allele, .live-db, .note, .pgx-badge,
+    .critical-alerts, .doctors-note, .why {{
+      background: none !important;
+    }}
+    .critical-alerts {{ border: 2px solid #000; color: #000; }}
+    .print-btn, .why summary {{ display: none !important; }}
+    .why {{ border: 1px solid #333; }}
+    .why-body {{ display: block !important; }}
+    .critical-alerts, .card, .doctors-note {{
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }}
+    thead {{ display: table-header-group; }}
+    .pgx-table th {{ background: none !important; }}
     .pgx-table-wrap {{ overflow: visible; }}
     .pgx-table {{ font-size: 11px; }}
   }}
@@ -734,9 +874,12 @@ def generate_html_report(rep: dict, output_path: str):
 
   <header>
     <h1>🧬 Генетический отчёт</h1>
+    {patient_line}
     <div class="file">Источник: {file_name}</div>
     <div class="date">Сформировано: {now}</div>
   </header>
+
+  {alerts_html}
 
   <div class="summary">
     <div class="stat green">
@@ -761,9 +904,10 @@ def generate_html_report(rep: dict, output_path: str):
     </div>
   </div>
 
-  {f'<section><h2>✅ Интерпретированные гены ({len(matched) + len(matched_annotation)})</h2>{matched_html}{matched_annotation_html}</section>' if (matched or matched_annotation) else ''}
+  {f'<section class="gene-cards"><h2>✅ Интерпретированные гены ({len(matched) + len(matched_annotation)})</h2>{matched_html}{matched_annotation_html}</section>' if (matched or matched_annotation) else ''}
   {f'<section><h2>⚠️ Не сопоставленные генотипы ({len(no_match)})</h2>{no_match_html}</section>' if no_match else ''}
   {not_in_base_html}
+  {doctors_html}
 
   <footer>
     Отчёт сформирован автоматически. Не является медицинским диагнозом.<br>

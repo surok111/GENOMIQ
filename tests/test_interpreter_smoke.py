@@ -13,7 +13,9 @@ from interpreter import (
     _is_star_overlap,
     _normalize,
     _specific_matched_genotype,
+    build_doctors_note,
     build_gene_index,
+    collect_critical_alerts,
     interpret_gene,
     load_base,
 )
@@ -89,6 +91,43 @@ class InterpreterSmokeTest(unittest.TestCase):
             self.assertLessEqual(len(item), 300)
         if recs == ["Специфических рекомендаций нет"]:
             self.assertEqual(recs[0], "Специфических рекомендаций нет")
+
+    def test_critical_alerts_and_doctors_note(self):
+        import tempfile
+        from html_report import generate_html_report
+
+        genes = [
+            interpret_gene({"gene": "F5", "result": "CT", "comment": ""}, self.index),
+            interpret_gene({"gene": "CYP2C19", "result": "*1/*2", "comment": ""}, self.index),
+            interpret_gene({"gene": "MTHFR", "result": "TT", "comment": ""}, self.index),
+            interpret_gene({"gene": "SLCO1B1", "result": "TC", "comment": ""}, self.index),
+        ]
+        alerts = collect_critical_alerts(genes)
+        keys = {a["gene"] for a in alerts}
+        self.assertEqual(keys, {"F5", "CYP2C19", "MTHFR", "SLCO1B1"})
+        note = build_doctors_note(genes)
+        self.assertIn("F5 (Лейден)", note)
+        self.assertIn("клопидогрел", note.lower())
+        self.assertIn("MTHFR", note)
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "alerts.html"
+            generate_html_report(
+                {
+                    "file": "alerts.txt",
+                    "patient_id": "PAT-994821",
+                    "patient_name": "Иванова Анна",
+                    "stats": {"matched": 4, "not_in_knowledge_base": 0},
+                    "results": genes,
+                },
+                str(out),
+            )
+            html = out.read_text(encoding="utf-8")
+        self.assertIn("Критические предупреждения", html)
+        self.assertIn("PAT-994821", html)
+        self.assertNotIn("Иванова", html)
+        self.assertIn("Рекомендуемый текст заключения", html)
+        self.assertIn("@media print", html)
+        self.assertIn("page-break-inside: avoid", html)
 
     def test_why_evidence_for_cyp2c19(self):
         import tempfile
