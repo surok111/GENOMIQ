@@ -161,7 +161,8 @@ def parse_patient_report(text: str) -> list[dict]:
 
     for raw_line in text.split('\n'):
         line = raw_line.strip()
-        if not line or set(line) <= set('=-'):
+        # Stop a field at blank lines and at separator lines (=..., ---...).
+        if not line or line.startswith("=") or line.startswith("-"):
             last_field = None
             continue
 
@@ -178,8 +179,9 @@ def parse_patient_report(text: str) -> list[dict]:
 
         m = RE_RESULT.match(line)
         if m:
+            # Result is the rest of this line only — do not glue following rows.
             current["result"] = m.group(1).strip()
-            last_field = "result"
+            last_field = None
             continue
 
         m = RE_COMMENT.match(line)
@@ -188,9 +190,7 @@ def parse_patient_report(text: str) -> list[dict]:
             last_field = "comment"
             continue
 
-        if last_field == "result":
-            current["result"] += " " + line
-        elif last_field == "comment":
+        if last_field == "comment":
             current["comment"] += " " + line
 
     if current:

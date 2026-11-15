@@ -72,11 +72,27 @@ _VCF_LOOSE = re.compile(
     re.IGNORECASE,
 )
 _LOG_GT = re.compile(
-    r"(rs\d+).*?Gene:\s*([A-Z0-9]+).*?GT:\s*([0-9][/|][0-9])",
+    r"(rs\d+)\W+(?:Gene:\s*)?([A-Z][A-Z0-9]+)\b.*?GT:\s*(\./\.|[0-9][/|][0-9])",
     re.IGNORECASE,
 )
 _TEXT_GENE = re.compile(
     r"(?m)^(?:[-*•]\s*)?([A-Z][A-Z0-9]{1,14})\s*:\s*(.+?)\s*$",
+)
+_INLINE_GENE_RESULT = re.compile(
+    r"(?:Gene|Ген)\s*:\s*([A-Za-z0-9]+)\s*[;,]\s*(?:Result|Результат)\s*:\s*([^;\n]+)",
+    re.IGNORECASE,
+)
+_CLASSIC_GENE = re.compile(
+    r"^(?:Gene|Ген)\s*:\s*([A-Za-z0-9]+)\s*$",
+    re.IGNORECASE,
+)
+_CLASSIC_RESULT = re.compile(
+    r"^(?:Result|Результат)\s*:\s*(.+?)\s*$",
+    re.IGNORECASE,
+)
+_RSID_ASSIGN = re.compile(
+    r"(rs\d+)\s*=\s*([A-Za-z0-9/*]+)\s*(?:\(([A-Za-z0-9]+)\))?",
+    re.IGNORECASE,
 )
 _NEGATIVE = re.compile(
     r"не\s+обнаруж|не\s+выявл|\bnegative\b|not\s+detected|wild\s*type",
@@ -105,14 +121,21 @@ _SLCO_NOTE = re.compile(
 
 
 def looks_like_raw_lab(text: str, path: str | None = None) -> bool:
-    """True for .vcf files or mixed lab dumps that embed a VCF header."""
+    """True for .vcf files or mixed lab dumps that embed a VCF header.
+
+    Scans the first 5000 characters (not only the first line) so a dump
+    that starts with garbage still matches ``##fileformat=VCF`` or ``#CHROM``.
+    """
     if path and str(path).lower().endswith(".vcf"):
         return True
-    head = text[:12000]
+    if not text:
+        return False
+    head = text[:5000]
     low = head.lower()
+    if "##fileformat=vcf" in low or "#chrom" in low:
+        return True
     return (
-        "##fileformat=vcf" in low
-        or "[VCF_HEADER]" in head
+        "[VCF_HEADER]" in head
         or "[KARYOTYPE_REPORT]" in head
         or "[RAW_VCF_DUMP_START]" in head
         or "[INTERPRETATION_LOG]" in head
@@ -123,48 +146,52 @@ def looks_like_raw_lab(text: str, path: str | None = None) -> bool:
 
 def parse_raw_lab_report(text: str) -> list[dict[str, str]]:
     """Extract gene/result pairs from a mixed VCF + karyotype + notes file."""
-    by_gene: dict[str, dict[str, str]] = {}
-    ref_alt = _collect_ref_alt(text)
-    vcf_hits = _parse_vcf(text)
-    log_hits = _parse_log_gt(text, ref_alt)
-    _merge_vcf(by_gene, _dedupe_hits(vcf_hits + log_hits))
-    _merge_notes(by_gene, text)
-    _merge_text_summary(by_gene, text)
-    _merge_karyotype(by_gene, text)
-    return list(by_gene.values())
+    try:
+        if not text or not str(text).strip():
+            return []
+        by_gene: dict[str, dict[str, str]] = {}
+        vcf_hits, ref_alt = _parse_vcf(text)
+        log_hits = _parse_log_gt(text, ref_alt)
+        _merge_vcf(by_gene, _dedupe_hits(vcf_hits + log_hits))
+        _merge_notes(by_gene, text)
+        _merge_classic_pairs(by_gene, text)
+        _merge_rsid_assign(by_gene, text)
+        _merge_text_summary(by_gene, text)
+        _merge_karyotype(by_gene, text)
+        return list(by_gene.values())
+    except Exception:
+        return []
 
 
-def _collect_ref_alt(text: str) -> dict[str, tuple[str, str]]:
-    found: dict[str, tuple[str, str]] = dict(RSID_REF_ALT)
-    for raw in text.splitlines():
-        m = _VCF_LOOSE.match(raw.strip())
-        if not m:
-            continue
-        rsid, ref, alt = m.group(1).lower(), m.group(2).upper(), m.group(3).upper()
-        found[rsid] = (ref, alt.split(",")[0])
-    return found
-
-
-def _parse_vcf(text: str) -> list[dict[str, Any]]:
+def _parse_vcf(text: str) -> tuple[list[dict[str, Any]], dict[str, tuple[str, str]]]:
     hits: list[dict[str, Any]] = []
+    ref_alt: dict[str, tuple[str, str]] = dict(RSID_REF_ALT)
     for raw in text.splitlines():
         line = raw.strip()
         if not line or line.startswith("#"):
             continue
-        m = _VCF_ROW.match(line)
-        if not m:
+        m_full = _VCF_ROW.match(line)
+        if m_full:
+            rsid, ref, alt, fmt, sample = m_full.groups()
+            rsid_key = rsid.lower()
+            if rsid_key in RSID_TO_GENE:
+                ref_alt[rsid_key] = (ref.upper(), alt.split(",")[0].upper())
+            gene = RSID_TO_GENE.get(rsid_key)
+            if gene is None:
+                continue
+            alleles = _alleles_from_gt(ref, alt, fmt, sample)
+            if alleles is None:
+                continue
+            gt_code, pair = alleles
+            hits.append(_hit(gene, rsid_key, ref, alt, gt_code, pair))
             continue
-        rsid, ref, alt, fmt, sample = m.groups()
-        rsid_key = rsid.lower()
-        gene = RSID_TO_GENE.get(rsid_key)
-        if gene is None:
+        m_loose = _VCF_LOOSE.match(line)
+        if not m_loose:
             continue
-        alleles = _alleles_from_gt(ref, alt, fmt, sample)
-        if alleles is None:
-            continue
-        gt_code, pair = alleles
-        hits.append(_hit(gene, rsid_key, ref, alt, gt_code, pair))
-    return hits
+        rsid, ref, alt = m_loose.group(1).lower(), m_loose.group(2).upper(), m_loose.group(3).upper()
+        if rsid in RSID_TO_GENE:
+            ref_alt[rsid] = (ref, alt.split(",")[0])
+    return hits, ref_alt
 
 
 def _parse_log_gt(
@@ -172,10 +199,14 @@ def _parse_log_gt(
 ) -> list[dict[str, Any]]:
     hits: list[dict[str, Any]] = []
     for raw in text.splitlines():
+        if "GT:" not in raw:
+            continue
         m = _LOG_GT.search(raw)
         if not m:
             continue
         rsid, gene, gt = m.group(1).lower(), m.group(2).upper(), m.group(3)
+        if "." in gt:
+            continue  # missing GT (./.)
         if not _is_gene_symbol(gene):
             gene = RSID_TO_GENE.get(rsid, "")
         if not gene:
@@ -183,7 +214,8 @@ def _parse_log_gt(
         ref, alt = ref_alt.get(rsid, ("", ""))
         alleles = _alleles_from_gt(ref, alt, "GT", gt) if ref and alt else None
         pair = alleles[1] if alleles else gt.replace("|", "/")
-        hits.append(_hit(gene, rsid, ref or "N", alt or "N", gt.replace("|", "/"), pair))
+        gt_code = alleles[0] if alleles else gt.replace("|", "/")
+        hits.append(_hit(gene, rsid, ref or "N", alt or "N", gt_code, pair))
     return hits
 
 
@@ -228,22 +260,28 @@ def _alleles_from_gt(
     tokens = re.split(r"[|/]", gt_raw)
     if len(tokens) < 2:
         return None
-    alt_alleles = [a.upper() for a in alt.split(",")]
+    if any(tok in {".", ""} for tok in tokens[:2]):
+        return None  # missing GT (./.)
+    try:
+        idxs = [int(tok) for tok in tokens[:2]]
+    except ValueError:
+        return None
+    alt_alleles = [a.upper() for a in alt.split(",") if a and a != "."]
+    # Unphase 0|1 → 0/1. Multi-allelic 1/2 (or index past ALT) → het 0/1.
+    if any(i > 1 for i in idxs) or any(i > len(alt_alleles) for i in idxs):
+        if not ref or not alt_alleles:
+            return None
+        idxs = [0, 1]
+    gt_code = f"{idxs[0]}/{idxs[1]}"
     letters: list[str] = []
-    for tok in tokens[:2]:
-        if tok in {".", ""}:
-            return None
-        try:
-            idx = int(tok)
-        except ValueError:
-            return None
+    for idx in idxs:
         if idx == 0:
             letters.append(ref.upper())
         elif 1 <= idx <= len(alt_alleles):
             letters.append(alt_alleles[idx - 1])
         else:
             return None
-    return gt_raw.replace("|", "/"), f"{letters[0]}/{letters[1]}"
+    return gt_code, f"{letters[0]}/{letters[1]}"
 
 
 def _merge_vcf(by_gene: dict[str, dict[str, str]], hits: list[dict[str, Any]]) -> None:
@@ -316,6 +354,48 @@ def _alt_count(gt: str) -> int:
     return int(a != "0") + int(b != "0")
 
 
+def _merge_classic_pairs(by_gene: dict[str, dict[str, str]], text: str) -> None:
+    """Gene: X ; Result: Y  and two-line Ген: / Результат: (single-line values)."""
+    pending: str | None = None
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("=") or line.startswith("-"):
+            pending = None
+            continue
+        m_inline = _INLINE_GENE_RESULT.search(line)
+        if m_inline:
+            gene = m_inline.group(1).upper()
+            result = _result_from_text_value(m_inline.group(2).strip())
+            if _is_gene_symbol(gene) and result and not _NEGATIVE.search(result):
+                _put(by_gene, gene, result, "from Gene/Result")
+            pending = None
+            continue
+        m_gene = _CLASSIC_GENE.match(line)
+        if m_gene:
+            pending = m_gene.group(1).upper()
+            continue
+        m_res = _CLASSIC_RESULT.match(line)
+        if m_res and pending:
+            result = _result_from_text_value(m_res.group(1).strip())
+            if _is_gene_symbol(pending) and result and not _NEGATIVE.search(m_res.group(1)):
+                _put(by_gene, pending, result, "from Ген/Результат")
+            pending = None
+
+
+def _merge_rsid_assign(by_gene: dict[str, dict[str, str]], text: str) -> None:
+    """rs1800566=CT (NQO1) style assignments."""
+    for m in _RSID_ASSIGN.finditer(text):
+        rsid = m.group(1).lower()
+        value = m.group(2).strip()
+        paren = (m.group(3) or "").upper()
+        gene = paren if _is_gene_symbol(paren) else RSID_TO_GENE.get(rsid, "")
+        if not gene:
+            continue
+        result = _result_from_text_value(value) or value.replace("/", "").upper()
+        if result and not _NEGATIVE.search(result):
+            _put(by_gene, gene, result, f"{rsid}={value}")
+
+
 def _merge_notes(by_gene: dict[str, dict[str, str]], text: str) -> None:
     m = _CYP2C19_NOTE.search(text)
     if m:
@@ -355,6 +435,7 @@ def _merge_text_summary(by_gene: dict[str, dict[str, str]], text: str) -> None:
 
 
 def _result_from_text_value(value: str) -> str | None:
+    value = re.split(r"\s*->\s*", value, maxsplit=1)[0].strip()
     m = re.search(r"(\*\d+\s*/\s*\*\d+)", value)
     if m:
         return re.sub(r"\s+", "", m.group(1))

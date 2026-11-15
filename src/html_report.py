@@ -379,7 +379,7 @@ def generate_html_report(rep: dict, output_path: str):
             for r in not_in_base
         )
         not_in_base_html = f"""
-        <section>
+        <section id="missing_genes" class="missing_genes">
             <h2>❌ Гены, отсутствующие в базе знаний ({len(not_in_base)})</h2>
             <div class="not-in-base">
                 <p class="hint">Эти гены есть в вашем отчёте, но их нет в текущей базе знаний.</p>

@@ -1,0 +1,45 @@
+================================================================================
+LIS EXPORT - FATAL ERROR DUMP - DO NOT USE IN PRODUCTION
+Run ID: HELL-TEST-2026
+================================================================================
+[GARBAGE_DATA_START]
+asdfghjkl 12345 !@#$% ^&*()_+
+This is just random text to break the parser.
+[JSON_BROKEN]: {"gene": "CYP2C19", "result":
+[GARBAGE_DATA_END]
+
+[VCF_MIXED_WITH_GARBAGE]
+#CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO
+1       11856378        rs121913279     G       A       100     PASS    DP=50
+10      96541616        rs4244285       G       A       99      PASS    DP=45
+10      96541616        rs4986893       G       A       98      PASS    DP=42
+--- corrupted line with no tabs ---
+19      44908684        rs429358        T       C       100     PASS    DP=60
+16      69720998        rs1800566       C       T       95      PASS    DP=30
+... [TRUNCATED 20,000 ROWS] ...
+
+[WEIRD_GENOTYPES]
+rs4244285 CYP2C19 GT: ./. (missing data)
+rs4986893 CYP2C19 GT: 0|1 (phased heterozygous)
+rs6025 F5 GT: 1/2 (multi-allelic, weird)
+rs1801133 MTHFR GT: 1/1 (homozygous)
+
+[UNKNOWN_GENES]
+VKORC1: -1639 G>A (гетерозигота) -> should be not_in_knowledge_base
+BRCA1: c.5266dupC (не обнаружено) -> should be skipped
+CYP2D6: *4/*4 (poor metabolizer) -> NOT IN BASE
+
+[DUPLICATES]
+CYP2C19: *1/*2
+CYP2C19: *1/*2 (duplicate line)
+MTHFR: TT
+MTHFR: TT (duplicate line)
+
+[SYNTAX_NIGHTMARES]
+Gene: CYP2C9 ; Result: *1/*3 ;
+Ген: F5
+Результат: CT
+CYP3A5 : *1/*3
+rs1800566=CT (NQO1)
+================================================================================
+[END_OF_HELL_FILE]
