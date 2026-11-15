@@ -216,9 +216,12 @@ def read_pdf(path: str) -> str:
 
 
 def parse_patient_input(text: str, path: Optional[str] = None) -> list[dict]:
-    """Dispatch: mixed VCF/lab dump vs classic Ген/Результат text."""
+    """Dispatch: HL7 v2 vs mixed VCF/lab dump vs classic Ген/Результат text."""
+    from hl7_parser import looks_like_hl7, parse_hl7_report
     from raw_parser import looks_like_raw_lab, parse_raw_lab_report
 
+    if looks_like_hl7(text, path):
+        return parse_hl7_report(text)
     if looks_like_raw_lab(text, path):
         return parse_raw_lab_report(text)
     return parse_patient_report(text)

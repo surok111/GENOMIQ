@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Генетический отчёт — sample_oru_r01.hl7</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f8fafc; color: #1e293b;
+    margin: 0; padding: 24px;
+    line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  header {
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white; padding: 28px 32px; border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25);
+  }
+  header h1 { margin: 0 0 6px; font-size: 24px; }
+  header .file { opacity: 0.85; font-size: 14px; }
+  header .date { opacity: 0.7; font-size: 13px; margin-top: 4px; }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px; margin-bottom: 28px;
+  }
+  .summary .stat {
+    background: white; padding: 14px 18px; border-radius: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .summary .stat .num { font-size: 26px; font-weight: 700; }
+  .summary .stat .label { font-size: 13px; color: #64748b; }
+  .stat.green .num { color: #16a34a; }
+  .stat.orange .num { color: #ea580c; }
+  .stat.gray .num { color: #64748b; }
+  .stat.blue .num { color: #2563eb; }
+  .stat.teal .num { color: #0d9488; }
+
+  h2 {
+    font-size: 19px; margin: 32px 0 14px;
+    padding-bottom: 8px; border-bottom: 2px solid #e2e8f0;
+  }
+
+  .card {
+    background: white; border-radius: 12px; padding: 18px 22px;
+    margin-bottom: 14px; border-left: 5px solid #cbd5e1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card.matched { border-left-color: #16a34a; }
+  .card.no-table { border-left-color: #ca8a04; }
+  .card.no-match { border-left-color: #94a3b8; }
+
+  .card-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .gene-name { font-size: 18px; font-weight: 700; color: #0f172a; }
+  .gene-group { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+  .status-icon { font-size: 20px; }
+
+  .patient-line {
+    background: #f1f5f9; padding: 8px 12px; border-radius: 7px;
+    margin-bottom: 10px; font-size: 14px;
+  }
+  .patient-line.comment { font-style: italic; color: #475569; }
+
+  .match {
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 12px; margin-top: 10px;
+  }
+  .match-head {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-bottom: 8px;
+  }
+  .genotype {
+    background: #eef2ff; color: #3730a3;
+    padding: 3px 10px; border-radius: 6px;
+    font-family: ui-monospace, Menlo, monospace; font-weight: 600;
+  }
+  .source { color: #64748b; font-size: 13px; }
+  .badge {
+    padding: 3px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  .row-details {
+    list-style: none; padding: 0; margin: 6px 0 0;
+    font-size: 14px;
+  }
+  .row-details li {
+    padding: 4px 0; border-bottom: 1px solid #f1f5f9;
+  }
+  .row-details li:last-child { border-bottom: none; }
+  .row-details b { color: #334155; }
+
+  .live-db {
+    margin-top: 12px; padding: 12px 14px;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+  }
+  .live-db h4 { margin: 0 0 8px; font-size: 14px; color: #1e3a8a; }
+  .live-db h5 { margin: 10px 0 4px; font-size: 13px; color: #334155; }
+  .live-db ul { padding-left: 18px; margin: 0; font-size: 13px; }
+  .live-db li { padding: 2px 0; }
+  .live-db a { color: #1d4ed8; text-decoration: none; }
+  .live-cls {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    background: #e2e8f0; border-radius: 4px; padding: 1px 6px; margin-right: 4px;
+  }
+  .live-sub { color: #64748b; font-size: 12px; margin: 4px 0; }
+
+  .recs { margin-top: 12px; }
+  .recs h4 { margin: 0 0 6px; font-size: 14px; color: #0f172a; }
+  .recs ul { padding-left: 18px; margin: 0; font-size: 14px; }
+  .recs ul li { padding: 3px 0; }
+
+  .note {
+    color: #64748b; font-size: 13px;
+    background: #f8fafc; padding: 8px 12px; border-radius: 6px;
+    margin-top: 8px;
+  }
+
+  .not-in-base {
+    background: white; border-radius: 10px; padding: 16px 20px;
+    border: 1px dashed #cbd5e1;
+  }
+  .not-in-base .hint { color: #64748b; font-size: 13px; margin: 0 0 10px; }
+  .not-in-base ul { padding-left: 20px; margin: 0; font-size: 14px; }
+  .not-in-base li { padding: 2px 0; }
+
+  /* ----- Фармакогенетика ----- */
+  .pgx-block {
+    margin-top: 16px;
+    border-top: 2px solid #e2e8f0;
+    padding-top: 12px;
+  }
+  .pgx-block h4 {
+    font-size: 14px;
+    margin: 0 0 10px;
+    color: #0f172a;
+  }
+  .pgx-count {
+    font-weight: 400;
+    color: #64748b;
+  }
+  .pgx-counter {
+    font-weight: 600;
+    color: #16a34a;
+    margin-left: 8px;
+    font-size: 12px;
+  }
+  .pgx-table-wrap {
+    overflow-x: auto;
+  }
+  .pgx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .pgx-table th {
+    text-align: left;
+    padding: 6px 8px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    font-weight: 600;
+    color: #475569;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .pgx-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+  .pgx-match-col {
+    width: 28px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .pgx-row-exact {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+  }
+  .pgx-row-exact td:first-child {
+    color: #16a34a;
+    font-weight: 700;
+  }
+  .pgx-row-allele {
+    background: #fefce8;
+    border-left: 3px solid #ca8a04;
+  }
+  .pgx-row-allele td:first-child {
+    color: #ca8a04;
+    font-weight: 700;
+  }
+  .pgx-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .pgx-gt {
+    font-family: ui-monospace, Menlo, monospace;
+    font-weight: 600;
+    color: #0f172a;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  .pgx-pval {
+    font-family: ui-monospace, Menlo, monospace;
+    color: #64748b;
+    white-space: nowrap;
+  }
+
+  .pgx-no-match {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  .pgx-no-match-title {
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 6px;
+  }
+  .pgx-no-match-text {
+    color: #64748b;
+    margin-bottom: 4px;
+  }
+  .pgx-no-match-sub {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  footer {
+    margin-top: 40px; padding: 20px;
+    text-align: center; color: #94a3b8; font-size: 12px;
+  }
+
+  .print-btn {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #1e40af; color: white; border: none;
+    padding: 12px 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(30,64,175,0.3);
+  }
+  .print-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .print-btn { display: none; }
+    .card { box-shadow: none; border: 1px solid #e2e8f0; page-break-inside: avoid; }
+    header { box-shadow: none; }
+    .pgx-table-wrap { overflow: visible; }
+    .pgx-table { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🧬 Генетический отчёт</h1>
+    <div class="file">Источник: sample_oru_r01.hl7</div>
+    <div class="date">Сформировано: 15.11.2026 15:53</div>
+  </header>
+
+  <div class="summary">
+    <div class="stat green">
+      <div class="num">5</div>
+      <div class="label">✅ Найдено в базе</div>
+    </div>
+    <div class="stat orange">
+      <div class="num">0</div>
+      <div class="label">⚠️ Не сопоставлено</div>
+    </div>
+    <div class="stat gray">
+      <div class="num">0</div>
+      <div class="label">❌ Нет в базе знаний</div>
+    </div>
+    <div class="stat blue">
+      <div class="num">0</div>
+      <div class="label">💊 Фармакогенетика (ваших)</div>
+    </div>
+    <div class="stat teal">
+      <div class="num">5</div>
+      <div class="label">🔍 Генов без данных</div>
+    </div>
+  </div>
+
+  <section><h2>✅ Интерпретированные гены (5)</h2>
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP2C19</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> *1/*2</div>
+            <div class="patient-line comment">HL7 OBX-3=CYP2C19^Cytochrome P450 2C19^LN; HL7 OBX-3=CYP2C19*2</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">*1/*2</span>
+                        <span class="source">← *1/*2</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> *1/*2</li><li><b>Фенотип:</b> Intermediate Metabolizer (IM)</li><li><b>Функция:</b> Одна нормальная + одна сниженная</li><li><b>Клинический риск:</b> **Клопидогрел — снижение эффекта**, риск тромбоза стента. Снижение доз ИПП, циталопрама</li><li><b>ACMG:</b> Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Клопидогрел — это пролекарство. Для его активации нужен CYP2C19.</li><li>Медленные метаболисты (*2, *3): Лекарство не активируется. Риск повторного инфаркта/тромбоза стента. Рекомендуется замена на тикагрелор или прасугрел.</li><li>Ультрабыстрые метаболисты (*17): Риск кровотечений.</li><li>Ингибиторы протонной помпы (ИПП):</li><li>Медленные метаболисты: Препарат выводится долго, эффект лечения язвы выше.</li><li>Быстрые метаболисты: Стандартная доза может быть неэффективна (быстрое вымывание).</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">MTHFR</div>
+                    <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> TT</div>
+            <div class="patient-line comment">HL7 OBX-3=MTHFR</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">TT</span>
+                        <span class="source">← TT</span>
+                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> TT</li><li><b>Аллели:</b> T/T</li><li><b>Частота*:</b> ~10-15%</li><li><b>Функциональный эффект:</b> Выраженное снижение активности (термолабильный вариант, ~30% активности). Значительное повышение уровня гомоцистеина.</li><li><b>Клинический риск:</b> Высокий (ДНТ, невынашивание, ССЗ)</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>TT или CT+AC: Генетически снижена способность усваивать обычную фолиевую кислоту. Рекомендуется контроль уровня гомоцистеина в крови (целевой уровень обычно &lt; 7-8 мкмоль/л).</li><li>При планировании беременности необходимо обсудить с врачом прием активных форм фолатов (L-метилфолат/метафолин) вместо стандартной фолиевой кислоты для профилактики дефектов нервной трубки у плода.</li><li>Изолированные гетерозиготы (CT или AC) при нормальном уровне гомоцистеина не требуют медикаментозной коррекции, кроме стандартной профилактики в прегравидарном периоде.</li><li>При высоких значениях гомоцистеина (&gt;10-12 мкмоль/л) у носителей ТТ целесообразно назначение комплекса метилированных витаминов B9, B12 и B6.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">F5</div>
+                    <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CT</div>
+            <div class="patient-line comment">HL7 OBX-3=rs6025^F5 Leiden^L</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CT (гетерозигота)</span>
+                        <span class="source">← CT</span>
+                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CT (гетерозигота)</li><li><b>Аллели:</b> C/T</li><li><b>Частота (Европа):</b> ~4-5%</li><li><b>Функциональный эффект:</b> APC-резистентность, риск тромбоза в 7 раз</li><li><b>Клинический риск:</b> **Повышенный риск ВТЭ; контрацептивы ПРОТИВОПОКАЗАНЫ**</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>CC (норма): Стандартные рекомендации.</li><li>CT / TT (носители Лейден): Высокий риск венозного тромбоза. Категорически избегать гормональных контрацептивов (риск тромбоза у носителей на контрацептивах — RR = 34.7). Избегать длительной иммобилизации, пить много воды в полёте, двигаться. При планировании беременности — консультация гематолога.</li><li>Гомозиготы TT: риск тромбоза 40-80x — пожизненное наблюдение у гематолога, рассмотреть антикоагуляцию при провоцирующих факторах.</li><li>Гормональные контрацептивы (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): противопоказаны носителям FVL — FDA/EMA/HCSC labels.</li><li>Eltrombopag, avatrombopag, lusutrombopag: осторожно, тромботический риск.</li><li>Ривароксабан: FDA Biomarker, данных недостаточно.</li><li>При тромбозе в анамнезе — пожизненная антикоагуляция по решению гематолога.</li><li>Сочетание с F2 G20210A или MTHFR C677T — кумулятивный риск тромбоза, особенно при контрацептивах.</li><li>Уровень доказательности 2B (ClinPGx) — не заменяет клинического решения.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">NQO1</div>
+                    <div class="gene-group">Группа 1: Детоксикация и антиоксидантная защита</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> CT</div>
+            <div class="patient-line comment">HL7 OBX-3=NQO1^NAD(P)H quinone dehydrogenase 1</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CT (Pro/Ser)</span>
+                        <span class="source">← CT</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CT (Pro/Ser)</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функция:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск бензольной гематотоксичности</li><li><b>ACMG:</b> Risk factor</li></ul>
+                </div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">CT (Pro/Ser)</span>
+                        <span class="source">← CT</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> CT (Pro/Ser)</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функция:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск бензольной токсичности</li><li><b>ACMG:</b> Risk factor</li></ul>
+                </div>
+            
+            
+            <div class="pgx-block">
+                <h4>💊 Фармакогенетика</h4>
+                <div class="pgx-no-match">
+                    <div class="pgx-no-match-title">Нет данных для вашего генотипа</div>
+                    <div class="pgx-no-match-text">
+                        В базе есть <b>25</b> клинических
+                        ассоциаций по этому гену, но ни одна не относится к вашему
+                        генотипу <b>CT, TC</b>.
+                    </div>
+                    <div class="pgx-no-match-sub">
+                        Изученные генотипы в базе:
+                        <span class="pgx-gt">A, AA, AG, G, GG</span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>NQO1 (EC 1.6.5.2) — флавопротеин, катализирующий 2-электронное восстановление различных хинонов и редокс-красителей, таких как филлохинон и витамин K менадион (Jaiswal et al., 1988).</li><li>Jaiswal et al. (1988): обработка клеток HepG2 тетрахлордибензо-п-диоксином (TCDD) вызывает 5-кратную индукцию активности NMOR1; TCDD преимущественно индуцирует транскрипцию 2.7-kb мРНК NMOR.</li><li>Edwards et al. (1983): количественный полиморфизм DIA4 объясняется сегрегацией «низкоактивного» аллеля; у 4–6% людей наблюдается DIA4-отсутствующий фенотип. DIA4, вероятно, идентичен NAD(P)H:менадион оксидоредуктазе (NMOR1).</li><li>Jaiswal (1991): ген NQO1 содержит 6 кодирующих экзонов и охватывает около 20 kb.</li><li>Grzeschik (1980), Povey et al. (1980): четвёртый локус диафоразы (DIA4) сегрегирует с хромосомой 16; региональная локализация 16q12-q22.</li><li>Jaiswal et al. (1988): ген NMOR1 (однокопийный) картирован на хромосоме 16.</li><li>Chen et al. (1991): локус NMOR1 отнесён к 16q22.1.</li><li>Moran et al. (1999): NQO1 — 2-электронная редуктаза, детоксифицирующая хиноны, образующиеся при окислении фенольных метаболитов бензола. Лица, гомозиготные по T/T-форме полиморфизма 609C-T (125860.0001), имеют повышенный риск бензольной гематотоксичности. Экспозиция нетоксичной концентрации гидрохинона (HQ) индуцирует NQO1 и растворимые тиолы, защищая от HQ-индуцированного апоптоза. В клетках костного мозга с генотипом T/T NQO1 не индуцируется HQ; в гетерозиготах (C/T) — промежуточная индукция. Данные позволяют предположить, что неспособность индуцировать функциональный NQO1 может вносить вклад в повышенный риск бензольного отравления у гомозигот по 609C-T.</li><li>Millstein et al. (2006): выявлен значимый многоlocus-эффект между генами NQO1, MPO (606989) и CAT (115500) — 3 генами, вовлечёнными в путь окислительного стресса — при астме (см. 600807). В независимом наборе данных (афроамериканские и азиато-американские дети) эти 3 гена также показали значимую ассоциацию со статусом астмы (P = 0.0008).</li><li>Fagerholm et al. (2008): гомозиготность по распространённому миссенс-варианту NQO1 P187S (125860.0001) (rs1800566) инактивирует NQO1 и strongly предсказывает плохую выживаемость в 2 независимых сериях женщин с раком молочной железы (P = 0.002, N = 1 005; P = 0.005, N = 1 162), эффект особенно выражен после адъювантной химиотерапии на основе антрациклинов с эпирубицином (P = 7.52 x 10(-6)) и при p53-аберрантных опухолях (P = 6.15 x 10(-5)). Выживаемость после метастазирования снижена у гомозигот NQO1*2, что дополнительно указывает на роль дефицита NQO1 в прогрессировании рака и резистентности к лечению. Ответ на эпирубицин был нарушен в гомозиготных по NQO1*2 клетках карциномы молочной железы in vitro.</li><li>Radjendirane et al. (1998): созданы Nqo1-null мыши путём таргетного разрушения. Мыши без экспрессии NQO1 неотличимы от дикого типа. Однако Nqo1-null мыши проявляли повышенную токсичность при введении менадиона по сравнению с диким типом. Результаты подтверждают роль NQO1 в защите от хиноновой токсичности.</li><li>Rothman et al. (1997): случай-контроль среди рабочих, экспонированных бензолом в Китае, показал повышенный риск гематотоксичности у лиц с генотипом T/T NQO1.</li><li>Smith (1999): исследована роль полиморфизма 609C&gt;T при лейкозах в серии из 104 случаев из Чикаго (более половины — миелоидные лейкозы, вторичные после химиотерапии). Частота мутантного аллеля в 1.4 раза выше ожидаемой при посттерапевтических ОМЛ и в 1.6 раза выше у пациентов с аномалиями хромосом 5 и/или 7.</li><li>Fagerholm et al. (2008): гомозиготность T/T NQO1 (NQO1*2, rs1800566T) strongly предсказывала плохую выживаемость в 2 независимых сериях женщин с раком молочной железы (114480).</li><li>Summary Annotations: 9 записей, все Level 3, кроме одной Level 4 — rs10517 / imatinib / Efficacy / GIST (ID 1450373616); rs1800566 / epirubicin; fluorouracil; oxaliplatin / Efficacy / Metastatic neoplasm; Stomach Neoplasms (ID 1451398240); rs10517 / warfarin / Dosage (ID 1446899176); rs1800566 / warfarin / Efficacy / Thrombotic disease (ID 1451606000); rs1800566 / Platinum compounds / Efficacy / Neoplasms (ID 1183491004); rs1800566 / warfarin / Dosage (ID 1043880367); rs1800566 / warfarin / Toxicity / Hemorrhage (ID 1451605980); rs1800566 / cyclophosphamide; epirubicin; fluorouracil / Efficacy / Breast Neoplasms (ID 1451398300); rs1800566 / warfarin / Dosage / Level 4 (ID 1447749024).</li><li>Non-Pediatric Variant Annotations: 35 записей — rs1800566 (26), rs10517 (5), rs1131341 (2), rs2917670 (1), rs2917677 (1).</li><li>Pediatric Clinical Annotations и Pediatric Variant Annotations отсутствуют.</li><li>Уровень доказательности для Summary Annotations — Level 3 (за исключением ID 1447749024 — Level 4); не заменяет клинического решения.</li><li>CPIC guideline отсутствует.</li></ul></div>
+        </div>
+        
+        <div class="card matched">
+            <div class="card-head">
+                <div>
+                    <div class="gene-name">CYP2C9</div>
+                    <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
+                </div>
+                <span class="status-icon">✅</span>
+            </div>
+            <div class="patient-line"><b>Результат:</b> *1/*2</div>
+            <div class="patient-line comment">HL7 OBX-3=CYP2C9</div>
+            
+                <div class="match">
+                    <div class="match-head">
+                        <span class="genotype">*1/*2</span>
+                        <span class="source">← *1/*2</span>
+                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                    </div>
+                    <ul class="row-details"><li><b>Генотип:</b> *1/*2</li><li><b>Фенотип:</b> Intermediate Metabolizer (IM)</li><li><b>Функция:</b> Одна нормальная + одна сниженная</li><li><b>Клинический риск:</b> Снижение дозы варфарина, фенитоина. Мониторинг INR</li><li><b>ACMG:</b> Risk factor</li></ul>
+                </div>
+            
+            
+            
+            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>*1/*1 (Extensive Metabolizer): Нормальная скорость расщепления. Стандартные дозировки.</li><li>*1/*2, *1/*3 (Intermediate Metabolizer): Сниженная активность. Требуется осторожное титрование дозы варфарина.</li><li>*2/*2, *2/*3, *3/*3 (Poor Metabolizer): Значительное снижение активности. Высокий риск кровотечений на стандартных дозах варфарина и побочных эффектов НПВС (гастропатии).</li></ul></div>
+        </div>
+        </section>
+  
+  
+
+  <footer>
+    Отчёт сформирован автоматически. Не является медицинским диагнозом.<br>
+    Для интерпретации обратитесь к врачу-генетику.
+  </footer>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨 Печать / PDF</button>
+</body>
+</html>

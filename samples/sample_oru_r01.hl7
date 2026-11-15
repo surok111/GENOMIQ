@@ -1,0 +1,10 @@
+MSH|^~\&|LIS|CityLab|GENOMIQ|API|20261115120000||ORU^R01^ORU_R01|MSG00001|P|2.5
+PID|1||PAT-994821||Иванова^Анна||19880312|F
+OBR|1||SPEC-001|PGX^Pharmacogenetics^L|||20261115113000
+OBX|1|CWE|CYP2C19^Cytochrome P450 2C19^LN||*1/*2^Intermediate metabolizer^L|||N|||F
+OBX|2|ST|MTHFR||TT|||A|||F
+OBX|3|CWE|rs6025^F5 Leiden^L||CT|||A|||F
+OBX|4|CWE|CYP2C19*2|1|*1/*2|||N|||F
+OBX|5|ST|NQO1^NAD(P)H quinone dehydrogenase 1||CT|||N|||F
+OBX|6|CWE|BRCA1||negative|||N|||F
+OBX|7|ST|CYP2C9||*1/*2|||N|||F
