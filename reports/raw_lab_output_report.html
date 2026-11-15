@@ -3,354 +3,630 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Генетический отчёт — raw_lab_output.txt</title>
+<title>GenomIQ — raw_lab_output.txt</title>
 <style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: #f8fafc; color: #1e293b;
-    margin: 0; padding: 24px;
-    line-height: 1.55;
-  }
-  .container { max-width: 1100px; margin: 0 auto; }
 
-  header {
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
-    color: white; padding: 28px 32px; border-radius: 14px;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25);
+  :root {
+    --bg: #f5f5f7;
+    --text: #1d1d1f;
+    --muted: #86868b;
+    --line: #d2d2d7;
+    --accent: #1d1d1f;
+    --danger: #ff3b30;
+    --font: "Times New Roman", Times, serif;
   }
-  header h1 { margin: 0 0 6px; font-size: 24px; }
-  header .file { opacity: 0.85; font-size: 14px; }
-  header .date { opacity: 0.7; font-size: 13px; margin-top: 4px; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body, button, input, textarea, select, summary, h1, h2, h3, h4, h5, p, li, td, th, a, span, div {
+    font-family: var(--font) !important;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+  }
+
+  @keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header.report-header {
+    background: transparent;
+    color: var(--text);
+    padding: 8px 0 0;
+    margin-bottom: 32px;
+  }
+  header.report-header h1 {
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+  header .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    background: linear-gradient(180deg, #ffffff 0%, #f4f4f7 100%);
+    border: 1px solid #e5e5ea;
+    border-radius: 12px;
+    padding: 10px 4px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 2px 10px rgba(0,0,0,0.03);
+  }
+  header .meta .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 16px;
+    color: var(--muted);
+  }
+  header .meta .meta-item + .meta-item {
+    border-left: 1px solid #d2d2d7;
+  }
+  header .meta .meta-key {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: #aeaeb2;
+  }
+  header .meta .meta-val {
+    color: var(--text);
+    font-weight: 700;
+  }
 
   .summary {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px; margin-bottom: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 0 0 40px;
   }
   .summary .stat {
-    background: white; padding: 14px 18px; border-radius: 10px;
-    border: 1px solid #e2e8f0;
+    background: linear-gradient(145deg, #ffffff, #f0f0f2);
+    border: 1px solid #e5e5ea;
+    border-radius: 16px;
+    padding: 16px 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: cardFadeIn 0.6s ease both;
   }
-  .summary .stat .num { font-size: 26px; font-weight: 700; }
-  .summary .stat .label { font-size: 13px; color: #64748b; }
-  .stat.green .num { color: #16a34a; }
-  .stat.orange .num { color: #ea580c; }
-  .stat.gray .num { color: #64748b; }
-  .stat.blue .num { color: #2563eb; }
-  .stat.teal .num { color: #0d9488; }
+  .summary .stat:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .summary .stat .num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .summary .stat .label {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 
   h2 {
-    font-size: 19px; margin: 32px 0 14px;
-    padding-bottom: 8px; border-bottom: 2px solid #e2e8f0;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 48px 0 20px;
+    padding: 0;
+    border: none;
+    color: var(--text);
+  }
+
+  .critical-alerts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28px;
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 0 0 36px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    animation: cardFadeIn 0.55s ease both;
+  }
+  .critical-copy {
+    flex: 1 1 55%;
+    min-width: 0;
+  }
+  .critical-alerts .critical-lead {
+    font-size: 18px;
+    margin: 0 0 8px;
+    letter-spacing: 0.01em;
+  }
+  .critical-alerts ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .critical-alerts li { padding: 4px 0; color: #f5f5f7; }
+  .critical-alerts b { color: #ffffff; font-weight: 700; }
+
+  .risk-chart {
+    flex: 0 0 42%;
+    max-width: 340px;
+    background: transparent;
+    min-width: 220px;
+  }
+  .risk-chart-title {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #86868b;
+    margin: 0 0 12px;
+  }
+  .risk-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .risk-row {
+    display: grid;
+    grid-template-columns: minmax(88px, 34%) 1fr 28px;
+    align-items: center;
+    gap: 10px;
+  }
+  .risk-cat {
+    font-size: 12px;
+    color: #f5f5f7;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .risk-track {
+    height: 10px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 980px;
+    overflow: hidden;
+  }
+  .risk-bar-h {
+    height: 100%;
+    border-radius: 980px;
+    min-width: 8px;
+    transition: width 0.5s ease;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+  }
+  .risk-bar-h.bar-high {
+    background: linear-gradient(90deg, #ff6961 0%, #ff3b30 100%);
+  }
+  .risk-bar-h.bar-high.bar-glow {
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.25), 0 0 12px rgba(255, 59, 48, 0.45);
+  }
+  .risk-bar-h.bar-mod {
+    background: linear-gradient(90deg, #ffd60a 0%, #ff9500 100%);
+  }
+  .risk-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: right;
+  }
+  @media (max-width: 700px) {
+    .critical-alerts {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .risk-chart {
+      flex: 1 1 auto;
+      max-width: none;
+    }
+  }
+
+  .gene-section h2 {
+    margin-bottom: 20px;
+  }
+  .gene-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch;
+    scroll-snap-type: y proximity;
+  }
+  @media (min-width: 900px) {
+    .gene-cards {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .card {
-    background: white; border-radius: 12px; padding: 18px 22px;
-    margin-bottom: 14px; border-left: 5px solid #cbd5e1;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    background: linear-gradient(135deg, #ffffff 0%, #f4f4f7 100%);
+    border: 1px solid #e5e5ea;
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: cardFadeIn 0.7s ease both;
   }
-  .card.matched { border-left-color: #16a34a; }
-  .card.no-table { border-left-color: #ca8a04; }
-  .card.no-match { border-left-color: #94a3b8; }
+  .card:nth-child(2) { animation-delay: 0.05s; }
+  .card:nth-child(3) { animation-delay: 0.1s; }
+  .card:nth-child(4) { animation-delay: 0.15s; }
+  .card:nth-child(5) { animation-delay: 0.2s; }
+  .card:hover {
+    transform: scale(1.01);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 10px 30px rgba(0,0,0,0.08);
+    border-color: #d2d2d7;
+  }
 
   .card-head {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
   }
-  .gene-name { font-size: 18px; font-weight: 700; color: #0f172a; }
-  .gene-group { font-size: 12px; color: #94a3b8; margin-top: 2px; }
-  .status-icon { font-size: 20px; }
+  .gene-name {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--text);
+  }
+  .gene-group {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .status-label {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 980px;
+    padding: 4px 12px;
+    white-space: nowrap;
+    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+  }
 
   .patient-line {
-    background: #f1f5f9; padding: 8px 12px; border-radius: 7px;
-    margin-bottom: 10px; font-size: 14px;
+    background: transparent;
+    padding: 0;
+    margin: 0 0 10px;
+    font-size: 16px;
   }
-  .patient-line.comment { font-style: italic; color: #475569; }
-
-  .match {
-    border-top: 1px dashed #e2e8f0;
-    padding-top: 12px; margin-top: 10px;
+  .patient-line .label {
+    color: var(--muted);
+    margin-right: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
-  .match-head {
-    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-    margin-bottom: 8px;
+  .patient-line .value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
   }
-  .genotype {
-    background: #eef2ff; color: #3730a3;
-    padding: 3px 10px; border-radius: 6px;
-    font-family: ui-monospace, Menlo, monospace; font-weight: 600;
-  }
-  .source { color: #64748b; font-size: 13px; }
-  .badge {
-    padding: 3px 10px; border-radius: 6px;
-    font-size: 12px; font-weight: 600;
-  }
-
-  .row-details {
-    list-style: none; padding: 0; margin: 6px 0 0;
+  .patient-line.comment {
+    font-style: italic;
+    color: var(--muted);
     font-size: 14px;
   }
-  .row-details li {
-    padding: 4px 0; border-bottom: 1px solid #f1f5f9;
-  }
-  .row-details li:last-child { border-bottom: none; }
-  .row-details b { color: #334155; }
 
-  .live-db {
-    margin-top: 12px; padding: 12px 14px;
-    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+  .match {
+    border-top: 1px solid #e5e5ea;
+    padding-top: 18px;
+    margin-top: 18px;
   }
-  .live-db h4 { margin: 0 0 8px; font-size: 14px; color: #1e3a8a; }
-  .live-db h5 { margin: 10px 0 4px; font-size: 13px; color: #334155; }
-  .live-db ul { padding-left: 18px; margin: 0; font-size: 13px; }
-  .live-db li { padding: 2px 0; }
-  .live-db a { color: #1d4ed8; text-decoration: none; }
-  .live-cls {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    background: #e2e8f0; border-radius: 4px; padding: 1px 6px; margin-right: 4px;
+  .match-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
   }
-  .live-sub { color: #64748b; font-size: 12px; margin: 4px 0; }
+  .genotype {
+    background: linear-gradient(180deg, #ffffff 0%, #ebebf0 100%);
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .source { color: var(--muted); font-size: 13px; }
+  .badge {
+    padding: 3px 10px;
+    border-radius: 980px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+    font-size: 12px;
+    font-weight: 700;
+  }
 
-  .recs { margin-top: 12px; }
-  .recs h4 { margin: 0 0 6px; font-size: 14px; color: #0f172a; }
-  .recs ul { padding-left: 18px; margin: 0; font-size: 14px; }
-  .recs ul li { padding: 3px 0; }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .detail-box {
+    background: linear-gradient(180deg, #ffffff 0%, #ebebf0 100%);
+    border: 1px solid #d2d2d7;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+  .detail-box.detail-emphasis {
+    border-left: 3px solid #1d1d1f;
+  }
+  .detail-box.detail-critical {
+    border-left: 3px solid #ff3b30;
+  }
+  .detail-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #86868b;
+    margin-bottom: 4px;
+  }
+  .detail-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1d1d1f;
+    line-height: 1.45;
+  }
+  .recs-list {
+    margin: 0;
+    padding-left: 18px;
+    font-weight: 700;
+  }
+  .recs-list li {
+    padding: 3px 0;
+    font-weight: 700;
+  }
+  .recs { margin-top: 16px; }
 
   .why {
-    margin: 10px 0 4px;
-    background: #fffbeb;
-    border: 1px solid #fde68a;
-    border-radius: 8px;
+    margin: 14px 0 8px;
+    background: transparent;
+    border: none;
     padding: 0;
   }
   .why summary {
     cursor: pointer;
     list-style: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin: 8px 12px;
-    padding: 4px 12px;
-    border-radius: 999px;
-    background: #f59e0b;
-    color: #1c1917;
-    font-size: 13px;
-    font-weight: 700;
+    display: inline-block;
+    margin: 0;
+    padding: 6px 16px;
+    background: #1d1d1f;
+    color: #ffffff;
+    border: none;
+    border-radius: 980px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
     user-select: none;
   }
   .why summary::-webkit-details-marker { display: none; }
-  .why summary::before { content: "?"; font-weight: 800; }
-  .why[open] summary { background: #d97706; color: white; }
+  .why summary::before { content: none; }
+  .why summary:hover,
+  .why[open] summary {
+    background: #424245;
+    color: #ffffff;
+  }
   .why-body {
-    padding: 4px 14px 12px;
-    font-size: 13px;
-    color: #334155;
+    margin-top: 14px;
+    padding: 16px;
+    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+    border: 1px solid #d2d2d7;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text);
   }
-  .why-sentence { margin: 0 0 8px; line-height: 1.5; }
-  .why-body ul { padding-left: 18px; margin: 0; }
-  .why-body li { padding: 2px 0; }
+  .why-sentence { margin: 0 0 10px; line-height: 1.55; font-weight: 700; }
+  .why-body ul { padding-left: 18px; margin: 0; color: var(--muted); }
+  .why-body li { padding: 3px 0; }
 
-  .critical-alerts {
-    background: #fee2e2;
-    border: 2px solid #dc2626;
-    border-radius: 12px;
-    padding: 16px 22px 8px;
-    margin: 0 0 24px;
-    color: #7f1d1d;
-  }
-  .critical-alerts h2 {
-    margin: 0 0 10px;
-    padding: 0;
-    border: none;
-    color: #991b1b;
+  .live-db h4, .pgx-block h4 {
     font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: var(--text);
   }
-  .critical-alerts ul {
-    margin: 0 0 8px;
-    padding-left: 20px;
+  .live-db ul {
+    padding-left: 18px;
+    margin: 0;
     font-size: 15px;
-    font-weight: 600;
-    line-height: 1.55;
   }
-  .critical-alerts li { padding: 4px 0; }
+  .live-db {
+    margin-top: 18px;
+    padding: 16px 0 0;
+    border-top: 1px solid #e5e5ea;
+    background: transparent;
+  }
+  .live-db h5 {
+    margin: 12px 0 4px;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .live-db a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
+  .live-cls {
+    display: inline-block;
+    font-size: 11px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-right: 4px;
+  }
+  .live-sub { color: var(--muted); font-size: 13px; margin: 4px 0; }
+
+  .note {
+    color: var(--muted);
+    font-size: 14px;
+    background: transparent;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .not-in-base {
+    background: linear-gradient(145deg, #ffffff, #f0f0f2);
+    border: 1px solid #e5e5ea;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+  .not-in-base .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+  .not-in-base ul { padding-left: 18px; margin: 0; font-size: 15px; }
+
+  .pgx-block {
+    margin-top: 20px;
+    border-top: 1px solid #e5e5ea;
+    padding-top: 16px;
+  }
+  .pgx-count, .pgx-counter {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .pgx-table-wrap { overflow-x: auto; }
+  .pgx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .pgx-table th {
+    text-align: left;
+    padding: 10px 8px;
+    background: transparent;
+    border-bottom: 1px solid var(--line);
+    font-weight: 500;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .pgx-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #ececef;
+    vertical-align: top;
+  }
+  .pgx-match-col { width: 28px; text-align: center; }
+  .pgx-row-exact, .pgx-row-allele { background: transparent; border-left: none; }
+  .pgx-badge {
+    padding: 2px 8px;
+    border-radius: 980px;
+    border: 1px solid var(--line);
+    font-size: 11px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+    display: inline-block;
+  }
+  .pgx-gt { font-weight: 700; white-space: nowrap; }
+  .pgx-pval { color: var(--muted); white-space: nowrap; }
+  .pgx-no-match {
+    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+    border: 1px solid #d2d2d7;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+  .pgx-no-match-title { font-weight: 700; margin-bottom: 6px; }
+  .pgx-no-match-text, .pgx-no-match-sub { color: var(--muted); }
 
   .doctors-note {
-    background: white;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
-    padding: 18px 22px;
-    margin: 28px 0 8px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 8px 0 8px 24px;
+    margin: 56px 0 24px;
+    border-left: 2px solid #000;
+    animation: cardFadeIn 0.7s ease both;
   }
   .doctors-note h2 {
-    margin: 0 0 10px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e2e8f0;
-    font-size: 18px;
+    margin: 0 0 16px;
+    font-size: 24px;
   }
   .doctors-note-text {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.65;
-    color: #0f172a;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text);
     user-select: text;
     -webkit-user-select: text;
   }
 
-  .note {
-    color: #64748b; font-size: 13px;
-    background: #f8fafc; padding: 8px 12px; border-radius: 6px;
-    margin-top: 8px;
-  }
-
-  .not-in-base {
-    background: white; border-radius: 10px; padding: 16px 20px;
-    border: 1px dashed #cbd5e1;
-  }
-  .not-in-base .hint { color: #64748b; font-size: 13px; margin: 0 0 10px; }
-  .not-in-base ul { padding-left: 20px; margin: 0; font-size: 14px; }
-  .not-in-base li { padding: 2px 0; }
-
-  /* ----- Фармакогенетика ----- */
-  .pgx-block {
-    margin-top: 16px;
-    border-top: 2px solid #e2e8f0;
-    padding-top: 12px;
-  }
-  .pgx-block h4 {
-    font-size: 14px;
-    margin: 0 0 10px;
-    color: #0f172a;
-  }
-  .pgx-count {
-    font-weight: 400;
-    color: #64748b;
-  }
-  .pgx-counter {
-    font-weight: 600;
-    color: #16a34a;
-    margin-left: 8px;
-    font-size: 12px;
-  }
-  .pgx-table-wrap {
-    overflow-x: auto;
-  }
-  .pgx-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12.5px;
-  }
-  .pgx-table th {
-    text-align: left;
-    padding: 6px 8px;
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
-    font-weight: 600;
-    color: #475569;
-    font-size: 11.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-  .pgx-table td {
-    padding: 6px 8px;
-    border-bottom: 1px solid #f1f5f9;
-    vertical-align: top;
-  }
-  .pgx-match-col {
-    width: 28px;
-    text-align: center;
-    font-size: 14px;
-  }
-  .pgx-row-exact {
-    background: #f0fdf4;
-    border-left: 3px solid #16a34a;
-  }
-  .pgx-row-exact td:first-child {
-    color: #16a34a;
-    font-weight: 700;
-  }
-  .pgx-row-allele {
-    background: #fefce8;
-    border-left: 3px solid #ca8a04;
-  }
-  .pgx-row-allele td:first-child {
-    color: #ca8a04;
-    font-weight: 700;
-  }
-  .pgx-badge {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-    display: inline-block;
-  }
-  .pgx-gt {
-    font-family: ui-monospace, Menlo, monospace;
-    font-weight: 600;
-    color: #0f172a;
-    white-space: nowrap;
-    font-size: 12px;
-  }
-  .pgx-pval {
-    font-family: ui-monospace, Menlo, monospace;
-    color: #64748b;
-    white-space: nowrap;
-  }
-
-  .pgx-no-match {
-    background: #f8fafc;
-    border: 1px dashed #cbd5e1;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 13px;
-  }
-  .pgx-no-match-title {
-    font-weight: 700;
-    color: #475569;
-    margin-bottom: 6px;
-  }
-  .pgx-no-match-text {
-    color: #64748b;
-    margin-bottom: 4px;
-  }
-  .pgx-no-match-sub {
-    color: #94a3b8;
-    font-size: 12px;
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-
   footer {
-    margin-top: 40px; padding: 20px;
-    text-align: center; color: #94a3b8; font-size: 12px;
+    margin-top: 48px;
+    padding: 24px 0 0;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
   }
 
   .print-btn {
-    position: fixed; bottom: 20px; right: 20px;
-    background: #1e40af; color: white; border: none;
-    padding: 12px 20px; border-radius: 10px;
-    font-size: 14px; font-weight: 600; cursor: pointer;
-    box-shadow: 0 4px 12px rgba(30,64,175,0.3);
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #1d1d1f;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 980px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
   }
-  .print-btn:hover { background: #1d4ed8; }
+  .print-btn:hover { background: #424245; }
 
   @media print {
-    * { box-shadow: none !important; }
-    body { background: #fff !important; color: #000; padding: 0; }
-    header {
-      background: none !important; color: #000; box-shadow: none;
-      border: 1px solid #000;
+    * { box-shadow: none !important; transform: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+    body {
+      background: #fff !important;
+      color: #000;
+      padding: 0;
+      font-size: 12pt;
     }
-    .summary .stat, .patient-line, .genotype, .badge,
-    .pgx-row-exact, .pgx-row-allele, .live-db, .note, .pgx-badge,
-    .critical-alerts, .doctors-note, .why {
+    .container { padding: 0; max-width: none; }
+    header.report-header { border-bottom: 1px solid #000; color: #000; }
+    .summary .stat, .card, .not-in-base, .genotype, .badge, .pgx-badge, .detail-box, .why-body {
       background: none !important;
+      box-shadow: none !important;
     }
-    .critical-alerts { border: 2px solid #000; color: #000; }
+    .critical-alerts {
+      background: #fff !important;
+      color: #000 !important;
+      border: 1px solid #000;
+      box-shadow: none !important;
+    }
+    .critical-alerts li, .critical-alerts b, .critical-lead { color: #000 !important; }
     .print-btn, .why summary { display: none !important; }
-    .why { border: 1px solid #333; }
     .why-body { display: block !important; }
     .critical-alerts, .card, .doctors-note {
       page-break-inside: avoid;
@@ -359,60 +635,106 @@
     thead { display: table-header-group; }
     .pgx-table th { background: none !important; }
     .pgx-table-wrap { overflow: visible; }
-    .pgx-table { font-size: 11px; }
   }
+
 </style>
 </head>
 <body>
 <div class="container">
 
-  <header>
-    <h1>🧬 Генетический отчёт</h1>
-    
-    <div class="file">Источник: raw_lab_output.txt</div>
-    <div class="date">Сформировано: 15.11.2026 16:10</div>
+  <header class="report-header">
+    <h1>GenomIQ</h1>
+    <div class="meta"><span class="meta-item"><span class="meta-key">Source</span><span class="meta-val">raw_lab_output.txt</span></span><span class="meta-item"><span class="meta-key">Date</span><span class="meta-val">15.11.2026 17:08</span></span></div>
   </header>
 
   
     <section class="critical-alerts" id="critical-alerts">
-      <h2>🚨 Критические предупреждения</h2>
-      <ul><li><b>CYP2C19</b> — Снижение эффективности клопидогреля. Рекомендуется замена на тикагрелор или прасугрел.</li><li><b>F5</b> — ПРОТИВОПОКАЗАНЫ гормональные контрацептивы (риск тромбоза, RR=34.7).</li><li><b>MTHFR</b> — Контроль уровня гомоцистеина. Рекомендуется прием активных форм фолатов (L-метилфолат).</li><li><b>SLCO1B1</b> — Повышенный риск миопатии на симвастатине. Снизить дозу или заменить на розувастатин/правастатин.</li></ul>
+      
+      <div class="critical-copy">
+        <p class="critical-lead">⚠️ ВНИМАНИЕ</p>
+        <ul><li><b>CYP2C19</b> — Снижение эффективности клопидогреля. Рекомендуется замена на тикагрелор или прасугрел.</li><li><b>F5</b> — ПРОТИВОПОКАЗАНЫ гормональные контрацептивы (риск тромбоза, RR=34.7).</li><li><b>MTHFR</b> — Контроль уровня гомоцистеина. Рекомендуется прием активных форм фолатов (L-метилфолат).</li><li><b>SLCO1B1</b> — Повышенный риск миопатии на симвастатине. Снизить дозу или заменить на розувастатин/правастатин.</li></ul>
+      </div>
+        
+      
+      <div class="risk-chart" aria-label="Risk profile by category">
+        <div class="risk-chart-title">Risk Profile</div>
+        <div class="risk-rows">
+          
+          <div class="risk-row" title="Группа 5: Фармакогенетика и метаболизм лекарств: 3">
+            <div class="risk-cat">Фармакогенетика</div>
+            <div class="risk-track">
+              <div class="risk-bar-h bar-high bar-glow" style="width:100%"></div>
+            </div>
+            <div class="risk-num">3</div>
+          </div>
+            
+          <div class="risk-row" title="Группа 1: Детоксикация и антиоксидантная защита: 1">
+            <div class="risk-cat">Детоксикация</div>
+            <div class="risk-track">
+              <div class="risk-bar-h bar-mod" style="width:33%"></div>
+            </div>
+            <div class="risk-num">1</div>
+          </div>
+            
+          <div class="risk-row" title="Группа 4: Липидный обмен и сердечно-сосудистый риск: 1">
+            <div class="risk-cat">Липиды</div>
+            <div class="risk-track">
+              <div class="risk-bar-h bar-mod" style="width:33%"></div>
+            </div>
+            <div class="risk-num">1</div>
+          </div>
+            
+          <div class="risk-row" title="Группа 7: Метаболизм фолатов и метиониновый цикл: 1">
+            <div class="risk-cat">Фолаты</div>
+            <div class="risk-track">
+              <div class="risk-bar-h bar-mod" style="width:33%"></div>
+            </div>
+            <div class="risk-num">1</div>
+          </div>
+            
+        </div>
+      </div>
+    
     </section>
     
 
   <div class="summary">
-    <div class="stat green">
+    <div class="stat">
       <div class="num">7</div>
-      <div class="label">✅ Найдено в базе</div>
+      <div class="label">Найдено</div>
     </div>
-    <div class="stat orange">
+    <div class="stat">
       <div class="num">0</div>
-      <div class="label">⚠️ Не сопоставлено</div>
+      <div class="label">Не сопоставлено</div>
     </div>
-    <div class="stat gray">
+    <div class="stat">
       <div class="num">1</div>
-      <div class="label">❌ Нет в базе знаний</div>
+      <div class="label">Нет в базе</div>
     </div>
-    <div class="stat blue">
+    <div class="stat">
       <div class="num">1</div>
-      <div class="label">💊 Фармакогенетика (ваших)</div>
+      <div class="label">Фармакогенетика</div>
     </div>
-    <div class="stat teal">
+    <div class="stat">
       <div class="num">6</div>
-      <div class="label">🔍 Генов без данных</div>
+      <div class="label">Без данных</div>
     </div>
   </div>
 
-  <section class="gene-cards"><h2>✅ Интерпретированные гены (7)</h2>
-        <div class="card matched">
+  
+  <section class="gene-section">
+    <h2>Интерпретированные гены</h2>
+    <div class="gene-cards">
+      
+        <article class="card matched">
             <div class="card-head">
                 <div>
-                    <div class="gene-name">CYP2C19</div>
+                    <h3 class="gene-name">CYP2C19</h3>
                     <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
                 </div>
-                <span class="status-icon">✅</span>
+                <span class="status-label">Matched</span>
             </div>
-            <div class="patient-line"><b>Результат:</b> *1/*2</div>
+            <div class="patient-line"><span class="label">Результат</span> <span class="value">*1/*2</span></div>
             <div class="patient-line comment">rs4244285 G/A (GT=0/1); rs4986893 G/G (GT=0/0); from RAW_NOTES</div>
             
         <details class="why">
@@ -424,26 +746,31 @@
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">*1/*2</span>
-                        <span class="source">← *1/*2</span>
-                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                        <span class="source">*1/*2</span>
+                        <span class="badge" style="color:#ff9500;border-color:#ff9500;">Risk factor</span>
                     </div>
-                    <ul class="row-details"><li><b>Генотип:</b> *1/*2</li><li><b>Фенотип:</b> Intermediate Metabolizer (IM)</li><li><b>Функция:</b> Одна нормальная + одна сниженная</li><li><b>Клинический риск:</b> **Клопидогрел — снижение эффекта**, риск тромбоза стента. Снижение доз ИПП, циталопрама</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    <div class="detail-grid"><div class="detail-box"><div class="detail-label">Генотип</div><div class="detail-value">*1/*2</div></div><div class="detail-box"><div class="detail-label">Фенотип</div><div class="detail-value">Intermediate Metabolizer (IM)</div></div><div class="detail-box"><div class="detail-label">Функция</div><div class="detail-value">Одна нормальная + одна сниженная</div></div><div class="detail-box detail-emphasis detail-critical"><div class="detail-label">Клинический риск</div><div class="detail-value">**Клопидогрел — снижение эффекта**, риск тромбоза стента. Снижение доз ИПП, циталопрама</div></div><div class="detail-box"><div class="detail-label">ACMG</div><div class="detail-value">Risk factor</div></div></div>
                 </div>
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Медленные метаболисты (*2, *3): Лекарство не активируется. Риск повторного инфаркта/тромбоза стента. Рекомендуется замена на тикагрелор или прасугрел.</li></ul></div>
+            
+        <div class="recs detail-box detail-emphasis">
+            <div class="detail-label">Рекомендации</div>
+            <div class="detail-value"><ul class="recs-list"><li>Медленные метаболисты (*2, *3): Лекарство не активируется. Риск повторного инфаркта/тромбоза стента. Рекомендуется замена на тикагрелор или прасугрел.</li></ul></div>
         </div>
+    
+        </article>
         
-        <div class="card matched">
+        <article class="card matched">
             <div class="card-head">
                 <div>
-                    <div class="gene-name">APOE</div>
+                    <h3 class="gene-name">APOE</h3>
                     <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
                 </div>
-                <span class="status-icon">✅</span>
+                <span class="status-label">Matched</span>
             </div>
-            <div class="patient-line"><b>Результат:</b> E3/E4</div>
+            <div class="patient-line"><span class="label">Результат</span> <span class="value">E3/E4</span></div>
             <div class="patient-line comment">rs429358 T/C (GT=0/1); rs7412 C/C (GT=0/0); from RAW_NOTES</div>
             
         <details class="why">
@@ -455,26 +782,31 @@
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">E3/E4</span>
-                        <span class="source">← E3/E4</span>
-                        <span class="badge" style="color:#64748b;background:#f1f5f9;">—</span>
+                        <span class="source">E3/E4</span>
+                        <span class="badge" style="color:#86868b;border-color:#86868b;">—</span>
                     </div>
-                    <ul class="row-details"><li><b>Изоформа:</b> **E3/E4**</li><li><b>Генотип rs429358 / rs7412:</b> E3/E4</li><li><b>Частота:</b> ~22%</li><li><b>Функциональный эффект:</b> Снижение стабильности, повышенный LDL</li><li><b>Клинический риск:</b> **Повышенный риск болезни Альцгеймера и атеросклероза**</li></ul>
+                    <div class="detail-grid"><div class="detail-box"><div class="detail-label">Изоформа</div><div class="detail-value">**E3/E4**</div></div><div class="detail-box"><div class="detail-label">Генотип rs429358 / rs7412</div><div class="detail-value">E3/E4</div></div><div class="detail-box"><div class="detail-label">Частота</div><div class="detail-value">~22%</div></div><div class="detail-box"><div class="detail-label">Функциональный эффект</div><div class="detail-value">Снижение стабильности, повышенный LDL</div></div><div class="detail-box detail-emphasis"><div class="detail-label">Клинический риск</div><div class="detail-value">**Повышенный риск болезни Альцгеймера и атеросклероза**</div></div></div>
                 </div>
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>E3/E4 или E4/E4: Повышенный риск атеросклероза и болезни Альцгеймера. Контроль LDL-C, диета с низким содержанием насыщенных жиров, регулярная физическая активность, контроль АД и глюкозы.</li><li>E2/E2 или E2/E3: Риск гиперлипопротеинемии III типа. Контроль триглицеридов и холестерина.</li><li>Варфарин / аценокумарол: носители rs429358 — риск геморрагии и венозной тромбоэмболии, требуется мониторинг INR.</li></ul></div>
+            
+        <div class="recs detail-box detail-emphasis">
+            <div class="detail-label">Рекомендации</div>
+            <div class="detail-value"><ul class="recs-list"><li>E3/E4 или E4/E4: Повышенный риск атеросклероза и болезни Альцгеймера. Контроль LDL-C, диета с низким содержанием насыщенных жиров, регулярная физическая активность, контроль АД и глюкозы.</li><li>E2/E2 или E2/E3: Риск гиперлипопротеинемии III типа. Контроль триглицеридов и холестерина.</li><li>Варфарин / аценокумарол: носители rs429358 — риск геморрагии и венозной тромбоэмболии, требуется мониторинг INR.</li></ul></div>
         </div>
+    
+        </article>
         
-        <div class="card matched">
+        <article class="card matched">
             <div class="card-head">
                 <div>
-                    <div class="gene-name">F5</div>
+                    <h3 class="gene-name">F5</h3>
                     <div class="gene-group">Группа 4: Липидный обмен и сердечно-сосудистый риск</div>
                 </div>
-                <span class="status-icon">✅</span>
+                <span class="status-label">Matched</span>
             </div>
-            <div class="patient-line"><b>Результат:</b> CT</div>
+            <div class="patient-line"><span class="label">Результат</span> <span class="value">CT</span></div>
             <div class="patient-line comment">rs6025 C&gt;T GT=0/1 → C/T</div>
             
         <details class="why">
@@ -486,26 +818,31 @@
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">CT (гетерозигота)</span>
-                        <span class="source">← CT</span>
-                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                        <span class="source">CT</span>
+                        <span class="badge" style="color:#ff3b30;border-color:#ff3b30;">Pathogenic / Risk factor</span>
                     </div>
-                    <ul class="row-details"><li><b>Генотип:</b> CT (гетерозигота)</li><li><b>Аллели:</b> C/T</li><li><b>Частота (Европа):</b> ~4-5%</li><li><b>Функциональный эффект:</b> APC-резистентность, риск тромбоза в 7 раз</li><li><b>Клинический риск:</b> **Повышенный риск ВТЭ; контрацептивы ПРОТИВОПОКАЗАНЫ**</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                    <div class="detail-grid"><div class="detail-box"><div class="detail-label">Генотип</div><div class="detail-value">CT (гетерозигота)</div></div><div class="detail-box"><div class="detail-label">Аллели</div><div class="detail-value">C/T</div></div><div class="detail-box"><div class="detail-label">Частота (Европа)</div><div class="detail-value">~4-5%</div></div><div class="detail-box"><div class="detail-label">Функциональный эффект</div><div class="detail-value">APC-резистентность, риск тромбоза в 7 раз</div></div><div class="detail-box detail-emphasis detail-critical"><div class="detail-label">Клинический риск</div><div class="detail-value">**Повышенный риск ВТЭ; контрацептивы ПРОТИВОПОКАЗАНЫ**</div></div><div class="detail-box"><div class="detail-label">ACMG</div><div class="detail-value">Pathogenic / Risk factor</div></div></div>
                 </div>
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Гормональные контрацептивы (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): противопоказаны носителям FVL — FDA/EMA/HCSC labels.</li></ul></div>
+            
+        <div class="recs detail-box detail-emphasis">
+            <div class="detail-label">Рекомендации</div>
+            <div class="detail-value"><ul class="recs-list"><li>Гормональные контрацептивы (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): противопоказаны носителям FVL — FDA/EMA/HCSC labels.</li></ul></div>
         </div>
+    
+        </article>
         
-        <div class="card matched">
+        <article class="card matched">
             <div class="card-head">
                 <div>
-                    <div class="gene-name">MTHFR</div>
+                    <h3 class="gene-name">MTHFR</h3>
                     <div class="gene-group">Группа 7: Метаболизм фолатов и метиониновый цикл</div>
                 </div>
-                <span class="status-icon">✅</span>
+                <span class="status-label">Matched</span>
             </div>
-            <div class="patient-line"><b>Результат:</b> TT</div>
+            <div class="patient-line"><span class="label">Результат</span> <span class="value">TT</span></div>
             <div class="patient-line comment">rs1801133 C&gt;T GT=1/1 → T/T; C677T homozygous (RAW_NOTES)</div>
             
         <details class="why">
@@ -517,26 +854,31 @@
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">TT</span>
-                        <span class="source">← TT</span>
-                        <span class="badge" style="color:#dc2626;background:#fee2e2;">Pathogenic / Risk factor</span>
+                        <span class="source">TT</span>
+                        <span class="badge" style="color:#ff3b30;border-color:#ff3b30;">Pathogenic / Risk factor</span>
                     </div>
-                    <ul class="row-details"><li><b>Генотип:</b> TT</li><li><b>Аллели:</b> T/T</li><li><b>Частота*:</b> ~10-15%</li><li><b>Функциональный эффект:</b> Выраженное снижение активности (термолабильный вариант, ~30% активности). Значительное повышение уровня гомоцистеина.</li><li><b>Клинический риск:</b> Высокий (ДНТ, невынашивание, ССЗ)</li><li><b>ACMG:</b> Pathogenic / Risk factor</li></ul>
+                    <div class="detail-grid"><div class="detail-box"><div class="detail-label">Генотип</div><div class="detail-value">TT</div></div><div class="detail-box"><div class="detail-label">Аллели</div><div class="detail-value">T/T</div></div><div class="detail-box"><div class="detail-label">Частота*</div><div class="detail-value">~10-15%</div></div><div class="detail-box"><div class="detail-label">Функциональный эффект</div><div class="detail-value">Выраженное снижение активности (термолабильный вариант, ~30% активности). Значительное повышение уровня гомоцистеина.</div></div><div class="detail-box detail-emphasis detail-critical"><div class="detail-label">Клинический риск</div><div class="detail-value">Высокий (ДНТ, невынашивание, ССЗ)</div></div><div class="detail-box"><div class="detail-label">ACMG</div><div class="detail-value">Pathogenic / Risk factor</div></div></div>
                 </div>
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>TT или CT+AC: Генетически снижена способность усваивать обычную фолиевую кислоту. Рекомендуется контроль уровня гомоцистеина в крови (целевой уровень обычно &lt; 7-8 мкмоль/л).</li></ul></div>
+            
+        <div class="recs detail-box detail-emphasis">
+            <div class="detail-label">Рекомендации</div>
+            <div class="detail-value"><ul class="recs-list"><li>TT или CT+AC: Генетически снижена способность усваивать обычную фолиевую кислоту. Рекомендуется контроль уровня гомоцистеина в крови (целевой уровень обычно &lt; 7-8 мкмоль/л).</li></ul></div>
         </div>
+    
+        </article>
         
-        <div class="card matched">
+        <article class="card matched">
             <div class="card-head">
                 <div>
-                    <div class="gene-name">NQO1</div>
+                    <h3 class="gene-name">NQO1</h3>
                     <div class="gene-group">Группа 1: Детоксикация и антиоксидантная защита</div>
                 </div>
-                <span class="status-icon">✅</span>
+                <span class="status-label">Matched</span>
             </div>
-            <div class="patient-line"><b>Результат:</b> CT</div>
+            <div class="patient-line"><span class="label">Результат</span> <span class="value">CT</span></div>
             <div class="patient-line comment">rs1800566 C&gt;T GT=0/1 → C/T</div>
             
         <details class="why">
@@ -548,24 +890,24 @@
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">CT (Pro/Ser)</span>
-                        <span class="source">← CT</span>
-                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                        <span class="source">CT</span>
+                        <span class="badge" style="color:#ff9500;border-color:#ff9500;">Risk factor</span>
                     </div>
-                    <ul class="row-details"><li><b>Генотип:</b> CT (Pro/Ser)</li><li><b>Фенотип:</b> Гетерозигота</li><li><b>Функция:</b> Промежуточная активность</li><li><b>Клинический риск:</b> Умеренный риск бензольной гематотоксичности</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    <div class="detail-grid"><div class="detail-box"><div class="detail-label">Генотип</div><div class="detail-value">CT (Pro/Ser)</div></div><div class="detail-box"><div class="detail-label">Фенотип</div><div class="detail-value">Гетерозигота</div></div><div class="detail-box"><div class="detail-label">Функция</div><div class="detail-value">Промежуточная активность</div></div><div class="detail-box detail-emphasis"><div class="detail-label">Клинический риск</div><div class="detail-value">Умеренный риск бензольной гематотоксичности</div></div><div class="detail-box"><div class="detail-label">ACMG</div><div class="detail-value">Risk factor</div></div></div>
                 </div>
             
             
         <div class="pgx-block">
-            <h4>💊 Фармакогенетика
-                <span class="pgx-count">(1 — только ваши)</span>
-                <span class="pgx-counter">◐ по аллели: 1</span>
+            <h4>Фармакогенетика
+                <span class="pgx-count">(1)</span>
+                <span class="pgx-counter">по аллели: 1</span>
             </h4>
             <div class="pgx-table-wrap">
                 <table class="pgx-table">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Ваш генотип</th>
+                            <th>Генотип</th>
                             <th>Категория</th>
                             <th>Препарат</th>
                             <th>Ассоциация</th>
@@ -577,7 +919,7 @@
             <tr class="pgx-row-allele">
                 <td class="pgx-match-col">◐</td>
                 <td class="pgx-gt">G</td>
-                <td><span class="pgx-badge" style="color:#2563eb;background:#dbeafe;">Efficacy</span></td>
+                <td><span class="pgx-badge" style="color:#0071e3;border-color:#0071e3;">Efficacy</span></td>
                 <td><b>epirubicin; fluorouracil; oxaliplatin</b></td>
                 <td>Allele G is not associated with response to epirubicin, fluorouracil and oxaliplatin in people with Neoplasm Metastasis and Stomach Neoplasms.</td>
                 <td class="pgx-pval">&gt; 0.05</td>
@@ -589,18 +931,23 @@
         </div>
     
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Специфических рекомендаций нет</li></ul></div>
+            
+        <div class="recs detail-box detail-emphasis">
+            <div class="detail-label">Рекомендации</div>
+            <div class="detail-value"><ul class="recs-list"><li>Специфических рекомендаций нет</li></ul></div>
         </div>
+    
+        </article>
         
-        <div class="card matched">
+        <article class="card matched">
             <div class="card-head">
                 <div>
-                    <div class="gene-name">CYP2C9</div>
+                    <h3 class="gene-name">CYP2C9</h3>
                     <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
                 </div>
-                <span class="status-icon">✅</span>
+                <span class="status-label">Matched</span>
             </div>
-            <div class="patient-line"><b>Результат:</b> *1/*2</div>
+            <div class="patient-line"><span class="label">Результат</span> <span class="value">*1/*2</span></div>
             <div class="patient-line comment">rs1799853 C/T (GT=0/1)</div>
             
         <details class="why">
@@ -612,26 +959,31 @@
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">*1/*2</span>
-                        <span class="source">← *1/*2</span>
-                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                        <span class="source">*1/*2</span>
+                        <span class="badge" style="color:#ff9500;border-color:#ff9500;">Risk factor</span>
                     </div>
-                    <ul class="row-details"><li><b>Генотип:</b> *1/*2</li><li><b>Фенотип:</b> Intermediate Metabolizer (IM)</li><li><b>Функция:</b> Одна нормальная + одна сниженная</li><li><b>Клинический риск:</b> Снижение дозы варфарина, фенитоина. Мониторинг INR</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    <div class="detail-grid"><div class="detail-box"><div class="detail-label">Генотип</div><div class="detail-value">*1/*2</div></div><div class="detail-box"><div class="detail-label">Фенотип</div><div class="detail-value">Intermediate Metabolizer (IM)</div></div><div class="detail-box"><div class="detail-label">Функция</div><div class="detail-value">Одна нормальная + одна сниженная</div></div><div class="detail-box detail-emphasis"><div class="detail-label">Клинический риск</div><div class="detail-value">Снижение дозы варфарина, фенитоина. Мониторинг INR</div></div><div class="detail-box"><div class="detail-label">ACMG</div><div class="detail-value">Risk factor</div></div></div>
                 </div>
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>*1/*2, *1/*3 (Intermediate Metabolizer): Сниженная активность. Требуется осторожное титрование дозы варфарина.</li><li>*2/*2, *2/*3, *3/*3 (Poor Metabolizer): Значительное снижение активности. Высокий риск кровотечений на стандартных дозах варфарина и побочных эффектов НПВС (гастропатии).</li></ul></div>
+            
+        <div class="recs detail-box detail-emphasis">
+            <div class="detail-label">Рекомендации</div>
+            <div class="detail-value"><ul class="recs-list"><li>*1/*2, *1/*3 (Intermediate Metabolizer): Сниженная активность. Требуется осторожное титрование дозы варфарина.</li><li>*2/*2, *2/*3, *3/*3 (Poor Metabolizer): Значительное снижение активности. Высокий риск кровотечений на стандартных дозах варфарина и побочных эффектов НПВС (гастропатии).</li></ul></div>
         </div>
+    
+        </article>
         
-        <div class="card matched">
+        <article class="card matched">
             <div class="card-head">
                 <div>
-                    <div class="gene-name">SLCO1B1</div>
+                    <h3 class="gene-name">SLCO1B1</h3>
                     <div class="gene-group">Группа 5: Фармакогенетика и метаболизм лекарств</div>
                 </div>
-                <span class="status-icon">✅</span>
+                <span class="status-label">Matched</span>
             </div>
-            <div class="patient-line"><b>Результат:</b> TC</div>
+            <div class="patient-line"><span class="label">Результат</span> <span class="value">TC</span></div>
             <div class="patient-line comment">c.521T&gt;C (RAW_NOTES)</div>
             
         <details class="why">
@@ -643,31 +995,39 @@
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">TC (521 TC)</span>
-                        <span class="source">← TC</span>
-                        <span class="badge" style="color:#ea580c;background:#ffedd5;">Risk factor</span>
+                        <span class="source">TC</span>
+                        <span class="badge" style="color:#ff9500;border-color:#ff9500;">Risk factor</span>
                     </div>
-                    <ul class="row-details"><li><b>Генотип:</b> TC (521 TC)</li><li><b>Фенотип:</b> Intermediate function</li><li><b>Функция:</b> Сниженный захват</li><li><b>Клинический риск:</b> **Повышенный риск миопатии** на симвастатине 80 мг. Снижение дозы</li><li><b>ACMG:</b> Risk factor</li></ul>
+                    <div class="detail-grid"><div class="detail-box"><div class="detail-label">Генотип</div><div class="detail-value">TC (521 TC)</div></div><div class="detail-box"><div class="detail-label">Фенотип</div><div class="detail-value">Intermediate function</div></div><div class="detail-box"><div class="detail-label">Функция</div><div class="detail-value">Сниженный захват</div></div><div class="detail-box detail-emphasis"><div class="detail-label">Клинический риск</div><div class="detail-value">**Повышенный риск миопатии** на симвастатине 80 мг. Снижение дозы</div></div><div class="detail-box"><div class="detail-label">ACMG</div><div class="detail-value">Risk factor</div></div></div>
                 </div>
             
             
             
-            <div class='recs'><h4>Рекомендации из базы</h4><ul><li>Рекомендация: Снижение дозы симвастатина или переход на правастатин/розувастатин, которые меньше зависят от этого транспортера.</li></ul></div>
+            
+        <div class="recs detail-box detail-emphasis">
+            <div class="detail-label">Рекомендации</div>
+            <div class="detail-value"><ul class="recs-list"><li>Рекомендация: Снижение дозы симвастатина или переход на правастатин/розувастатин, которые меньше зависят от этого транспортера.</li></ul></div>
         </div>
-        </section>
+    
+        </article>
+        
+    </div>
+  </section>
+
   
   
         <section id="missing_genes" class="missing_genes">
-            <h2>❌ Гены, отсутствующие в базе знаний (1)</h2>
+            <h2>Гены вне базы знаний</h2>
             <div class="not-in-base">
-                <p class="hint">Эти гены есть в вашем отчёте, но их нет в текущей базе знаний.</p>
+                <p class="hint">Эти гены есть в отчёте, но отсутствуют в текущей базе знаний.</p>
                 <ul><li><b>KARYOTYPE</b> — 46,XX,t(9;22)(q34;q11.2)</li></ul>
             </div>
         </section>
         
   
     <section class="doctors-note" id="doctors-note">
-      <h2>📝 Рекомендуемый текст заключения</h2>
-      <p class="doctors-note-text">Выявлена мутация CYP2C19 *1/*2 — снижение эффективности клопидогреля, рекомендована замена на тикагрелор. APOE (E3/E4): Повышенный риск болезни Альцгеймера и атеросклероза. У пациента выявлена гетерозиготная мутация F5 (Лейден). Рекомендовано: избегать гормональных контрацептивов, контроль гематолога. Выявлена гомозиготная мутация MTHFR C677T (TT) — контроль гомоцистеина, прием активных фолатов. NQO1 (CT): Умеренный риск бензольной гематотоксичности. CYP2C9 (*1/*2): Снижение дозы варфарина, фенитоина. Мониторинг INR. Выявлен вариант SLCO1B1 — повышенный риск миопатии на симвастатине; снизить дозу или заменить на розувастатин/правастатин.</p>
+      <h2>Рекомендуемый текст заключения</h2>
+      <blockquote class="doctors-note-text">Выявлена мутация CYP2C19 *1/*2 — снижение эффективности клопидогреля, рекомендована замена на тикагрелор. APOE (E3/E4): Повышенный риск болезни Альцгеймера и атеросклероза. У пациента выявлена гетерозиготная мутация F5 (Лейден). Рекомендовано: избегать гормональных контрацептивов, контроль гематолога. Выявлена гомозиготная мутация MTHFR C677T (TT) — контроль гомоцистеина, прием активных фолатов. NQO1 (CT): Умеренный риск бензольной гематотоксичности. CYP2C9 (*1/*2): Снижение дозы варфарина, фенитоина. Мониторинг INR. Выявлен вариант SLCO1B1 — повышенный риск миопатии на симвастатине; снизить дозу или заменить на розувастатин/правастатин.</blockquote>
     </section>
     
 
@@ -677,6 +1037,6 @@
   </footer>
 </div>
 
-<button class="print-btn" onclick="window.print()">🖨 Печать / PDF</button>
+<button class="print-btn no-print" onclick="window.print()">Печать</button>
 </body>
 </html>

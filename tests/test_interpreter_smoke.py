@@ -122,10 +122,13 @@ class InterpreterSmokeTest(unittest.TestCase):
                 str(out),
             )
             html = out.read_text(encoding="utf-8")
-        self.assertIn("Критические предупреждения", html)
+        self.assertIn("critical-alerts", html)
+        self.assertIn("ВНИМАНИЕ", html)
         self.assertIn("PAT-994821", html)
         self.assertNotIn("Иванова", html)
         self.assertIn("Рекомендуемый текст заключения", html)
+        self.assertIn("GenomIQ", html)
+        self.assertIn("Times New Roman", html)
         self.assertIn("@media print", html)
         self.assertIn("page-break-inside: avoid", html)
 
