@@ -162,7 +162,8 @@ class InterpreterSmokeTest(unittest.TestCase):
                 str(out),
             )
             html = out.read_text(encoding="utf-8")
-        self.assertIn("Why?", html)
+        self.assertIn("Подробнее", html)
+        self.assertNotIn("Why?", html)
         self.assertIn("rs4244285", html)
         self.assertIn("CPIC Guideline for Clopidogrel", html)
 

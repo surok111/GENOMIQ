@@ -1,34 +1,62 @@
 """
-html_report.py — premium Apple-style HTML report (v16).
+html_report.py — clean Apple-style medical HTML report.
 Critical alerts, doctor's note, PHI-safe header, print-friendly CSS.
 """
 
 import html
+import json
 import re
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from interpreter import build_doctors_note, collect_critical_alerts
+from interpreter import BASE_PATH, build_doctors_note, collect_critical_alerts
 
-ACMG_COLORS = {
-    "pathogenic": ("#ff3b30", "#ffffff"),
-    "risk factor": ("#ff9500", "#ffffff"),
-    "likely": ("#86868b", "#ffffff"),
-    "trait": ("#86868b", "#ffffff"),
-    "benign": ("#34c759", "#ffffff"),
-    "normal": ("#34c759", "#ffffff"),
-}
+# Strict 3-level clinical color system.
+LEVEL_RED = "#ff3b30"
+LEVEL_ORANGE = "#ff9500"
+LEVEL_GRAY = "#86868b"
+
+
+def _risk_level_from_text(*parts: str) -> str:
+    blob = " ".join(str(p or "") for p in parts).lower()
+    if any(
+        w in blob
+        for w in (
+            "pathogenic",
+            "противопоказ",
+            "не активируется",
+            "contraindic",
+        )
+    ):
+        return "red"
+    if any(
+        w in blob
+        for w in (
+            "risk factor",
+            "снижен",
+            "доз",
+            "миопат",
+            "промежуточ",
+            "intermediate",
+        )
+    ):
+        return "orange"
+    return "gray"
+
+
+def _level_color(level: str) -> str:
+    return {
+        "red": LEVEL_RED,
+        "orange": LEVEL_ORANGE,
+        "gray": LEVEL_GRAY,
+    }.get(level, LEVEL_GRAY)
 
 
 def _acmg_color(acmg_text: str):
-    if not acmg_text:
-        return ("#86868b", "#ffffff")
-    t = acmg_text.lower()
-    for key, colors in ACMG_COLORS.items():
-        if key in t:
-            return colors
-    return ("#86868b", "#ffffff")
+    level = _risk_level_from_text(acmg_text)
+    c = _level_color(level)
+    return (c, "#ffffff")
 
 
 def _esc(s) -> str:
@@ -88,95 +116,13 @@ def _acmg_text_for_result(r: dict) -> str:
     return ""
 
 
-def _short_group_label(group: str) -> str:
-    """'Группа 5: Фармакогенетика и …' → 'Фармакогенетика'."""
-    g = (group or "").strip()
-    if ":" in g:
-        g = g.split(":", 1)[1].strip()
-    g = re.sub(r"^Группа\s*\d+\s*", "", g, flags=re.I).strip(" —–-")
-    # Prefer a short category keyword for the mini-dashboard.
-    low = g.lower()
-    aliases = [
-        ("фармакоген", "Фармакогенетика"),
-        ("липид", "Липиды"),
-        ("фолат", "Фолаты"),
-        ("детоксик", "Детоксикация"),
-        ("антиоксид", "Антиоксиданты"),
-        ("тромбо", "Тромбоз"),
-        ("сердеч", "ССС"),
-        ("онко", "Онкориск"),
-        ("иммун", "Иммунитет"),
-    ]
-    for needle, label in aliases:
-        if needle in low:
-            return label
-    # Fallback: first 2–3 words, truncated.
-    words = g.split()
-    short = " ".join(words[:3]).rstrip(",;")
-    return (short[:28] + "…") if len(short) > 28 else (short or "Прочее")
-
-
-def _is_risk_acmg(acmg: str) -> bool:
-    low = (acmg or "").lower()
-    return "pathogenic" in low or "risk factor" in low
-
-
-def _count_risk_by_group(results: list, top_n: int = 4) -> list[dict]:
-    """Top medical groups by count of Pathogenic / Risk factor genes."""
-    buckets: dict[str, dict] = {}
-    for r in results or []:
-        if r.get("status") not in {"matched", "matched_annotation_only"}:
-            continue
-        if not _is_risk_acmg(_acmg_text_for_result(r)):
-            continue
-        raw_group = (r.get("group") or "Прочее").strip() or "Прочее"
-        label = _short_group_label(raw_group)
-        entry = buckets.setdefault(label, {"label": label, "count": 0, "full": raw_group})
-        entry["count"] += 1
-    ranked = sorted(buckets.values(), key=lambda x: (-x["count"], x["label"]))
-    return ranked[:top_n]
-
-
-def _render_risk_chart(group_counts: list) -> str:
-    if not group_counts:
-        return ""
-    max_n = max(int(g["count"]) for g in group_counts) or 1
-    rows = []
-    for g in group_counts:
-        n = int(g["count"])
-        pct = max(8, int(round((n / max_n) * 100)))
-        # 1 gene → amber (moderate), 2+ → red (high concentration in category)
-        tone = "bar-high" if n >= 2 else "bar-mod"
-        glow = " bar-glow" if n >= 2 else ""
-        rows.append(
-            f"""
-          <div class="risk-row" title="{_esc(g.get('full') or g['label'])}: {n}">
-            <div class="risk-cat">{_esc(g['label'])}</div>
-            <div class="risk-track">
-              <div class="risk-bar-h {tone}{glow}" style="width:{pct}%"></div>
-            </div>
-            <div class="risk-num">{n}</div>
-          </div>
-            """
-        )
-    return f"""
-      <div class="risk-chart" aria-label="Risk profile by category">
-        <div class="risk-chart-title">Risk Profile</div>
-        <div class="risk-rows">
-          {''.join(rows)}
-        </div>
-      </div>
-    """
-
-
 def _render_critical_alerts(results: list) -> str:
     alerts = collect_critical_alerts(results)
     if not alerts:
         return ""
-    chart = _render_risk_chart(_count_risk_by_group(results))
     if len(alerts) == 1:
         a = alerts[0]
-        left = f"""
+        body = f"""
       <div class="critical-copy">
         <p class="critical-lead">⚠️ ВНИМАНИЕ: {_esc(a['text'])} ({_esc(a['gene'])})</p>
       </div>
@@ -185,7 +131,7 @@ def _render_critical_alerts(results: list) -> str:
         items = "".join(
             f"<li><b>{_esc(a['gene'])}</b> — {_esc(a['text'])}</li>" for a in alerts
         )
-        left = f"""
+        body = f"""
       <div class="critical-copy">
         <p class="critical-lead">⚠️ ВНИМАНИЕ</p>
         <ul>{items}</ul>
@@ -193,8 +139,7 @@ def _render_critical_alerts(results: list) -> str:
         """
     return f"""
     <section class="critical-alerts" id="critical-alerts">
-      {left}
-      {chart}
+      {body}
     </section>
     """
 
@@ -282,17 +227,33 @@ def _render_row_detail_boxes(row: dict, patient_gt) -> str:
     for k, v in row.items():
         if not v:
             continue
-        display = _display_row_value(k, v, patient_gt)
         kl = k.strip().lower()
+        # Genotype & ACMG shown once elsewhere on the card.
+        if _is_genotype_label(k) or kl == "acmg":
+            continue
+        display = _display_row_value(k, v, patient_gt)
         emphasis = _is_emphasis_field(k)
         critical = emphasis and _is_critical_risk(str(display))
         boxes.append(
             _render_detail_box(k, str(display), emphasis=emphasis, critical=critical)
         )
+    if not boxes:
+        return ""
     return '<div class="detail-grid">' + "".join(boxes) + "</div>"
 
 
+def _filter_recs(recs: list) -> list:
+    out = []
+    for r in recs or []:
+        t = str(r).strip()
+        if not t or t == "Специфических рекомендаций нет":
+            continue
+        out.append(t)
+    return out
+
+
 def _render_recs_boxes(recs: list) -> str:
+    recs = _filter_recs(recs)
     if not recs:
         return ""
     items = "".join(f"<li>{_esc(r)}</li>" for r in recs)
@@ -302,6 +263,15 @@ def _render_recs_boxes(recs: list) -> str:
             <div class="detail-value"><ul class="recs-list">{items}</ul></div>
         </div>
     """
+
+
+def _pgx_category_color(pheno: str) -> str:
+    p = (pheno or "").lower()
+    if "toxic" in p:
+        return LEVEL_RED
+    if "dosage" in p or "dose" in p:
+        return LEVEL_ORANGE
+    return LEVEL_GRAY
 
 
 def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
@@ -328,66 +298,36 @@ def _render_pgx_block(pgx_annotations: list, no_match_info: dict = None) -> str:
             """
         return ""
 
-    PHENO_COLORS = {
-        "toxicity": ("#ff3b30", "#fff"),
-        "efficacy": ("#0071e3", "#fff"),
-        "metabolism/pk": ("#86868b", "#fff"),
-        "dosage": ("#1d1d1f", "#fff"),
-        "other": ("#86868b", "#fff"),
-    }
-
-    exact_count = sum(1 for a in pgx_annotations if a.get("match_kind") == "exact")
-    allele_count = sum(1 for a in pgx_annotations if a.get("match_kind") == "allele")
-    counter_parts = []
-    if exact_count:
-        counter_parts.append(f"точных: {exact_count}")
-    if allele_count:
-        counter_parts.append(f"по аллели: {allele_count}")
-    counter_text = " · ".join(counter_parts)
-
     rows_html = []
     for a in pgx_annotations:
-        pheno = (a.get("phenotype") or "Other").lower()
-        fg, bg = PHENO_COLORS.get(pheno, PHENO_COLORS["other"])
         pheno_label = a.get("phenotype") or "Other"
-        kind = a.get("match_kind")
-        if kind == "exact":
-            match_icon = "●"
-            row_class = "pgx-row-exact"
-        elif kind == "allele":
-            match_icon = "◐"
-            row_class = "pgx-row-allele"
-        else:
-            match_icon = ""
-            row_class = ""
+        fg = _pgx_category_color(pheno_label)
         matched_gts = ", ".join(a.get("matched_genotypes") or []) or "—"
+        pval = a.get("pvalue") or "—"
+        tip = (
+            f"Генотип: {matched_gts} · P-value: {pval}"
+            f" · Match: {a.get('match_kind') or '—'}"
+        )
+        assoc = a.get("association") or ""
+        short_assoc = assoc if len(str(assoc)) <= 120 else str(assoc)[:117] + "…"
         rows_html.append(f"""
-            <tr class="{row_class}">
-                <td class="pgx-match-col">{match_icon}</td>
-                <td class="pgx-gt">{_esc(matched_gts)}</td>
-                <td><span class="pgx-badge" style="color:{fg};border-color:{fg};">{_esc(pheno_label)}</span></td>
+            <tr title="{_esc(tip)}">
                 <td><b>{_esc(a.get('drug', '—'))}</b></td>
-                <td>{_esc(a.get('association', ''))}</td>
-                <td class="pgx-pval">{_esc(a.get('pvalue', '—'))}</td>
+                <td><span class="pgx-badge" style="color:{fg};border-color:{fg};">{_esc(pheno_label)}</span></td>
+                <td>{_esc(short_assoc)}</td>
             </tr>
         """)
 
     return f"""
         <div class="pgx-block">
-            <h4>Фармакогенетика
-                <span class="pgx-count">({len(pgx_annotations)})</span>
-                <span class="pgx-counter">{counter_text}</span>
-            </h4>
+            <h4>Фармакогенетика <span class="pgx-count">({len(pgx_annotations)})</span></h4>
             <div class="pgx-table-wrap">
                 <table class="pgx-table">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Генотип</th>
-                            <th>Категория</th>
                             <th>Препарат</th>
+                            <th>Категория</th>
                             <th>Ассоциация</th>
-                            <th>P-value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -483,7 +423,7 @@ def _render_live_db(live: Optional[dict]) -> str:
     """
 
 
-def _render_why(result: dict) -> str:
+def _render_why_content(result: dict) -> str:
     why = result.get("why") or {}
     sentence = (why.get("sentence") or "").strip()
     if not sentence and not why.get("source") and not why.get("evidence"):
@@ -498,12 +438,32 @@ def _render_why(result: dict) -> str:
     body = f'<p class="why-sentence">{_esc(sentence)}</p>' if sentence else ""
     if items:
         body += "<ul>" + "".join(items) + "</ul>"
+    return f'<div class="why-body">{body}</div>'
+
+
+def _render_more_block(*parts: str) -> str:
+    body = "".join(p for p in parts if p)
+    if not body.strip():
+        return ""
     return f"""
-        <details class="why">
-            <summary>Why?</summary>
-            <div class="why-body">{body}</div>
+        <details class="more">
+            <summary>Подробнее</summary>
+            <div class="more-collapse">
+                <div class="more-inner">{body}</div>
+            </div>
         </details>
     """
+
+
+def _card_risk_class(result: dict) -> str:
+    acmg = _acmg_text_for_result(result)
+    risk_bits = []
+    for m in result.get("matches") or []:
+        row = m.get("full_row") or {}
+        if isinstance(row, dict):
+            risk_bits.append(_pick_risk(row))
+    level = _risk_level_from_text(acmg, *risk_bits)
+    return f"risk-{level}"
 
 
 def _gene_card(result: dict, status_kind: str) -> str:
@@ -511,14 +471,18 @@ def _gene_card(result: dict, status_kind: str) -> str:
     group = _esc(result.get("group", ""))
     patient_result = _esc(_redact_phi(result.get("patient_result", "")))
     comment = _esc(_redact_phi(result.get("patient_comment", "")))
-    recs = result.get("recommendations", [])
-    why_block = _render_why(result)
-
+    recs_html = _render_recs_boxes(result.get("recommendations", []))
+    why_content = _render_why_content(result)
     pgx_block = _render_pgx_block(
         result.get("pgx_annotations", []),
         result.get("pgx_no_match_info"),
     )
     live_block = _render_live_db(result.get("live_db"))
+    more = _render_more_block(why_content, pgx_block, live_block)
+    risk_class = _card_risk_class(result)
+    comment_html = (
+        f'<div class="card-comment">{comment}</div>' if comment else ""
+    )
 
     status_label = {
         "matched": "Matched",
@@ -527,61 +491,32 @@ def _gene_card(result: dict, status_kind: str) -> str:
         "no_match": "Unmatched",
     }.get(status_kind, "")
 
-    if status_kind == "matched_annotation":
-        note = _esc(result.get("note", ""))
-        recs_html = ""
-        if recs:
-            recs_html = _render_recs_boxes(recs)
-        return f"""
-        <article class="card matched annotation-only">
-            <div class="card-head">
-                <div>
-                    <h3 class="gene-name">{gene}</h3>
-                    <div class="gene-group">{group}</div>
-                </div>
-                <span class="status-label">{status_label}</span>
-            </div>
-            <div class="patient-line"><span class="label">Результат</span> <span class="value">{patient_result}</span></div>
-            {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
-            {why_block}
-            {f'<div class="note">{note}</div>' if note else ''}
-            {pgx_block}
-            {live_block}
-            {recs_html}
-        </article>
-        """
-
     if status_kind == "matched":
         matches = result.get("matches", [])
         cards_inner = ""
         for m in matches:
             row = m["full_row"]
             gt = _esc(m["genotype"])
-            source = _esc(m.get("source_part", ""))
             acmg = row.get("ACMG", "")
             fg, _bg = _acmg_color(acmg)
             acmg_badge = (
                 f'<span class="badge" style="color:{fg};border-color:{fg};">'
                 f'{_esc(acmg) or "—"}</span>'
+                if acmg
+                else ""
             )
             detail_boxes = _render_row_detail_boxes(row, m.get("genotype"))
             cards_inner += f"""
                 <div class="match">
                     <div class="match-head">
                         <span class="genotype">{gt}</span>
-                        <span class="source">{source}</span>
                         {acmg_badge}
                     </div>
                     {detail_boxes}
                 </div>
             """
-
-        recs_html = ""
-        if recs:
-            recs_html = _render_recs_boxes(recs)
-
         return f"""
-        <article class="card matched">
+        <article class="card matched {risk_class}" id="gene-{re.sub(r'[^A-Za-z0-9_-]+', '', str(result.get('gene') or ''))}">
             <div class="card-head">
                 <div>
                     <h3 class="gene-name">{gene}</h3>
@@ -589,23 +524,23 @@ def _gene_card(result: dict, status_kind: str) -> str:
                 </div>
                 <span class="status-label">{status_label}</span>
             </div>
-            <div class="patient-line"><span class="label">Результат</span> <span class="value">{patient_result}</span></div>
-            {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
-            {why_block}
+            {comment_html}
             {cards_inner}
-            {pgx_block}
-            {live_block}
             {recs_html}
+            {more}
         </article>
         """
 
-    if status_kind == "no_table":
-        note = _esc(result.get("note", ""))
-        recs_html = ""
-        if recs:
-            recs_html = _render_recs_boxes(recs)
-        return f"""
-        <article class="card no-table">
+    genotype_chip = (
+        f'<div class="match-head solo"><span class="genotype">{patient_result}</span></div>'
+        if patient_result
+        else ""
+    )
+    note = _esc(result.get("note", ""))
+    note_html = f'<div class="note">{note}</div>' if note else ""
+
+    return f"""
+        <article class="card {status_kind.replace('_', '-')} {risk_class}" id="gene-{re.sub(r'[^A-Za-z0-9_-]+', '', str(result.get('gene') or ''))}">
             <div class="card-head">
                 <div>
                     <h3 class="gene-name">{gene}</h3>
@@ -613,32 +548,12 @@ def _gene_card(result: dict, status_kind: str) -> str:
                 </div>
                 <span class="status-label">{status_label}</span>
             </div>
-            <div class="patient-line"><span class="label">Результат</span> <span class="value">{patient_result}</span></div>
-            {f'<div class="patient-line comment">{comment}</div>' if comment else ''}
-            {why_block}
-            {f'<div class="note">{note}</div>' if note else ''}
-            {pgx_block}
-            {live_block}
+            {genotype_chip}
+            {comment_html}
+            {note_html}
             {recs_html}
+            {more}
         </article>
-        """
-
-    note = _esc(result.get("note", ""))
-    return f"""
-    <article class="card no-match">
-        <div class="card-head">
-            <div>
-                <h3 class="gene-name">{gene}</h3>
-                <div class="gene-group">{group}</div>
-            </div>
-            <span class="status-label">{status_label}</span>
-        </div>
-        <div class="patient-line"><span class="label">Результат</span> <span class="value">{patient_result}</span></div>
-        {why_block}
-        {f'<div class="note">{note}</div>' if note else ''}
-        {pgx_block}
-        {live_block}
-    </article>
     """
 
 
@@ -651,16 +566,16 @@ def _report_css() -> str:
     --line: #d2d2d7;
     --accent: #1d1d1f;
     --danger: #ff3b30;
-    --font: "Times New Roman", Times, serif;
+    --warn: #ff9500;
+    --font-serif: "Times New Roman", Times, serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body, button, input, textarea, select, summary, h1, h2, h3, h4, h5, p, li, td, th, a, span, div {
-    font-family: var(--font) !important;
-  }
   body {
     margin: 0;
     padding: 0;
+    font-family: var(--font-serif);
     font-size: 16px;
     line-height: 1.6;
     color: var(--text);
@@ -672,9 +587,27 @@ def _report_css() -> str:
     padding: 48px 28px 80px;
   }
 
-  @keyframes cardFadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+  .ui-sans,
+  .detail-label,
+  .status-label,
+  .badge,
+  .pgx-badge,
+  .pgx-table,
+  .pgx-table th,
+  .pgx-table td,
+  .meta-key,
+  .summary .label,
+  .more summary,
+  .manual-field label,
+  .manual-add-btn,
+  .manual-analyze,
+  .manual-cancel,
+  .print-btn,
+  .live-cls,
+  .live-sub,
+  .pgx-count,
+  .pgx-counter {
+    font-family: var(--font-sans) !important;
   }
 
   header.report-header {
@@ -697,11 +630,10 @@ def _report_css() -> str:
     color: var(--muted);
     font-size: 13px;
     letter-spacing: 0.02em;
-    background: linear-gradient(180deg, #ffffff 0%, #f4f4f7 100%);
+    background: #ffffff;
     border: 1px solid #e5e5ea;
     border-radius: 12px;
     padding: 10px 4px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 2px 10px rgba(0,0,0,0.03);
   }
   header .meta .meta-item {
     display: inline-flex;
@@ -722,45 +654,40 @@ def _report_css() -> str:
   header .meta .meta-val {
     color: var(--text);
     font-weight: 700;
+    font-family: var(--font-serif);
   }
 
   .summary {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
     margin: 0 0 40px;
   }
-  .summary .stat {
-    background: linear-gradient(145deg, #ffffff, #f0f0f2);
-    border: 1px solid #e5e5ea;
-    border-radius: 16px;
-    padding: 16px 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    animation: cardFadeIn 0.6s ease both;
+  @media (max-width: 700px) {
+    .summary { grid-template-columns: 1fr; }
   }
-  .summary .stat:hover {
-    transform: scale(1.01);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  .summary .stat {
+    background: #ffffff;
+    border: 1px solid #e5e5ea;
+    border-radius: 20px;
+    padding: 22px 20px;
+    text-align: left;
   }
   .summary .stat .num {
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     color: var(--text);
-    line-height: 1.1;
+    line-height: 1;
+    letter-spacing: -0.03em;
   }
   .summary .stat .label {
-    margin-top: 6px;
-    font-size: 11px;
+    margin-top: 10px;
+    font-size: 12px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    line-height: 1.3;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
+    letter-spacing: 0.06em;
   }
+  .summary .stat.stat-attention .num { color: var(--danger); }
 
   h2 {
     font-size: 28px;
@@ -773,23 +700,14 @@ def _report_css() -> str:
   }
 
   .critical-alerts {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 28px;
     background: #000000;
     color: #ffffff;
     border: 1px solid #333;
     border-radius: 16px;
-    padding: 24px;
+    padding: 24px 28px;
     margin: 0 0 36px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    animation: cardFadeIn 0.55s ease both;
   }
-  .critical-copy {
-    flex: 1 1 55%;
-    min-width: 0;
-  }
+  .critical-copy { min-width: 0; }
   .critical-alerts .critical-lead {
     font-size: 18px;
     margin: 0 0 8px;
@@ -804,123 +722,39 @@ def _report_css() -> str:
   .critical-alerts li { padding: 4px 0; color: #f5f5f7; }
   .critical-alerts b { color: #ffffff; font-weight: 700; }
 
-  .risk-chart {
-    flex: 0 0 42%;
-    max-width: 340px;
-    background: transparent;
-    min-width: 220px;
-  }
-  .risk-chart-title {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #86868b;
-    margin: 0 0 12px;
-  }
-  .risk-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .risk-row {
-    display: grid;
-    grid-template-columns: minmax(88px, 34%) 1fr 28px;
-    align-items: center;
-    gap: 10px;
-  }
-  .risk-cat {
-    font-size: 12px;
-    color: #f5f5f7;
-    line-height: 1.2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .risk-track {
-    height: 10px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 980px;
-    overflow: hidden;
-  }
-  .risk-bar-h {
-    height: 100%;
-    border-radius: 980px;
-    min-width: 8px;
-    transition: width 0.5s ease;
-    box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
-  }
-  .risk-bar-h.bar-high {
-    background: linear-gradient(90deg, #ff6961 0%, #ff3b30 100%);
-  }
-  .risk-bar-h.bar-high.bar-glow {
-    box-shadow: inset 0 0 10px rgba(255,255,255,0.25), 0 0 12px rgba(255, 59, 48, 0.45);
-  }
-  .risk-bar-h.bar-mod {
-    background: linear-gradient(90deg, #ffd60a 0%, #ff9500 100%);
-  }
-  .risk-num {
-    font-size: 13px;
-    font-weight: 700;
-    color: #ffffff;
-    text-align: right;
-  }
-  @media (max-width: 700px) {
-    .critical-alerts {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .risk-chart {
-      flex: 1 1 auto;
-      max-width: none;
-    }
-  }
-
-  .gene-section h2 {
-    margin-bottom: 20px;
-  }
+  .gene-section h2 { margin-bottom: 20px; }
   .gene-cards {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
     align-items: stretch;
-    scroll-snap-type: y proximity;
   }
   @media (min-width: 900px) {
-    .gene-cards {
-      grid-template-columns: 1fr 1fr;
-    }
+    .gene-cards { grid-template-columns: 1fr 1fr; }
   }
 
   .card {
-    background: linear-gradient(135deg, #ffffff 0%, #f4f4f7 100%);
+    background: #ffffff;
     border: 1px solid #e5e5ea;
     border-radius: 16px;
+    border-left: 3px solid var(--line);
     padding: 28px 24px;
     margin: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
-    scroll-snap-align: start;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 4px 20px rgba(0,0,0,0.05);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    animation: cardFadeIn 0.7s ease both;
+    box-shadow: none;
   }
-  .card:nth-child(2) { animation-delay: 0.05s; }
-  .card:nth-child(3) { animation-delay: 0.1s; }
-  .card:nth-child(4) { animation-delay: 0.15s; }
-  .card:nth-child(5) { animation-delay: 0.2s; }
-  .card:hover {
-    transform: scale(1.01);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 10px 30px rgba(0,0,0,0.08);
-    border-color: #d2d2d7;
-  }
+  .card.risk-red { border-left-color: var(--danger); }
+  .card.risk-orange { border-left-color: var(--warn); }
+  .card.risk-gray { border-left-color: var(--muted); }
 
   .card-head {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .gene-name {
     font-size: 32px;
@@ -935,70 +769,58 @@ def _report_css() -> str:
     color: var(--muted);
   }
   .status-label {
-    font-size: 12px;
-    letter-spacing: 0.04em;
+    font-size: 11px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--muted);
     border: 1px solid var(--line);
     border-radius: 980px;
     padding: 4px 12px;
     white-space: nowrap;
-    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+    background: #fbfbfd;
   }
-
-  .patient-line {
-    background: transparent;
-    padding: 0;
-    margin: 0 0 10px;
-    font-size: 16px;
-  }
-  .patient-line .label {
-    color: var(--muted);
-    margin-right: 8px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .patient-line .value {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .patient-line.comment {
+  .card-comment {
     font-style: italic;
     color: var(--muted);
     font-size: 14px;
+    margin: 0 0 12px;
   }
 
-  .match {
+  .match { margin-top: 4px; }
+  .match + .match {
     border-top: 1px solid #e5e5ea;
-    padding-top: 18px;
-    margin-top: 18px;
+    padding-top: 16px;
+    margin-top: 16px;
   }
   .match-head {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
+  .match-head.solo { margin-bottom: 14px; }
   .genotype {
-    background: linear-gradient(180deg, #ffffff 0%, #ebebf0 100%);
+    background: #f5f5f7;
     color: var(--text);
     border: 1px solid var(--line);
     padding: 6px 12px;
     border-radius: 10px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
   }
-  .source { color: var(--muted); font-size: 13px; }
   .badge {
     padding: 3px 10px;
     border-radius: 980px;
     border: 1px solid var(--line);
-    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+    background: #fbfbfd;
     font-size: 12px;
     font-weight: 700;
+  }
+  .badge.badge-matched {
+    color: var(--warn);
+    border-color: var(--warn);
+    background: rgba(255, 149, 0, 0.08);
   }
 
   .detail-grid {
@@ -1007,19 +829,13 @@ def _report_css() -> str:
     gap: 8px;
   }
   .detail-box {
-    background: linear-gradient(180deg, #ffffff 0%, #ebebf0 100%);
-    border: 1px solid #d2d2d7;
+    background: #f5f5f7;
+    border: 1px solid #e5e5ea;
     border-radius: 10px;
     padding: 12px 16px;
-    margin-bottom: 0;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
-  .detail-box.detail-emphasis {
-    border-left: 3px solid #1d1d1f;
-  }
-  .detail-box.detail-critical {
-    border-left: 3px solid #ff3b30;
-  }
+  .detail-box.detail-emphasis { border-left: 3px solid #1d1d1f; }
+  .detail-box.detail-critical { border-left: 3px solid var(--danger); }
   .detail-label {
     font-size: 11px;
     font-weight: 500;
@@ -1039,56 +855,56 @@ def _report_css() -> str:
     padding-left: 18px;
     font-weight: 700;
   }
-  .recs-list li {
-    padding: 3px 0;
-    font-weight: 700;
-  }
-  .recs { margin-top: 16px; }
+  .recs-list li { padding: 3px 0; }
+  .recs { margin-top: 14px; }
 
-  .why {
-    margin: 14px 0 8px;
-    background: transparent;
-    border: none;
-    padding: 0;
+  .more {
+    margin-top: auto;
+    padding-top: 16px;
   }
-  .why summary {
+  .more summary {
     cursor: pointer;
     list-style: none;
     display: inline-block;
     margin: 0;
-    padding: 6px 16px;
+    padding: 8px 16px;
     background: #1d1d1f;
     color: #ffffff;
-    border: none;
     border-radius: 980px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s;
     user-select: none;
   }
-  .why summary::-webkit-details-marker { display: none; }
-  .why summary::before { content: none; }
-  .why summary:hover,
-  .why[open] summary {
-    background: #424245;
-    color: #ffffff;
+  .more summary::-webkit-details-marker { display: none; }
+  .more summary:hover,
+  .more[open] summary { background: #424245; }
+  .more-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s ease;
   }
+  .more[open] .more-collapse { grid-template-rows: 1fr; }
+  .more-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .more[open] .more-inner { padding-top: 14px; }
+
   .why-body {
-    margin-top: 14px;
-    padding: 16px;
-    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
-    border: 1px solid #d2d2d7;
+    padding: 14px 16px;
+    background: #f5f5f7;
+    border: 1px solid #e5e5ea;
     border-radius: 10px;
     font-size: 14px;
     color: var(--text);
+    margin-bottom: 12px;
   }
   .why-sentence { margin: 0 0 10px; line-height: 1.55; font-weight: 700; }
   .why-body ul { padding-left: 18px; margin: 0; color: var(--muted); }
   .why-body li { padding: 3px 0; }
 
   .live-db h4, .pgx-block h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     margin: 0 0 10px;
     color: var(--text);
@@ -1096,20 +912,20 @@ def _report_css() -> str:
   .live-db ul {
     padding-left: 18px;
     margin: 0;
-    font-size: 15px;
+    font-size: 14px;
   }
   .live-db {
-    margin-top: 18px;
-    padding: 16px 0 0;
+    margin-top: 12px;
+    padding: 14px 0 0;
     border-top: 1px solid #e5e5ea;
-    background: transparent;
   }
   .live-db h5 {
     margin: 12px 0 4px;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    font-family: var(--font-sans);
   }
   .live-db a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
   .live-cls {
@@ -1125,25 +941,22 @@ def _report_css() -> str:
   .note {
     color: var(--muted);
     font-size: 14px;
-    background: transparent;
-    padding: 0;
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .not-in-base {
-    background: linear-gradient(145deg, #ffffff, #f0f0f2);
+    background: #ffffff;
     border: 1px solid #e5e5ea;
     border-radius: 16px;
     padding: 24px 28px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
   }
   .not-in-base .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
   .not-in-base ul { padding-left: 18px; margin: 0; font-size: 15px; }
 
   .pgx-block {
-    margin-top: 20px;
+    margin-top: 12px;
     border-top: 1px solid #e5e5ea;
-    padding-top: 16px;
+    padding-top: 14px;
   }
   .pgx-count, .pgx-counter {
     font-weight: 400;
@@ -1172,22 +985,19 @@ def _report_css() -> str:
     border-bottom: 1px solid #ececef;
     vertical-align: top;
   }
-  .pgx-match-col { width: 28px; text-align: center; }
-  .pgx-row-exact, .pgx-row-allele { background: transparent; border-left: none; }
   .pgx-badge {
     padding: 2px 8px;
     border-radius: 980px;
     border: 1px solid var(--line);
     font-size: 11px;
     font-weight: 700;
-    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
+    background: #fbfbfd;
     display: inline-block;
   }
   .pgx-gt { font-weight: 700; white-space: nowrap; }
-  .pgx-pval { color: var(--muted); white-space: nowrap; }
   .pgx-no-match {
-    background: linear-gradient(180deg, #fbfbfd, #f5f5f7);
-    border: 1px solid #d2d2d7;
+    background: #f5f5f7;
+    border: 1px solid #e5e5ea;
     border-radius: 10px;
     padding: 14px 16px;
     font-size: 14px;
@@ -1202,7 +1012,6 @@ def _report_css() -> str:
     padding: 8px 0 8px 24px;
     margin: 56px 0 24px;
     border-left: 2px solid #000;
-    animation: cardFadeIn 0.7s ease both;
   }
   .doctors-note h2 {
     margin: 0 0 16px;
@@ -1224,6 +1033,7 @@ def _report_css() -> str:
     text-align: center;
     color: var(--muted);
     font-size: 13px;
+    line-height: 1.55;
   }
 
   .print-btn {
@@ -1238,12 +1048,116 @@ def _report_css() -> str:
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s;
   }
   .print-btn:hover { background: #424245; }
 
+  .manual-add-wrap {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+  }
+  .manual-add-btn {
+    background: #ffffff;
+    color: #1d1d1f;
+    border: 1px solid #d2d2d7;
+    border-radius: 980px;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .manual-add-btn:hover {
+    background: #fbfbfd;
+    border-color: #aeaeb2;
+  }
+
+  .manual-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.36);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .manual-modal.is-open { display: flex; }
+  .manual-modal-panel {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border: 1px solid #e5e5ea;
+    border-radius: 18px;
+    padding: 28px 26px 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  }
+  .manual-modal-panel h3 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .manual-modal-sub {
+    margin: 0 0 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .manual-field { margin-bottom: 14px; }
+  .manual-field label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #86868b;
+    margin-bottom: 6px;
+  }
+  .manual-field input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--text);
+    font-size: 16px;
+    font-family: var(--font-serif);
+    outline: none;
+  }
+  .manual-field input:focus {
+    border-color: #1d1d1f;
+    box-shadow: 0 0 0 3px rgba(29,29,31,0.08);
+  }
+  .manual-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  .manual-cancel {
+    background: transparent;
+    border: none;
+    color: #86868b;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 980px;
+  }
+  .manual-cancel:hover { color: #1d1d1f; background: #f5f5f7; }
+  .manual-analyze {
+    background: #1d1d1f;
+    color: #ffffff;
+    border: none;
+    border-radius: 980px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .manual-analyze:hover { background: #424245; }
+
   @media print {
-    * { box-shadow: none !important; transform: none !important; animation: none !important; }
+    * { box-shadow: none !important; transform: none !important; }
     html { scroll-behavior: auto; }
     body {
       background: #fff !important;
@@ -1261,11 +1175,11 @@ def _report_css() -> str:
       background: #fff !important;
       color: #000 !important;
       border: 1px solid #000;
-      box-shadow: none !important;
     }
     .critical-alerts li, .critical-alerts b, .critical-lead { color: #000 !important; }
-    .print-btn, .why summary { display: none !important; }
-    .why-body { display: block !important; }
+    .print-btn, .manual-add-wrap, .manual-modal, .more summary { display: none !important; }
+    .more-collapse, .more-inner { display: block !important; overflow: visible !important; }
+    .more-inner { padding-top: 8px !important; }
     .critical-alerts, .card, .doctors-note {
       page-break-inside: avoid;
       break-inside: avoid;
@@ -1275,6 +1189,438 @@ def _report_css() -> str:
     .pgx-table-wrap { overflow: visible; }
   }
 """
+
+
+
+
+def _load_knowledge_base_embed() -> str:
+    """Load KB JSON safe for embedding inside an HTML <script> tag."""
+    path = Path(BASE_PATH)
+    if not path.is_file():
+        return "[]"
+    raw = path.read_text(encoding="utf-8")
+    # Validate + compact; escape '<' so "</script>" cannot break out.
+    data = json.loads(raw)
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+
+
+def _manual_gene_entry_ui(kb_json: Optional[str] = None) -> str:
+    """Button + modal + client-side KB lookup for manual gene cards."""
+    if kb_json is None:
+        kb_json = _load_knowledge_base_embed()
+    # Avoid f-string: KB JSON contains many '{' / '}' braces.
+    template = r"""
+  <div class="manual-add-wrap no-print">
+    <button type="button" class="manual-add-btn" id="manual-add-open">
+      ➕ Добавить ген вручную
+    </button>
+  </div>
+
+  <div class="manual-modal no-print" id="manual-gene-modal" aria-hidden="true" role="dialog" aria-labelledby="manual-gene-title">
+    <div class="manual-modal-panel" role="document">
+      <h3 id="manual-gene-title">Добавить ген вручную</h3>
+      <p class="manual-modal-sub">Поиск по встроенной базе знаний GenomIQ.</p>
+      <form id="manual-gene-form" autocomplete="off">
+        <div class="manual-field">
+          <label for="manual-gene-name">Gene Name</label>
+          <input id="manual-gene-name" name="gene" type="text" placeholder="VKORC1" required maxlength="64">
+        </div>
+        <div class="manual-field">
+          <label for="manual-gene-gt">Genotype</label>
+          <input id="manual-gene-gt" name="genotype" type="text" placeholder="CT или *1/*2" required maxlength="64">
+        </div>
+        <div class="manual-modal-actions">
+          <button type="button" class="manual-cancel" id="manual-add-cancel">Отмена</button>
+          <button type="submit" class="manual-analyze">Проанализировать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script id="knowledge-base" type="application/json">__KNOWLEDGE_BASE_JSON__</script>
+  <script>
+  (function () {
+    var modal = document.getElementById("manual-gene-modal");
+    var openBtn = document.getElementById("manual-add-open");
+    var cancelBtn = document.getElementById("manual-add-cancel");
+    var form = document.getElementById("manual-gene-form");
+    var nameInput = document.getElementById("manual-gene-name");
+    var gtInput = document.getElementById("manual-gene-gt");
+    var cards = document.getElementById("interpreted-gene-cards");
+    var NON_GT = {
+      "вариант": 1, "лекарство": 1, "эффект": 1, "уровень": 1,
+      "препарат": 1, "guidance": 1, "источник": 1, "домен": 1,
+      "rsid": 1, "изоформа": 1
+    };
+
+    function esc(s) {
+      return String(s == null ? "" : s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function stripMd(s) {
+      return String(s == null ? "" : s).replace(/\*\*(.+?)\*\*/g, "$1").trim();
+    }
+
+    function loadKb() {
+      var el = document.getElementById("knowledge-base");
+      if (!el) return [];
+      try { return JSON.parse(el.textContent || "[]"); }
+      catch (e) { return []; }
+    }
+
+    function geneSymbol(header) {
+      var h = String(header || "").trim();
+      var m = h.match(/^([A-Za-z0-9*\/\-]+)/);
+      return (m ? m[1] : h).toUpperCase().replace(/\s+/g, "");
+    }
+
+    function findGene(kb, name) {
+      var target = String(name || "").trim().toUpperCase().replace(/\s+/g, "");
+      if (!target) return null;
+      for (var i = 0; i < kb.length; i++) {
+        var group = kb[i] || {};
+        var genes = group.genes || [];
+        for (var j = 0; j < genes.length; j++) {
+          var gene = genes[j];
+          var sym = geneSymbol(gene.header);
+          if (sym === target || sym.indexOf(target) === 0 || target.indexOf(sym) === 0) {
+            return { group: group.group || "", gene: gene };
+          }
+        }
+      }
+      return null;
+    }
+
+    function normalizeGt(gt) {
+      if (!gt) return "";
+      var s = String(gt).trim().replace(/\s*\(.*?\)/g, "").trim();
+      if (s.charAt(0) === "*") return s.replace(/\s+/g, "").toLowerCase();
+      s = s.replace(/\//g, "").replace(/\s+/g, "").replace(/\|/g, "").toLowerCase();
+      if (s.length === 2 && /^[acgt]{2}$/.test(s)) {
+        return s.split("").sort().join("");
+      }
+      return s;
+    }
+
+    function starParts(value) {
+      return String(value || "").replace(/\s+/g, "").split("/").filter(function (p) {
+        return p.charAt(0) === "*";
+      });
+    }
+
+    function isStarOverlap(cn, rowNorm) {
+      if (cn.indexOf("*") < 0 && rowNorm.indexOf("*") < 0) return false;
+      var cParts = starParts(cn);
+      if (!cParts.length) return cn === rowNorm;
+      var cSet = {};
+      cParts.forEach(function (p) { cSet[p] = 1; });
+      var chunks = rowNorm.replace(/\s+/g, "").split(/[,;]/);
+      for (var i = 0; i < chunks.length; i++) {
+        var rChunk = starParts(chunks[i]);
+        if (!rChunk.length) continue;
+        var same = rChunk.length === cParts.length;
+        for (var k = 0; k < rChunk.length && same; k++) {
+          if (!cSet[rChunk[k]]) same = false;
+        }
+        if (same) {
+          for (var t = 0; t < cParts.length; t++) {
+            if (rChunk.indexOf(cParts[t]) < 0) { same = false; break; }
+          }
+        }
+        if (same) return true;
+      }
+      var rParts = starParts(rowNorm);
+      if (!rParts.length) return cn === rowNorm;
+      if (cParts.length === 1 && cn.indexOf("/") < 0) return rParts.indexOf(cParts[0]) >= 0;
+      if (rParts.length !== cParts.length) return false;
+      for (var x = 0; x < cParts.length; x++) {
+        if (rParts.indexOf(cParts[x]) < 0) return false;
+      }
+      return true;
+    }
+
+    function isGtCol(h) {
+      var hl = String(h || "").trim().toLowerCase();
+      return hl === "генотип" || hl === "аллели" || hl === "alleles" || hl === "genotype" ||
+        hl.indexOf("генотип") === 0 || hl.indexOf("аллели") === 0;
+    }
+
+    function isGeneTable(headers) {
+      var hasGt = false, hasDrug = false;
+      for (var i = 0; i < headers.length; i++) {
+        var h = String(headers[i] || "");
+        if (isGtCol(h)) hasGt = true;
+        if (NON_GT[h.trim().toLowerCase()]) hasDrug = true;
+      }
+      return hasGt && !hasDrug;
+    }
+
+    function rowGet(row, keys) {
+      if (!row) return "";
+      var map = {};
+      Object.keys(row).forEach(function (k) { map[k.trim().toLowerCase()] = row[k]; });
+      for (var i = 0; i < keys.length; i++) {
+        if (map[keys[i]] != null && String(map[keys[i]]).trim()) return stripMd(String(map[keys[i]]));
+      }
+      for (var k in map) {
+        for (var j = 0; j < keys.length; j++) {
+          if (k.indexOf(keys[j]) >= 0 && map[k] != null && String(map[k]).trim()) {
+            return stripMd(String(map[k]));
+          }
+        }
+      }
+      return "";
+    }
+
+    function phenotypeCodes(pheno) {
+      var codes = {};
+      var m;
+      var re = /\b(IM|PM|NM|UM|RM|EM)\b/gi;
+      while ((m = re.exec(pheno || "")) ) codes[m[1].toUpperCase()] = 1;
+      var low = String(pheno || "").toLowerCase();
+      if (low.indexOf("intermediate") >= 0 || low.indexOf("промежуточ") >= 0) codes.IM = 1;
+      if (low.indexOf("poor metabol") >= 0 || low.indexOf("медленн") >= 0) codes.PM = 1;
+      if (low.indexOf("normal metabol") >= 0 || low.indexOf("extensive") >= 0) codes.NM = 1;
+      return codes;
+    }
+
+    function matchGenotype(gene, genotype) {
+      var cn = normalizeGt(genotype);
+      if (!cn || !gene) return null;
+      var sections = gene.sections || [];
+      for (var si = 0; si < sections.length; si++) {
+        var tables = sections[si].tables || [];
+        for (var ti = 0; ti < tables.length; ti++) {
+          var tbl = tables[ti];
+          var headers = tbl.headers || [];
+          if (!isGeneTable(headers)) continue;
+          var gtCols = headers.filter(isGtCol);
+          var rows = tbl.rows || [];
+          for (var ri = 0; ri < rows.length; ri++) {
+            var row = rows[ri];
+            for (var gi = 0; gi < gtCols.length; gi++) {
+              var rowGt = String(row[gtCols[gi]] || "").trim();
+              if (!rowGt) continue;
+              var rowNorm = normalizeGt(rowGt);
+              var starNorm = String(rowGt).replace(/\s+/g, "").toLowerCase();
+              var matched = cn === rowNorm ||
+                cn.replace(/\//g, "") === rowNorm.replace(/\//g, "") ||
+                isStarOverlap(cn, starNorm) ||
+                isStarOverlap(cn, rowNorm);
+              if (matched) {
+                var display = genotype;
+                var parts = starParts(cn);
+                if (parts.length >= 2) display = parts[0] + "/" + parts[1];
+                else if (parts.length === 1) display = parts[0];
+                return { row: row, displayGt: display, acmg: rowGet(row, ["acmg"]) };
+              }
+            }
+          }
+        }
+      }
+      return null;
+    }
+
+    function collectRecommendations(gene, phenotype, matchedRow) {
+      var recs = [];
+      var seen = {};
+      function add(t) {
+        t = stripMd(t);
+        if (!t) return;
+        var key = t.toLowerCase();
+        if (seen[key]) return;
+        seen[key] = 1;
+        recs.push(t);
+      }
+      var fromRow = rowGet(matchedRow, ["рекомендации", "рекомендация", "recommendations"]);
+      if (fromRow) add(fromRow);
+      var codes = phenotypeCodes(phenotype);
+      var sections = (gene && gene.sections) || [];
+      for (var si = 0; si < sections.length; si++) {
+        var tables = sections[si].tables || [];
+        for (var ti = 0; ti < tables.length; ti++) {
+          var tbl = tables[ti];
+          var headers = tbl.headers || [];
+          var recCol = null, gtCol = null, drugCol = null;
+          for (var hi = 0; hi < headers.length; hi++) {
+            var hl = String(headers[hi] || "").trim().toLowerCase();
+            if (!recCol && (hl.indexOf("рекоменд") >= 0 || hl === "recommendation")) recCol = headers[hi];
+            if (!gtCol && isGtCol(headers[hi])) gtCol = headers[hi];
+            if (!drugCol && (hl === "препарат" || hl === "drug" || hl === "лекарство")) drugCol = headers[hi];
+          }
+          if (!recCol) continue;
+          var rows = tbl.rows || [];
+          for (var ri = 0; ri < rows.length; ri++) {
+            var row = rows[ri];
+            var ok = !gtCol;
+            if (gtCol) {
+              var cell = String(row[gtCol] || "").toUpperCase();
+              ok = false;
+              Object.keys(codes).forEach(function (c) {
+                if (cell.indexOf(c) >= 0) ok = true;
+              });
+            }
+            if (!ok) continue;
+            var drug = drugCol ? stripMd(String(row[drugCol] || "")) : "";
+            var rec = stripMd(String(row[recCol] || ""));
+            if (!rec) continue;
+            add(drug ? (drug + ": " + rec) : rec);
+          }
+        }
+        var bullets = sections[si].bullets || [];
+        for (var bi = 0; bi < bullets.length; bi++) {
+          var b = stripMd(String(bullets[bi] || ""));
+          if (/рекоменд|замен|избег|противопоказ|снизить|доз/i.test(b)) add(b);
+        }
+      }
+      return recs;
+    }
+
+    function detailBox(label, value, critical) {
+      if (!value) return "";
+      var cls = "detail-box" + (/риск|рекоменд/i.test(label) ? " detail-emphasis" : "") +
+        (critical ? " detail-critical" : "");
+      return '<div class="' + cls + '"><div class="detail-label">' + esc(label) +
+        '</div><div class="detail-value">' + esc(value) + '</div></div>';
+    }
+
+    function riskLevel(acmg, risk) {
+      var blob = String(acmg || "") + " " + String(risk || "");
+      blob = blob.toLowerCase();
+      if (/pathogenic|противопоказ|не активируется|contraindic/.test(blob)) return "red";
+      if (/risk factor|снижен|доз|миопат|промежуточ|intermediate/.test(blob)) return "orange";
+      return "gray";
+    }
+
+    function levelColor(level) {
+      return level === "red" ? "#ff3b30" : (level === "orange" ? "#ff9500" : "#86868b");
+    }
+
+    function buildMatchedCard(geneName, group, genotype, hit, gene) {
+      var pheno = rowGet(hit.row, ["фенотип", "phenotype"]);
+      var risk = rowGet(hit.row, ["клинический риск", "риск", "clinical risk"]);
+      var func = rowGet(hit.row, ["функция", "function"]);
+      var acmg = hit.acmg || rowGet(hit.row, ["acmg"]);
+      var level = riskLevel(acmg, risk);
+      var color = levelColor(level);
+      var recs = collectRecommendations(gene, pheno, hit.row).filter(function (r) {
+        return r && r !== "Специфических рекомендаций нет";
+      });
+      var recHtml = "";
+      if (recs.length) {
+        recHtml = '<div class="recs detail-box detail-emphasis"><div class="detail-label">Рекомендации</div>' +
+          '<div class="detail-value"><ul class="recs-list">' +
+          recs.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") +
+          "</ul></div></div>";
+      }
+      var critical = /противопоказ|высокий|тромбоз|кровотеч|pathogenic|не активируется/i.test(risk);
+      var acmgBadge = acmg
+        ? '<span class="badge" style="color:' + color + ';border-color:' + color + ';">' + esc(acmg) + "</span>"
+        : "";
+      var more = '<details class="more"><summary>Подробнее</summary><div class="more-collapse"><div class="more-inner">' +
+        '<div class="note">Источник: knowledge base (ручной ввод)</div>' +
+        '</div></div></details>';
+      return (
+        '<article class="card matched manual-entry risk-' + level + '">' +
+          '<div class="card-head"><div>' +
+            '<h3 class="gene-name">' + esc(geneName) + '</h3>' +
+            '<div class="gene-group">' + esc(group || "Ручной ввод") + '</div>' +
+          '</div><span class="status-label">Matched</span></div>' +
+          '<div class="match"><div class="match-head">' +
+            '<span class="genotype">' + esc(hit.displayGt || genotype) + '</span>' +
+            '<span class="badge badge-matched">MATCHED</span>' +
+            acmgBadge +
+          '</div><div class="detail-grid">' +
+            detailBox("Фенотип", pheno, false) +
+            detailBox("Функция", func, false) +
+            detailBox("Клинический риск", risk, critical) +
+          '</div>' + recHtml + '</div>' +
+          more +
+        '</article>'
+      );
+    }
+
+    function buildMissingCard(geneName, genotype, message) {
+      return (
+        '<article class="card no-match manual-entry risk-gray">' +
+          '<div class="card-head"><div>' +
+            '<h3 class="gene-name">' + esc(geneName) + '</h3>' +
+            '<div class="gene-group">Ручной ввод</div>' +
+          '</div><span class="status-label">Manual</span></div>' +
+          '<div class="match-head solo"><span class="genotype">' + esc(genotype) + '</span></div>' +
+          '<div class="note">' + esc(message) + '</div>' +
+        '</article>'
+      );
+    }
+
+    function analyze(geneName, genotype) {
+      var kb = loadKb();
+      var found = findGene(kb, geneName);
+      if (!found) {
+        return buildMissingCard(
+          geneName, genotype,
+          "Ген не найден в текущей базе знаний. Требуется добавление."
+        );
+      }
+      var hit = matchGenotype(found.gene, genotype);
+      if (!hit) {
+        return buildMissingCard(
+          geneName, genotype,
+          "Ген найден в базе, но генотип «" + genotype + "» не сопоставлен с таблицами. Требуется проверка."
+        );
+      }
+      var sym = geneSymbol(found.gene.header) || geneName;
+      return buildMatchedCard(sym, found.group, genotype, hit, found.gene);
+    }
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      if (nameInput) nameInput.focus();
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      if (form) form.reset();
+    }
+
+    if (openBtn) openBtn.addEventListener("click", openModal);
+    if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+    if (modal) {
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal && modal.classList.contains("is-open")) closeModal();
+    });
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var gene = (nameInput && nameInput.value || "").trim();
+        var genotype = (gtInput && gtInput.value || "").trim();
+        if (!gene || !genotype || !cards) return;
+        cards.insertAdjacentHTML("beforeend", analyze(gene, genotype));
+        var added = cards.lastElementChild;
+        if (added && added.scrollIntoView) {
+          added.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+        closeModal();
+      });
+    }
+  })();
+  </script>
+"""
+    return template.replace("__KNOWLEDGE_BASE_JSON__", kb_json)
 
 
 def generate_html_report(rep: dict, output_path: str):
@@ -1338,20 +1684,17 @@ def generate_html_report(rep: dict, output_path: str):
     doctors_html = _render_doctors_note(results)
 
     total_pgx = sum(len(r.get("pgx_annotations", [])) for r in results)
-    genes_with_no_data = sum(
-        1
-        for r in results
-        if not r.get("pgx_annotations") and r.get("pgx_no_match_info")
-    )
+    found_count = stats.get("matched", 0) + stats.get("matched_annotation_only", 0)
+    attention_count = len(collect_critical_alerts(results))
 
-    gene_section = ""
-    if matched or matched_annotation:
-        gene_section = f"""
+    manual_ui = _manual_gene_entry_ui(_load_knowledge_base_embed())
+    gene_section = f"""
   <section class="gene-section">
     <h2>Интерпретированные гены</h2>
-    <div class="gene-cards">
+    <div class="gene-cards" id="interpreted-gene-cards">
       {matched_html}{matched_annotation_html}
     </div>
+    {manual_ui}
   </section>
 """
     unmatched_section = ""
@@ -1387,24 +1730,16 @@ def generate_html_report(rep: dict, output_path: str):
 
   <div class="summary">
     <div class="stat">
-      <div class="num">{stats.get('matched', 0) + stats.get('matched_annotation_only', 0)}</div>
-      <div class="label">Найдено</div>
+      <div class="num">{found_count}</div>
+      <div class="label">Найдено генов</div>
     </div>
-    <div class="stat">
-      <div class="num">{stats.get('no_genotype_match', 0)}</div>
-      <div class="label">Не сопоставлено</div>
-    </div>
-    <div class="stat">
-      <div class="num">{stats.get('not_in_knowledge_base', 0)}</div>
-      <div class="label">Нет в базе</div>
+    <div class="stat stat-attention">
+      <div class="num">{attention_count}</div>
+      <div class="label">Требуют внимания</div>
     </div>
     <div class="stat">
       <div class="num">{total_pgx}</div>
       <div class="label">Фармакогенетика</div>
-    </div>
-    <div class="stat">
-      <div class="num">{genes_with_no_data}</div>
-      <div class="label">Без данных</div>
     </div>
   </div>
 
@@ -1415,6 +1750,7 @@ def generate_html_report(rep: dict, output_path: str):
 
   <footer>
     Отчёт сформирован автоматически. Не является медицинским диагнозом.<br>
+    Гены, добавленные вручную, требуют проверки врача; система не гарантирует точность интерпретации.<br>
     Для интерпретации обратитесь к врачу-генетику.
   </footer>
 </div>

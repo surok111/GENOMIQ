@@ -5962,6 +5962,41 @@
               "CPIC guideline отсутствует."
             ],
             "text": "Из OMIM (Molecular Genetics):\nИз OMIM (Evolution):\nИз OMIM (Animal Model):\nИз ClinPGx (Summary / Variant Annotations):\nИз CPIC:\n*Источники: ClinPGx (PharmGKB) PA35072, ClinVar (VCV004852601, VCV001696856, VCV000155430, VCV000625706, VCV000443497, VCV000443496), OMIM *142857, CPIC guidelines registry (29 guidelines, HLA-DRB1 отсутствует), PMID:15121303, PMID:15057902, PMID:11672906, PMID:11756990, PMID:10535882, PMID:20800921, PMID:21545408, PMID:22111603, PMID:2222133, PMID:24236482, PMID:24399721, PMID:24687830, PMID:24858023, PMID:25714001, PMID:26265235, PMID:27020477, PMID:27023328, PMID:27206238, PMID:27666425, PMID:28786423, PMID:29233746, PMID:32024945, PMID:32467566, PMID:32963330, PMID:33887993, PMID:34747637, PMID:36226442, PMID:36725456, PMID:37898586, PMID:38594174, PMID:39733427, PMID:40195278, PMID:40788345, PMID:41485482, PMID:42488961, PMID:9179433, PMID:19392989, PMID:19668019, PMID:20235791, PMID:20639878, PMID:21545408, PMID:23057546, PMID:25311255, PMID:26244882, PMID:26556688, PMID:27839692, PMID:38451034, PMID:38594174, PMCID:PMC10564446, PMCID:PMC11021981, PMCID:PMC11732454, PMCID:PMC11786012, PMCID:PMC12653957, PMCID:PMC1728095, PMCID:PMC1754569, PMCID:PMC2750008, PMCID:PMC2810514, PMCID:PMC3551216, PMCID:PMC3706603, PMCID:PMC4038630, PMCID:PMC4141516, PMCID:PMC4492197, PMCID:PMC4506516, PMCID:PMC4615595, PMCID:PMC4928097, PMCID:PMC5467955, PMCID:PMC554812, PMCID:PMC5561238, PMCID:PMC6379053, PMCID:PMC6511989, PMCID:PMC6817890, PMCID:PMC7299187, PMCID:PMC8100096, PMCID:PMC9363274, PMCID:PMC9974860, PMCID:PMC10189794, PMCID:PMC10502099, PMCID:PMC10546186, PMCID:PMC10741656, PMCID:PMC10957942, PMCID:PMC11954710, PMCID:PMC13028346, PMCID:PMC8953705, PMCID:PMC9820603, PMCID:PMC11404698, PMCID:PMC12308240, PMCID:PMC7485556, PMCID:PMC7045476, PMCID:PMC6021962, PMCID:PMC5908896, PMCID:PMC4864175, PMCID:PMC4364852, PMCID:PMC4366259, PMCID:PMC4557995, PMCID:PMC5088582, PMCID:PMC11144121, PMCID:PMC3513412, PMCID:PMC2670196, PMCID:PMC3237821, PMCID:PMC5642896, PMCID:PMC7305826, PMCID:PMC7266722, PMCID:PMC9820603, PMCID:PMC12115323, PMCID:PMC5396189, PMCID:PMC10905650.*"
+          },
+          {
+            "code": "supp",
+            "title": "Таблица генотипов HLA-DRB1 (дополнение)",
+            "tables": [
+              {
+                "kind": "genotype",
+                "headers": [
+                  "Генотип",
+                  "Фенотип",
+                  "Функция",
+                  "Клинический риск",
+                  "ACMG"
+                ],
+                "rows": [
+                  {
+                    "Генотип": "*07:01 Negative",
+                    "Фенотип": "Норма",
+                    "Функция": "Аллель отсутствует",
+                    "Клинический риск": "Базовый риск",
+                    "ACMG": "Benign"
+                  },
+                  {
+                    "Генотип": "*07:01 Positive",
+                    "Фенотип": "Носительство",
+                    "Функция": "Аллель присутствует",
+                    "Клинический риск": "Высокий риск гепатотоксичности на лапатинибе, риск панкреатита на азатиоприне, сниженный ответ на вакцину от гепатита В",
+                    "ACMG": "Risk factor"
+                  }
+                ]
+              }
+            ],
+            "pharmacogenomics": [],
+            "bullets": [],
+            "text": ""
           }
         ]
       },
