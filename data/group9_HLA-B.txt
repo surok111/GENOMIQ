@@ -1,0 +1,58 @@
+# Группа 9: HLA-B - Major histocompatibility complex, class I, B
+
+**Ген:** HLA-B. Клиническая цель этой записи — аллель HLA-B*15:02.
+
+Страница собрана из открытых страниц CPIC/ClinPGx, ClinVar и NCBI Gene. Текст записи OMIM на omim.org в этой сессии не открылся.
+
+## ГЕН 1: HLA-B — Major histocompatibility complex, class I, B
+
+### 1.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное имя | major histocompatibility complex, class I, B |
+| OMIM ID | MIM:142830 (ссылка NCBI Gene). Текст записи на omim.org: Not found |
+| ClinPGx | PA35056 |
+| NCBI Gene | 3106 |
+| Локус | 6p21.33 |
+| Другие символы | AS, B-4901, HLAB |
+| Функция | HLA-B belongs to the HLA class I heavy chain paralogues. This class I molecule is a heterodimer consisting of a heavy chain and a light chain (beta-2 microglobulin). The heavy chain is anchored in the membrane. Class I molecules play a central role in the immune system by presenting peptides derived from the endoplasmic reticulum lumen. They are expressed in nearly all cells. The heavy chain is approximately 45 kDa and its gene contains 8 exons. Exon 1 encodes the leader peptide, exon 2 and 3 encode the alpha1 and alpha2 domains, which both bind the peptide, exon 4 encodes the alpha3 domain, exon 5 encodes the transmembrane region and exons 6 and 7 encode the cytoplasmic tail. Polymorphisms within exon 2 and exon 3 are responsible for the peptide binding specificity of each class one molecule. Typing for these polymorphisms is routinely done for bone marrow and kidney transplantation. Hundreds of HLA-B alleles have been described. [provided by RefSeq, Jul 2008] |
+
+- Полное имя: major histocompatibility complex, class I, B. OMIM ID на странице NCBI Gene: MIM:142830. Текст записи omim.org: Not found.
+- Функция (NCBI Gene, RefSeq, Jul 2008): HLA-B кодирует тяжёлую цепь молекулы HLA I класса. Она представляет пептиды иммунной системе. Полиморфизмы экзонов 2 и 3 задают специфичность связывания пептида.
+
+### 1.2 Варианты
+
+Аннотация CPIC для карбамазепина (обновление 2017/2018, PMID:29392710) рекомендует другой препарат наивному пациенту, у которого есть хотя бы одна копия HLA-B*15:02 или HLA-A*31:01, из-за риска синдрома Стивенса–Джонсона и токсического эпидермального некролиза. HLA-A*31:01 дополнительно связан с DRESS и макулопапулёзной экзантемой. Ниже строки из таблицы рекомендаций CPIC для наивного пациента.
+
+| Генотип | Фенотип | Клинический риск | Рекомендации | ACMG |
+|---|---|---|---|---|
+| HLA-B*15:02 negative и HLA-A*31:01 negative | Носительство *15:02 не обнаружено | Обычный риск кожной реакции по этим двум аллелям | Наивному пациенту назначать карбамазепин по стандартным правилам дозирования. Сила CPIC: Strong | Not found |
+| *15:02 | Носитель хотя бы одной копии *15:02 | Повышенный риск SJS/TEN | Наивному пациенту не назначать карбамазепин. Это сохраняется и когда альтернативы нет. Сила: Strong | Not found |
+| HLA-B*15:02 negative и HLA-A*31:01 positive | *15:02 нет, есть *31:01 | Повышенный риск SJS/TEN, а также DRESS и макулопапулёзной экзантемы | Если пациент наивный и есть альтернатива, не назначать карбамазепин. Сила: Strong. Если альтернативы нет, можно рассмотреть карбамазепин с более частым наблюдением и отменить при первом кожном признаке. Сила этого исключения: Optional | Not found |
+| HLA-B*15:02 positive после непрерывного приёма дольше 3 месяцев без кожной реакции | Носитель *15:02 с предшествующей переносимостью | Латентный период SJS/TEN при непрерывном приёме короткий, обычно до 3 месяцев | Осторожно можно рассматривать повторное применение. Сила: Optional | Not found |
+
+ClinVar, поиск `HLA-B[gene] AND (pathogenic[clinsig] OR "likely pathogenic"[clinsig])`: 15 записей. HLA-B*15:02 в этой короткой выдаче: Not found. С явной классификацией была одна строка.
+
+- GRCh37/hg19 6p21.33(chr6:30944923-31867966)x1 — Likely pathogenic
+
+### 1.3 Фармакогенетика
+
+ClinPGx PA35056: 89 summary annotations. Уровни: 1A — 7, 2A — 5, 3 — 74, 4 — 3. Уровень 1B: Not found. CPIC-пары HLA-B уровня A с рекомендацией включают карбамазепин и окскарбазепин. У гена есть и другие пары уровня A (абакавир, аллопуринол, фенитоин, фосфенитоин); они про другие аллели, не *15:02.
+
+| Drug | Association | Phenotype | Level |
+|---|---|---|---|
+| carbamazepine | HLA-B*15:02. Наивному пациенту не назначать карбамазепин. Summary annotation ClinPGx также включает *15:11 и кожные реакции, включая SJS/TEN | Toxicity | 1A |
+| oxcarbazepine | HLA-B*15:02 positive. Наивному пациенту не назначать окскарбазепин. Сила CPIC: Strong | Toxicity | 1A |
+| phenytoin | HLA-B*15:02. Summary annotation ClinPGx: SJS/TEN, DRESS и тяжёлые кожные реакции. Текст дозы CPIC в эту карточку не копировался | Toxicity | 1A |
+| lamotrigine | HLA-B*15:02. Summary annotation ClinPGx. Отдельной CPIC-рекомендации уровня A для этой пары в выгруженном списке: Not found | Toxicity | 1A |
+
+### 1.4 Рекомендации
+
+- Карбамазепин, наивный пациент, HLA-B*15:02 positive: не назначать карбамазепин. Сила: Strong. Источник: аннотация CPIC PA166105008 и таблица рекомендаций.
+- Карбамазепин, наивный пациент, HLA-B*15:02 negative и HLA-A*31:01 negative: стандартное дозирование. Сила: Strong.
+- Окскарбазепин, наивный пациент, HLA-B*15:02 positive: не назначать окскарбазепин. Сила: Strong.
+- Окскарбазепин, HLA-B*15:02 negative: стандартное дозирование. Сила: Strong.
+- Если *15:02 positive, но препарат уже непрерывно переносился дольше трёх месяцев без кожной реакции, повторное применение можно рассматривать осторожно. Сила: Optional. Это относится и к карбамазепину, и к окскарбазепину.
+
+*Источники: https://www.clinpgx.org/guideline/PA166251448 ; https://www.clinpgx.org/guidelineAnnotation/PA166105008 ; таблицы recommendation CPIC для carbamazepine и oxcarbazepine ; https://www.clinpgx.org/gene/PA35056 ; https://www.ncbi.nlm.nih.gov/gene/3106 ; ClinVar esearch HLA-B pathogenic or likely pathogenic. omim.org не открылся.*

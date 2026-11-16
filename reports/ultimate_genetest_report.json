@@ -1,0 +1,2812 @@
+{
+  "file": "ultimate_genetest.txt",
+  "genes_total": 40,
+  "stats": {
+    "matched": 36,
+    "matched_annotation_only": 3,
+    "no_genotype_match": 0,
+    "no_table_in_base": 0,
+    "not_in_knowledge_base": 1
+  },
+  "results": [
+    {
+      "gene": "CYP2C19",
+      "group": "Группа 5: Фармакогенетика и метаболизм лекарств",
+      "patient_result": "*1/*2",
+      "patient_comment": "",
+      "parts": [
+        "*1/*2"
+      ],
+      "extracted_candidates": [
+        "*1/*2"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Медленные метаболисты (*2, *3): Лекарство не активируется. Риск повторного инфаркта/тромбоза стента. Рекомендуется замена на тикагрелор или прасугрел."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "*1/*2",
+          "full_row": {
+            "Генотип": "*1/*2",
+            "Фенотип": "Intermediate Metabolizer (IM)",
+            "Функция": "Одна нормальная + одна сниженная",
+            "Клинический риск": "**Клопидогрел — снижение эффекта**, риск тромбоза стента. Снижение доз ИПП, циталопрама",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "*1/*2"
+        }
+      ],
+      "matched_genotype": "*1/*2",
+      "full_row": {
+        "Генотип": "*1/*2",
+        "Фенотип": "Intermediate Metabolizer (IM)",
+        "Функция": "Одна нормальная + одна сниженная",
+        "Клинический риск": "**Клопидогрел — снижение эффекта**, риск тромбоза стента. Снижение доз ИПП, циталопрама",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "CYP2C19 *1/*2 → Intermediate Metabolizer (IM). Source: CPIC Guideline for Clopidogrel (2022). Evidence: rs4244285 G>A.",
+        "source": "CPIC Guideline for Clopidogrel (2022)",
+        "evidence": "rs4244285 G>A",
+        "phenotype": "Intermediate Metabolizer (IM)",
+        "annotation": "Клопидогрел — снижение эффекта, риск тромбоза стента. Снижение доз ИПП, циталопрама"
+      },
+      "clinical_risk": "Клопидогрел — снижение эффекта, риск тромбоза стента. Снижение доз ИПП, циталопрама"
+    },
+    {
+      "gene": "CYP2C9",
+      "group": "Группа 5: Фармакогенетика и метаболизм лекарств",
+      "patient_result": "*1/*3",
+      "patient_comment": "",
+      "parts": [
+        "*1/*3"
+      ],
+      "extracted_candidates": [
+        "*1/*3"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "*1/*2, *1/*3 (Intermediate Metabolizer): Сниженная активность. Требуется осторожное титрование дозы варфарина.",
+        "*2/*2, *2/*3, *3/*3 (Poor Metabolizer): Значительное снижение активности. Высокий риск кровотечений на стандартных дозах варфарина и побочных эффектов НПВС (гастропатии)."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "*1/*3",
+          "full_row": {
+            "Генотип": "*1/*3",
+            "Фенотип": "Intermediate Metabolizer (IM)",
+            "Функция": "Одна нормальная + одна сниженная",
+            "Клинический риск": "Снижение дозы варфарина, фенитоина. Мониторинг INR",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "*1/*3"
+        }
+      ],
+      "matched_genotype": "*1/*3",
+      "full_row": {
+        "Генотип": "*1/*3",
+        "Фенотип": "Intermediate Metabolizer (IM)",
+        "Функция": "Одна нормальная + одна сниженная",
+        "Клинический риск": "Снижение дозы варфарина, фенитоина. Мониторинг INR",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "CYP2C9 *1/*3 → Intermediate Metabolizer (IM). Source: CPIC Guideline for Warfarin (2017). Evidence: rs1057910 A>C.",
+        "source": "CPIC Guideline for Warfarin (2017)",
+        "evidence": "rs1057910 A>C",
+        "phenotype": "Intermediate Metabolizer (IM)",
+        "annotation": "Снижение дозы варфарина, фенитоина. Мониторинг INR"
+      },
+      "clinical_risk": "Снижение дозы варфарина, фенитоина. Мониторинг INR"
+    },
+    {
+      "gene": "CYP2D6",
+      "group": "Группа 5: Фармакогенетика и метаболизм лекарств",
+      "patient_result": "*4/*4",
+      "patient_comment": "",
+      "parts": [
+        "*4/*4"
+      ],
+      "extracted_candidates": [
+        "*4/*4"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "*4/*4",
+          "full_row": {
+            "Генотип": "*4/*4",
+            "Фенотип": "Poor Metabolizer (PM)",
+            "Функция": "Две аллели без функции",
+            "Клинический риск": "**Высокий риск токсичности** для арипипразола, атомоксетина, метопролола. **Кодеин не работает**. **ПРОТИВОПОКАЗАН** тиоридазин",
+            "ACMG": "Pathogenic / Risk factor"
+          },
+          "source_part": "*4/*4"
+        }
+      ],
+      "matched_genotype": "*4/*4",
+      "full_row": {
+        "Генотип": "*4/*4",
+        "Фенотип": "Poor Metabolizer (PM)",
+        "Функция": "Две аллели без функции",
+        "Клинический риск": "**Высокий риск токсичности** для арипипразола, атомоксетина, метопролола. **Кодеин не работает**. **ПРОТИВОПОКАЗАН** тиоридазин",
+        "ACMG": "Pathogenic / Risk factor"
+      },
+      "why": {
+        "sentence": "CYP2D6 *4/*4 → Poor Metabolizer (PM). Source: FDA (Кодеин).",
+        "source": "FDA (Кодеин)",
+        "evidence": "",
+        "phenotype": "Poor Metabolizer (PM)",
+        "annotation": "Высокий риск токсичности для арипипразола, атомоксетина, метопролола. Кодеин не работает. ПРОТИВОПОКАЗАН тиоридазин"
+      },
+      "clinical_risk": "Высокий риск токсичности для арипипразола, атомоксетина, метопролола. Кодеин не работает. ПРОТИВОПОКАЗАН тиоридазин"
+    },
+    {
+      "gene": "CYP1A2",
+      "group": "Группа 5: Фармакогенетика и метаболизм лекарств",
+      "patient_result": "AC",
+      "patient_comment": "",
+      "parts": [
+        "AC"
+      ],
+      "extracted_candidates": [
+        "AC"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "AC",
+          "CA"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "AC",
+          "full_row": {
+            "Генотип": "AC",
+            "Фенотип": "Промежуточный метаболизатор",
+            "Функция": "Средняя активность",
+            "Клинический риск": "Умеренный метаболизм кофеина",
+            "ACMG": "Benign"
+          },
+          "source_part": "AC"
+        }
+      ],
+      "matched_genotype": "AC",
+      "full_row": {
+        "Генотип": "AC",
+        "Фенотип": "Промежуточный метаболизатор",
+        "Функция": "Средняя активность",
+        "Клинический риск": "Умеренный метаболизм кофеина",
+        "ACMG": "Benign"
+      },
+      "why": {
+        "sentence": "CYP1A2 AC → Промежуточный метаболизатор. Source: CPIC-ген, данных мало, все аннотации Level 3.",
+        "source": "CPIC-ген, данных мало, все аннотации Level 3",
+        "evidence": "",
+        "phenotype": "Промежуточный метаболизатор",
+        "annotation": "Умеренный метаболизм кофеина"
+      },
+      "clinical_risk": "Умеренный метаболизм кофеина"
+    },
+    {
+      "gene": "SLCO1B1",
+      "group": "Группа 5: Фармакогенетика и метаболизм лекарств",
+      "patient_result": "TC",
+      "patient_comment": "",
+      "parts": [
+        "TC"
+      ],
+      "extracted_candidates": [
+        "TC"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Рекомендация: Снижение дозы симвастатина или переход на правастатин/розувастатин, которые меньше зависят от этого транспортера."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "CT",
+          "TC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "TC",
+          "full_row": {
+            "Генотип": "TC",
+            "Фенотип": "Intermediate function",
+            "Функция": "Сниженный захват",
+            "Клинический риск": "**Повышенный риск миопатии** на симвастатине 80 мг. Снижение дозы",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "TC"
+        }
+      ],
+      "matched_genotype": "TC",
+      "full_row": {
+        "Генотип": "TC",
+        "Фенотип": "Intermediate function",
+        "Функция": "Сниженный захват",
+        "Клинический риск": "**Повышенный риск миопатии** на симвастатине 80 мг. Снижение дозы",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "SLCO1B1 TC → Intermediate function. Source: CPIC Guideline, FDA Table of Pharmacogenetic Associations. Evidence: rs4149056 T>C.",
+        "source": "CPIC Guideline, FDA Table of Pharmacogenetic Associations",
+        "evidence": "rs4149056 T>C",
+        "phenotype": "Intermediate function",
+        "annotation": "Повышенный риск миопатии на симвастатине 80 мг. Снижение дозы"
+      },
+      "clinical_risk": "Повышенный риск миопатии на симвастатине 80 мг. Снижение дозы"
+    },
+    {
+      "gene": "MTHFR",
+      "group": "Группа 7: Метаболизм фолатов и метиониновый цикл",
+      "patient_result": "TT",
+      "patient_comment": "",
+      "parts": [
+        "TT"
+      ],
+      "extracted_candidates": [
+        "TT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "TT или CT+AC: Генетически снижена способность усваивать обычную фолиевую кислоту. Рекомендуется контроль уровня гомоцистеина в крови (целевой уровень обычно < 7-8 мкмоль/л)."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "TT"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "TT",
+          "full_row": {
+            "Генотип": "TT",
+            "Аллели": "T/T",
+            "Частота*": "~10-15%",
+            "Функциональный эффект": "Выраженное снижение активности (термолабильный вариант, ~30% активности). Значительное повышение уровня гомоцистеина.",
+            "Клинический риск": "Ассоциация с повышением гомоцистеина. Клиническая значимость для тромбоза/невынашивания обсуждается (ACMG не рекомендует рутинное тестирование).",
+            "ACMG": "Pathogenic / Risk factor"
+          },
+          "source_part": "TT"
+        }
+      ],
+      "matched_genotype": "TT",
+      "full_row": {
+        "Генотип": "TT",
+        "Аллели": "T/T",
+        "Частота*": "~10-15%",
+        "Функциональный эффект": "Выраженное снижение активности (термолабильный вариант, ~30% активности). Значительное повышение уровня гомоцистеина.",
+        "Клинический риск": "Ассоциация с повышением гомоцистеина. Клиническая значимость для тромбоза/невынашивания обсуждается (ACMG не рекомендует рутинное тестирование).",
+        "ACMG": "Pathogenic / Risk factor"
+      },
+      "why": {
+        "sentence": "MTHFR TT. Source: GenomIQ knowledge base. Evidence: rs1801133 C>T.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "rs1801133 C>T",
+        "phenotype": "",
+        "annotation": "Ассоциация с повышением гомоцистеина. Клиническая значимость для тромбоза/невынашивания обсуждается (ACMG не рекомендует рутинное тестирование)."
+      },
+      "clinical_risk": "Ассоциация с повышением гомоцистеина. Клиническая значимость для тромбоза/невынашивания обсуждается (ACMG не рекомендует рутинное тестирование)."
+    },
+    {
+      "gene": "MTR",
+      "group": "Группа 7: Метаболизм фолатов и метиониновый цикл",
+      "patient_result": "AG",
+      "patient_comment": "",
+      "parts": [
+        "AG"
+      ],
+      "extracted_candidates": [
+        "AG"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Функция фермента MTR критически зависит от уровня витамина B12. При наличии G-аллеля крайне важно избегать дефицита кобаламина (особенно актуально для веганов/вегетарианцев и людей с заболеваниями ЖКТ)."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "AG",
+          "GA"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "AG",
+          "full_row": {
+            "Генотип": "AG",
+            "Аллели": "A/G",
+            "Функциональный эффект": "Незначительное снижение ферментативной активности.",
+            "Клинический риск": "Низкий",
+            "ACMG": "Likely Benign"
+          },
+          "source_part": "AG"
+        }
+      ],
+      "matched_genotype": "AG",
+      "full_row": {
+        "Генотип": "AG",
+        "Аллели": "A/G",
+        "Функциональный эффект": "Незначительное снижение ферментативной активности.",
+        "Клинический риск": "Низкий",
+        "ACMG": "Likely Benign"
+      },
+      "why": {
+        "sentence": "MTR AG. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Низкий"
+      },
+      "clinical_risk": "Низкий"
+    },
+    {
+      "gene": "MTRR",
+      "group": "Группа 7: Метаболизм фолатов и метиониновый цикл",
+      "patient_result": "GG",
+      "patient_comment": "",
+      "parts": [
+        "GG"
+      ],
+      "extracted_candidates": [
+        "GG"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "GG"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "GG",
+          "full_row": {
+            "Генотип": "GG",
+            "Аллели": "G/G",
+            "Функциональный эффект": "Значительное снижение эффективности восстановления MTR. В сочетании с дефицитом B12 или мутациями MTHFR ведет к росту гомоцистеина.",
+            "Клинический риск": "Умеренный (ДНТ)",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "GG"
+        }
+      ],
+      "matched_genotype": "GG",
+      "full_row": {
+        "Генотип": "GG",
+        "Аллели": "G/G",
+        "Функциональный эффект": "Значительное снижение эффективности восстановления MTR. В сочетании с дефицитом B12 или мутациями MTHFR ведет к росту гомоцистеина.",
+        "Клинический риск": "Умеренный (ДНТ)",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "MTRR GG. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Умеренный (ДНТ)"
+      },
+      "clinical_risk": "Умеренный (ДНТ)"
+    },
+    {
+      "gene": "APOE",
+      "group": "Группа 4: Липидный обмен и сердечно-сосудистый риск",
+      "patient_result": "E3/E4",
+      "patient_comment": "",
+      "parts": [
+        "E3/E4"
+      ],
+      "extracted_candidates": [
+        "E3/E4"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "E3/E4 или E4/E4: Повышенный риск атеросклероза и болезни Альцгеймера. Контроль LDL-C, диета с низким содержанием насыщенных жиров, регулярная физическая активность, контроль АД и глюкозы.",
+        "E2/E2 или E2/E3: Риск гиперлипопротеинемии III типа. Контроль триглицеридов и холестерина.",
+        "Варфарин / аценокумарол: носители rs429358 — риск геморрагии и венозной тромбоэмболии, требуется мониторинг INR."
+      ],
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "E3/E4",
+          "full_row": {
+            "Изоформа": "**E3/E4**",
+            "Генотип rs429358 / rs7412": "T/C + C/C",
+            "Частота": "~22%",
+            "Функциональный эффект": "Снижение стабильности, повышенный LDL",
+            "Клинический риск": "**Повышенный риск болезни Альцгеймера и атеросклероза**"
+          },
+          "source_part": "E3/E4"
+        }
+      ],
+      "matched_genotype": "E3/E4",
+      "full_row": {
+        "Изоформа": "**E3/E4**",
+        "Генотип rs429358 / rs7412": "T/C + C/C",
+        "Частота": "~22%",
+        "Функциональный эффект": "Снижение стабильности, повышенный LDL",
+        "Клинический риск": "**Повышенный риск болезни Альцгеймера и атеросклероза**"
+      },
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "why": {
+        "sentence": "APOE E3/E4. Source: GenomIQ knowledge base. Evidence: rs429358 T>C / rs7412 C>T.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "rs429358 T>C / rs7412 C>T",
+        "phenotype": "",
+        "annotation": "Повышенный риск болезни Альцгеймера и атеросклероза"
+      },
+      "clinical_risk": "Повышенный риск болезни Альцгеймера и атеросклероза"
+    },
+    {
+      "gene": "F2",
+      "group": "Группа 4: Липидный обмен и сердечно-сосудистый риск",
+      "patient_result": "GA",
+      "patient_comment": "",
+      "parts": [
+        "GA"
+      ],
+      "extracted_candidates": [
+        "GA"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Варфарин: носители rs5896 T-аллеля — снижение дозы, мониторинг INR."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "AG",
+          "GA"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "GA",
+          "full_row": {
+            "Генотип": "GA",
+            "Аллели": "G/A",
+            "Частота": "~2%",
+            "Функциональный эффект": "Повышение протромбина на 30%",
+            "Клинический риск": "Повышенный риск венозного тромбоза (3x)",
+            "ACMG": "Pathogenic / Risk factor"
+          },
+          "source_part": "GA"
+        }
+      ],
+      "matched_genotype": "GA",
+      "full_row": {
+        "Генотип": "GA",
+        "Аллели": "G/A",
+        "Частота": "~2%",
+        "Функциональный эффект": "Повышение протромбина на 30%",
+        "Клинический риск": "Повышенный риск венозного тромбоза (3x)",
+        "ACMG": "Pathogenic / Risk factor"
+      },
+      "why": {
+        "sentence": "F2 GA. Source: GenomIQ knowledge base. Evidence: rs1799963 G>A.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "rs1799963 G>A",
+        "phenotype": "",
+        "annotation": "Повышенный риск венозного тромбоза (3x)"
+      },
+      "clinical_risk": "Повышенный риск венозного тромбоза (3x)"
+    },
+    {
+      "gene": "F5",
+      "group": "Группа 4: Липидный обмен и сердечно-сосудистый риск",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "parts": [
+        "CT"
+      ],
+      "extracted_candidates": [
+        "CT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Гормональные контрацептивы (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): не рекомендуются (требуется индивидуальная оценка) носителям FVL — учитывать FDA/EMA/HCSC labels и семейный тромботический анамнез."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "CT",
+          "TC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Аллели": "C/T",
+            "Частота (Европа)": "~4-5%",
+            "Функциональный эффект": "APC-резистентность, риск тромбоза в 7 раз",
+            "Клинический риск": "**Повышенный риск ВТЭ; гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка)**",
+            "ACMG": "Pathogenic / Risk factor"
+          },
+          "source_part": "CT"
+        }
+      ],
+      "matched_genotype": "CT",
+      "full_row": {
+        "Генотип": "CT",
+        "Аллели": "C/T",
+        "Частота (Европа)": "~4-5%",
+        "Функциональный эффект": "APC-резистентность, риск тромбоза в 7 раз",
+        "Клинический риск": "**Повышенный риск ВТЭ; гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка)**",
+        "ACMG": "Pathogenic / Risk factor"
+      },
+      "why": {
+        "sentence": "F5 CT. Source: GenomIQ knowledge base. Evidence: rs6025 C>T.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "rs6025 C>T",
+        "phenotype": "",
+        "annotation": "Повышенный риск ВТЭ; гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка)"
+      },
+      "clinical_risk": "Повышенный риск ВТЭ; гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка)"
+    },
+    {
+      "gene": "LPL",
+      "group": "Группа 4: Липидный обмен и сердечно-сосудистый риск",
+      "patient_result": "CG",
+      "patient_comment": "",
+      "parts": [
+        "CG"
+      ],
+      "extracted_candidates": [
+        "CG"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "CG / GG (S447X): Протективный вариант — снижение триглицеридов, повышение ЛПВП. Не требует коррекции, благоприятный профиль.",
+        "Носители D36N или редких LOF-вариантов: риск семейной хиломикронемии — контроль триглицеридов, диета с низким содержанием жиров, консультация липидолога.",
+        "При лечении пегаспаргазой (дети с ОЛЛ): риск гипертриглицеридемии, мониторинг липидов.",
+        "Правастатин: носители rs328 GG — повышенный ответ (снижение общего холестерина)."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "CG",
+          "GC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CG",
+          "full_row": {
+            "Генотип": "CG",
+            "Аллели": "C/G",
+            "Частота": "~18%",
+            "Функциональный эффект": "Повышенная активность LPL, снижение ТГ",
+            "Клинический риск": "**Протективный**",
+            "ACMG": "Benign"
+          },
+          "source_part": "CG"
+        }
+      ],
+      "matched_genotype": "CG",
+      "full_row": {
+        "Генотип": "CG",
+        "Аллели": "C/G",
+        "Частота": "~18%",
+        "Функциональный эффект": "Повышенная активность LPL, снижение ТГ",
+        "Клинический риск": "**Протективный**",
+        "ACMG": "Benign"
+      },
+      "why": {
+        "sentence": "LPL CG. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Протективный"
+      },
+      "clinical_risk": "Протективный"
+    },
+    {
+      "gene": "PCSK9",
+      "group": "Группа 4: Липидный обмен и сердечно-сосудистый риск",
+      "patient_result": "GT",
+      "patient_comment": "",
+      "parts": [
+        "GT"
+      ],
+      "extracted_candidates": [
+        "GT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Gain-of-function варианты (E670G, редкие): риск семейной гиперхолестеринемии — контроль LDL-C, диета, статины, при недостаточном эффекте — ингибиторы PCSK9 (эволокумаб, алирокумаб, инклисиран).",
+        "Статины (аторвастатин и др.): носители rs11591147 T-аллеля — повышенный ответ, 55.6% большее снижение LDL-C. Рассмотреть снижение дозы."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "GT",
+          "TG"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "GT",
+          "full_row": {
+            "Генотип": "GT",
+            "Аллели": "G/T",
+            "Частота": "~3%",
+            "Функциональный эффект": "**Loss-of-function**, снижение PCSK9",
+            "Клинический риск": "**Протективный** — снижение LDL-C на 15%, риск ИБС на 47% ниже",
+            "ACMG": "Benign / Protective"
+          },
+          "source_part": "GT"
+        }
+      ],
+      "matched_genotype": "GT",
+      "full_row": {
+        "Генотип": "GT",
+        "Аллели": "G/T",
+        "Частота": "~3%",
+        "Функциональный эффект": "**Loss-of-function**, снижение PCSK9",
+        "Клинический риск": "**Протективный** — снижение LDL-C на 15%, риск ИБС на 47% ниже",
+        "ACMG": "Benign / Protective"
+      },
+      "why": {
+        "sentence": "PCSK9 GT. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Протективный — снижение LDL-C на 15%, риск ИБС на 47% ниже"
+      },
+      "clinical_risk": "Протективный — снижение LDL-C на 15%, риск ИБС на 47% ниже"
+    },
+    {
+      "gene": "VDR",
+      "group": "Группа 3: Метаболизм витаминов и микроэлементов",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "parts": [
+        "CT"
+      ],
+      "extracted_candidates": [
+        "CT"
+      ],
+      "has_genotype_table": false,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 36,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "CT",
+          "TC"
+        ]
+      },
+      "status": "matched_annotation_only",
+      "matches": [],
+      "matched_genotype": "Ассоциативный анализ",
+      "full_row": null,
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации.",
+      "why": {
+        "sentence": "VDR Ассоциативный анализ. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Специфических рекомендаций нет"
+      },
+      "clinical_risk": ""
+    },
+    {
+      "gene": "GC",
+      "group": "Группа 3: Метаболизм витаминов и микроэлементов",
+      "patient_result": "TT",
+      "patient_comment": "",
+      "parts": [
+        "TT"
+      ],
+      "extracted_candidates": [
+        "TT"
+      ],
+      "has_genotype_table": false,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [
+        {
+          "variant": "",
+          "drug": "bevacizumab",
+          "association": "Genotype TT is associated with decreased overall survival when treated with bevacizumab in people with Colorectal Neoplasms and Neoplasm Metastasis as compared to genotypes GG + GT.",
+          "association_raw": "Genotype TT is associated with decreased overall survival when treated with bevacizumab in people with Colorectal Neoplasms and Neoplasm Metastasis as compared to genotypes GG + GT. More Details: Patients all also received FOLFIRI. Alleles complemented to plus chromosomal strand.",
+          "pvalue": "= 0.019",
+          "pvalue_num": 0.019,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "TT"
+          ],
+          "matched_genotypes": [
+            "TT"
+          ],
+          "match_kind": "exact",
+          "section": "3.3 Фармакогенетика GC"
+        },
+        {
+          "variant": "",
+          "drug": "cetuximab",
+          "association": "Genotype TT is associated with increased overall survival when treated with cetuximab in people with Colorectal Neoplasms and Neoplasm Metastasis as compared to genotypes GG + GT.",
+          "association_raw": "Genotype TT is associated with increased overall survival when treated with cetuximab in people with Colorectal Neoplasms and Neoplasm Metastasis as compared to genotypes GG + GT. More Details: Patients all also received FOLFIRI. This was opposite to what was seen with bevacizumab. This was only significant in the discovery cohort with univariate analysis, but PFS was significantly increased in validation cohort. Alleles complemented to plus chromosomal strand.",
+          "pvalue": "= 0.021",
+          "pvalue_num": 0.021,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "TT"
+          ],
+          "matched_genotypes": [
+            "TT"
+          ],
+          "match_kind": "exact",
+          "section": "3.3 Фармакогенетика GC"
+        }
+      ],
+      "pgx_no_match_info": null,
+      "status": "matched_annotation_only",
+      "matches": [],
+      "matched_genotype": "Ассоциативный анализ",
+      "full_row": null,
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации.",
+      "why": {
+        "sentence": "GC Ассоциативный анализ. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Специфических рекомендаций нет"
+      },
+      "clinical_risk": ""
+    },
+    {
+      "gene": "HFE",
+      "group": "Группа 3: Метаболизм витаминов и микроэлементов",
+      "patient_result": "C282Y (+/-)",
+      "patient_comment": "",
+      "parts": [
+        "C282Y (+/-)"
+      ],
+      "extracted_candidates": [
+        "C282Y (+/-)",
+        "C282Y"
+      ],
+      "has_genotype_table": false,
+      "recommendations": [
+        "Pediatric Variant Annotations: 1 запись — rs1799945 / daunorubicin; doxorubicin / P-value не предоставлено / Toxicity (снижение вероятности кардиотоксичности у детей с новообразованиями, аллель G)."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 5,
+        "genotypes_in_base": [
+          "A",
+          "CC",
+          "CT",
+          "G",
+          "TT"
+        ],
+        "patient_genotypes": []
+      },
+      "status": "matched_annotation_only",
+      "matches": [],
+      "matched_genotype": "Ассоциативный анализ",
+      "full_row": null,
+      "note": "Для этого гена нет таблицы генотипов, но доступны клинические ассоциации или рекомендации.",
+      "why": {
+        "sentence": "HFE Ассоциативный анализ. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Pediatric Variant Annotations: 1 запись — rs1799945 / daunorubicin; doxorubicin / P-value не предоставлено / Toxicity (снижение вероятности кардиотоксичности у детей с новообразованиями, аллель G)."
+      },
+      "clinical_risk": ""
+    },
+    {
+      "gene": "FUT2",
+      "group": "Группа 3: Метаболизм витаминов и микроэлементов",
+      "patient_result": "TT",
+      "patient_comment": "",
+      "parts": [
+        "TT"
+      ],
+      "extracted_candidates": [
+        "TT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Non-Pediatric Variant Annotations: 1 запись — rs492602 / ethanol / P = 8.08E-10 / Toxicity (снижение риска алкоголизма, аллель A, мета-анализ 4 GWAS)."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 1,
+        "genotypes_in_base": [
+          "A"
+        ],
+        "patient_genotypes": [
+          "TT"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "TT",
+          "full_row": {
+            "Генотип": "TT",
+            "Фенотип": "Гомозигота",
+            "Функция": "Сниженная чувствительность рецептора",
+            "Клинический риск": "Тенденция к снижению усвоения витамина D. Рекомендуется контроль уровня 25(OH)D.",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "TT"
+        }
+      ],
+      "matched_genotype": "TT",
+      "full_row": {
+        "Генотип": "TT",
+        "Фенотип": "Гомозигота",
+        "Функция": "Сниженная чувствительность рецептора",
+        "Клинический риск": "Тенденция к снижению усвоения витамина D. Рекомендуется контроль уровня 25(OH)D.",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "FUT2 TT → Гомозигота. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Гомозигота",
+        "annotation": "Тенденция к снижению усвоения витамина D. Рекомендуется контроль уровня 25(OH)D."
+      },
+      "clinical_risk": "Тенденция к снижению усвоения витамина D. Рекомендуется контроль уровня 25(OH)D."
+    },
+    {
+      "gene": "SOD2",
+      "group": "Группа 1: Детоксикация и антиоксидантная защита",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "parts": [
+        "CT"
+      ],
+      "extracted_candidates": [
+        "CT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 13,
+        "genotypes_in_base": [
+          "AA",
+          "AC",
+          "AG",
+          "CC",
+          "G",
+          "GG",
+          "TT"
+        ],
+        "patient_genotypes": [
+          "CT",
+          "TC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Фенотип": "Ala/Val (гетерозигота)",
+            "Функция": "Активность SOD2 повышена на 33% (Bastaki et al.)",
+            "Клинический риск": "Умеренный риск окислительного стресса",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "CT"
+        }
+      ],
+      "matched_genotype": "CT",
+      "full_row": {
+        "Генотип": "CT",
+        "Фенотип": "Ala/Val (гетерозигота)",
+        "Функция": "Активность SOD2 повышена на 33% (Bastaki et al.)",
+        "Клинический риск": "Умеренный риск окислительного стресса",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "SOD2 CT → Ala/Val (гетерозигота). Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Ala/Val (гетерозигота)",
+        "annotation": "Умеренный риск окислительного стресса"
+      },
+      "clinical_risk": "Умеренный риск окислительного стресса"
+    },
+    {
+      "gene": "CAT",
+      "group": "Группа 1: Детоксикация и антиоксидантная защита",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "parts": [
+        "CT"
+      ],
+      "extracted_candidates": [
+        "CT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [
+        {
+          "variant": "",
+          "drug": "hydroxyurea",
+          "association": "Genotypes CT + TT is associated with increased clinical benefit to hydroxyurea in people with Sickle Cell Anemia as compared to genotype CC.",
+          "association_raw": "Genotypes CT + TT is associated with increased clinical benefit to hydroxyurea in people with Sickle Cell Anemia as compared to genotype CC. More Details: «The present study observed associations between the CAT-21TT and CAT-262CT genotypes in patients receiving HU with respect to reductions in inflammatory biomarkers, such as AAT levels and lymphocyte counts. In addition, carriers of heterozygote and variant genotypes of both CAT -21A>T and -262C>T also exhibited significant reductions in lymphocyte and platelet counts compared to carriers of the wild type genotypes of both polymorphisms.»",
+          "pvalue": "= 0.014",
+          "pvalue_num": 0.014,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "CT",
+            "TT"
+          ],
+          "matched_genotypes": [
+            "CT"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика CAT"
+        },
+        {
+          "variant": "",
+          "drug": "ethanol",
+          "association": "Allele T is associated with increased risk of Alcoholism when exposed to ethanol as compared to allele C.",
+          "association_raw": "Allele T is associated with increased risk of Alcoholism when exposed to ethanol as compared to allele C. More Details: Patients with the T allele had a significantly higher risk for developing alcohol dependence as compared to the C allele. Cases were alcohol dependent patients (n=101) and formerly alcohol dependent patients (n=100), and controls were healthy individuals.",
+          "pvalue": "= 0.007",
+          "pvalue_num": 0.007,
+          "phenotype": "Other",
+          "assoc_genotypes": [
+            "T"
+          ],
+          "matched_genotypes": [
+            "T"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика CAT"
+        },
+        {
+          "variant": "",
+          "drug": "ethanol",
+          "association": "Allele T is associated with increased severity of Alcoholism when exposed to ethanol in people with Alcoholism as compared to allele C.",
+          "association_raw": "Allele T is associated with increased severity of Alcoholism when exposed to ethanol in people with Alcoholism as compared to allele C. More Details: Patients with the T allele had a significantly higher scores on AUDIT (alcohol use disorders identification test) as compared to the C allele. AUDIT measures the severity of alcohol dependence.",
+          "pvalue": "= 0.023",
+          "pvalue_num": 0.023,
+          "phenotype": "Other",
+          "assoc_genotypes": [
+            "T"
+          ],
+          "matched_genotypes": [
+            "T"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика CAT"
+        }
+      ],
+      "pgx_no_match_info": null,
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Умеренное снижение активности",
+            "Клинический риск": "Умеренный риск алкогольной зависимости",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "CT"
+        }
+      ],
+      "matched_genotype": "CT",
+      "full_row": {
+        "Генотип": "CT",
+        "Фенотип": "Гетерозигота",
+        "Функция": "Умеренное снижение активности",
+        "Клинический риск": "Умеренный риск алкогольной зависимости",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "CAT CT → Гетерозигота. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Гетерозигота",
+        "annotation": "Умеренный риск алкогольной зависимости"
+      },
+      "clinical_risk": "Умеренный риск алкогольной зависимости",
+      "live_db": {
+        "symbol": "CAT",
+        "name": "CAT — Catalase",
+        "chromosome": null,
+        "summary": null,
+        "omim_mim": "607424",
+        "clinpgx_id": "PA26099",
+        "last_synced_at": "2026-11-11T15:16:44Z",
+        "omim": [
+          {
+            "mim_number": "607424",
+            "title": "GLYCINE N-ACYLTRANSFERASE; GLYAT",
+            "prefix": null,
+            "url": "https://omim.org/entry/607424",
+            "source": "ncbi_omim",
+            "phenotypes": [],
+            "allelic_variants": []
+          },
+          {
+            "mim_number": "115500",
+            "title": "CATALASE; CAT",
+            "prefix": null,
+            "url": "https://omim.org/entry/115500",
+            "source": "ncbi_omim",
+            "phenotypes": [],
+            "allelic_variants": []
+          }
+        ],
+        "clinvar_stats": {
+          "gene_symbol": "CAT",
+          "total": 117,
+          "pathogenic": 21,
+          "likely_pathogenic": 4,
+          "vus": 40,
+          "likely_benign": 23,
+          "benign": 13,
+          "conflicting": 0,
+          "other": 16,
+          "fetched_at": "2026-11-11T15:16:39Z"
+        },
+        "clinvar_highlights": [
+          {
+            "variation_id": "395339",
+            "title": "GRCh37/hg19 11p13(chr11:31210842-35436121)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/395339/"
+          },
+          {
+            "variation_id": "1807696",
+            "title": "GRCh37/hg19 11p13-12(chr11:31372721-38259316)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/1807696/"
+          },
+          {
+            "variation_id": "1704646",
+            "title": "GRCh37/hg19 11p13-q25(chr11:32799481-134938470)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "MISSED ABORTION",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/1704646/"
+          },
+          {
+            "variation_id": "441612",
+            "title": "GRCh37/hg19 11p14.1-12(chr11:27588560-41770792)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/441612/"
+          },
+          {
+            "variation_id": "253513",
+            "title": "GRCh37/hg19 11p14.1-12(chr11:30615127-40606139)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/253513/"
+          },
+          {
+            "variation_id": "4279443",
+            "title": "GRCh37/hg19 11p14.1-13(chr11:30171191-35483727)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not specified",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/4279443/"
+          },
+          {
+            "variation_id": "3391910",
+            "title": "GRCh37/hg19 11p14.3-12(chr11:22428384-37196643)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/3391910/"
+          },
+          {
+            "variation_id": "688898",
+            "title": "GRCh37/hg19 11p14.3-13(chr11:22079154-35597645)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/688898/"
+          },
+          {
+            "variation_id": "441893",
+            "title": "GRCh37/hg19 11p14.3-13(chr11:25771208-35614978)x1",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/441893/"
+          },
+          {
+            "variation_id": "3391909",
+            "title": "GRCh37/hg19 11p15.1-12(chr11:17120358-41424289)x1",
+            "classification": "Pathogenic",
+            "review_status": "criteria provided, single submitter",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/3391909/"
+          },
+          {
+            "variation_id": "815410",
+            "title": "GRCh37/hg19 11p15.3-13(chr11:11053978-34732891)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "not provided",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/815410/"
+          },
+          {
+            "variation_id": "441715",
+            "title": "GRCh37/hg19 11p15.5-12(chr11:230615-37698540)x3",
+            "classification": "Pathogenic",
+            "review_status": "no assertion criteria provided",
+            "rsid": "",
+            "conditions": "See cases",
+            "url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/441715/"
+          }
+        ],
+        "clinpgx_annotations": [
+          {
+            "annotation_id": "652595205",
+            "level": "3",
+            "variant": "",
+            "drugs": "anthracyclines and related substances",
+            "types": "Toxicity",
+            "phenotypes": "Acute lymphoblastic leukemia",
+            "url": "https://www.clinpgx.org/clinicalAnnotation/652595205"
+          },
+          {
+            "annotation_id": "1447946088",
+            "level": "3",
+            "variant": "",
+            "drugs": "ethanol",
+            "types": "Other",
+            "phenotypes": "Alcohol abuse",
+            "url": "https://www.clinpgx.org/clinicalAnnotation/1447946088"
+          }
+        ],
+        "clinpgx_labels": []
+      }
+    },
+    {
+      "gene": "GPX1",
+      "group": "Группа 1: Детоксикация и антиоксидантная защита",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "parts": [
+        "CT"
+      ],
+      "extracted_candidates": [
+        "CT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 1,
+        "genotypes_in_base": [
+          "A"
+        ],
+        "patient_genotypes": [
+          "CT",
+          "TC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Умеренное снижение активности",
+            "Клинический риск": "Умеренный риск оксидативного стресса",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "CT"
+        }
+      ],
+      "matched_genotype": "CT",
+      "full_row": {
+        "Генотип": "CT",
+        "Фенотип": "Гетерозигота",
+        "Функция": "Умеренное снижение активности",
+        "Клинический риск": "Умеренный риск оксидативного стресса",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "GPX1 CT → Гетерозигота. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Гетерозигота",
+        "annotation": "Умеренный риск оксидативного стресса"
+      },
+      "clinical_risk": "Умеренный риск оксидативного стресса"
+    },
+    {
+      "gene": "NQO1",
+      "group": "Группа 1: Детоксикация и антиоксидантная защита",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "parts": [
+        "CT"
+      ],
+      "extracted_candidates": [
+        "CT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 25,
+        "genotypes_in_base": [
+          "A",
+          "AA",
+          "AG",
+          "G",
+          "GG"
+        ],
+        "patient_genotypes": [
+          "CT",
+          "TC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Промежуточная активность",
+            "Клинический риск": "Умеренный риск бензольной гематотоксичности",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "CT"
+        }
+      ],
+      "matched_genotype": "CT",
+      "full_row": {
+        "Генотип": "CT",
+        "Фенотип": "Гетерозигота",
+        "Функция": "Промежуточная активность",
+        "Клинический риск": "Умеренный риск бензольной гематотоксичности",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "NQO1 CT → Гетерозигота. Source: CPIC guidelines:. Evidence: rs1800566 C>T.",
+        "source": "CPIC guidelines:",
+        "evidence": "rs1800566 C>T",
+        "phenotype": "Гетерозигота",
+        "annotation": "Умеренный риск бензольной гематотоксичности"
+      },
+      "clinical_risk": "Умеренный риск бензольной гематотоксичности"
+    },
+    {
+      "gene": "IL6",
+      "group": "Группа 2: Иммунная система и воспаление",
+      "patient_result": "GC",
+      "patient_comment": "",
+      "parts": [
+        "GC"
+      ],
+      "extracted_candidates": [
+        "GC"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [
+        {
+          "variant": "",
+          "drug": "opioids",
+          "association": "Genotypes CG + GG is associated with decreased likelihood of somnolence, Nausea or adverse events when treated with opioids in people with Pain and Neoplasms as compared to genotype CC.",
+          "association_raw": "Genotypes CG + GG is associated with decreased likelihood of somnolence, Nausea or adverse events when treated with opioids in people with Pain and Neoplasms as compared to genotype CC.",
+          "pvalue": "= 0.018",
+          "pvalue_num": 0.018,
+          "phenotype": "Toxicity",
+          "assoc_genotypes": [
+            "CG",
+            "GG"
+          ],
+          "matched_genotypes": [
+            "CG"
+          ],
+          "match_kind": "exact",
+          "section": "1.3 Фармакогенетика IL6"
+        },
+        {
+          "variant": "",
+          "drug": "osimertinib",
+          "association": "Genotypes CG + GG is associated with decreased likelihood of overall survival when treated with osimertinib in people with Non-Small Cell Lung Carcinoma as compared to genotype CC.",
+          "association_raw": "Genotypes CG + GG is associated with decreased likelihood of overall survival when treated with osimertinib in people with Non-Small Cell Lung Carcinoma as compared to genotype CC.",
+          "pvalue": "= 0.021",
+          "pvalue_num": 0.021,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "CG",
+            "GG"
+          ],
+          "matched_genotypes": [
+            "CG"
+          ],
+          "match_kind": "exact",
+          "section": "1.3 Фармакогенетика IL6"
+        },
+        {
+          "variant": "",
+          "drug": "fenofibrate",
+          "association": "Genotypes CC + CG are associated with increased response to fenofibrate in patients with a high risk of cardiovascular disease as compared to genotype GG.",
+          "association_raw": "Genotypes CC + CG are associated with increased response to fenofibrate in patients with a high risk of cardiovascular disease as compared to genotype GG.",
+          "pvalue": "= 0.04",
+          "pvalue_num": 0.04,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "CC",
+            "CG"
+          ],
+          "matched_genotypes": [
+            "CG"
+          ],
+          "match_kind": "exact",
+          "section": "1.3 Фармакогенетика IL6"
+        },
+        {
+          "variant": "",
+          "drug": "peginterferon alfa-2a",
+          "association": "Allele G is associated with decreased response to peginterferon alfa-2a in people with Hepatitis C, Chronic as compared to allele C.",
+          "association_raw": "Allele G is associated with decreased response to peginterferon alfa-2a in people with Hepatitis C, Chronic as compared to allele C.",
+          "pvalue": "= 0.0489",
+          "pvalue_num": 0.0489,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "G"
+          ],
+          "matched_genotypes": [
+            "G"
+          ],
+          "match_kind": "allele",
+          "section": "1.3 Фармакогенетика IL6"
+        },
+        {
+          "variant": "",
+          "drug": "adalimumab; etanercept; infliximab",
+          "association": "Allele G is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid as compared to allele C.",
+          "association_raw": "Allele G is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid as compared to allele C.",
+          "pvalue": "< 0.05",
+          "pvalue_num": 0.05,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "G"
+          ],
+          "matched_genotypes": [
+            "G"
+          ],
+          "match_kind": "allele",
+          "section": "1.3 Фармакогенетика IL6"
+        },
+        {
+          "variant": "",
+          "drug": "Tumor necrosis factor alpha (TNF-alpha) inhibitors",
+          "association": "Allele G is associated with decreased response to Tumor necrosis factor alpha (TNF-alpha) inhibitors in people with Psoriasis as compared to allele C.",
+          "association_raw": "Allele G is associated with decreased response to Tumor necrosis factor alpha (TNF-alpha) inhibitors in people with Psoriasis as compared to allele C.",
+          "pvalue": "< 0.05",
+          "pvalue_num": 0.05,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "G"
+          ],
+          "matched_genotypes": [
+            "G"
+          ],
+          "match_kind": "allele",
+          "section": "1.3 Фармакогенетика IL6"
+        }
+      ],
+      "pgx_no_match_info": null,
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "GC",
+          "full_row": {
+            "Генотип": "GC",
+            "Фенотип": "Промежуточная продукция",
+            "Функция": "Умеренная экспрессия",
+            "Клинический риск": "Базовый риск",
+            "ACMG": "Benign"
+          },
+          "source_part": "GC"
+        }
+      ],
+      "matched_genotype": "GC",
+      "full_row": {
+        "Генотип": "GC",
+        "Фенотип": "Промежуточная продукция",
+        "Функция": "Умеренная экспрессия",
+        "Клинический риск": "Базовый риск",
+        "ACMG": "Benign"
+      },
+      "why": {
+        "sentence": "IL6 GC → Промежуточная продукция. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Промежуточная продукция",
+        "annotation": "Базовый риск"
+      },
+      "clinical_risk": "Базовый риск"
+    },
+    {
+      "gene": "TNF",
+      "group": "Группа 2: Иммунная система и воспаление",
+      "patient_result": "GA",
+      "patient_comment": "",
+      "parts": [
+        "GA"
+      ],
+      "extracted_candidates": [
+        "GA"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [
+        {
+          "variant": "",
+          "drug": "Iodine (131I) compounds; radiotherapy",
+          "association": "Genotype AG is associated with increased likelihood of Pain when treated with Iodine (131I) compounds and radiotherapy in people with Thyroid Neoplasms as compared to genotype GG.",
+          "association_raw": "Genotype AG is associated with increased likelihood of Pain when treated with Iodine (131I) compounds and radiotherapy in people with Thyroid Neoplasms as compared to genotype GG.",
+          "pvalue": "= 0.001",
+          "pvalue_num": 0.001,
+          "phenotype": "Toxicity",
+          "assoc_genotypes": [
+            "AG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "etanercept",
+          "association": "Genotypes AG + GG is associated with increased response to etanercept in people with Arthritis, Rheumatoid as compared to genotype AA.",
+          "association_raw": "Genotypes AG + GG is associated with increased response to etanercept in people with Arthritis, Rheumatoid as compared to genotype AA.",
+          "pvalue": "= 0.001",
+          "pvalue_num": 0.001,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "AG",
+            "GG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "adalimumab; etanercept; infliximab",
+          "association": "Genotypes AG + GG is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid as compared to genotype AA.",
+          "association_raw": "Genotypes AG + GG is associated with increased response to adalimumab, etanercept or infliximab in people with Arthritis, Rheumatoid as compared to genotype AA.",
+          "pvalue": "= 0.002",
+          "pvalue_num": 0.002,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "AG",
+            "GG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "—",
+          "association": "Genotypes AA + AG is associated with increased activity of TNF as compared to genotype GG.",
+          "association_raw": "Genotypes AA + AG is associated with increased activity of TNF as compared to genotype GG.",
+          "pvalue": "< 0.02",
+          "pvalue_num": 0.02,
+          "phenotype": "Metabolism/PK",
+          "assoc_genotypes": [
+            "AA",
+            "AG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "cyclosporine; mycophenolate mofetil",
+          "association": "Genotypes AA + AG are associated with increased risk of transplant rejection when treated with cyclosporine and mycophenolate mofetil in people with Kidney Transplantation as compared to genotype GG.",
+          "association_raw": "Genotypes AA + AG are associated with increased risk of transplant rejection when treated with cyclosporine and mycophenolate mofetil in people with Kidney Transplantation as compared to genotype GG.",
+          "pvalue": "= 0.029",
+          "pvalue_num": 0.029,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "AA",
+            "AG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "ethambutol; isoniazid; pyrazinamide; rifampin",
+          "association": "Genotypes AA + AG are associated with increased likelihood of Toxic liver disease when treated with ethambutol, isoniazid, pyrazinamide and rifampin in people with Tuberculosis as compared to genotype GG.",
+          "association_raw": "Genotypes AA + AG are associated with increased likelihood of Toxic liver disease when treated with ethambutol, isoniazid, pyrazinamide and rifampin in people with Tuberculosis as compared to genotype GG.",
+          "pvalue": "= 0.034",
+          "pvalue_num": 0.034,
+          "phenotype": "Toxicity",
+          "assoc_genotypes": [
+            "AA",
+            "AG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "atorvastatin",
+          "association": "Genotypes AA + AG are associated with increased concentrations of atorvastatin in healthy individuals as compared to genotype GG.",
+          "association_raw": "Genotypes AA + AG are associated with increased concentrations of atorvastatin in healthy individuals as compared to genotype GG.",
+          "pvalue": "= 0.035",
+          "pvalue_num": 0.035,
+          "phenotype": "Metabolism/PK",
+          "assoc_genotypes": [
+            "AA",
+            "AG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "adalimumab",
+          "association": "Genotype AG is associated with decreased steady-state level of TNF when exposed to adalimumab as compared to genotype GG.",
+          "association_raw": "Genotype AG is associated with decreased steady-state level of TNF when exposed to adalimumab as compared to genotype GG.",
+          "pvalue": "< 0.039",
+          "pvalue_num": 0.039,
+          "phenotype": "Metabolism/PK",
+          "assoc_genotypes": [
+            "AG"
+          ],
+          "matched_genotypes": [
+            "AG"
+          ],
+          "match_kind": "exact",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "TNF-alpha inhibitors",
+          "association": "Allele G is associated with increased response to TNF-alpha inhibitors in people with Crohn Disease, Inflammatory Bowel Diseases, Psoriasis or Spondylarthropathies as compared to allele A.",
+          "association_raw": "Allele G is associated with increased response to TNF-alpha inhibitors in people with Crohn Disease, Inflammatory Bowel Diseases, Psoriasis or Spondylarthropathies as compared to allele A.",
+          "pvalue": "= 0.000086",
+          "pvalue_num": 8.6e-05,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "G"
+          ],
+          "matched_genotypes": [
+            "G"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "adalimumab; etanercept; infliximab; TNF-alpha inhibitors",
+          "association": "Allele A is associated with decreased response to adalimumab, etanercept, infliximab or TNF-alpha inhibitors in people with Arthritis, Rheumatoid as compared to allele G.",
+          "association_raw": "Allele A is associated with decreased response to adalimumab, etanercept, infliximab or TNF-alpha inhibitors in people with Arthritis, Rheumatoid as compared to allele G.",
+          "pvalue": "= 2.45E-4",
+          "pvalue_num": 0.000245,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "A"
+          ],
+          "matched_genotypes": [
+            "A"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "carboplatin; gemcitabine",
+          "association": "Allele A is associated with increased severity of Thrombocytopenia when treated with carboplatin and gemcitabine in people with Carcinoma, Non-Small-Cell Lung as compared to allele G.",
+          "association_raw": "Allele A is associated with increased severity of Thrombocytopenia when treated with carboplatin and gemcitabine in people with Carcinoma, Non-Small-Cell Lung as compared to allele G.",
+          "pvalue": "= 2.92E-4",
+          "pvalue_num": 0.000292,
+          "phenotype": "Toxicity",
+          "assoc_genotypes": [
+            "A"
+          ],
+          "matched_genotypes": [
+            "A"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "etanercept; infliximab; TNF-alpha inhibitors",
+          "association": "Allele A is associated with decreased response to etanercept, infliximab or TNF-alpha inhibitors in people with Arthritis, Rheumatoid as compared to allele G.",
+          "association_raw": "Allele A is associated with decreased response to etanercept, infliximab or TNF-alpha inhibitors in people with Arthritis, Rheumatoid as compared to allele G.",
+          "pvalue": "= 8.0E-4",
+          "pvalue_num": 0.0008,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "A"
+          ],
+          "matched_genotypes": [
+            "A"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "TNF-alpha inhibitors",
+          "association": "Allele G is associated with increased response to TNF-alpha inhibitors in people with Arthritis, Rheumatoid, Autoimmune Diseases or Psoriasis as compared to allele A.",
+          "association_raw": "Allele G is associated with increased response to TNF-alpha inhibitors in people with Arthritis, Rheumatoid, Autoimmune Diseases or Psoriasis as compared to allele A.",
+          "pvalue": "= 0.001",
+          "pvalue_num": 0.001,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "G"
+          ],
+          "matched_genotypes": [
+            "G"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "aspirin; diclofenac; ibuprofen; indomethacin; ketorolac; naproxen",
+          "association": "Allele A is associated with decreased clinical benefit to aspirin, diclofenac, ibuprofen, indomethacin, ketorolac or naproxen in people with Migraine without Aura as compared to allele G.",
+          "association_raw": "Allele A is associated with decreased clinical benefit to aspirin, diclofenac, ibuprofen, indomethacin, ketorolac or naproxen in people with Migraine without Aura as compared to allele G.",
+          "pvalue": "= 0.003",
+          "pvalue_num": 0.003,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "A"
+          ],
+          "matched_genotypes": [
+            "A"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "carbamazepine",
+          "association": "Allele A is associated with increased likelihood of serious hypersensitivity when treated with carbamazepine as compared to allele G.",
+          "association_raw": "Allele A is associated with increased likelihood of serious hypersensitivity when treated with carbamazepine as compared to allele G.",
+          "pvalue": "= 0.02",
+          "pvalue_num": 0.02,
+          "phenotype": "Toxicity",
+          "assoc_genotypes": [
+            "A"
+          ],
+          "matched_genotypes": [
+            "A"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        },
+        {
+          "variant": "",
+          "drug": "TNF-alpha inhibitors",
+          "association": "Allele G is associated with increased response to TNF-alpha inhibitors in people with Psoriasis as compared to allele A.",
+          "association_raw": "Allele G is associated with increased response to TNF-alpha inhibitors in people with Psoriasis as compared to allele A.",
+          "pvalue": "= 0.03",
+          "pvalue_num": 0.03,
+          "phenotype": "Efficacy",
+          "assoc_genotypes": [
+            "G"
+          ],
+          "matched_genotypes": [
+            "G"
+          ],
+          "match_kind": "allele",
+          "section": "2.3 Фармакогенетика TNF"
+        }
+      ],
+      "pgx_no_match_info": null,
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "GA",
+          "full_row": {
+            "Генотип": "GA",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Повышенная продукция TNF-α",
+            "Клинический риск": "Умеренный риск аутоиммунных и воспалительных заболеваний, риск септического шока",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "GA"
+        }
+      ],
+      "matched_genotype": "GA",
+      "full_row": {
+        "Генотип": "GA",
+        "Фенотип": "Гетерозигота",
+        "Функция": "Повышенная продукция TNF-α",
+        "Клинический риск": "Умеренный риск аутоиммунных и воспалительных заболеваний, риск септического шока",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "TNF GA → Гетерозигота. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Гетерозигота",
+        "annotation": "Умеренный риск аутоиммунных и воспалительных заболеваний, риск септического шока"
+      },
+      "clinical_risk": "Умеренный риск аутоиммунных и воспалительных заболеваний, риск септического шока"
+    },
+    {
+      "gene": "CRP",
+      "group": "Группа 2: Иммунная система и воспаление",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "parts": [
+        "CT"
+      ],
+      "extracted_candidates": [
+        "CT"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [
+        {
+          "variant": "",
+          "drug": "rosuvastatin",
+          "association": "Genotypes CT + TT are associated with decreased plasma level of high-sensitivity C-reactive protein when treated with rosuvastatin in people with Coronary Disease as compared to genotype CC.",
+          "association_raw": "Genotypes CT + TT are associated with decreased plasma level of high-sensitivity C-reactive protein when treated with rosuvastatin in people with Coronary Disease as compared to genotype CC. More Details: Plasma level of high-sensitivity C-reactive protein can be a predictor of cardiovascular outcome.",
+          "pvalue": "< 0.007",
+          "pvalue_num": 0.007,
+          "phenotype": "Efficacy, Metabolism/PK, Other",
+          "assoc_genotypes": [
+            "CT",
+            "TT"
+          ],
+          "matched_genotypes": [
+            "CT"
+          ],
+          "match_kind": "exact",
+          "section": "3.3 Фармакогенетика CRP"
+        },
+        {
+          "variant": "",
+          "drug": "warfarin",
+          "association": "Genotypes CT + TT is associated with increased risk of Hemorrhage when treated with warfarin as compared to genotype CC.",
+          "association_raw": "Genotypes CT + TT is associated with increased risk of Hemorrhage when treated with warfarin as compared to genotype CC. More Details: in patients with mechanical cardiac valves who were on warfarin anticoagulation therapy and maintained INR levels of 2.0–3.0 for 3 consecutive time intervals.",
+          "pvalue": "= 0.014",
+          "pvalue_num": 0.014,
+          "phenotype": "Toxicity",
+          "assoc_genotypes": [
+            "CT",
+            "TT"
+          ],
+          "matched_genotypes": [
+            "CT"
+          ],
+          "match_kind": "exact",
+          "section": "3.3 Фармакогенетика CRP"
+        },
+        {
+          "variant": "",
+          "drug": "Antiinflammatory agents, non-steroids",
+          "association": "Genotypes CT + TT are associated with increased likelihood of Acute coronary syndrome when exposed to Antiinflammatory agents, non-steroids in people with Acute coronary syndrome as compared to genotype CC.",
+          "association_raw": "Genotypes CT + TT are associated with increased likelihood of Acute coronary syndrome when exposed to Antiinflammatory agents, non-steroids in people with Acute coronary syndrome as compared to genotype CC. More Details: this variant was also significant when tested in a subset of coxib exposed patients and with both dominant and recessive models. Study was case-only comparing patients with ACS who had been exposed to NSAIDs vs no NSAIDs. Low dose aspirin (less than 325mg) was not included as NSAID exposure.",
+          "pvalue": "= 0.023",
+          "pvalue_num": 0.023,
+          "phenotype": "Toxicity",
+          "assoc_genotypes": [
+            "CT",
+            "TT"
+          ],
+          "matched_genotypes": [
+            "CT"
+          ],
+          "match_kind": "exact",
+          "section": "3.3 Фармакогенетика CRP"
+        }
+      ],
+      "pgx_no_match_info": null,
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CT",
+          "full_row": {
+            "Генотип": "CT",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Умеренно повышенный уровень СРБ",
+            "Клинический риск": "Умеренный риск сердечно-сосудистых событий, риск кровотечений на варфарине",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "CT"
+        }
+      ],
+      "matched_genotype": "CT",
+      "full_row": {
+        "Генотип": "CT",
+        "Фенотип": "Гетерозигота",
+        "Функция": "Умеренно повышенный уровень СРБ",
+        "Клинический риск": "Умеренный риск сердечно-сосудистых событий, риск кровотечений на варфарине",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "CRP CT → Гетерозигота. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Гетерозигота",
+        "annotation": "Умеренный риск сердечно-сосудистых событий, риск кровотечений на варфарине"
+      },
+      "clinical_risk": "Умеренный риск сердечно-сосудистых событий, риск кровотечений на варфарине"
+    },
+    {
+      "gene": "HLA-DRB1",
+      "group": "Группа 2: Иммунная система и воспаление",
+      "patient_result": "*07:01 Positive",
+      "patient_comment": "",
+      "parts": [
+        "*07:01 Positive"
+      ],
+      "extracted_candidates": [
+        "*07:01 Positive",
+        "*07:01"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 62,
+        "genotypes_in_base": [
+          "A",
+          "T"
+        ],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "*07:01",
+          "full_row": {
+            "Генотип": "*07:01",
+            "Фенотип": "Носительство",
+            "Функция": "Аллель присутствует",
+            "Клинический риск": "Высокий риск гепатотоксичности на лапатинибе, риск панкреатита на азатиоприне, сниженный ответ на вакцину от гепатита В",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "*07:01 Positive"
+        }
+      ],
+      "matched_genotype": "*07:01",
+      "full_row": {
+        "Генотип": "*07:01",
+        "Фенотип": "Носительство",
+        "Функция": "Аллель присутствует",
+        "Клинический риск": "Высокий риск гепатотоксичности на лапатинибе, риск панкреатита на азатиоприне, сниженный ответ на вакцину от гепатита В",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "HLA-DRB1 *07:01 → Носительство. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Носительство",
+        "annotation": "Высокий риск гепатотоксичности на лапатинибе, риск панкреатита на азатиоприне, сниженный ответ на вакцину от гепатита В"
+      },
+      "clinical_risk": "Высокий риск гепатотоксичности на лапатинибе, риск панкреатита на азатиоприне, сниженный ответ на вакцину от гепатита В"
+    },
+    {
+      "gene": "NLRP3",
+      "group": "Группа 2: Иммунная система и воспаление",
+      "patient_result": "GA",
+      "patient_comment": "",
+      "parts": [
+        "GA"
+      ],
+      "extracted_candidates": [
+        "GA"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 2,
+        "genotypes_in_base": [
+          "CG",
+          "GG",
+          "TT"
+        ],
+        "patient_genotypes": [
+          "AG",
+          "GA"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "GA",
+          "full_row": {
+            "Генотип": "GA",
+            "Фенотип": "Гетерозигота",
+            "Функция": "Повышенная активность инфламмасомы",
+            "Клинический риск": "Умеренный риск аутовоспалительных реакций, лучший ответ на TNF-ингибиторы при РА (rs4612666)",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "GA"
+        }
+      ],
+      "matched_genotype": "GA",
+      "full_row": {
+        "Генотип": "GA",
+        "Фенотип": "Гетерозигота",
+        "Функция": "Повышенная активность инфламмасомы",
+        "Клинический риск": "Умеренный риск аутовоспалительных реакций, лучший ответ на TNF-ингибиторы при РА (rs4612666)",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "NLRP3 GA → Гетерозигота. Source: CPIC guidelines:.",
+        "source": "CPIC guidelines:",
+        "evidence": "",
+        "phenotype": "Гетерозигота",
+        "annotation": "Умеренный риск аутовоспалительных реакций, лучший ответ на TNF-ингибиторы при РА (rs4612666)"
+      },
+      "clinical_risk": "Умеренный риск аутовоспалительных реакций, лучший ответ на TNF-ингибиторы при РА (rs4612666)"
+    },
+    {
+      "gene": "ACTN3",
+      "group": "Группа 6: Нутригенетика и спорт",
+      "patient_result": "RX",
+      "patient_comment": "",
+      "parts": [
+        "RX"
+      ],
+      "extracted_candidates": [
+        "RX"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "RR / RX: Ваши мышцы генетически предрасположены к быстрым, мощным сокращениям. Рекомендуются силовые тренировки, кроссфит, короткие дистанции.",
+        "У носителей XX может быть слегка повышен риск повреждения мышц при эксцентрических (силовых) нагрузках, требуется более длительное восстановление."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "RX",
+          "full_row": {
+            "Генотип": "RX",
+            "Аллели": "C/T",
+            "Частота*": "~50%",
+            "Функциональный эффект": "Сниженный синтез ACTN3. Гетерозигота.",
+            "Спортивный профиль": "Смешанный тип. Хорошая адаптация к интервальным нагрузкам (футбол, хоккей).",
+            "ACMG": "Benign"
+          },
+          "source_part": "RX"
+        }
+      ],
+      "matched_genotype": "RX",
+      "full_row": {
+        "Генотип": "RX",
+        "Аллели": "C/T",
+        "Частота*": "~50%",
+        "Функциональный эффект": "Сниженный синтез ACTN3. Гетерозигота.",
+        "Спортивный профиль": "Смешанный тип. Хорошая адаптация к интервальным нагрузкам (футбол, хоккей).",
+        "ACMG": "Benign"
+      },
+      "why": {
+        "sentence": "ACTN3 RX. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "RR / RX: Ваши мышцы генетически предрасположены к быстрым, мощным сокращениям. Рекомендуются силовые тренировки, кроссфит, короткие дистанции."
+      },
+      "clinical_risk": ""
+    },
+    {
+      "gene": "MCM6 / LCT",
+      "patient_result": "CT",
+      "patient_comment": "",
+      "status": "not_in_knowledge_base",
+      "matches": [],
+      "pgx_annotations": [],
+      "pgx_no_match_info": null,
+      "why": {
+        "sentence": "MCM6 / LCT CT. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": ""
+      },
+      "clinical_risk": ""
+    },
+    {
+      "gene": "COMT",
+      "group": "Группа 6: Нутригенетика и спорт",
+      "patient_result": "Val/Met",
+      "patient_comment": "",
+      "parts": [
+        "Val/Met"
+      ],
+      "extracted_candidates": [
+        "Val/Met"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Специфических рекомендаций нет"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "Val/Met",
+          "full_row": {
+            "Генотип": "Val/Met",
+            "Аллели": "G/A",
+            "Фенотип": "Смешанный",
+            "Функциональный эффект": "Промежуточная активность фермента. Баланс между стрессоустойчивостью и когнитивными функциями.",
+            "ACMG": "Benign"
+          },
+          "source_part": "Val/Met"
+        }
+      ],
+      "matched_genotype": "Val/Met",
+      "full_row": {
+        "Генотип": "Val/Met",
+        "Аллели": "G/A",
+        "Фенотип": "Смешанный",
+        "Функциональный эффект": "Промежуточная активность фермента. Баланс между стрессоустойчивостью и когнитивными функциями.",
+        "ACMG": "Benign"
+      },
+      "why": {
+        "sentence": "COMT Val/Met → Смешанный. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "Смешанный",
+        "annotation": "Специфических рекомендаций нет"
+      },
+      "clinical_risk": ""
+    },
+    {
+      "gene": "FTO",
+      "group": "Группа 6: Нутригенетика и спорт",
+      "patient_result": "TA",
+      "patient_comment": "",
+      "parts": [
+        "TA"
+      ],
+      "extracted_candidates": [
+        "TA"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Генетика обуславливает склонность к перееданию из-за \"запаздывающего\" чувства сытости. Рекомендуется осознанное питание, увеличение доли клетчатки и белка в рационе для механического заполнения желудка."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "AT",
+          "TA"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "TA",
+          "full_row": {
+            "Генотип": "TA",
+            "Аллели": "T/A",
+            "Функциональный эффект": "Умеренное нарушение чувства насыщения. ИМТ в среднем на 0.4-1.0 кг/м² выше нормы.",
+            "Клинический риск": "Умеренный риск избыточного веса.",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "TA"
+        }
+      ],
+      "matched_genotype": "TA",
+      "full_row": {
+        "Генотип": "TA",
+        "Аллели": "T/A",
+        "Функциональный эффект": "Умеренное нарушение чувства насыщения. ИМТ в среднем на 0.4-1.0 кг/м² выше нормы.",
+        "Клинический риск": "Умеренный риск избыточного веса.",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "FTO TA. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Умеренный риск избыточного веса."
+      },
+      "clinical_risk": "Умеренный риск избыточного веса."
+    },
+    {
+      "gene": "PPARG",
+      "group": "Группа 6: Нутригенетика и спорт",
+      "patient_result": "CG",
+      "patient_comment": "",
+      "parts": [
+        "CG"
+      ],
+      "extracted_candidates": [
+        "CG"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "CC (Pro/Pro): Требуется контроль простых углеводов и гликемического индекса пищи. Хороший метаболический отклик на добавление Омега-3 ПНЖК в рацион."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "CG",
+          "GC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CG",
+          "full_row": {
+            "Генотип": "CG",
+            "Аллели": "C/G (Pro/Ala)",
+            "Функциональный эффект": "Сниженная аффинность рецептора. Повышенная чувствительность тканей к инсулину.",
+            "Клинический риск СД2": "Сниженный (протективный эффект).",
+            "ACMG": "Likely Benign"
+          },
+          "source_part": "CG"
+        }
+      ],
+      "matched_genotype": "CG",
+      "full_row": {
+        "Генотип": "CG",
+        "Аллели": "C/G (Pro/Ala)",
+        "Функциональный эффект": "Сниженная аффинность рецептора. Повышенная чувствительность тканей к инсулину.",
+        "Клинический риск СД2": "Сниженный (протективный эффект).",
+        "ACMG": "Likely Benign"
+      },
+      "why": {
+        "sentence": "PPARG CG. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "CC (Pro/Pro): Требуется контроль простых углеводов и гликемического индекса пищи. Хороший метаболический отклик на добавление Омега-3 ПНЖК в рацион."
+      },
+      "clinical_risk": ""
+    },
+    {
+      "gene": "NAT2",
+      "group": "Группа 8: Онкогенетика и метаболизм канцерогенов",
+      "patient_result": "*4/*5",
+      "patient_comment": "",
+      "parts": [
+        "*4/*5"
+      ],
+      "extracted_candidates": [
+        "*4/*5"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Slow / Ultra-slow acetylator: Избегать курения (повышенный риск рака мочевого пузыря и лёгких). При лечении туберкулёза — обязательный контроль функции печени.",
+        "Rapid acetylator: Стандартные дозы изониазида могут быть неэффективны — требуется мониторинг концентрации препарата.",
+        "Изониазид: Slow acetylators — снижение дозы на 50%; Rapid — повышение до 125% или дважды в день (CPIC 2022).",
+        "Гидралазин: Slow acetylators — риск лекарственной волчанки, требуется мониторинг."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "*4/*5",
+          "full_row": {
+            "Генотип": "*4/*5",
+            "Аллели": "Один быстрый + один медленный",
+            "Фенотип": "Intermediate acetylator",
+            "Функциональный эффект": "Промежуточная скорость",
+            "Клинический риск": "Умеренный (зависит от препарата)",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "*4/*5"
+        }
+      ],
+      "matched_genotype": "*4/*5",
+      "full_row": {
+        "Генотип": "*4/*5",
+        "Аллели": "Один быстрый + один медленный",
+        "Фенотип": "Intermediate acetylator",
+        "Функциональный эффект": "Промежуточная скорость",
+        "Клинический риск": "Умеренный (зависит от препарата)",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "NAT2 *4/*5 → Intermediate acetylator. Source: CPIC 2022).",
+        "source": "CPIC 2022)",
+        "evidence": "",
+        "phenotype": "Intermediate acetylator",
+        "annotation": "Умеренный (зависит от препарата)"
+      },
+      "clinical_risk": "Умеренный (зависит от препарата)"
+    },
+    {
+      "gene": "GSTP1",
+      "group": "Группа 8: Онкогенетика и метаболизм канцерогенов",
+      "patient_result": "AG",
+      "patient_comment": "",
+      "parts": [
+        "AG"
+      ],
+      "extracted_candidates": [
+        "AG"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "AG / GG: Снижение активности детоксикации. Категорически избегать курения — риск рака лёгкого и ротовой полости значительно повышен. Увеличить потребление крестоцветных (брокколи, брюссельская капуста).",
+        "Цисплатин / карбоплатин: носители G-аллеля — изменённый ответ и повышенный риск нейротоксичности, мониторинг."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "AG",
+          "GA"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "AG",
+          "full_row": {
+            "Генотип": "AG",
+            "Аллели": "A/G",
+            "Частота": "~40%",
+            "Функциональный эффект": "Умеренное снижение активности",
+            "Клинический риск": "Умеренный риск рака лёгкого и ротовой полости при курении; изменённая токсичность платиновых препаратов",
+            "ACMG": "Risk factor"
+          },
+          "source_part": "AG"
+        }
+      ],
+      "matched_genotype": "AG",
+      "full_row": {
+        "Генотип": "AG",
+        "Аллели": "A/G",
+        "Частота": "~40%",
+        "Функциональный эффект": "Умеренное снижение активности",
+        "Клинический риск": "Умеренный риск рака лёгкого и ротовой полости при курении; изменённая токсичность платиновых препаратов",
+        "ACMG": "Risk factor"
+      },
+      "why": {
+        "sentence": "GSTP1 AG. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "",
+        "annotation": "Умеренный риск рака лёгкого и ротовой полости при курении; изменённая токсичность платиновых препаратов"
+      },
+      "clinical_risk": "Умеренный риск рака лёгкого и ротовой полости при курении; изменённая токсичность платиновых препаратов"
+    },
+    {
+      "gene": "GSTM1",
+      "group": "Группа 8: Онкогенетика и метаболизм канцерогенов",
+      "patient_result": "null",
+      "patient_comment": "",
+      "parts": [
+        "null"
+      ],
+      "extracted_candidates": [
+        "non-null / non-null"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "null / null (делеция): Отсутствие фермента детоксикации. Избегать курения — повышен риск рака лёгкого и мочевого пузыря. При химиотерапии — обсудить с онкологом возможную коррекцию. Увеличить потребление крестоцветных.",
+        "Цисплатин: носители GSTM1 null — повышенный риск ототоксичности и глухоты, особенно при лечении рака яичка. Рекомендуется аудиологический мониторинг.",
+        "Бусульфан: носители rs3754446 — изменённый метаболизм, контроль концентрации при ОМЛ."
+      ],
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "non-null / non-null",
+          "full_row": {
+            "Генотип": "non-null / non-null",
+            "Фенотип": "Нормальная детоксикация",
+            "Функциональный эффект": "Фермент присутствует, активен",
+            "Клинический риск": "Базовый",
+            "ACMG": "Benign"
+          },
+          "source_part": "null"
+        }
+      ],
+      "matched_genotype": "non-null / non-null",
+      "full_row": {
+        "Генотип": "non-null / non-null",
+        "Фенотип": "Нормальная детоксикация",
+        "Функциональный эффект": "Фермент присутствует, активен",
+        "Клинический риск": "Базовый",
+        "ACMG": "Benign"
+      },
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "why": {
+        "sentence": "GSTM1 non-null / non-null → Нормальная детоксикация. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "Нормальная детоксикация",
+        "annotation": "Базовый"
+      },
+      "clinical_risk": "Базовый"
+    },
+    {
+      "gene": "GSTT1",
+      "group": "Группа 8: Онкогенетика и метаболизм канцерогенов",
+      "patient_result": "null",
+      "patient_comment": "",
+      "parts": [
+        "null"
+      ],
+      "extracted_candidates": [
+        "non-null / non-null"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "null / null (делеция): Отсутствие фермента детоксикации хлорметанов и промышленных канцерогенов. Избегать контакта с растворителями, хлорсодержащими соединениями. При химиотерапии — обсудить с онкологом.",
+        "Иматиниб (ХМЛ): носители GSTT1 null/null — риск неудачи терапии (P=0.021). Особенно высокий риск при сочетании GSTT1 null + GSTM1 null (P<0.001) — рекомендован мониторинг BCR-ABL1."
+      ],
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "non-null / non-null",
+          "full_row": {
+            "Генотип": "non-null / non-null",
+            "Фенотип": "Нормальная детоксикация",
+            "Функциональный эффект": "Фермент присутствует, активен",
+            "Клинический риск": "Базовый",
+            "ACMG": "Benign"
+          },
+          "source_part": "null"
+        }
+      ],
+      "matched_genotype": "non-null / non-null",
+      "full_row": {
+        "Генотип": "non-null / non-null",
+        "Фенотип": "Нормальная детоксикация",
+        "Функциональный эффект": "Фермент присутствует, активен",
+        "Клинический риск": "Базовый",
+        "ACMG": "Benign"
+      },
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "why": {
+        "sentence": "GSTT1 non-null / non-null → Нормальная детоксикация. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "Нормальная детоксикация",
+        "annotation": "Базовый"
+      },
+      "clinical_risk": "Базовый"
+    },
+    {
+      "gene": "TP53",
+      "group": "Группа 8: Онкогенетика и метаболизм канцерогенов",
+      "patient_result": "CG",
+      "patient_comment": "",
+      "parts": [
+        "CG"
+      ],
+      "extracted_candidates": [
+        "CG"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "CG (Pro/Arg) или GG (Arg/Arg): Регулярные онкоскрининги (лёгкие, желудок, кишечник, грудь). Избегать курения и канцерогенов. Защита от избыточной инсоляции.",
+        "Препараты платины: носители rs1042522 — влияние на общую выживаемость, мониторинг.",
+        "Li-Fraumeni syndrome (патогенные варианты R175H, R248Q, R273H, R282W): наследственный синдром с высоким риском множественных опухолей. Рекомендуется:"
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 0,
+        "genotypes_in_base": [],
+        "patient_genotypes": [
+          "CG",
+          "GC"
+        ]
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "CG",
+          "full_row": {
+            "Генотип": "CG",
+            "Аллели": "C/G",
+            "Фенотип": "Гетерозигота",
+            "Функциональный эффект": "Промежуточная активность",
+            "Клинический риск": "Умеренный риск опухолей",
+            "ACMG": "Benign / Risk factor"
+          },
+          "source_part": "CG"
+        }
+      ],
+      "matched_genotype": "CG",
+      "full_row": {
+        "Генотип": "CG",
+        "Аллели": "C/G",
+        "Фенотип": "Гетерозигота",
+        "Функциональный эффект": "Промежуточная активность",
+        "Клинический риск": "Умеренный риск опухолей",
+        "ACMG": "Benign / Risk factor"
+      },
+      "why": {
+        "sentence": "TP53 CG → Гетерозигота. Source: GenomIQ knowledge base.",
+        "source": "GenomIQ knowledge base",
+        "evidence": "",
+        "phenotype": "Гетерозигота",
+        "annotation": "Умеренный риск опухолей"
+      },
+      "clinical_risk": "Умеренный риск опухолей"
+    },
+    {
+      "gene": "DPYD",
+      "group": "Группа 9: DPYD - Dihydropyrimidine dehydrogenase",
+      "patient_result": "*2A/*2A",
+      "patient_comment": "",
+      "parts": [
+        "*2A/*2A"
+      ],
+      "extracted_candidates": [
+        "*2A/*2A",
+        "c.[1905+1G>A];[1905+1G>A]"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Для гомозиготы c.[2846A>T];[2846A>T] (activity score 1) на той же странице указано, что снижение стартовой дозы может быть больше 50%."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 13,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "c.[1905+1G>A];[1905+1G>A]",
+          "full_row": {
+            "Генотип": "c.[1905+1G>A];[1905+1G>A]",
+            "Фенотип": "DPYD Poor Metabolizer",
+            "Клинический риск": "Полный дефицит DPD и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов",
+            "Рекомендации": "Activity score 0.5: избегать 5-фторурацила и режимов на его пролекарствах; если альтернативы нет, сильно сниженная доза и ранний терапевтический мониторинг (при отсутствии фенотипирования оценка стартовой дозы — меньше 25% обычной). Activity score 0: избегать 5-фторурацила и режимов на его пролекарствах. Сила рекомендации CPIC: Strong",
+            "ACMG": "Not found"
+          },
+          "source_part": "*2A/*2A"
+        }
+      ],
+      "matched_genotype": "c.[1905+1G>A];[1905+1G>A]",
+      "full_row": {
+        "Генотип": "c.[1905+1G>A];[1905+1G>A]",
+        "Фенотип": "DPYD Poor Metabolizer",
+        "Клинический риск": "Полный дефицит DPD и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов",
+        "Рекомендации": "Activity score 0.5: избегать 5-фторурацила и режимов на его пролекарствах; если альтернативы нет, сильно сниженная доза и ранний терапевтический мониторинг (при отсутствии фенотипирования оценка стартовой дозы — меньше 25% обычной). Activity score 0: избегать 5-фторурацила и режимов на его пролекарствах. Сила рекомендации CPIC: Strong",
+        "ACMG": "Not found"
+      },
+      "why": {
+        "sentence": "DPYD c.[1905+1G>A];[1905+1G>A] → DPYD Poor Metabolizer. Source: CPIC «Annotation of CPIC Clinical Guideline for fluorouracil and.",
+        "source": "CPIC «Annotation of CPIC Clinical Guideline for fluorouracil and",
+        "evidence": "",
+        "phenotype": "DPYD Poor Metabolizer",
+        "annotation": "Полный дефицит DPD и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов"
+      },
+      "clinical_risk": "Полный дефицит DPD и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов"
+    },
+    {
+      "gene": "TPMT",
+      "group": "Группа 9: TPMT - Thiopurine S-methyltransferase",
+      "patient_result": "*3A/*3A",
+      "patient_comment": "",
+      "parts": [
+        "*3A/*3A"
+      ],
+      "extracted_candidates": [
+        "*3A/*3A"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Отдельное «снизить дозу ровно на 50%» как единственную рекомендацию: Not found. Диапазоны на странице — 30–80% и 20–50%."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 7,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "*3a/*3a",
+          "full_row": {
+            "Генотип": "*3a/*3a",
+            "Фенотип": "Poor Metabolizer",
+            "Клинический риск": "Высокий риск тяжёлой миелосупрессии на тиопуринах",
+            "Рекомендации": "Рассмотреть иммуносупрессор не из группы тиопуринов. Сила: Strong",
+            "ACMG": "Not found"
+          },
+          "source_part": "*3A/*3A"
+        }
+      ],
+      "matched_genotype": "*3a/*3a",
+      "full_row": {
+        "Генотип": "*3a/*3a",
+        "Фенотип": "Poor Metabolizer",
+        "Клинический риск": "Высокий риск тяжёлой миелосупрессии на тиопуринах",
+        "Рекомендации": "Рассмотреть иммуносупрессор не из группы тиопуринов. Сила: Strong",
+        "ACMG": "Not found"
+      },
+      "why": {
+        "sentence": "TPMT *3a/*3a → Poor Metabolizer. Source: CPIC diplotype для TPMT.",
+        "source": "CPIC diplotype для TPMT",
+        "evidence": "",
+        "phenotype": "Poor Metabolizer",
+        "annotation": "Высокий риск тяжёлой миелосупрессии на тиопуринах"
+      },
+      "clinical_risk": "Высокий риск тяжёлой миелосупрессии на тиопуринах"
+    },
+    {
+      "gene": "VKORC1",
+      "group": "Группа 9: VKORC1 - Vitamin K epoxide reductase complex subunit 1",
+      "patient_result": "T/T",
+      "patient_comment": "",
+      "parts": [
+        "T/T"
+      ],
+      "extracted_candidates": [
+        "T/T"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Фиксированное «снизить дозу VKORC1 на 50%»: Not found."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 8,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "T/T",
+          "full_row": {
+            "Генотип": "T/T",
+            "Фенотип": "rs9923231 variant/variant. В тексте руководства повышенная чувствительность — VKORC1-1639 A/A",
+            "Клинический риск": "Вместе с CYP2C9 poor metabolism (примеры *2/*3, *3/*3) повышенный риск при стандартном подходе к дозе",
+            "Рекомендации": "Считать дозу алгоритмом. Если A/A сочетается с CYP2C9 poor metabolism, можно рассмотреть другой пероральный антикоагулянт. Сила: Strong",
+            "ACMG": "Not found"
+          },
+          "source_part": "T/T"
+        }
+      ],
+      "matched_genotype": "T/T",
+      "full_row": {
+        "Генотип": "T/T",
+        "Фенотип": "rs9923231 variant/variant. В тексте руководства повышенная чувствительность — VKORC1-1639 A/A",
+        "Клинический риск": "Вместе с CYP2C9 poor metabolism (примеры *2/*3, *3/*3) повышенный риск при стандартном подходе к дозе",
+        "Рекомендации": "Считать дозу алгоритмом. Если A/A сочетается с CYP2C9 poor metabolism, можно рассмотреть другой пероральный антикоагулянт. Сила: Strong",
+        "ACMG": "Not found"
+      },
+      "why": {
+        "sentence": "VKORC1 T/T → rs9923231 variant/variant. В тексте руководства повышенная чувствительность — VKORC1-1639 A/A. Source: CPIC для варфарина аллели VKORC1 — rs9923231 reference (C) и rs9. Evidence: rs9923231 C>T.",
+        "source": "CPIC для варфарина аллели VKORC1 — rs9923231 reference (C) и rs9",
+        "evidence": "rs9923231 C>T",
+        "phenotype": "rs9923231 variant/variant. В тексте руководства повышенная чувствительность — VKORC1-1639 A/A",
+        "annotation": "Вместе с CYP2C9 poor metabolism (примеры *2/*3, *3/*3) повышенный риск при стандартном подходе к дозе"
+      },
+      "clinical_risk": "Вместе с CYP2C9 poor metabolism (примеры *2/*3, *3/*3) повышенный риск при стандартном подходе к дозе"
+    },
+    {
+      "gene": "HLA-B",
+      "group": "Группа 9: HLA-B - Major histocompatibility complex, class I, B",
+      "patient_result": "*15:02 Positive",
+      "patient_comment": "",
+      "parts": [
+        "*15:02 Positive"
+      ],
+      "extracted_candidates": [
+        "*15:02 Positive",
+        "*15:02"
+      ],
+      "has_genotype_table": true,
+      "recommendations": [
+        "Карбамазепин, наивный пациент, HLA-B*15:02 positive: не назначать карбамазепин. Сила: Strong. Источник: аннотация CPIC PA166105008 и таблица рекомендаций.",
+        "Окскарбазепин, наивный пациент, HLA-B*15:02 positive: не назначать окскарбазепин. Сила: Strong."
+      ],
+      "pgx_annotations": [],
+      "pgx_no_match_info": {
+        "total_annotations": 4,
+        "genotypes_in_base": [],
+        "patient_genotypes": []
+      },
+      "status": "matched",
+      "matches": [
+        {
+          "genotype": "*15:02",
+          "full_row": {
+            "Генотип": "*15:02",
+            "Фенотип": "Носитель хотя бы одной копии *15:02",
+            "Клинический риск": "Повышенный риск SJS/TEN",
+            "Рекомендации": "Наивному пациенту не назначать карбамазепин. Это сохраняется и когда альтернативы нет. Сила: Strong",
+            "ACMG": "Not found"
+          },
+          "source_part": "*15:02 Positive"
+        }
+      ],
+      "matched_genotype": "*15:02",
+      "full_row": {
+        "Генотип": "*15:02",
+        "Фенотип": "Носитель хотя бы одной копии *15:02",
+        "Клинический риск": "Повышенный риск SJS/TEN",
+        "Рекомендации": "Наивному пациенту не назначать карбамазепин. Это сохраняется и когда альтернативы нет. Сила: Strong",
+        "ACMG": "Not found"
+      },
+      "why": {
+        "sentence": "HLA-B *15:02 → Носитель хотя бы одной копии *15:02. Source: CPIC для карбамазепина (обновление 2017/2018, PMID:29392710) рек.",
+        "source": "CPIC для карбамазепина (обновление 2017/2018, PMID:29392710) рек",
+        "evidence": "",
+        "phenotype": "Носитель хотя бы одной копии *15:02",
+        "annotation": "Повышенный риск SJS/TEN"
+      },
+      "clinical_risk": "Повышенный риск SJS/TEN"
+    }
+  ]
+}

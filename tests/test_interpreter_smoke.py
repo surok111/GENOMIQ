@@ -34,6 +34,29 @@ class InterpreterSmokeTest(unittest.TestCase):
         )
         self.assertIn("HLA-DRB1", self.index)
 
+    def test_hla_drb1_positive_allele_matches(self):
+        self.assertEqual(_normalize("*07:01 Positive"), "*07:01")
+        self.assertEqual(_normalize("*07:01 Negative (-)"), "*07:01")
+        r = interpret_gene(
+            {"gene": "HLA-DRB1", "result": "*07:01 Positive", "comment": ""},
+            self.index,
+        )
+        self.assertEqual(r["status"], "matched")
+        self.assertTrue(r.get("matches"))
+        risk = (r["matches"][0].get("full_row") or {}).get("Клинический риск", "")
+        self.assertIn("лапатиниб", risk.lower())
+
+    def test_actn3_rx_letter_pair_matches(self):
+        self.assertEqual(_normalize("RX"), "RX")
+        r = interpret_gene(
+            {"gene": "ACTN3", "result": "RX", "comment": ""},
+            self.index,
+        )
+        self.assertEqual(r["status"], "matched")
+        self.assertEqual(r["matches"][0]["genotype"], "RX")
+        profile = (r["matches"][0].get("full_row") or {}).get("Спортивный профиль", "")
+        self.assertIn("Смешанный", profile)
+
     def test_sod2_has_supplement_genotype_table(self):
         sod2 = next(
             g

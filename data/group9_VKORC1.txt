@@ -1,0 +1,64 @@
+# Группа 9: VKORC1 - Vitamin K epoxide reductase complex subunit 1
+
+**Ген:** VKORC1
+
+Страница собрана из открытых страниц CPIC/ClinPGx, ClinVar и NCBI Gene. Текст записи OMIM на omim.org в этой сессии не открылся.
+
+## ГЕН 1: VKORC1 — Vitamin K epoxide reductase complex subunit 1
+
+### 1.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное имя | vitamin K epoxide reductase complex subunit 1 |
+| OMIM ID | MIM:608547 (ссылка NCBI Gene). Текст записи на omim.org: Not found |
+| ClinPGx | PA133787052 |
+| NCBI Gene | 79001 |
+| Локус | 16p11.2 |
+| Другие символы | EDTP308, MST134, MST576, VKCFD2, VKOR |
+| Функция | This gene encodes the catalytic subunit of the vitamin K epoxide reductase complex, which is responsible for the reduction of inactive vitamin K 2,3-epoxide to active vitamin K in the endoplasmic reticulum membrane. Vitamin K is a required co-factor for carboxylation of glutamic acid residues by vitamin K-dependent gamma-carboxylase in blood-clotting enzymes. Allelic variation in this gene is associated with vitamin k-dependent clotting factors combined deficiency of 2, and increased resistance or sensitivity to warfarin, an inhibitor of vitamin K epoxide reductase. Pseudogenes of this gene are located on chromosomes 1 and X. Alternative splicing results in multiple transcript variants. [provided by RefSeq, Aug 2015] |
+
+- Полное имя: vitamin K epoxide reductase complex subunit 1. OMIM ID на странице NCBI Gene: MIM:608547. Текст записи omim.org: Not found.
+- Функция (NCBI Gene, RefSeq, Aug 2015): VKORC1 кодирует каталитическую субъединицу комплекса витамин K-эпоксидредуктазы. Она восстанавливает неактивный витамин K 2,3-эпоксид до активного витамина K. Аллельные варианты связаны с комбинированным дефицитом витамин K-зависимых факторов свёртывания 2-го типа и с устойчивостью или повышенной чувствительностью к варфарину.
+
+### 1.2 Варианты
+
+На селекторе генотипов аннотации CPIC для варфарина аллели VKORC1 — rs9923231 reference (C) и rs9923231 variant (T). Звёздных аллелей VKORC1 *2 и *3 на этом селекторе нет: Not found. *2 и *3 на той же странице относятся к CYP2C9. В тексте рекомендации CPIC вариант назван VKORC1-1639G>A; A/A описан как повышенная чувствительность. Отдельной таблицы «генотип VKORC1 — процент снижения дозы» на странице нет: доза считается фармакогенетическим алгоритмом (Gage или IWPC) вместе с CYP2C9*2 и *3.
+
+| Генотип | Фенотип | Клинический риск | Рекомендации | ACMG |
+|---|---|---|---|---|
+| C/C | rs9923231 reference/reference. В тексте руководства это VKORC1-1639, не A/A. Алгоритм Gage/IWPC | Доза варфарина зависит от генотипа вместе с клиническими факторами и CYP2C9 | Для пациентов неафриканского происхождения считать дозу опубликованным фармакогенетическим алгоритмом, включая VKORC1-1639G>A и CYP2C9*2 и *3. Сила этой рекомендации CPIC: Strong | Not found |
+| C/T | rs9923231 reference/variant | Входит в расчёт стартовой дозы варфарина | Та же рекомендация: алгоритм, а не фиксированный процент только по VKORC1. Сила: Strong для неафриканского происхождения | Not found |
+| T/T | rs9923231 variant/variant. В тексте руководства повышенная чувствительность — VKORC1-1639 A/A | Вместе с CYP2C9 poor metabolism (примеры *2/*3, *3/*3) повышенный риск при стандартном подходе к дозе | Считать дозу алгоритмом. Если A/A сочетается с CYP2C9 poor metabolism, можно рассмотреть другой пероральный антикоагулянт. Сила: Strong | Not found |
+
+ClinVar, поиск `VKORC1[gene] AND (pathogenic[clinsig] OR "likely pathogenic"[clinsig])`: 25 записей. Ниже только строки, у которых в краткой выдаче была классификация.
+
+- NM_024006.6(VKORC1):c.229A>T (p.Asn77Tyr) — Likely pathogenic
+- GRCh37/hg19 16p11.2(chr16:30907349-31334236)x1 — Pathogenic
+- GRCh37/hg19 16p11.2(chr16:30943854-31171177)x1 — Likely pathogenic
+- GRCh37/hg19 16p13.3-11.2(chr16:5805001-34230001) — Pathogenic
+
+### 1.3 Фармакогенетика
+
+ClinPGx PA133787052: 38 summary annotations. Уровни: 1A — 3, 1B — 5, 2A — 8, 3 — 21, 4 — 1. CPIC-пара с рекомендацией: варфарин, уровень A.
+
+| Drug | Association | Phenotype | Level |
+|---|---|---|---|
+| warfarin | rs9923231. CPIC включает VKORC1-1639G>A в алгоритм стартовой дозы вместе с CYP2C9*2 и *3. Summary annotation ClinPGx | Dosage | 1A |
+| warfarin | rs9923231. Summary annotation ClinPGx для over-anticoagulation | Toxicity | 1B |
+| warfarin | rs8050894. Summary annotation ClinPGx | Dosage | 1B |
+| warfarin | rs7294. Summary annotation ClinPGx | Dosage | 1B |
+| warfarin | rs9934438. Summary annotation ClinPGx | Dosage | 1B |
+| warfarin | rs2359612. Summary annotation ClinPGx | Dosage | 1B |
+| phenprocoumon | rs9923231. Summary annotation ClinPGx. Отдельной CPIC-рекомендации в списке пар уровня A для этого препарата: Not found | Dosage | 1A |
+| acenocoumarol | rs9923231. Summary annotation ClinPGx. Отдельной CPIC-рекомендации в списке пар уровня A для этого препарата: Not found | Dosage | 1A |
+
+### 1.4 Рекомендации
+
+- Взрослые неафриканского происхождения: считать дозу варфарина алгоритмом Gage или IWPC, включая VKORC1-1639G>A и CYP2C9*2 и *3. Сила: Strong. Источник: аннотация CPIC PA166104949, обновление 2017 года (PMID:28198005).
+- Если генотип соответствует CYP2C9 poor metabolism и повышенной чувствительности VKORC1-1639 A/A, можно рассмотреть другой пероральный антикоагулянт. Сила: Strong.
+- Для африканского происхождения без CYP2C9*5, *6, *8 и *11 CPIC рекомендует клинический подбор дозы без генотипа. Если эти аллели известны, после алгоритма дозу снижают на 15–30% на вариантную аллель CYP2C9. Это рекомендация по CYP2C9, не отдельный процент по VKORC1. Сила: Moderate.
+- Фиксированное «снизить дозу VKORC1 на 50%»: Not found.
+- Звёздные аллели VKORC1 *2 и *3: Not found.
+
+*Источники: https://www.clinpgx.org/guideline/PA166251465 ; https://www.clinpgx.org/guidelineAnnotation/PA166104949 ; https://www.clinpgx.org/gene/PA133787052 ; https://www.ncbi.nlm.nih.gov/gene/79001 ; ClinVar esearch VKORC1 pathogenic or likely pathogenic. omim.org не открылся.*

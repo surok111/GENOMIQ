@@ -102,6 +102,10 @@ KNOWN_VARIANTS = {
     'rs1801394': ('A', 'G'),
     'p187s': ('C', 'T'),  # NQO1
     'mthfd1_r653q': ('G', 'A'),  # MTHFD1 (rs2236225)
+    # DPYD star allele → HGVS (not a ref/alt nucleotide pair).
+    '*2a': 'c.1905+1G>A',
+    '*13': 'c.1679T>G',
+    '*9a': 'c.85T>C',
 }
 
 # ============================================================
@@ -239,17 +243,55 @@ def read_any(path: str) -> str:
 #  Извлечение генотипов пациента
 # ============================================================
 
+_POLARITY_RE = re.compile(
+    r"(?i)\b(?:positive|negative|позитивн\w*|негативн\w*)\b|\(\+\)|\(-\)"
+)
+# HLA alleles use colon fields (*07:01). Do not match CYP diplotype parts (*1/*2).
+RE_HLA_ALLELE = re.compile(r"(\*\d+(?::\d+){1,3})")
+RE_SIMPLE_LETTER_PAIR = re.compile(r"(?<![A-Za-z])([A-Za-z]{2})(?![A-Za-z])")
+
+
+def _strip_polarity(gt: str) -> str:
+    """Remove Positive/Negative/(+)/(-) markers from genotype strings.
+
+    HLA results such as '*15:02 Positive' become '*15:02'.
+    """
+    if not gt:
+        return ""
+    return _POLARITY_RE.sub(" ", gt).strip()
+
+
+def _polarity(gt: str) -> str:
+    low = (gt or "").lower()
+    if "positive" in low or "(+)" in low or "позитив" in low:
+        return "pos"
+    if "negative" in low or "(-)" in low or "негатив" in low:
+        return "neg"
+    return ""
+
+
+def _is_simple_letter_pair(gt: str) -> bool:
+    return bool(re.fullmatch(r"[A-Za-z]{2}", (gt or "").strip()))
+
+
 def _normalize(gt: str) -> str:
     if not gt:
         return ""
     s = gt.strip()
-    s = re.sub(r'\s*\(.*?\)', '', s)
-    s = s.strip()
-    if s.startswith('*'):
-        return s.replace(' ', '').lower()
-    s = s.replace('/', '').replace(' ', '').replace('|', '').lower()
-    if len(s) == 2 and all(c in 'acgt' for c in s):
-        return ''.join(sorted(s))
+    s = re.sub(r"\s*\(.*?\)", "", s)
+    s = _strip_polarity(s)
+    s = re.sub(r"\s+", " ", s).strip()
+    if not s:
+        return ""
+    # HLA / star alleles: keep '*' and digits/colons, drop spaces.
+    if "*" in s:
+        return s.replace(" ", "").lower()
+    # Sports / protein genotypes (RR, RX, XX, etc.): keep letter order.
+    if _is_simple_letter_pair(s) and not all(c in "ACGTacgt" for c in s):
+        return s.upper()
+    s = s.replace("/", "").replace(" ", "").replace("|", "").lower()
+    if len(s) == 2 and all(c in "acgt" for c in s):
+        return "".join(sorted(s))
     return s
 
 def _is_normal(result: str) -> bool:
@@ -280,6 +322,7 @@ RE_PAIR_NUC = re.compile(r'(?<![A-Za-z])([ACGT]{2})(?![A-Za-z])')
 RE_PAIR_ANY = re.compile(r'(?<![A-Za-z])([A-Z]{2})(?![A-Za-z])')
 RE_STAR = re.compile(r'(\*\d+/\*\d+)')
 RE_APOE_ISOFORM = re.compile(r'\bE([234])/E([234])\b', re.IGNORECASE)
+# RE_HLA_ALLELE / RE_SIMPLE_LETTER_PAIR defined near _normalize.
 
 def _extract_variant_alleles(variant: str) -> tuple[str, str]:
     v = variant.replace('c.', '').replace('C.', '')
@@ -292,6 +335,30 @@ def _extract_variant_alleles(variant: str) -> tuple[str, str]:
     if len(letters) >= 2:
         return letters[0], letters[-1]
     return '', ''
+
+def _star_hgvs_diplotype(text: str) -> str:
+    """'*2A/*2A' → 'c.[1905+1G>A];[1905+1G>A]' when both alleles are mapped."""
+    alleles = re.findall(r"\*(\d+[A-Za-z]?)", text or "")
+    if len(alleles) < 2:
+        return ""
+    bodies: list[str] = []
+    for allele in alleles[:2]:
+        spec = KNOWN_VARIANTS.get(f"*{allele}".lower())
+        if not isinstance(spec, str):
+            return ""
+        body = spec[2:] if spec.lower().startswith("c.") else spec
+        if not body:
+            return ""
+        bodies.append(body)
+    return f"c.[{bodies[0]}];[{bodies[1]}]"
+
+
+def _hgvs_diplotype_in_row(candidate_norm: str, row_norm: str) -> bool:
+    """True when a phased HGVS diplotype sits inside a longer genotype cell."""
+    if "c.[" not in candidate_norm or "];[" not in candidate_norm:
+        return False
+    return candidate_norm in row_norm
+
 
 def extract_genotype_candidates(result: str) -> list[str]:
     r = result.strip()
@@ -311,6 +378,21 @@ def extract_genotype_candidates(result: str) -> list[str]:
     het = _is_het(r)
     hom = _is_hom(r)
 
+    # Keep original + polarity-stripped forms (HLA: "*15:02 Positive" → "*15:02").
+    add(r)
+    stripped = _strip_polarity(r)
+    stripped = re.sub(r"\s*\(.*?\)", "", stripped).strip()
+    if stripped and stripped != r:
+        add(stripped)
+    hgvs = _star_hgvs_diplotype(stripped or r)
+    if hgvs:
+        add(hgvs)
+
+    # Whole-result sports / letter-pair genotypes: RR, RX, XX, etc.
+    if _is_simple_letter_pair(r):
+        add(r.upper())
+        add(r)
+
     tmp = r
     for m in RE_VARIANT.finditer(r):
         tmp = tmp.replace(m.group(0), ' ', 1)
@@ -327,13 +409,24 @@ def extract_genotype_candidates(result: str) -> list[str]:
     for m in RE_STAR.finditer(r):
         add(m.group(1))
 
+    # HLA alleles with fields: *07:01, *15:01 (not CYP *1/*2 parts).
+    for m in RE_HLA_ALLELE.finditer(r):
+        add(m.group(1))
+
+    # Whole-result single star allele only (e.g. "*2"), not parts of "*1/*2".
+    if re.fullmatch(r"\*\d+", stripped.replace(" ", "")):
+        add(stripped.replace(" ", ""))
+
     for m in re.finditer(r'([A-Za-zА-Яа-я0-9*]+(?:/[A-Za-zА-Яа-я0-9*]+)+)', r):
         val = m.group(1)
         if len(val) <= 12:
             add(val)
 
     r_low = r.lower()
-    for name, (ref, mut) in KNOWN_VARIANTS.items():
+    for name, spec in KNOWN_VARIANTS.items():
+        if not isinstance(spec, tuple):
+            continue
+        ref, mut = spec
         if name in r_low:
             if het:
                 add(ref + mut)
@@ -345,7 +438,7 @@ def extract_genotype_candidates(result: str) -> list[str]:
                 add(ref + mut)
             break
 
-    if not candidates:
+    if not candidates or len(candidates) <= 2:
         for m in RE_VARIANT.finditer(r):
             ref, mut = _extract_variant_alleles(m.group(0))
             if not ref or not mut:
@@ -358,6 +451,13 @@ def extract_genotype_candidates(result: str) -> list[str]:
             else:
                 add(mut + mut)
                 add(ref + mut)
+
+    # Letter pairs for sports genes (RR/RX/XX) — always, not only het/hom wording.
+    for m in RE_SIMPLE_LETTER_PAIR.finditer(r):
+        pair = m.group(1)
+        if pair.upper() == pair or not all(c in "ACGTacgt" for c in pair):
+            add(pair.upper())
+            add(pair)
 
     if het or hom:
         for m in RE_PAIR_ANY.finditer(r):
@@ -453,9 +553,16 @@ def _row_with_specific_genotype(row: dict, display_gt: str, matched_column: Opti
 def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list[dict]:
     if not candidates:
         return []
-    cand_norm = [(c, _normalize(c)) for c in candidates if _normalize(c)]
+    cand_norm = [
+        (c, _normalize(c), _polarity(c))
+        for c in candidates
+        if _normalize(c)
+    ]
     if not cand_norm:
         return []
+    # If the patient result includes Positive/Negative, only accept rows
+    # with the same polarity (avoid "*07:01" matching both).
+    patient_pols = {p for _, _, p in cand_norm if p}
 
     GT_COLUMNS = {'генотип', 'аллели', 'alleles', 'genotype'}
 
@@ -478,26 +585,49 @@ def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list
 
             for row in tbl["rows"]:
                 row_key = tuple(sorted((k, str(v)) for k, v in row.items() if v))
+                # Prefer polarity-aligned / direct letter-pair hits.
                 best_match = None
+                best_score = -1
 
                 for gt_col in gt_cols:
                     row_gt = row.get(gt_col, "").strip()
                     if not row_gt:
                         continue
                     row_norm = _normalize(row_gt)
-                    for orig, cn in cand_norm:
+                    row_pol = _polarity(row_gt)
+                    if patient_pols and row_pol and row_pol not in patient_pols:
+                        continue
+                    row_gt_u = row_gt.strip().upper()
+                    for orig, cn, c_pol in cand_norm:
                         matched = False
-                        if cn == row_norm:
+                        score = 0
+                        # Direct string match for sports letter pairs (RR/RX/XX).
+                        if _is_simple_letter_pair(orig) and _is_simple_letter_pair(row_gt):
+                            if orig.strip().upper() == row_gt_u:
+                                matched = True
+                                score = 3
+                        if not matched and cn == row_norm:
                             matched = True
-                        elif cn.replace('/', '') == row_norm.replace('/', ''):
+                            score = 2
+                        elif not matched and cn.replace('/', '') == row_norm.replace('/', ''):
                             matched = True
-                        elif _is_star_overlap(cn, row_norm):
+                            score = 1
+                        elif not matched and _is_star_overlap(cn, row_norm):
                             matched = True
-                        if matched:
+                            score = 1
+                        elif not matched and _hgvs_diplotype_in_row(cn, row_norm):
+                            matched = True
+                            score = 2
+                        if not matched:
+                            continue
+                        # Reject HLA Positive vs Negative mismatches.
+                        if c_pol and row_pol and c_pol != row_pol:
+                            continue
+                        if c_pol and row_pol and c_pol == row_pol:
+                            score += 2
+                        if score > best_score:
+                            best_score = score
                             best_match = (row_gt, orig, gt_col)
-                            break
-                    if best_match:
-                        break
 
                 if not best_match:
                     continue
@@ -507,11 +637,20 @@ def find_genotype_rows_for_candidates(gene: dict, candidates: list[str]) -> list
 
                 row_gt, orig, gt_col = best_match
                 display_gt = _specific_matched_genotype(row_gt, orig)
+                # Prefer patient letter-pair / HLA allele / phased HGVS display.
+                if "c.[" in (orig or "") and "];[" in (orig or ""):
+                    display_gt = orig.strip()
+                elif _is_simple_letter_pair(orig):
+                    display_gt = orig.strip().upper()
+                elif _polarity(orig) or RE_HLA_ALLELE.search(orig or ""):
+                    display_gt = _strip_polarity(orig) or display_gt
                 gkey = _normalize(display_gt) or _normalize(row_gt)
-                if gkey and gkey in seen_genotypes:
+                # Include polarity in dedupe key so Positive/Negative stay distinct
+                # when both somehow match without patient polarity.
+                gkey_full = f"{gkey}|{_polarity(row_gt)}"
+                if gkey_full in seen_genotypes:
                     continue
-                if gkey:
-                    seen_genotypes.add(gkey)
+                seen_genotypes.add(gkey_full)
                 matches.append({
                     "section": sec, "table": tbl, "row": row,
                     "matched_field": display_gt, "matched_candidate": orig, "matched_column": gt_col,
@@ -718,8 +857,8 @@ _SKIP_REC = re.compile(
     re.IGNORECASE,
 )
 _ACTION_REC = re.compile(
-    r"(рекомендуется|снизить|снижение|контроль|избегать|замена|"
-    r"мониторинг|противопоказан|требуется|не назначать|начальная\s+доза)",
+    r"(рекомендуется|рекомендуются|снизить|снижение|контроль|избегать|замена|"
+    r"мониторинг|противопоказан|не рекоменду|требуется|не назначать|начальная\s+доза)",
     re.IGNORECASE,
 )
 
@@ -960,7 +1099,15 @@ def collect_critical_alerts(results: list) -> list[dict]:
         key = None
         if gene == "F5" and nuc in {"CT", "TT"}:
             key, text = "F5", (
-                "ПРОТИВОПОКАЗАНЫ гормональные контрацептивы (риск тромбоза, RR=34.7)."
+                "Гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка; "
+                "риск тромбоза, RR=34.7). Решение о применении должно приниматься врачом "
+                "с учетом семейного тромботического анамнеза."
+            )
+        elif gene == "F2" and nuc in {"AG", "AA"}:
+            key, text = "F2", (
+                "Гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка). "
+                "Решение о применении должно приниматься врачом с учетом семейного "
+                "тромботического анамнеза."
             )
         elif gene == "CYP2C19" and star in {"*1/*2", "*2/*2", "*2/*3", "*3/*3"}:
             key, text = "CYP2C19", (
@@ -968,7 +1115,9 @@ def collect_critical_alerts(results: list) -> list[dict]:
             )
         elif gene == "MTHFR" and nuc == "TT":
             key, text = "MTHFR", (
-                "Контроль уровня гомоцистеина. Рекомендуется прием активных форм фолатов (L-метилфолат)."
+                "Ассоциация с повышением гомоцистеина; контроль уровня гомоцистеина. "
+                "Клиническая значимость для тромбоза/невынашивания обсуждается "
+                "(ACMG не рекомендует рутинное тестирование)."
             )
         elif gene == "SLCO1B1" and nuc in {"CT", "CC"}:
             key, text = "SLCO1B1", (
@@ -996,7 +1145,15 @@ def build_doctors_note(results: list) -> str:
             zyg = "гомозиготная" if nuc == "TT" else "гетерозиготная"
             sentences.append(
                 f"У пациента выявлена {zyg} мутация F5 (Лейден). "
-                "Рекомендовано: избегать гормональных контрацептивов, контроль гематолога."
+                "Гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка); "
+                "решение о применении должно приниматься врачом с учетом семейного "
+                "тромботического анамнеза; контроль гематолога."
+            )
+        elif gene == "F2" and nuc in {"AG", "AA"}:
+            sentences.append(
+                "Выявлен вариант F2 G20210A — гормональные контрацептивы не рекомендуются "
+                "(требуется индивидуальная оценка); решение о применении должно приниматься "
+                "врачом с учетом семейного тромботического анамнеза."
             )
         elif gene == "CYP2C19" and star in {"*1/*2", "*2/*2", "*2/*3", "*3/*3"}:
             sentences.append(
@@ -1005,8 +1162,9 @@ def build_doctors_note(results: list) -> str:
             )
         elif gene == "MTHFR" and nuc == "TT":
             sentences.append(
-                "Выявлена гомозиготная мутация MTHFR C677T (TT) — контроль гомоцистеина, "
-                "прием активных фолатов."
+                "Выявлена гомозиготная мутация MTHFR C677T (TT) — ассоциация с повышением "
+                "гомоцистеина; контроль гомоцистеина. Клиническая значимость для "
+                "тромбоза/невынашивания обсуждается (ACMG не рекомендует рутинное тестирование)."
             )
         elif gene == "SLCO1B1" and nuc in {"CT", "CC"}:
             sentences.append(

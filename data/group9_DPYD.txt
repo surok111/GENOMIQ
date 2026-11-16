@@ -1,0 +1,89 @@
+# Группа 9: DPYD - Dihydropyrimidine dehydrogenase
+
+**Ген:** DPYD
+
+Страница собрана из открытых страниц CPIC/ClinPGx, ClinVar и NCBI Gene. Текст записи OMIM на omim.org в этой сессии не открылся.
+
+## ГЕН 1: DPYD — Dihydropyrimidine dehydrogenase
+
+### 1.1 Общая информация
+
+| Параметр | Описание |
+|---|---|
+| Полное имя | dihydropyrimidine dehydrogenase (HGNC:3012) |
+| OMIM ID | MIM:612779 (ссылка на странице NCBI Gene). Текст записи на omim.org: Not found |
+| ClinPGx | PA145 |
+| NCBI Gene | 1806 |
+| Локус | 1p21.3, минус-цепь. GRCh38 chr1:97077743-97921059 |
+| Другие символы | DHP, DPD, DYPD, DHPDHASE |
+| Функция | The protein encoded by this gene is a pyrimidine catabolic enzyme and the initial and rate-limiting factor in the pathway of uracil and thymidine catabolism. Mutations in this gene result in dihydropyrimidine dehydrogenase deficiency, an error in pyrimidine metabolism associated with thymine-uraciluria and an increased risk of toxicity in cancer patients receiving 5-fluorouracil chemotherapy. Two transcript variants encoding different isoforms have been found for this gene. [provided by RefSeq, May 2009] |
+
+NCBI Gene также даёт ссылку на OMIM 274270. Название этой записи на omim.org: Not found.
+
+- Полное имя: dihydropyrimidine dehydrogenase (HGNC:3012). OMIM ID на странице NCBI Gene: MIM:612779. Текст записи omim.org: Not found.
+- Функция (NCBI Gene, RefSeq, May 2009): DPYD кодирует пиримидин-катаболический фермент, начальный и лимитирующий фактор катаболизма урацила и тимидина. Мутации приводят к дефициту дигидропиримидиндегидрогеназы, нарушению метаболизма пиримидинов с тимин-урацилурией и повышенному риску токсичности у пациентов с раком, получающих химиотерапию 5-фторурацилом.
+
+### 1.2 Варианты
+
+Таблица ниже — Table 1 страницы CPIC «Annotation of CPIC Clinical Guideline for fluorouracil and DPYD» (адаптация Tables 1 и 2 руководства 2017 года, обновление ноября 2018). Класс ACMG для фенотипа метаболизатора на этих страницах не указан.
+
+| Генотип | Фенотип | Клинический риск | Рекомендации | ACMG |
+|---|---|---|---|---|
+| Две аллели с нормальной функцией. Примеры: c.[=];[=]; c.[85T>C];[=] (*9A, rs1801265); c.[1627A>G];[=] (*5, rs1801159). Activity score 2 | DPYD Normal Metabolizer | Нормальная активность DPD и «нормальный» риск токсичности фторпиримидинов | По генотипу нет показаний менять дозу или препарат. Использовать дозу и режим с этикетки. Сила рекомендации CPIC: Strong | Not found |
+| Одна нормальная аллель плюс одна без функции или со сниженной функцией, либо две аллели со сниженной функцией. Примеры: c.[1905+1G>A];[=] (*2A, rs3918290); c.[1679T>G];[=] (*13, rs55886062); c.[2846A>T];[=] (rs67376798); c.[1129-5923C>G];[=] (rs75017182, HapB3); гомозиготы по этим сниженным вариантам. Activity score 1 или 1.5 | DPYD Intermediate Metabolizer | Сниженная активность DPD (лейкоцитарная активность 30–70% от нормы) и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов | Снизить стартовую дозу на 50% и далее титровать по токсичности или терапевтическому лекарственному мониторингу. Для c.[2846A>T];[2846A>T] может потребоваться снижение больше чем на 50%. CPIC: activity score 1 — Strong; activity score 1.5 — Moderate | Not found |
+| Две аллели без функции либо одна без функции плюс одна со сниженной функцией. Примеры: c.[1905+1G>A];[1905+1G>A]; c.[1679T>G];[1679T>G]; c.[1905+1G>A];[2846A>T]; c.[1905+1G>A];[1129-5923C>G]. Activity score 0 или 0.5 | DPYD Poor Metabolizer | Полный дефицит DPD и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов | Activity score 0.5: избегать 5-фторурацила и режимов на его пролекарствах; если альтернативы нет, сильно сниженная доза и ранний терапевтический мониторинг (при отсутствии фенотипирования оценка стартовой дозы — меньше 25% обычной). Activity score 0: избегать 5-фторурацила и режимов на его пролекарствах. Сила рекомендации CPIC: Strong | Not found |
+
+ClinVar, поиск `DPYD[gene] AND (pathogenic[clinsig] OR "likely pathogenic"[clinsig])`, боковые счётчики на открытой странице:
+
+- Pathogenic: 50
+- Likely pathogenic: 145
+- Expert panel: 11
+
+На первой странице выдачи часть строк имеет другую классификацию (Uncertain significance, Conflicting, drug response). Ниже только строки, у которых на странице стояло Pathogenic или Likely pathogenic. Это не полный список.
+
+- NM_000110.4(DPYD):c.2921A>T (p.Asp974Val) — Fluorouracil response — Pathogenic
+- NM_000110.4(DPYD):c.2698C>T (p.Gln900Ter) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic
+- NM_000110.4(DPYD):c.2695G>T (p.Glu899Ter) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic
+- NM_000110.4(DPYD):c.2650G>T (p.Glu884Ter) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic
+- NM_000110.4(DPYD):c.2579del (p.Gln860fs) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic/Likely pathogenic
+- NM_000110.4(DPYD):c.2907+1G>C — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic
+- NM_000110.4(DPYD):c.2883_2884insTAAATG (p.Thr962Ter) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic
+- NM_000110.4(DPYD):c.2843T>C (p.Ile948Thr) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic
+- NM_000110.4(DPYD):c.2836del (p.Ala946fs) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic
+- NM_000110.4(DPYD):c.2788C>T (p.Gln930Ter) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic
+- NM_000110.4(DPYD):c.2766+1G>A — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic
+- GRCh38/hg38 1p21.3(chr1:96554406-97919058)x1 — copy number loss, включает DPYD — Pathogenic
+
+### 1.3 Фармакогенетика
+
+На странице гена ClinPGx (PA145) указано 83 summary annotations. В ответе API, который открыла та же страница, уровни такие: 1A — 43, 3 — 39, 4 — 1. Аннотаций уровня 1B: Not found.
+
+CPIC относит к рекомендациям с действием фторурацил и капецитабин. Тегафур рассмотрен и отнесён к парам без actionable recommendation.
+
+| Drug | Association | Phenotype | Level |
+|---|---|---|---|
+| fluorouracil | rs3918290 (*2A): аллель T назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| capecitabine | rs3918290 (*2A): аллель T назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| tegafur | rs3918290 CT: повышенный риск токсичности по сравнению с CC у пациентов с раком. CPIC не даёт actionable recommendation для пары tegafur–DPYD | Toxicity | 1A |
+| fluorouracil | rs55886062 (*13): аллель C назначен CPIC как no function. Summary annotation уровня 1A | Other | 1A |
+| capecitabine | rs55886062 (*13): аллель C назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| tegafur | rs55886062 (*13): аллель C назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| fluorouracil | rs67376798 (c.2846A>T): аллель A на плюс-цепи назначен CPIC как decreased function. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| capecitabine | rs67376798: аллель A на плюс-цепи назначен CPIC как decreased function. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| tegafur | rs67376798 AA: повышенный риск токсичности по сравнению с TT. Summary annotation уровня 1A | Toxicity | 1A |
+| fluorouracil | rs75017182: аллель C на плюс-цепи — маркер HapB3, CPIC назначает decreased function. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| capecitabine | rs75017182: аллель C на плюс-цепи — маркер HapB3, decreased function по CPIC. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| fluorouracil | rs56038477: аллель T — маркер HapB3, decreased function по CPIC. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+| capecitabine | rs56038477: аллель T — маркер HapB3, decreased function по CPIC. Summary annotation уровня 1A для токсичности при новообразованиях | Toxicity | 1A |
+
+Ключевые варианты, перечисленные на странице гена ClinPGx: tier 1 — c.1905+1G>A (*2A), c.1679T>G (*13), c.1129-5923C>G / c.1236G>A (HapB3), c.557A>G, c.868A>G, c.2279C>T, c.2846A>T. Tier 2 — c.295_298delTCAT (*7), c.703C>T (*8), c.1314T>G, c.1475C>T, c.1774C>T, c.2639G>T.
+
+### 1.4 Рекомендации
+
+- Фторурацил и капецитабин: CPIC даёт рекомендации с действием. Нормальный метаболизатор (activity score 2) — доза с этикетки. Промежуточный (1 или 1.5) — стартовая доза минус 50% с последующим титрованием. Медленный (0.5) — избегать препарата либо, если альтернативы нет, сильно сниженная доза и ранний мониторинг. Медленный (0) — избегать препарата. Источник: страница аннотации CPIC для fluorouracil и DPYD, таблица от ноября 2018.
+- Для гомозиготы c.[2846A>T];[2846A>T] (activity score 1) на той же странице указано, что снижение стартовой дозы может быть больше 50%.
+- Тегафур: CPIC рассмотрел пару и не дал actionable recommendation.
+- Июль 2026, примечание на той же странице CPIC: обновлённое руководство ещё не опубликовано и в базу сайта ещё не внесено. Для c.1129-5923C>G (минорный аллель rs75017182, причинный аллель HapB3) авторы назначают значение аллеля 0.75. У гетерозиготы activity score 1.75, и для цикла 1 предлагается 75% намеченной дозы с последующей эскалацией по переносимости. Это указано только для c.1129-5923C>G.
+- Level 1B в ClinPGx для DPYD: Not found.
+
+*Источники: https://www.clinpgx.org/guideline/PA166251462 ; https://www.clinpgx.org/guidelineAnnotation/PA166122686 ; https://www.clinpgx.org/gene/PA145 ; https://www.clinpgx.org/gene/PA145/summaryAnnotation ; https://www.ncbi.nlm.nih.gov/clinvar/search/?term=DPYD[gene]+AND+(pathogenic[clinsig]+OR+%22likely+pathogenic%22[clinsig]) ; https://www.ncbi.nlm.nih.gov/gene/1806 . omim.org/entry/612779 открылся как страница ошибки.*

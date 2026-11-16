@@ -8155,7 +8155,7 @@
                     "Генотип": "TT (ff)",
                     "Фенотип": "Гомозигота",
                     "Функция": "Сниженная чувствительность рецептора",
-                    "Клинический риск": "Высокий риск остеопороза, требуется повышенная доза витамина D",
+                    "Клинический риск": "Тенденция к снижению усвоения витамина D. Рекомендуется контроль уровня 25(OH)D.",
                     "ACMG": "Risk factor"
                   }
                 ]
@@ -8308,7 +8308,7 @@
                     "Генотип": "TT (se/se)",
                     "Фенотип": "Несекретор",
                     "Функция": "Отсутствие экспрессии антигенов",
-                    "Клинический риск": "Устойчивость к норовирусу, риск дефицита B12, риск болезни Крона",
+                    "Клинический риск": "Тенденция к снижению усвоения витамина D. Рекомендуется контроль уровня 25(OH)D. (Также: устойчивость к норовирусу; вариабельность B12.)",
                     "ACMG": "Risk factor"
                   }
                 ]
@@ -8604,8 +8604,9 @@
             "pharmacogenomics": [],
             "bullets": [
               "**GG (норма):** Стандартные рекомендации.",
-              "**GA / AA (носители G20210A):** **Повышенный риск венозного тромбоза** (в 3 раза для гетерозигот). Избегать длительной иммобилизации, пить много воды в полёте, двигаться. **Избегать гормональных контрацептивов** (особенно в сочетании с MTHFR-мутациями или F5 Лейден). При планировании беременности — консультация гематолога.",
-              "**Гормональные контрацептивы:** **противопоказаны** носителям G20210A (особенно при сочетании с MTHFR C677T/A1298C или F5 Лейден).",
+              "**GA / AA (носители G20210A):** **Повышенный риск венозного тромбоза** (в 3 раза для гетерозигот). Избегать длительной иммобилизации, пить много воды в полёте, двигаться. Гормональные контрацептивы **не рекомендуются (требуется индивидуальная оценка)** (особенно в сочетании с MTHFR-мутациями или F5 Лейден). При планировании беременности — консультация гематолога.",
+              "Решение о применении гормональных контрацептивов должно приниматься врачом с учетом семейного тромботического анамнеза.",
+              "**Гормональные контрацептивы:** **не рекомендуются (требуется индивидуальная оценка)** носителям G20210A (особенно при сочетании с MTHFR C677T/A1298C или F5 Лейден). Решение о применении гормональных контрацептивов должно приниматься врачом с учетом семейного тромботического анамнеза.",
               "**Варфарин:** носители rs5896 T-аллеля — **снижение дозы**, мониторинг INR.",
               "**Прямые антикоагулянты** (апиксабан, ривароксабан, дабигатран): носители rs5896 TT — риск геморрагии.",
               "**Avatrombopag, lusutrombopag:** учитывать тромботический риск.",
@@ -8657,7 +8658,7 @@
                     "Аллели": "C/T",
                     "Частота (Европа)": "~4-5%",
                     "Функциональный эффект": "APC-резистентность, риск тромбоза в 7 раз",
-                    "Клинический риск": "**Повышенный риск ВТЭ; контрацептивы ПРОТИВОПОКАЗАНЫ**",
+                    "Клинический риск": "**Повышенный риск ВТЭ; гормональные контрацептивы не рекомендуются (требуется индивидуальная оценка)**",
                     "ACMG": "Pathogenic / Risk factor"
                   },
                   {
@@ -8698,9 +8699,10 @@
             "pharmacogenomics": [],
             "bullets": [
               "**CC (норма):** Стандартные рекомендации.",
-              "**CT / TT (носители Лейден):** **Высокий риск венозного тромбоза**. **Категорически избегать гормональных контрацептивов** (риск тромбоза у носителей на контрацептивах — **RR = 34.7**). Избегать длительной иммобилизации, пить много воды в полёте, двигаться. При планировании беременности — консультация гематолога.",
+              "**CT / TT (носители Лейден):** **Высокий риск венозного тромбоза**. Гормональные контрацептивы **не рекомендуются (требуется индивидуальная оценка)** (риск тромбоза у носителей на контрацептивах — **RR = 34.7**). Избегать длительной иммобилизации, пить много воды в полёте, двигаться. При планировании беременности — консультация гематолога.",
+              "Решение о применении гормональных контрацептивов должно приниматься врачом с учетом семейного тромботического анамнеза.",
               "**Гомозиготы TT:** риск тромбоза **40-80x** — пожизненное наблюдение у гематолога, рассмотреть антикоагуляцию при провоцирующих факторах.",
-              "**Гормональные контрацептивы** (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): **противопоказаны** носителям FVL — FDA/EMA/HCSC labels.",
+              "**Гормональные контрацептивы** (этинилэстрадиол, дроспиренон, норэлгестромин, релуголикс): **не рекомендуются (требуется индивидуальная оценка)** носителям FVL — учитывать FDA/EMA/HCSC labels и семейный тромботический анамнез.",
               "**Eltrombopag, avatrombopag, lusutrombopag:** осторожно, тромботический риск.",
               "**Ривароксабан:** FDA Biomarker, данных недостаточно.",
               "**При тромбозе в анамнезе** — пожизненная антикоагуляция по решению гематолога.",
@@ -10228,7 +10230,7 @@
                     "Аллели": "T/T",
                     "Частота*": "~10-15%",
                     "Функциональный эффект": "Выраженное снижение активности (термолабильный вариант, ~30% активности). Значительное повышение уровня гомоцистеина.",
-                    "Клинический риск": "Высокий (ДНТ, невынашивание, ССЗ)",
+                    "Клинический риск": "Ассоциация с повышением гомоцистеина. Клиническая значимость для тромбоза/невынашивания обсуждается (ACMG не рекомендует рутинное тестирование).",
                     "ACMG": "Pathogenic / Risk factor"
                   }
                 ]
@@ -11084,6 +11086,670 @@
               "Генетическое консультирование родственников"
             ],
             "text": "**Для пациента:**\n**Для врача:**\n*Источники: ClinPGx (PharmGKB) PA36679, OMIM 151623, PMID:26696550, PMCID:PMC9080366*"
+          }
+        ]
+      }
+    ],
+    "interactions": {
+      "tables": [],
+      "pharmacogenomics": [],
+      "bullets": [],
+      "text": ""
+    }
+  },
+  {
+    "group": "Группа 9: DPYD - Dihydropyrimidine dehydrogenase",
+    "file": "group9_DPYD.txt",
+    "intro": "",
+    "genes": [
+      {
+        "num": 1,
+        "header": "DPYD — Dihydropyrimidine dehydrogenase",
+        "intro": "",
+        "sections": [
+          {
+            "code": "1.1",
+            "title": "Общая информация",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Полное имя: dihydropyrimidine dehydrogenase (HGNC:3012). OMIM ID на странице NCBI Gene: MIM:612779. Текст записи omim.org: Not found.",
+              "Функция (NCBI Gene, RefSeq, May 2009): DPYD кодирует пиримидин-катаболический фермент, начальный и лимитирующий фактор катаболизма урацила и тимидина. Мутации приводят к дефициту дигидропиримидиндегидрогеназы, нарушению метаболизма пиримидинов с тимин-урацилурией и повышенному риску токсичности у пациентов с раком, получающих химиотерапию 5-фторурацилом."
+            ],
+            "text": "NCBI Gene также даёт ссылку на OMIM 274270. Название этой записи на omim.org: Not found."
+          },
+          {
+            "code": "1.2",
+            "title": "Варианты",
+            "tables": [
+              {
+                "kind": "genotype",
+                "headers": [
+                  "Генотип",
+                  "Фенотип",
+                  "Клинический риск",
+                  "Рекомендации",
+                  "ACMG"
+                ],
+                "rows": [
+                  {
+                    "Генотип": "Две аллели с нормальной функцией. Примеры: c.[=];[=]; c.[85T>C];[=] (*9A, rs1801265); c.[1627A>G];[=] (*5, rs1801159). Activity score 2",
+                    "Фенотип": "DPYD Normal Metabolizer",
+                    "Клинический риск": "Нормальная активность DPD и «нормальный» риск токсичности фторпиримидинов",
+                    "Рекомендации": "По генотипу нет показаний менять дозу или препарат. Использовать дозу и режим с этикетки. Сила рекомендации CPIC: Strong",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "Одна нормальная аллель плюс одна без функции или со сниженной функцией, либо две аллели со сниженной функцией. Примеры: c.[1905+1G>A];[=] (*2A, rs3918290); c.[1679T>G];[=] (*13, rs55886062); c.[2846A>T];[=] (rs67376798); c.[1129-5923C>G];[=] (rs75017182, HapB3); гомозиготы по этим сниженным вариантам. Activity score 1 или 1.5",
+                    "Фенотип": "DPYD Intermediate Metabolizer",
+                    "Клинический риск": "Сниженная активность DPD (лейкоцитарная активность 30–70% от нормы) и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов",
+                    "Рекомендации": "Снизить стартовую дозу на 50% и далее титровать по токсичности или терапевтическому лекарственному мониторингу. Для c.[2846A>T];[2846A>T] может потребоваться снижение больше чем на 50%. CPIC: activity score 1 — Strong; activity score 1.5 — Moderate",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "Две аллели без функции либо одна без функции плюс одна со сниженной функцией. Примеры: c.[1905+1G>A];[1905+1G>A]; c.[1679T>G];[1679T>G]; c.[1905+1G>A];[2846A>T]; c.[1905+1G>A];[1129-5923C>G]. Activity score 0 или 0.5",
+                    "Фенотип": "DPYD Poor Metabolizer",
+                    "Клинический риск": "Полный дефицит DPD и повышенный риск тяжёлой или фатальной токсичности фторпиримидинов",
+                    "Рекомендации": "Activity score 0.5: избегать 5-фторурацила и режимов на его пролекарствах; если альтернативы нет, сильно сниженная доза и ранний терапевтический мониторинг (при отсутствии фенотипирования оценка стартовой дозы — меньше 25% обычной). Activity score 0: избегать 5-фторурацила и режимов на его пролекарствах. Сила рекомендации CPIC: Strong",
+                    "ACMG": "Not found"
+                  }
+                ]
+              }
+            ],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Pathogenic: 50",
+              "Likely pathogenic: 145",
+              "Expert panel: 11",
+              "NM_000110.4(DPYD):c.2921A>T (p.Asp974Val) — Fluorouracil response — Pathogenic",
+              "NM_000110.4(DPYD):c.2698C>T (p.Gln900Ter) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic",
+              "NM_000110.4(DPYD):c.2695G>T (p.Glu899Ter) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic",
+              "NM_000110.4(DPYD):c.2650G>T (p.Glu884Ter) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic",
+              "NM_000110.4(DPYD):c.2579del (p.Gln860fs) — Dihydropyrimidine dehydrogenase deficiency — Pathogenic/Likely pathogenic",
+              "NM_000110.4(DPYD):c.2907+1G>C — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic",
+              "NM_000110.4(DPYD):c.2883_2884insTAAATG (p.Thr962Ter) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic",
+              "NM_000110.4(DPYD):c.2843T>C (p.Ile948Thr) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic",
+              "NM_000110.4(DPYD):c.2836del (p.Ala946fs) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic",
+              "NM_000110.4(DPYD):c.2788C>T (p.Gln930Ter) — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic",
+              "NM_000110.4(DPYD):c.2766+1G>A — Dihydropyrimidine dehydrogenase deficiency — Likely pathogenic",
+              "GRCh38/hg38 1p21.3(chr1:96554406-97919058)x1 — copy number loss, включает DPYD — Pathogenic"
+            ],
+            "text": "Таблица ниже — Table 1 страницы CPIC «Annotation of CPIC Clinical Guideline for fluorouracil and DPYD» (адаптация Tables 1 и 2 руководства 2017 года, обновление ноября 2018). Класс ACMG для фенотипа метаболизатора на этих страницах не указан.\nClinVar, поиск `DPYD[gene] AND (pathogenic[clinsig] OR \"likely pathogenic\"[clinsig])`, боковые счётчики на открытой странице:\nНа первой странице выдачи часть строк имеет другую классификацию (Uncertain significance, Conflicting, drug response). Ниже только строки, у которых на странице стояло Pathogenic или Likely pathogenic. Это не полный список."
+          },
+          {
+            "code": "1.3",
+            "title": "Фармакогенетика",
+            "tables": [],
+            "pharmacogenomics": [
+              {
+                "kind": "pgx",
+                "headers": [
+                  "Drug",
+                  "Association",
+                  "Phenotype",
+                  "Level"
+                ],
+                "rows": [
+                  {
+                    "Drug": "fluorouracil",
+                    "Association": "rs3918290 (*2A): аллель T назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "capecitabine",
+                    "Association": "rs3918290 (*2A): аллель T назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "tegafur",
+                    "Association": "rs3918290 CT: повышенный риск токсичности по сравнению с CC у пациентов с раком. CPIC не даёт actionable recommendation для пары tegafur–DPYD",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "fluorouracil",
+                    "Association": "rs55886062 (*13): аллель C назначен CPIC как no function. Summary annotation уровня 1A",
+                    "Phenotype": "Other",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "capecitabine",
+                    "Association": "rs55886062 (*13): аллель C назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "tegafur",
+                    "Association": "rs55886062 (*13): аллель C назначен CPIC как no function. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "fluorouracil",
+                    "Association": "rs67376798 (c.2846A>T): аллель A на плюс-цепи назначен CPIC как decreased function. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "capecitabine",
+                    "Association": "rs67376798: аллель A на плюс-цепи назначен CPIC как decreased function. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "tegafur",
+                    "Association": "rs67376798 AA: повышенный риск токсичности по сравнению с TT. Summary annotation уровня 1A",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "fluorouracil",
+                    "Association": "rs75017182: аллель C на плюс-цепи — маркер HapB3, CPIC назначает decreased function. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "capecitabine",
+                    "Association": "rs75017182: аллель C на плюс-цепи — маркер HapB3, decreased function по CPIC. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "fluorouracil",
+                    "Association": "rs56038477: аллель T — маркер HapB3, decreased function по CPIC. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "capecitabine",
+                    "Association": "rs56038477: аллель T — маркер HapB3, decreased function по CPIC. Summary annotation уровня 1A для токсичности при новообразованиях",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  }
+                ]
+              }
+            ],
+            "bullets": [],
+            "text": "На странице гена ClinPGx (PA145) указано 83 summary annotations. В ответе API, который открыла та же страница, уровни такие: 1A — 43, 3 — 39, 4 — 1. Аннотаций уровня 1B: Not found.\nCPIC относит к рекомендациям с действием фторурацил и капецитабин. Тегафур рассмотрен и отнесён к парам без actionable recommendation.\nКлючевые варианты, перечисленные на странице гена ClinPGx: tier 1 — c.1905+1G>A (*2A), c.1679T>G (*13), c.1129-5923C>G / c.1236G>A (HapB3), c.557A>G, c.868A>G, c.2279C>T, c.2846A>T. Tier 2 — c.295_298delTCAT (*7), c.703C>T (*8), c.1314T>G, c.1475C>T, c.1774C>T, c.2639G>T."
+          },
+          {
+            "code": "1.4",
+            "title": "Рекомендации",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Фторурацил и капецитабин: CPIC даёт рекомендации с действием. Нормальный метаболизатор (activity score 2) — доза с этикетки. Промежуточный (1 или 1.5) — стартовая доза минус 50% с последующим титрованием. Медленный (0.5) — избегать препарата либо, если альтернативы нет, сильно сниженная доза и ранний мониторинг. Медленный (0) — избегать препарата. Источник: страница аннотации CPIC для fluorouracil и DPYD, таблица от ноября 2018.",
+              "Для гомозиготы c.[2846A>T];[2846A>T] (activity score 1) на той же странице указано, что снижение стартовой дозы может быть больше 50%.",
+              "Тегафур: CPIC рассмотрел пару и не дал actionable recommendation.",
+              "Июль 2026, примечание на той же странице CPIC: обновлённое руководство ещё не опубликовано и в базу сайта ещё не внесено. Для c.1129-5923C>G (минорный аллель rs75017182, причинный аллель HapB3) авторы назначают значение аллеля 0.75. У гетерозиготы activity score 1.75, и для цикла 1 предлагается 75% намеченной дозы с последующей эскалацией по переносимости. Это указано только для c.1129-5923C>G.",
+              "Level 1B в ClinPGx для DPYD: Not found."
+            ],
+            "text": "*Источники: https://www.clinpgx.org/guideline/PA166251462 ; https://www.clinpgx.org/guidelineAnnotation/PA166122686 ; https://www.clinpgx.org/gene/PA145 ; https://www.clinpgx.org/gene/PA145/summaryAnnotation ; https://www.ncbi.nlm.nih.gov/clinvar/search/?term=DPYD[gene]+AND+(pathogenic[clinsig]+OR+%22likely+pathogenic%22[clinsig]) ; https://www.ncbi.nlm.nih.gov/gene/1806 . omim.org/entry/612779 открылся как страница ошибки.*"
+          }
+        ]
+      }
+    ],
+    "interactions": {
+      "tables": [],
+      "pharmacogenomics": [],
+      "bullets": [],
+      "text": ""
+    }
+  },
+  {
+    "group": "Группа 9: HLA-B - Major histocompatibility complex, class I, B",
+    "file": "group9_HLA-B.txt",
+    "intro": "",
+    "genes": [
+      {
+        "num": 1,
+        "header": "HLA-B — Major histocompatibility complex, class I, B",
+        "intro": "",
+        "sections": [
+          {
+            "code": "1.1",
+            "title": "Общая информация",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Полное имя: major histocompatibility complex, class I, B. OMIM ID на странице NCBI Gene: MIM:142830. Текст записи omim.org: Not found.",
+              "Функция (NCBI Gene, RefSeq, Jul 2008): HLA-B кодирует тяжёлую цепь молекулы HLA I класса. Она представляет пептиды иммунной системе. Полиморфизмы экзонов 2 и 3 задают специфичность связывания пептида."
+            ],
+            "text": ""
+          },
+          {
+            "code": "1.2",
+            "title": "Варианты",
+            "tables": [
+              {
+                "kind": "genotype",
+                "headers": [
+                  "Генотип",
+                  "Фенотип",
+                  "Клинический риск",
+                  "Рекомендации",
+                  "ACMG"
+                ],
+                "rows": [
+                  {
+                    "Генотип": "HLA-B*15:02 negative и HLA-A*31:01 negative",
+                    "Фенотип": "Носительство *15:02 не обнаружено",
+                    "Клинический риск": "Обычный риск кожной реакции по этим двум аллелям",
+                    "Рекомендации": "Наивному пациенту назначать карбамазепин по стандартным правилам дозирования. Сила CPIC: Strong",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "*15:02",
+                    "Фенотип": "Носитель хотя бы одной копии *15:02",
+                    "Клинический риск": "Повышенный риск SJS/TEN",
+                    "Рекомендации": "Наивному пациенту не назначать карбамазепин. Это сохраняется и когда альтернативы нет. Сила: Strong",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "HLA-B*15:02 negative и HLA-A*31:01 positive",
+                    "Фенотип": "*15:02 нет, есть *31:01",
+                    "Клинический риск": "Повышенный риск SJS/TEN, а также DRESS и макулопапулёзной экзантемы",
+                    "Рекомендации": "Если пациент наивный и есть альтернатива, не назначать карбамазепин. Сила: Strong. Если альтернативы нет, можно рассмотреть карбамазепин с более частым наблюдением и отменить при первом кожном признаке. Сила этого исключения: Optional",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "HLA-B*15:02 positive после непрерывного приёма дольше 3 месяцев без кожной реакции",
+                    "Фенотип": "Носитель *15:02 с предшествующей переносимостью",
+                    "Клинический риск": "Латентный период SJS/TEN при непрерывном приёме короткий, обычно до 3 месяцев",
+                    "Рекомендации": "Осторожно можно рассматривать повторное применение. Сила: Optional",
+                    "ACMG": "Not found"
+                  }
+                ]
+              }
+            ],
+            "pharmacogenomics": [],
+            "bullets": [
+              "GRCh37/hg19 6p21.33(chr6:30944923-31867966)x1 — Likely pathogenic"
+            ],
+            "text": "Аннотация CPIC для карбамазепина (обновление 2017/2018, PMID:29392710) рекомендует другой препарат наивному пациенту, у которого есть хотя бы одна копия HLA-B*15:02 или HLA-A*31:01, из-за риска синдрома Стивенса–Джонсона и токсического эпидермального некролиза. HLA-A*31:01 дополнительно связан с DRESS и макулопапулёзной экзантемой. Ниже строки из таблицы рекомендаций CPIC для наивного пациента.\nClinVar, поиск `HLA-B[gene] AND (pathogenic[clinsig] OR \"likely pathogenic\"[clinsig])`: 15 записей. HLA-B*15:02 в этой короткой выдаче: Not found. С явной классификацией была одна строка."
+          },
+          {
+            "code": "1.3",
+            "title": "Фармакогенетика",
+            "tables": [],
+            "pharmacogenomics": [
+              {
+                "kind": "pgx",
+                "headers": [
+                  "Drug",
+                  "Association",
+                  "Phenotype",
+                  "Level"
+                ],
+                "rows": [
+                  {
+                    "Drug": "carbamazepine",
+                    "Association": "HLA-B*15:02. Наивному пациенту не назначать карбамазепин. Summary annotation ClinPGx также включает *15:11 и кожные реакции, включая SJS/TEN",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "oxcarbazepine",
+                    "Association": "HLA-B*15:02 positive. Наивному пациенту не назначать окскарбазепин. Сила CPIC: Strong",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "phenytoin",
+                    "Association": "HLA-B*15:02. Summary annotation ClinPGx: SJS/TEN, DRESS и тяжёлые кожные реакции. Текст дозы CPIC в эту карточку не копировался",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "lamotrigine",
+                    "Association": "HLA-B*15:02. Summary annotation ClinPGx. Отдельной CPIC-рекомендации уровня A для этой пары в выгруженном списке: Not found",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  }
+                ]
+              }
+            ],
+            "bullets": [],
+            "text": "ClinPGx PA35056: 89 summary annotations. Уровни: 1A — 7, 2A — 5, 3 — 74, 4 — 3. Уровень 1B: Not found. CPIC-пары HLA-B уровня A с рекомендацией включают карбамазепин и окскарбазепин. У гена есть и другие пары уровня A (абакавир, аллопуринол, фенитоин, фосфенитоин); они про другие аллели, не *15:02."
+          },
+          {
+            "code": "1.4",
+            "title": "Рекомендации",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Карбамазепин, наивный пациент, HLA-B*15:02 positive: не назначать карбамазепин. Сила: Strong. Источник: аннотация CPIC PA166105008 и таблица рекомендаций.",
+              "Карбамазепин, наивный пациент, HLA-B*15:02 negative и HLA-A*31:01 negative: стандартное дозирование. Сила: Strong.",
+              "Окскарбазепин, наивный пациент, HLA-B*15:02 positive: не назначать окскарбазепин. Сила: Strong.",
+              "Окскарбазепин, HLA-B*15:02 negative: стандартное дозирование. Сила: Strong.",
+              "Если *15:02 positive, но препарат уже непрерывно переносился дольше трёх месяцев без кожной реакции, повторное применение можно рассматривать осторожно. Сила: Optional. Это относится и к карбамазепину, и к окскарбазепину."
+            ],
+            "text": "*Источники: https://www.clinpgx.org/guideline/PA166251448 ; https://www.clinpgx.org/guidelineAnnotation/PA166105008 ; таблицы recommendation CPIC для carbamazepine и oxcarbazepine ; https://www.clinpgx.org/gene/PA35056 ; https://www.ncbi.nlm.nih.gov/gene/3106 ; ClinVar esearch HLA-B pathogenic or likely pathogenic. omim.org не открылся.*"
+          }
+        ]
+      }
+    ],
+    "interactions": {
+      "tables": [],
+      "pharmacogenomics": [],
+      "bullets": [],
+      "text": ""
+    }
+  },
+  {
+    "group": "Группа 9: TPMT - Thiopurine S-methyltransferase",
+    "file": "group9_TPMT.txt",
+    "intro": "",
+    "genes": [
+      {
+        "num": 1,
+        "header": "TPMT — Thiopurine S-methyltransferase",
+        "intro": "",
+        "sections": [
+          {
+            "code": "1.1",
+            "title": "Общая информация",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Полное имя: thiopurine S-methyltransferase. OMIM ID на странице NCBI Gene: MIM:187680. Текст записи omim.org: Not found.",
+              "Функция (NCBI Gene, RefSeq, Aug 2014): TPMT кодирует фермент, который метилирует тиопурины. Полиморфизмы меняют чувствительность и токсичность этих препаратов и вызывают дефицит TPMT."
+            ],
+            "text": ""
+          },
+          {
+            "code": "1.2",
+            "title": "Варианты",
+            "tables": [
+              {
+                "kind": "genotype",
+                "headers": [
+                  "Генотип",
+                  "Фенотип",
+                  "Клинический риск",
+                  "Рекомендации",
+                  "ACMG"
+                ],
+                "rows": [
+                  {
+                    "Генотип": "*1/*1",
+                    "Фенотип": "Normal Metabolizer",
+                    "Клинический риск": "Обычная переносимость стартовой дозы при нормальном NUDT15",
+                    "Рекомендации": "Начать со стандартной дозы, например 2 мг/кг/сут при аутоиммунных болезнях. Дальше менять дозу по клиническим правилам. Стабильное состояние обычно не раньше 2 недель. Сила CPIC: Strong",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "*1/*2, *1/*3A, *1/*3B, *1/*3C",
+                    "Фенотип": "Intermediate Metabolizer",
+                    "Клинический риск": "Выше риск миелосупрессии на полной стартовой дозе",
+                    "Рекомендации": "Если стандартная стартовая доза не ниже 2 мг/кг/сут, начать с 30–80% этой дозы. Если доза уже ниже стандартной, снижение может не понадобиться. Дальше корректировать по миелосупрессии. Стабильное дозирование обычно 2–4 недели. Сила: Strong",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "*2/*2, *2/*3A, *3A/*3A, *3A/*3C, *3C/*3C",
+                    "Фенотип": "Poor Metabolizer",
+                    "Клинический риск": "Высокий риск тяжёлой миелосупрессии на тиопуринах",
+                    "Рекомендации": "Рассмотреть иммуносупрессор не из группы тиопуринов. Сила: Strong",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "Possible Intermediate Metabolizer. Отдельные диплотипы на этой странице не перечислены",
+                    "Фенотип": "Possible Intermediate Metabolizer",
+                    "Клинический риск": "Тот же клинический подход, что у Intermediate Metabolizer",
+                    "Рекомендации": "Те же 30–80% стандартной стартовой дозы, если она не ниже 2 мг/кг/сут. Сила: Strong",
+                    "ACMG": "Not found"
+                  }
+                ]
+              }
+            ],
+            "pharmacogenomics": [],
+            "bullets": [
+              "GRCh38/hg38 6p24.1-22.3(chr6:12020008-22846454)x1 — Pathogenic",
+              "GRCh37/hg19 6p25.3-22.3(chr6:820000-21700000)x3 — Pathogenic",
+              "GRCh37/hg19 6p24.1-22.3(chr6:12005630-22849647)x1 — Pathogenic",
+              "NC_000006.11:g.(?_18121650)_(18149358_?)del — Pathogenic",
+              "GRCh37/hg19 6p23-22.3(chr6:13910125-22000204)x1 — Pathogenic"
+            ],
+            "text": "Диплотипы взяты из таблицы CPIC diplotype для TPMT. Рекомендации — из таблицы CPIC для азатиоприна при NUDT15 Normal Metabolizer, если не сказано иначе. Руководство 2025/2026 (PMID:41618934). В мае 2026 CPIC уточнил: одна аллель без функции плюс одна со сниженной функцией — Intermediate Metabolizer, не Possible Intermediate Metabolizer; рекомендации для IM и Possible IM одинаковые.\nClinVar, поиск `TPMT[gene] AND (pathogenic[clinsig] OR \"likely pathogenic\"[clinsig])`: 16 записей. В короткой выдаче с явной классификацией были крупные перестройки, не точечные *2/*3."
+          },
+          {
+            "code": "1.3",
+            "title": "Фармакогенетика",
+            "tables": [],
+            "pharmacogenomics": [
+              {
+                "kind": "pgx",
+                "headers": [
+                  "Drug",
+                  "Association",
+                  "Phenotype",
+                  "Level"
+                ],
+                "rows": [
+                  {
+                    "Drug": "azathioprine",
+                    "Association": "TPMT *1, *2, *3A, *3B, *3C, *6. Summary annotation ClinPGx: лейкопения и миелосупрессия",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "azathioprine",
+                    "Association": "TPMT *1, *2, *3A, *3B, *3C. Summary annotation ClinPGx: снижение дозы",
+                    "Phenotype": "Dosage",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "azathioprine",
+                    "Association": "TPMT *1, *3A, *3C. Summary annotation ClinPGx",
+                    "Phenotype": "Metabolism/PK",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "mercaptopurine",
+                    "Association": "TPMT *1, *2, *3A, *3B, *3C, *9. Summary annotation ClinPGx: снижение дозы",
+                    "Phenotype": "Dosage",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "mercaptopurine",
+                    "Association": "TPMT *1, *2, *3A, *3B, *3C, *4, *6, *9, *12. Summary annotation ClinPGx",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "thioguanine",
+                    "Association": "TPMT *1, *2, *3A, *3C, *9. Summary annotation ClinPGx для острого лимфобластного лейкоза",
+                    "Phenotype": "Dosage",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "thioguanine",
+                    "Association": "TPMT *1, *2, *3A, *3C, *9. Summary annotation ClinPGx: нейтропения, панцитопения, тромбоцитопения",
+                    "Phenotype": "Toxicity",
+                    "Level": "1A"
+                  }
+                ]
+              }
+            ],
+            "bullets": [],
+            "text": "ClinPGx PA356: 27 summary annotations. Уровни: 1A — 9, 3 — 18. Уровень 1B: Not found. CPIC-пары с рекомендацией, уровень A: азатиоприн, меркаптопурин, тиогуанин."
+          },
+          {
+            "code": "1.4",
+            "title": "Рекомендации",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Normal Metabolizer и нормальный NUDT15: стандартная стартовая доза азатиоприна. Пример CPIC: 2 мг/кг/сут при аутоиммунных болезнях. Сила: Strong.",
+              "Intermediate Metabolizer или Possible Intermediate Metabolizer при нормальном NUDT15: 30–80% стандартной стартовой дозы, если она не ниже 2 мг/кг/сут. Сила: Strong.",
+              "Poor Metabolizer: рассмотреть препарат не из группы тиопуринов. Сила: Strong.",
+              "Intermediate Metabolizer и по TPMT, и по NUDT15: 20–50% стандартной стартовой дозы, если она не ниже 2 мг/кг/сут. Сила: Moderate. Это же указано в обновлении аннотации от февраля 2024.",
+              "Те же рамки руководство относит к меркаптопурину и тиогуанину: азатиоприн в клетке превращается в меркаптопурин, и CPIC считает их взаимодействие с TPMT и NUDT15 одинаковым.",
+              "Отдельное «снизить дозу ровно на 50%» как единственную рекомендацию: Not found. Диапазоны на странице — 30–80% и 20–50%."
+            ],
+            "text": "*Источники: https://www.clinpgx.org/guideline/PA166251442 ; https://www.clinpgx.org/guidelineAnnotation/PA166104933 ; таблица recommendation CPIC для azathioprine ; https://www.clinpgx.org/gene/PA356 ; https://www.ncbi.nlm.nih.gov/gene/7172 ; ClinVar esearch TPMT pathogenic or likely pathogenic. omim.org не открылся.*"
+          }
+        ]
+      }
+    ],
+    "interactions": {
+      "tables": [],
+      "pharmacogenomics": [],
+      "bullets": [],
+      "text": ""
+    }
+  },
+  {
+    "group": "Группа 9: VKORC1 - Vitamin K epoxide reductase complex subunit 1",
+    "file": "group9_VKORC1.txt",
+    "intro": "",
+    "genes": [
+      {
+        "num": 1,
+        "header": "VKORC1 — Vitamin K epoxide reductase complex subunit 1",
+        "intro": "",
+        "sections": [
+          {
+            "code": "1.1",
+            "title": "Общая информация",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Полное имя: vitamin K epoxide reductase complex subunit 1. OMIM ID на странице NCBI Gene: MIM:608547. Текст записи omim.org: Not found.",
+              "Функция (NCBI Gene, RefSeq, Aug 2015): VKORC1 кодирует каталитическую субъединицу комплекса витамин K-эпоксидредуктазы. Она восстанавливает неактивный витамин K 2,3-эпоксид до активного витамина K. Аллельные варианты связаны с комбинированным дефицитом витамин K-зависимых факторов свёртывания 2-го типа и с устойчивостью или повышенной чувствительностью к варфарину."
+            ],
+            "text": ""
+          },
+          {
+            "code": "1.2",
+            "title": "Варианты",
+            "tables": [
+              {
+                "kind": "genotype",
+                "headers": [
+                  "Генотип",
+                  "Фенотип",
+                  "Клинический риск",
+                  "Рекомендации",
+                  "ACMG"
+                ],
+                "rows": [
+                  {
+                    "Генотип": "C/C",
+                    "Фенотип": "rs9923231 reference/reference. В тексте руководства это VKORC1-1639, не A/A. Алгоритм Gage/IWPC",
+                    "Клинический риск": "Доза варфарина зависит от генотипа вместе с клиническими факторами и CYP2C9",
+                    "Рекомендации": "Для пациентов неафриканского происхождения считать дозу опубликованным фармакогенетическим алгоритмом, включая VKORC1-1639G>A и CYP2C9*2 и *3. Сила этой рекомендации CPIC: Strong",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "C/T",
+                    "Фенотип": "rs9923231 reference/variant",
+                    "Клинический риск": "Входит в расчёт стартовой дозы варфарина",
+                    "Рекомендации": "Та же рекомендация: алгоритм, а не фиксированный процент только по VKORC1. Сила: Strong для неафриканского происхождения",
+                    "ACMG": "Not found"
+                  },
+                  {
+                    "Генотип": "T/T",
+                    "Фенотип": "rs9923231 variant/variant. В тексте руководства повышенная чувствительность — VKORC1-1639 A/A",
+                    "Клинический риск": "Вместе с CYP2C9 poor metabolism (примеры *2/*3, *3/*3) повышенный риск при стандартном подходе к дозе",
+                    "Рекомендации": "Считать дозу алгоритмом. Если A/A сочетается с CYP2C9 poor metabolism, можно рассмотреть другой пероральный антикоагулянт. Сила: Strong",
+                    "ACMG": "Not found"
+                  }
+                ]
+              }
+            ],
+            "pharmacogenomics": [],
+            "bullets": [
+              "NM_024006.6(VKORC1):c.229A>T (p.Asn77Tyr) — Likely pathogenic",
+              "GRCh37/hg19 16p11.2(chr16:30907349-31334236)x1 — Pathogenic",
+              "GRCh37/hg19 16p11.2(chr16:30943854-31171177)x1 — Likely pathogenic",
+              "GRCh37/hg19 16p13.3-11.2(chr16:5805001-34230001) — Pathogenic"
+            ],
+            "text": "На селекторе генотипов аннотации CPIC для варфарина аллели VKORC1 — rs9923231 reference (C) и rs9923231 variant (T). Звёздных аллелей VKORC1 *2 и *3 на этом селекторе нет: Not found. *2 и *3 на той же странице относятся к CYP2C9. В тексте рекомендации CPIC вариант назван VKORC1-1639G>A; A/A описан как повышенная чувствительность. Отдельной таблицы «генотип VKORC1 — процент снижения дозы» на странице нет: доза считается фармакогенетическим алгоритмом (Gage или IWPC) вместе с CYP2C9*2 и *3.\nClinVar, поиск `VKORC1[gene] AND (pathogenic[clinsig] OR \"likely pathogenic\"[clinsig])`: 25 записей. Ниже только строки, у которых в краткой выдаче была классификация."
+          },
+          {
+            "code": "1.3",
+            "title": "Фармакогенетика",
+            "tables": [],
+            "pharmacogenomics": [
+              {
+                "kind": "pgx",
+                "headers": [
+                  "Drug",
+                  "Association",
+                  "Phenotype",
+                  "Level"
+                ],
+                "rows": [
+                  {
+                    "Drug": "warfarin",
+                    "Association": "rs9923231. CPIC включает VKORC1-1639G>A в алгоритм стартовой дозы вместе с CYP2C9*2 и *3. Summary annotation ClinPGx",
+                    "Phenotype": "Dosage",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "warfarin",
+                    "Association": "rs9923231. Summary annotation ClinPGx для over-anticoagulation",
+                    "Phenotype": "Toxicity",
+                    "Level": "1B"
+                  },
+                  {
+                    "Drug": "warfarin",
+                    "Association": "rs8050894. Summary annotation ClinPGx",
+                    "Phenotype": "Dosage",
+                    "Level": "1B"
+                  },
+                  {
+                    "Drug": "warfarin",
+                    "Association": "rs7294. Summary annotation ClinPGx",
+                    "Phenotype": "Dosage",
+                    "Level": "1B"
+                  },
+                  {
+                    "Drug": "warfarin",
+                    "Association": "rs9934438. Summary annotation ClinPGx",
+                    "Phenotype": "Dosage",
+                    "Level": "1B"
+                  },
+                  {
+                    "Drug": "warfarin",
+                    "Association": "rs2359612. Summary annotation ClinPGx",
+                    "Phenotype": "Dosage",
+                    "Level": "1B"
+                  },
+                  {
+                    "Drug": "phenprocoumon",
+                    "Association": "rs9923231. Summary annotation ClinPGx. Отдельной CPIC-рекомендации в списке пар уровня A для этого препарата: Not found",
+                    "Phenotype": "Dosage",
+                    "Level": "1A"
+                  },
+                  {
+                    "Drug": "acenocoumarol",
+                    "Association": "rs9923231. Summary annotation ClinPGx. Отдельной CPIC-рекомендации в списке пар уровня A для этого препарата: Not found",
+                    "Phenotype": "Dosage",
+                    "Level": "1A"
+                  }
+                ]
+              }
+            ],
+            "bullets": [],
+            "text": "ClinPGx PA133787052: 38 summary annotations. Уровни: 1A — 3, 1B — 5, 2A — 8, 3 — 21, 4 — 1. CPIC-пара с рекомендацией: варфарин, уровень A."
+          },
+          {
+            "code": "1.4",
+            "title": "Рекомендации",
+            "tables": [],
+            "pharmacogenomics": [],
+            "bullets": [
+              "Взрослые неафриканского происхождения: считать дозу варфарина алгоритмом Gage или IWPC, включая VKORC1-1639G>A и CYP2C9*2 и *3. Сила: Strong. Источник: аннотация CPIC PA166104949, обновление 2017 года (PMID:28198005).",
+              "Если генотип соответствует CYP2C9 poor metabolism и повышенной чувствительности VKORC1-1639 A/A, можно рассмотреть другой пероральный антикоагулянт. Сила: Strong.",
+              "Для африканского происхождения без CYP2C9*5, *6, *8 и *11 CPIC рекомендует клинический подбор дозы без генотипа. Если эти аллели известны, после алгоритма дозу снижают на 15–30% на вариантную аллель CYP2C9. Это рекомендация по CYP2C9, не отдельный процент по VKORC1. Сила: Moderate.",
+              "Фиксированное «снизить дозу VKORC1 на 50%»: Not found.",
+              "Звёздные аллели VKORC1 *2 и *3: Not found."
+            ],
+            "text": "*Источники: https://www.clinpgx.org/guideline/PA166251465 ; https://www.clinpgx.org/guidelineAnnotation/PA166104949 ; https://www.clinpgx.org/gene/PA133787052 ; https://www.ncbi.nlm.nih.gov/gene/79001 ; ClinVar esearch VKORC1 pathogenic or likely pathogenic. omim.org не открылся.*"
           }
         ]
       }

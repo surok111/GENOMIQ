@@ -483,6 +483,14 @@ def _gene_card(result: dict, status_kind: str) -> str:
     comment_html = (
         f'<div class="card-comment">{comment}</div>' if comment else ""
     )
+    gene_key = str(result.get("gene") or "").upper()
+    mthfr_note = ""
+    if gene_key == "MTHFR":
+        mthfr_note = (
+            '<p class="clinical-soft-note">⚠️ Клиническая ценность MTHFR для оценки '
+            "риска тромбоза/невынашивания не подтверждена крупными сообществами (ACMG).</p>"
+        )
+    gene_id = re.sub(r"[^A-Za-z0-9_-]+", "", str(result.get("gene") or ""))
 
     status_label = {
         "matched": "Matched",
@@ -516,7 +524,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
                 </div>
             """
         return f"""
-        <article class="card matched {risk_class}" id="gene-{re.sub(r'[^A-Za-z0-9_-]+', '', str(result.get('gene') or ''))}">
+        <article class="card matched {risk_class}" id="gene-{gene_id}">
             <div class="card-head">
                 <div>
                     <h3 class="gene-name">{gene}</h3>
@@ -527,6 +535,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             {comment_html}
             {cards_inner}
             {recs_html}
+            {mthfr_note}
             {more}
         </article>
         """
@@ -540,7 +549,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
     note_html = f'<div class="note">{note}</div>' if note else ""
 
     return f"""
-        <article class="card {status_kind.replace('_', '-')} {risk_class}" id="gene-{re.sub(r'[^A-Za-z0-9_-]+', '', str(result.get('gene') or ''))}">
+        <article class="card {status_kind.replace('_', '-')} {risk_class}" id="gene-{gene_id}">
             <div class="card-head">
                 <div>
                     <h3 class="gene-name">{gene}</h3>
@@ -552,6 +561,7 @@ def _gene_card(result: dict, status_kind: str) -> str:
             {comment_html}
             {note_html}
             {recs_html}
+            {mthfr_note}
             {more}
         </article>
     """
@@ -943,6 +953,14 @@ def _report_css() -> str:
     font-size: 14px;
     margin-top: 8px;
   }
+  .clinical-soft-note {
+    margin: 12px 0 0;
+    font-size: 11px;
+    color: #86868b;
+    font-style: italic;
+    line-height: 1.4;
+    font-family: var(--font-sans);
+  }
 
   .not-in-base {
     background: #ffffff;
@@ -1156,6 +1174,56 @@ def _report_css() -> str:
   }
   .manual-analyze:hover { background: #424245; }
 
+  .audit-foot {
+    margin: 28px 0 8px;
+    text-align: center;
+  }
+  .audit-open-link {
+    font-size: 12px;
+    color: #86868b;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-sans);
+  }
+  .audit-open-link:hover { color: #6e6e73; }
+  .audit-download-wrap {
+    margin-top: 10px;
+    display: none;
+  }
+  .audit-download-wrap.is-visible { display: block; }
+  .audit-download-btn {
+    font-size: 12px;
+    color: #86868b;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-sans);
+  }
+  .manual-field textarea,
+  .manual-field select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--text);
+    font-size: 15px;
+    font-family: var(--font-serif);
+    outline: none;
+    resize: vertical;
+  }
+  .manual-field textarea:focus,
+  .manual-field select:focus {
+    border-color: #1d1d1f;
+    box-shadow: 0 0 0 3px rgba(29,29,31,0.08);
+  }
+  .manual-field textarea { min-height: 96px; }
+
   @media print {
     * { box-shadow: none !important; transform: none !important; }
     html { scroll-behavior: auto; }
@@ -1177,7 +1245,8 @@ def _report_css() -> str:
       border: 1px solid #000;
     }
     .critical-alerts li, .critical-alerts b, .critical-lead { color: #000 !important; }
-    .print-btn, .manual-add-wrap, .manual-modal, .more summary { display: none !important; }
+    .print-btn, .manual-add-wrap, .manual-modal, .more summary,
+    .audit-foot, .audit-modal { display: none !important; }
     .more-collapse, .more-inner { display: block !important; overflow: visible !important; }
     .more-inner { padding-top: 8px !important; }
     .critical-alerts, .card, .doctors-note {
@@ -1202,6 +1271,150 @@ def _load_knowledge_base_embed() -> str:
     # Validate + compact; escape '<' so "</script>" cannot break out.
     data = json.loads(raw)
     return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+
+
+def _original_recommendation_for_result(r: dict) -> str:
+    """Best available system recommendation text for a gene (for audit trail)."""
+    recs = [str(x).strip() for x in (r.get("recommendations") or []) if str(x).strip()]
+    recs = [x for x in recs if x != "Специфических рекомендаций нет"]
+    if recs:
+        return "; ".join(recs[:3])
+    risk = str(r.get("clinical_risk") or "").strip()
+    if risk:
+        return risk
+    why = (r.get("why") or {}).get("annotation") or (r.get("why") or {}).get("sentence") or ""
+    return str(why).strip()
+
+
+def _doctor_override_ui(results: list) -> str:
+    """Subtle audit-log / doctor's override control at the bottom of the report."""
+    gene_options = []
+    rec_map: dict[str, str] = {}
+    seen = set()
+    for r in results or []:
+        gene = str(r.get("gene") or "").strip()
+        if not gene or gene in seen:
+            continue
+        seen.add(gene)
+        gene_options.append(
+            f'<option value="{_esc(gene)}">{_esc(gene)}</option>'
+        )
+        rec_map[gene] = _original_recommendation_for_result(r)
+    options_html = "".join(gene_options) or '<option value="">— нет генов —</option>'
+    rec_json = json.dumps(rec_map, ensure_ascii=False).replace("<", "\\u003c")
+
+    template = r"""
+  <div class="audit-foot no-print">
+    <button type="button" class="audit-open-link" id="audit-open">
+      ⚙️ Оставить отзыв на интерпретацию
+    </button>
+    <div class="audit-download-wrap" id="audit-download-wrap">
+      <button type="button" class="audit-download-btn" id="audit-download">
+        💾 Скачать лог изменений
+      </button>
+    </div>
+  </div>
+
+  <div class="manual-modal audit-modal no-print" id="audit-modal" aria-hidden="true" role="dialog" aria-labelledby="audit-title">
+    <div class="manual-modal-panel" role="document">
+      <h3 id="audit-title">Аудит-лог / Doctor's Override</h3>
+      <p class="manual-modal-sub">Зафиксируйте несогласие с автоматической интерпретацией. Запись сохраняется только в скачиваемом JSON.</p>
+      <form id="audit-form" autocomplete="off">
+        <div class="manual-field">
+          <label for="audit-gene">Ген</label>
+          <select id="audit-gene" name="gene" required>
+            <option value="" disabled selected>Выберите ген</option>
+            __GENE_OPTIONS__
+          </select>
+        </div>
+        <div class="manual-field">
+          <label for="audit-comment">Причина корректировки (например, учтен семейный анамнез)</label>
+          <textarea id="audit-comment" name="comment" required maxlength="2000"
+            placeholder="Причина корректировки (например, учтен семейный анамнез)"></textarea>
+        </div>
+        <div class="manual-modal-actions">
+          <button type="button" class="manual-cancel" id="audit-cancel">Отмена</button>
+          <button type="submit" class="manual-analyze">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var auditLog = [];
+    var originalRecs = __REC_MAP_JSON__;
+    var modal = document.getElementById("audit-modal");
+    var openBtn = document.getElementById("audit-open");
+    var cancelBtn = document.getElementById("audit-cancel");
+    var form = document.getElementById("audit-form");
+    var geneSel = document.getElementById("audit-gene");
+    var commentEl = document.getElementById("audit-comment");
+    var dlWrap = document.getElementById("audit-download-wrap");
+    var dlBtn = document.getElementById("audit-download");
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      if (geneSel) geneSel.focus();
+    }
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      if (form) form.reset();
+    }
+
+    if (openBtn) openBtn.addEventListener("click", openModal);
+    if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+    if (modal) {
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal && modal.classList.contains("is-open")) closeModal();
+    });
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var gene = (geneSel && geneSel.value || "").trim();
+        var comment = (commentEl && commentEl.value || "").trim();
+        if (!gene || !comment) return;
+        auditLog.push({
+          gene: gene,
+          original_recommendation: originalRecs[gene] || "",
+          doctor_comment: comment,
+          timestamp: new Date().toISOString()
+        });
+        if (dlWrap) dlWrap.classList.add("is-visible");
+        closeModal();
+      });
+    }
+
+    if (dlBtn) {
+      dlBtn.addEventListener("click", function () {
+        var blob = new Blob([JSON.stringify(auditLog, null, 2)], { type: "application/json" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "genomiq_audit_log.json";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+    }
+  })();
+  </script>
+"""
+    return (
+        template
+        .replace("__GENE_OPTIONS__", options_html)
+        .replace("__REC_MAP_JSON__", rec_json)
+    )
 
 
 def _manual_gene_entry_ui(kb_json: Optional[str] = None) -> str:
@@ -1750,9 +1963,12 @@ def generate_html_report(rep: dict, output_path: str):
 
   <footer>
     Отчёт сформирован автоматически. Не является медицинским диагнозом.<br>
+    Данный отчет является справочной информацией и не заменяет клиническое решение врача. Окончательный выбор терапии остается за лечащим врачом.<br>
     Гены, добавленные вручную, требуют проверки врача; система не гарантирует точность интерпретации.<br>
     Для интерпретации обратитесь к врачу-генетику.
   </footer>
+
+  {_doctor_override_ui(results)}
 </div>
 
 <button class="print-btn no-print" onclick="window.print()">Печать</button>
