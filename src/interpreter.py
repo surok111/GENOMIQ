@@ -12,11 +12,28 @@ import re
 from pathlib import Path
 from typing import Optional
 
+try:
+    from dotenv import load_dotenv
+except ImportError:  # pragma: no cover
+    load_dotenv = None
+
 
 BASE_PATH = "data/parsed_knowledge_base_clean.json"
 SAMPLES_DIR = "samples"
 OUT_JSON = "reports/patient_report.json"
 OUT_MD = "reports/patient_report.md"
+
+_DOTENV_LOADED = False
+
+
+def _ensure_dotenv() -> None:
+    global _DOTENV_LOADED
+    if _DOTENV_LOADED or load_dotenv is None:
+        return
+    # Repo root .env (src/interpreter.py → parents[1])
+    root = Path(__file__).resolve().parents[1]
+    load_dotenv(root / ".env")
+    _DOTENV_LOADED = True
 
 
 NORMAL_PHRASES = [
@@ -112,7 +129,105 @@ KNOWN_VARIANTS = {
 #  Загрузка базы знаний
 # ============================================================
 
-def load_base(path: str) -> list[dict]:
+def _tables_from_rows(rows: list[dict], kind: str) -> list[dict]:
+    """Group stored table rows back into {kind, headers, rows}."""
+    buckets: dict[int, dict] = {}
+    for row in rows:
+        table = buckets.setdefault(
+            int(row["table_ord"]),
+            {"kind": kind, "headers": row.get("headers") or [], "rows": []},
+        )
+        table["rows"].append(row.get("row_data") or {})
+    return [buckets[k] for k in sorted(buckets)]
+
+
+def _base_from_pg(groups, genes, sections, genotypes, pgx_rows, recs) -> list[dict]:
+    """Rebuild the nested knowledge-base shape the matcher already uses."""
+    genes_by_group: dict[int, list] = {}
+    for gene in genes:
+        genes_by_group.setdefault(gene["group_id"], []).append(gene)
+    sections_by_gene: dict[int, list] = {}
+    for sec in sections:
+        sections_by_gene.setdefault(sec["gene_id"], []).append(sec)
+    gt_by_section: dict[int, list] = {}
+    for row in genotypes:
+        gt_by_section.setdefault(row["section_id"], []).append(row)
+    pgx_by_section: dict[int, list] = {}
+    for row in pgx_rows:
+        pgx_by_section.setdefault(row["section_id"], []).append(row)
+    recs_by_section: dict[int, list] = {}
+    for row in recs:
+        recs_by_section.setdefault(row["section_id"], []).append(row)
+
+    base = []
+    for group in groups:
+        gene_list = []
+        for gene in genes_by_group.get(group["id"], []):
+            section_list = []
+            for sec in sections_by_gene.get(gene["id"], []):
+                section_list.append(
+                    {
+                        "code": sec.get("code") or "",
+                        "title": sec.get("title") or "",
+                        "tables": _tables_from_rows(gt_by_section.get(sec["id"], []), "genotype"),
+                        "pharmacogenomics": _tables_from_rows(pgx_by_section.get(sec["id"], []), "pgx"),
+                        "bullets": [r["body"] for r in recs_by_section.get(sec["id"], [])],
+                        "text": sec.get("body_text") or "",
+                    }
+                )
+            gene_list.append(
+                {
+                    "num": gene.get("gene_num") or gene.get("ord") or 0,
+                    "header": gene.get("header") or gene.get("gene_name") or "",
+                    "intro": gene.get("intro") or "",
+                    "sections": section_list,
+                }
+            )
+        base.append(
+            {
+                "group": group.get("group_name") or "",
+                "file": group.get("source_file") or "postgresql",
+                "intro": group.get("intro") or "",
+                "genes": gene_list,
+                "interactions": group.get("interactions") or [],
+            }
+        )
+    return base
+
+
+def load_base_from_pg(database_url: str) -> list[dict]:
+    """Load the relational knowledge base and rebuild the nested matcher shape."""
+    import psycopg
+    from psycopg.rows import dict_row
+
+    with psycopg.connect(database_url, row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT * FROM kb_groups ORDER BY ord, id")
+            groups = cur.fetchall()
+            if not groups:
+                raise RuntimeError("PostgreSQL table kb_groups is empty")
+            cur.execute("SELECT * FROM kb_genes ORDER BY ord, id")
+            genes = cur.fetchall()
+            cur.execute("SELECT * FROM kb_sections ORDER BY ord, id")
+            sections = cur.fetchall()
+            cur.execute("SELECT * FROM kb_genotypes ORDER BY table_ord, row_ord, id")
+            genotypes = cur.fetchall()
+            cur.execute("SELECT * FROM kb_pgx ORDER BY table_ord, row_ord, id")
+            pgx_rows = cur.fetchall()
+            cur.execute("SELECT * FROM kb_recommendations ORDER BY ord, id")
+            recs = cur.fetchall()
+    return _base_from_pg(groups, genes, sections, genotypes, pgx_rows, recs)
+
+
+def load_base(path: str = BASE_PATH) -> list[dict]:
+    """Load knowledge base from PostgreSQL when DATABASE_URL is set, else JSON."""
+    _ensure_dotenv()
+    url = (os.getenv("DATABASE_URL") or "").strip()
+    if url and "YOUR_PASSWORD" not in url:
+        try:
+            return load_base_from_pg(url)
+        except Exception as exc:  # noqa: BLE001 — fall back to JSON
+            print(f"⚠️ PostgreSQL KB load failed ({exc}); falling back to JSON")
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 

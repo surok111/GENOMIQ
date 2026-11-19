@@ -187,6 +187,46 @@ def cmd_backup(args):
         print(f"  {f['name']}: {f['bytes']} байт")
 
 
+def cmd_clinvar_ingest(args):
+    sys.path.insert(0, str(ROOT / "src"))
+    from clinvar_ingest.pipeline import ingest_clinvar
+    from migrate_to_pg import _mask_database_url, _password_is_placeholder, _read_database_url
+
+    url = _read_database_url()
+    print("=" * 70)
+    print("  CLINVAR: pathogenic panel variants -> clinvar_staging")
+    print("=" * 70)
+    print(f"DATABASE_URL: {_mask_database_url(url) if url else '<empty>'}")
+    if _password_is_placeholder(url):
+        print("DATABASE_URL is missing or still uses YOUR_PASSWORD.")
+        sys.exit(1)
+    summary = ingest_clinvar(
+        database_url=url,
+        source=args.source,
+        chunksize=args.chunksize,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
+def cmd_cpic_ingest(args):
+    import asyncio
+
+    sys.path.insert(0, str(ROOT / "src"))
+    from cpic_ingest.pipeline import ingest_cpic
+    from migrate_to_pg import _mask_database_url, _password_is_placeholder, _read_database_url
+
+    url = _read_database_url()
+    print("=" * 70)
+    print("  CPIC: guidelines and recommendations -> cpic_guideline / cpic_recommendation")
+    print("=" * 70)
+    print(f"DATABASE_URL: {_mask_database_url(url) if url else '<empty>'}")
+    if _password_is_placeholder(url):
+        print("DATABASE_URL is missing or still uses YOUR_PASSWORD.")
+        sys.exit(1)
+    summary = asyncio.run(ingest_cpic(database_url=url))
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
 def cmd_db_status(args):
     sys.path.insert(0, str(ROOT / "src"))
     from genedb.store import GeneStore
@@ -216,6 +256,21 @@ def main():
 
     sub.add_parser("db-status", help="Статистика живой БД генов")
 
+    p_clinvar = sub.add_parser(
+        "clinvar-ingest",
+        help="Загрузить ClinVar (Pathogenic / Likely pathogenic) в clinvar_staging",
+    )
+    p_clinvar.add_argument(
+        "--source",
+        help="Локальный variant_summary.txt.gz. Без флага файл скачивается с NCBI FTP",
+    )
+    p_clinvar.add_argument("--chunksize", type=int, default=50_000)
+
+    sub.add_parser(
+        "cpic-ingest",
+        help="Загрузить руководства и рекомендации CPIC в staging-таблицы",
+    )
+
     args = parser.parse_args()
     if args.cmd == "build":
         cmd_build(args)
@@ -227,6 +282,10 @@ def main():
         cmd_backup(args)
     elif args.cmd == "db-status":
         cmd_db_status(args)
+    elif args.cmd == "clinvar-ingest":
+        cmd_clinvar_ingest(args)
+    elif args.cmd == "cpic-ingest":
+        cmd_cpic_ingest(args)
     else:
         parser.print_help()
 

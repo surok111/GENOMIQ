@@ -1,0 +1,8 @@
+#AlleleID	Type	Name	GeneID	GeneSymbol	ClinicalSignificance	LastEvaluated	RS# (dbSNP)	RCVaccession	Origin	Assembly	Start	Stop	ReferenceAllele	AlternateAllele	ReviewStatus	VariationID	PhenotypeList
+1	single nucleotide variant	CYP2C19 grch37	1557	CYP2C19	Pathogenic	2020-01-01	100	RCV0001	germline	GRCh37	100	100	A	G	criteria provided, single submitter	880000000201	drug response
+2	single nucleotide variant	CYP2C19 grch38	1557	CYP2C19	Pathogenic	2020-01-01	100	RCV0001	germline	GRCh38	200	200	A	G	criteria provided, single submitter	880000000201	drug response
+3	single nucleotide variant	CYP2C19 grch37 again	1557	CYP2C19	Pathogenic	2020-01-01	100	RCV0009	germline	GRCh37	300	300	A	G	criteria provided, single submitter	880000000201	drug response
+4	single nucleotide variant	CYP2C19 benign	1557	CYP2C19	Benign	2020-01-01	101	RCV0002	germline	GRCh38	1	1	A	C	criteria provided, single submitter	880000000202	none
+5	single nucleotide variant	BRCA1 pathogenic	672	BRCA1	Pathogenic	2020-01-01	102	RCV0003	germline	GRCh38	1	1	A	T	criteria provided, single submitter	880000000203	cancer
+6	single nucleotide variant	MTHFR likely	4524	MTHFR	Likely pathogenic	2020-01-01	103	RCV0004	germline	GRCh38	5	5	C	T	criteria provided, single submitter	880000000204	homocysteine
+7	single nucleotide variant	CYP2C19 combined	1557	CYP2C19	Pathogenic/Likely pathogenic	2020-01-01	104	RCV0005	germline	GRCh38	9	9	A	G	criteria provided, single submitter	880000000205	combined

@@ -51,6 +51,8 @@ streamlit run app.py
 python run.py sync --genes SOD2             # обновить один ген из OMIM/ClinVar/ClinPGx
 python run.py sync                          # все гены базы знаний
 python run.py db-status
+python run.py clinvar-ingest --source path\to\variant_summary.txt.gz
+python run.py cpic-ingest
 python run.py backup                        # снимок SQLite + JSON
 python run.py backup --list
 python run.py backup --restore 20261101T083000Z
