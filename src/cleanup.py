@@ -55,6 +55,7 @@ def clean_section(section: dict) -> dict:
         "title": section.get("title", ""),
         "tables": section.get("tables", []),
         "pharmacogenomics": section.get("pharmacogenomics", []),  # ← новое
+        "other_tables": section.get("other_tables", []),
         "bullets": [clean_bullet(b) for b in section.get("bullets", [])],
         "text": clean_text(section.get("text", "")),
     }
@@ -95,6 +96,20 @@ def main():
         data = json.load(f)
 
     cleaned = [clean_group(g) for g in data]
+    from pgx_normalize import normalize_knowledge_base
+    cleaned, warnings, errors = normalize_knowledge_base(cleaned)
+    print(f"Предупреждения нормализации: {len(warnings)}")
+    for item in warnings:
+        prov = item.get("provenance") or {}
+        where = f"{prov.get('file', '')} {prov.get('gene', '')} {prov.get('section_code', '')}".strip()
+        print(f"  [{item.get('code')}] {where}: {item.get('message')}")
+    if errors:
+        print(f"Ошибки нормализации: {len(errors)}")
+        for item in errors:
+            prov = item.get("provenance") or {}
+            where = f"{prov.get('file', '')} {prov.get('gene', '')}".strip()
+            print(f"  [{item.get('code')}] {where}: {item.get('message')}")
+        raise SystemExit(1)
 
     with open(dst, "w", encoding="utf-8") as f:
         json.dump(cleaned, f, ensure_ascii=False, indent=2)

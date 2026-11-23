@@ -125,6 +125,7 @@ def parse_section_body(body_lines: List[str]) -> Dict[str, Any]:
     """
     tables = []
     pharmacogenomics = []
+    other_tables = []
     text_lines = []
     bullets = []
 
@@ -143,7 +144,9 @@ def parse_section_body(body_lines: List[str]) -> Dict[str, Any]:
                     pharmacogenomics.append(t)
                 elif t["kind"] == 'genotype':
                     tables.append(t)
-                # 'other' — игнорируем
+                else:
+                    # Kept for normalization. Legacy readers ignore this key.
+                    other_tables.append(t)
             continue
 
         m = RE_LIST_ITEM.match(line)
@@ -159,6 +162,7 @@ def parse_section_body(body_lines: List[str]) -> Dict[str, Any]:
     return {
         "tables": tables,
         "pharmacogenomics": pharmacogenomics,
+        "other_tables": other_tables,
         "bullets": bullets,
         "text": "\n".join(text_lines).strip(),
     }
