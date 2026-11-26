@@ -5,6 +5,7 @@ html_report.py — генерация HTML-отчёта по данным patien
 """
 
 import html
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -226,6 +227,48 @@ def _render_live_db(live: Optional[dict]) -> str:
     """
 
 
+def _render_drug_recommendations(result: dict) -> str:
+    rows = result.get("drug_recommendations") or []
+    if not rows:
+        return ""
+    items = []
+    for row in rows:
+        drugs = ", ".join(row.get("drugs") or []) or _esc(row.get("drug_raw", ""))
+        scope = _esc(row.get("genotype_raw", ""))
+        text = _esc(strip_md_html(row.get("recommendation_raw", "")))
+        reason = _esc(row.get("match_reason", ""))
+        prov = row.get("provenance") or {}
+        where = _esc(f"{prov.get('file', '')} §{prov.get('section_code', '')}".strip())
+        items.append(
+            f"<li><b>{_esc(drugs)}</b> ({scope}) — {text} "
+            f"<span class='pgx-pval'>{reason}; {where}</span></li>"
+        )
+    return "<div class='recs'><h4>Рекомендации по препаратам</h4><ul>" + "".join(items) + "</ul></div>"
+
+
+def strip_md_html(value: str) -> str:
+    return re.sub(r"\*\*(.+?)\*\*", r"\1", str(value or ""))
+
+
+def _render_review_notes(result: dict) -> str:
+    warnings = result.get("review_warnings") or []
+    matched = (result.get("matches") or [{}])[0].get("provenance") or {}
+    relevant = []
+    for warning in warnings:
+        prov = warning.get("provenance") or {}
+        if matched and prov.get("section_code") == matched.get("section_code") and prov.get("row_index") == matched.get("row_index"):
+            relevant.append(warning)
+    unresolved = result.get("unresolved_recommendations") or []
+    if not relevant and not unresolved:
+        return ""
+    items = []
+    for warning in relevant:
+        items.append(f"<li>{_esc(warning.get('code', ''))}: {_esc(warning.get('message', ''))}</li>")
+    for item in unresolved:
+        items.append(f"<li>{_esc(item.get('match_reason') or item.get('reason') or 'unresolved')}: {_esc(item.get('text', ''))}</li>")
+    return "<div class='note'>Не применено автоматически — исходная формулировка сохранена и требует проверки.<ul>" + "".join(items) + "</ul></div>"
+
+
 def _gene_card(result: dict, status_kind: str) -> str:
     gene = _esc(result["gene"])
     group = _esc(result.get("group", ""))
@@ -312,6 +355,8 @@ def _gene_card(result: dict, status_kind: str) -> str:
             {cards_inner}
             {pgx_block}
             {live_block}
+            {_render_drug_recommendations(result)}
+            {_render_review_notes(result)}
             {recs_html}
         </div>
         """

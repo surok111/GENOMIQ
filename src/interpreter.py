@@ -132,9 +132,12 @@ def build_gene_index(base: list[dict]) -> dict:
         def _symbols(header: str) -> list[str]:
             return [extract_gene_name(header).upper()]
 
+    from pgx_normalize import ensure_gene
+
     index: dict[str, tuple] = {}
     for group in base:
         for gene in group["genes"]:
+            ensure_gene(gene, group.get("file", ""), group.get("group", ""))
             entry = (group["group"], gene)
             for sym in _symbols(gene["header"]):
                 key = sym.upper().replace(" ", "")
@@ -275,7 +278,11 @@ RE_VARIANT = re.compile(
 
 RE_PAIR_NUC = re.compile(r'(?<![A-Za-z])([ACGT]{2})(?![A-Za-z])')
 RE_PAIR_ANY = re.compile(r'(?<![A-Za-z])([A-Z]{2})(?![A-Za-z])')
-RE_STAR = re.compile(r'(\*\d+/\*\d+)')
+# xN / x<digits> stays on the allele. A shorter *1/*1 prefix is not a second genotype.
+RE_STAR = re.compile(
+    r'(\*\d+(?:[A-Za-z]*?)(?:xN|x\d+)?/\*\d+(?:[A-Za-z]*?)(?:xN|x\d+)?)',
+    re.IGNORECASE,
+)
 RE_APOE_ISOFORM = re.compile(r'\bE([234])/E([234])\b', re.IGNORECASE)
 
 def _extract_variant_alleles(variant: str) -> tuple[str, str]:
@@ -822,6 +829,11 @@ def interpret_gene(patient_gene: dict, gene_index: dict) -> dict:
 
     apoe_special = _try_apoe_isoform(raw_name, patient_gene, gene, group_name, pgx_result)
     if apoe_special is not None: return apoe_special
+
+    from pgx_match import try_exact_interpretation
+    exact = try_exact_interpretation(patient_gene, gene, group_name, pgx_result)
+    if exact is not None:
+        return exact
 
     recommendations = _collect_recommendations(gene)
     has_table = has_real_genotype_table(gene)
